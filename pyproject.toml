@@ -70,6 +70,7 @@ dev = [
     "nbmake>=1.5",
     "jupyterlab>=4.2",
     "nbformat>=5.10",
+    "seaborn>=0.13",
     "mkdocs-material>=9.5",
     "mkdocs-jupyter>=0.24",
 ]
