@@ -2,7 +2,7 @@
 # Everything goes through uv so you get the pinned Python 3.12 environment.
 
 .DEFAULT_GOAL := help
-.PHONY: help setup lab docs docs-serve test test-notebooks lint fmt fetch-data clean container
+.PHONY: help setup lab docs docs-serve test test-notebooks cov typecheck lint fmt fetch-data clean container
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -22,6 +22,12 @@ docs-serve: ## Serve the docs site with live reload at http://localhost:8000
 
 test: ## Run the helper-package unit tests
 	uv run pytest
+
+cov: ## Run the unit tests with a coverage report (enforces the floor)
+	uv run pytest --cov=jansky --cov-report=term-missing
+
+typecheck: ## Type-check the helper package with mypy
+	uv run mypy
 
 test-notebooks: ## Smoke-test the Part I notebooks (executes them via nbmake)
 	uv run pytest --nbmake \

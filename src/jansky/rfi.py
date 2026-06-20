@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 
-def mad_sigma(x: np.ndarray, axis: int | None = None) -> np.ndarray:
+def mad_sigma(x: np.ndarray, axis: int | None = None) -> float | np.ndarray:
     """Robust standard-deviation estimate from the median absolute deviation.
 
     :math:`\\sigma \\approx 1.4826 \\times \\mathrm{median}(|x - \\mathrm{median}(x)|)`,

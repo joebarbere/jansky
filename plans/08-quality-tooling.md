@@ -1,7 +1,25 @@
-# Plan 08 — Quality tooling: types, coverage, contributing, link-checking 📋 Proposed
+# Plan 08 — Quality tooling: types, coverage, contributing, link-checking ✅ Delivered
 
 > Flagged by **engineering (#5, #6)**, with the link-checker also raised by **research (#6)** and
 > **archive (#4)**. Scope: medium.
+>
+> **Delivered (all five items):**
+> - **Type checking** — `mypy` in the dev group + a `[tool.mypy]` section scoped to `src/jansky`
+>   (`ignore_missing_imports` for the un-stubbed scientific stack); fixed the 6 real type issues it
+>   found (honest `float | np.ndarray` signatures in `signals`/`rfi`, dict/dtype annotations in
+>   `formats`, a `str()` param in `mastodon_reader`). `mypy` is clean across all 18 modules and
+>   runs in CI.
+> - **Coverage** — `pytest-cov` with `[tool.coverage]` config and an **85% floor** (currently
+>   89%); CI's unit-test step runs `--cov`. Added `tests/test_plotting.py` (the previously
+>   untested module → 100%). The TUI module is `omit`-ted from the floor as it needs the `tui` extra.
+> - **`CONTRIBUTING.md`** — env via `uv sync`, the `make` check table, the notebook-output policy,
+>   the `.claude/` skills/agents, and the chapter-authoring standard.
+> - **`.github/dependabot.yml`** — `uv` + `github-actions` ecosystems, weekly, with dev-tooling grouped.
+> - **`.github/workflows/links.yml`** — scheduled + on-demand `lychee` link-check over `docs/`,
+>   `*.md`, and `plans/`, opening an issue on broken links (kept off the PR path so flaky hosts
+>   never block a merge).
+>
+> Also added `make typecheck` and `make cov` targets.
 
 ## Context
 

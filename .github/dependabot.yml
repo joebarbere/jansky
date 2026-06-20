@@ -1,0 +1,26 @@
+# Keep dependencies and CI actions current with weekly automated PRs.
+# https://docs.github.com/code-security/dependabot
+version: 2
+updates:
+  # Python dependencies (uv reads pyproject.toml / uv.lock).
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      # Batch the routine dev-tooling bumps into one PR to cut noise.
+      dev-tooling:
+        patterns:
+          - "ruff"
+          - "pytest*"
+          - "mypy"
+          - "nbmake"
+          - "mkdocs*"
+
+  # GitHub Actions used by the workflows in .github/workflows.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
