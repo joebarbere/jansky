@@ -16,6 +16,9 @@ All URLs below were verified live in June 2026.
 
 ## Major radio observatories & facilities
 
+This page lists the *organisations*; for a detailed instrument-by-instrument catalogue (sizes,
+bands, locations), see **[Radio Telescopes of the World](telescopes.md)**.
+
 | Facility | What it is | Link |
 |---|---|---|
 | **NRAO** (VLA, VLBA) | US national radio observatory (NSF/AUI); operates the Very Large Array and Very Long Baseline Array | [public.nrao.edu](https://public.nrao.edu/) |
