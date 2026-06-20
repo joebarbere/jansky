@@ -38,20 +38,31 @@ Heavy, chapter-specific tools live in their own images behind compose profiles
 
 ## The course map
 
+**36 chapters** in four parts, plus a Maths Lab appendix. The numbering reflects the order
+chapters were written; the nav groups them by theme.
+
 | # | Chapter | Highlights |
 |---|---------|-----------|
 | **Part I — Foundations** ||
 | 1 | What is Radio Astronomy? | Jansky & Reber; the jansky unit; the atmospheric window |
 | 2 | The Physics of Radio Emission | Rayleigh–Jeans, brightness temperature, spectral index |
 | 3 | Signals, Noise & the Radiometer Equation | Dicke 1946; watch a signal climb out of the noise |
-| **Part II — Instrumentation** ||
+| **Part II — Instrumentation & Hardware** ||
 | 4 | Antennas & Receivers | beam patterns, 1.22 λ/D resolution, A_eff, SEFD |
 | 5 | Hands-on SDR *(optional)* | RTL-SDR, sampling, IQ data, power spectra |
 | 6 | Detecting the Hydrogen Line | the 21 cm line; van de Hulst, Ewen & Purcell |
-| **Part III — Interferometry** ||
+| 26 | Meteor Scatter & Passive Radar | forward scatter, echo counting, bistatic radar |
+| 27 | VLF & the Ionosphere *(SuperSID)* | detect solar flares as sudden ionospheric disturbances |
+| 28 | GNU Radio Flowgraphs | a radiometer & spectrometer as DSP blocks; export to SigMF/GUPPI |
+| 29 | No-Hardware HI: VIRGO & PICTOR | reduce an online hydrogen-line observation |
+| 30 | RASDR & Radio-Sky Spectrograph | stream over the RSS TCP protocol |
+| **Part III — Interferometry & Imaging** ||
 | 7 | Why Interferometry? | two-element fringes; resolution from baselines |
 | 8 | Aperture Synthesis & the uv-plane | van Cittert–Zernike; Earth-rotation synthesis; the dirty beam |
 | 9 | Deconvolution & CLEAN | Högbom 1974, implemented by hand |
+| 17 | Coherent Interferometry *(KrakenSDR)* | phase coherence, calibration, recovering a direction |
+| 19 | The EHT & VLBI | µas resolution; closure phase/amplitude; imaging a black-hole ring |
+| 25 | Intensity Interferometry *(HBT)* | correlate intensity, not phase; recover an angular size |
 | **Part IV — Real Data & Research** ||
 | 10 | Accessing Open Archives | astroquery / pyvo against NRAO, HEASARC, VizieR, the VO |
 | 11 | HI 21 cm & Galactic Rotation | derive a rotation curve → the dark-matter problem |
@@ -59,25 +70,39 @@ Heavy, chapter-specific tools live in their own images behind compose profiles
 | 13 | Pulsars | Hewish & Bell 1968; dispersion, de-dispersion, folding |
 | 14 | Multi-wavelength Diversion | cross-match radio with Gaia/SDSS; build an SED |
 | 15 | Capstone | an open-ended mini research project |
+| 16 | Data Formats & the Ecosystem | GUPPI, SigMF, the Radio-Sky protocol; SETI tools |
+| 18 | Fast Radio Bursts | the DM search "butterfly"; matched filtering; the Macquart relation |
+| 20 | Pulsar Timing Arrays | the Hellings–Downs curve; the nanohertz GW background |
+| 21 | SETI | the Doppler-drift search; ON/OFF cadence; the Drake equation |
+| 22 | The Cosmic Microwave Background | the 2.725 K blackbody; the dipole; anisotropy |
+| 23 | Solar & Jupiter Radio Astronomy | a type-II burst → CME shock speed; Jovian decametric emission |
+| 24 | Molecular Lines & Masers | the CO ladder; weighing the NGC 4258 black hole |
+| **Appendices — Maths Lab** ||
+| A–F (31–36) | Fourier & convolution · matched filtering · noise & RFI · coordinates & time · calibration linear algebra · special functions | worked, executable maths behind the chapters |
 
-Optional hardware chapters (5 & 6) have simulated/archival fallbacks, and every
-research chapter degrades gracefully to offline synthetic data — so you can complete
-the **entire** course with nothing but a laptop and no network.
+Optional hardware chapters have simulated/archival fallbacks, and every research chapter
+degrades gracefully to offline synthetic data — so you can complete the **entire** course with
+nothing but a laptop and no network.
 
 ## What's in the box
 
 ```
 jansky/
-├── notebooks/        # the course — 15 numbered, executable chapters
-├── docs/             # MkDocs site (prose + the same notebooks, rendered) + bibliography
+├── notebooks/        # the course — 36 numbered, executable chapters + Maths Labs
+├── docs/             # MkDocs site: notebooks rendered, plus a deep reference library
+│   ├── glossary · notation · math-preliminaries · data-formats   # learn-the-craft pages
+│   ├── projects · field-notes · videos · visual-tour             # build & watch
+│   ├── telescopes (+ assets/telescopes.kml) · resources · mastodon
+│   └── references · papers-timeline                              # the literature
 ├── src/jansky/       # the helper package the notebooks lean on
-│   ├── units.py          # janskys, brightness temperature, decibels
-│   ├── signals.py        # noise, the radiometer equation, beams, spectra
-│   ├── interferometry.py # uv-coverage, the dirty beam, Högbom CLEAN
-│   ├── data.py           # cached dataset downloaders + offline fallbacks
-│   └── plotting.py       # shared figure styling
+│   ├── units · signals · interferometry · data · plotting        # core
+│   ├── formats        # GUPPI, SigMF, the Radio-Sky Spectrograph protocol
+│   ├── transients · timing · seti · solar · molecular            # the science modules
+│   ├── meteor · vlf   # amateur-observing simulations
+│   └── rfi            # robust statistics & spectral-kurtosis flagging
 ├── containers/       # Dockerfiles + compose (JupyterLab, CASA, GNU Radio)
-├── tests/            # pytest for the helpers; nbmake smoke-tests for Part I
+├── tests/            # pytest for every helper module; nbmake smoke-tests
+├── plans/            # delivered-status records of the expansion plans
 └── .claude/agents/   # the subagents used to author & review the course
 ```
 
@@ -94,10 +119,20 @@ make fetch-data      # list sample datasets (ARGS="--fetch hi4pi-sample" to down
 
 ## Going deeper
 
-The [References](docs/references.md) page collects the landmark papers (Jansky 1933,
-Ewen & Purcell 1951, Högbom 1974, Hewish & Bell 1968, …) and the standing textbooks —
-above all Condon & Ransom's free [*Essential Radio Astronomy*](https://science.nrao.edu/opportunities/courses/era),
-the perfect companion to this course.
+Beyond the chapters, the docs site is a reference library in its own right:
+
+- **Learn the craft** — [Glossary](docs/glossary.md), [Reading the Notation](docs/notation.md),
+  [Mathematical Preliminaries](docs/math-preliminaries.md), [Data Formats](docs/data-formats.md).
+- **The literature** — the [References](docs/references.md) bibliography (Jansky 1933, Ewen &
+  Purcell 1951, Högbom 1974, Hewish & Bell 1968, …) and a year-by-year
+  [timeline of landmark papers](docs/papers-timeline.md).
+- **Go observe** — [Projects, Kits & Hacks](docs/projects.md), [Field Notes](docs/field-notes.md),
+  the [Radio Telescopes catalogue](docs/telescopes.md) (with a Google Earth
+  [`telescopes.kml`](docs/assets/telescopes.kml)), [Watch on YouTube](docs/videos.md), and the
+  [community on Mastodon](docs/mastodon.md).
+
+Above all, Condon & Ransom's free [*Essential Radio Astronomy*](https://science.nrao.edu/opportunities/courses/era)
+is the perfect companion to this course.
 
 ## License
 
