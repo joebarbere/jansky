@@ -88,6 +88,7 @@ nav:
       - "16. Data Formats & the Ecosystem": notebooks/16_data_formats_and_ecosystem.ipynb
       - "18. Fast Radio Bursts": notebooks/18_fast_radio_bursts.ipynb
       - "20. Pulsar Timing Arrays & Nanohertz GWs": notebooks/20_pulsar_timing_arrays.ipynb
+      - "21. SETI: The Search for Technosignatures": notebooks/21_seti.ipynb
   - Reference:
       - Glossary: glossary.md
       - Mathematical Preliminaries: math-preliminaries.md
