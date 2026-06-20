@@ -73,6 +73,9 @@ toolbox:
 | **CARTA** | Interactive image/cube visualization for ALMA, VLA and SKA pathfinders | [cartavis.org](https://cartavis.org/) |
 | **astropy / astroquery** | Core Python astronomy library and archive-query package | [astropy.org](https://www.astropy.org/) · [astroquery](https://astroquery.readthedocs.io/) |
 | **VIRGO** | Open-source Python package for amateur spectral-line radio astronomy (powers PICTOR) | [github.com/0xCoto/VIRGO](https://github.com/0xCoto/VIRGO) |
+| **pyuvdata** (RASG) | Read/write & convert interferometer visibilities (MS ↔ UVFITS ↔ UVH5) | [radioastronomysoftwaregroup.github.io](https://radioastronomysoftwaregroup.github.io/) |
+| **blimpy / turboSETI** | Breakthrough Listen filterbank/GUPPI I/O and the Doppler-drift SETI search | [github.com/UCBerkeleySETI/blimpy](https://github.com/UCBerkeleySETI/blimpy) |
+| **RASDR** | Radio Astronomy SDR (LimeSDR-based); feeds Radio-Sky Spectrograph | [github.com/myriadrf/RASDR](https://github.com/myriadrf/RASDR) |
 | **PRESTO** | Pulsar search and analysis toolkit | [github.com/scottransom/presto](https://github.com/scottransom/presto) |
 | **PINT** | High-precision pulsar timing (NANOGrav) | [github.com/nanograv/PINT](https://github.com/nanograv/PINT) |
 | **DSPSR / PSRCHIVE** | Pulsar signal processing and data archiving libraries | [dspsr](http://dspsr.sourceforge.net/) · [psrchive](http://psrchive.sourceforge.net/) |

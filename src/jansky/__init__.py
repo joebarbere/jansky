@@ -16,6 +16,9 @@ interferometry
     uv-coverage, the dirty beam, a minimal Hogbom CLEAN, van Cittert--Zernike.
 data
     Cached downloaders for the sample datasets used in the research chapters.
+formats
+    Data formats & the ecosystem: GUPPI raw, SigMF, the Radio-Sky Spectrograph
+    network protocol, and optional wrappers for the heavier I/O libraries.
 plotting
     Shared matplotlib styling so every chapter's figures look consistent.
 
@@ -27,11 +30,12 @@ from __future__ import annotations
 
 __version__ = "0.1.0"
 
-from jansky import data, interferometry, plotting, signals, units
+from jansky import data, formats, interferometry, plotting, signals, units
 
 __all__ = [
     "__version__",
     "data",
+    "formats",
     "interferometry",
     "plotting",
     "signals",

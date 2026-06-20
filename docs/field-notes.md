@@ -155,6 +155,10 @@ before you buy anything.
   points for building your own spectrometer; see [Chapter 5](notebooks/05_sdr_basics.ipynb).
 - **[blah2](https://github.com/30hours/blah2)** — an open-source passive-radar receiver, for the
   "detect aircraft off an FM tower" experiments that are a fun gateway to correlation techniques.
+- **GUPPI raw, SigMF & Radio-Sky Spectrograph** — the data formats and the RSS network protocol
+  that tie the amateur ecosystem together (incl. [RASDR](https://github.com/myriadrf/RASDR) and
+  the SETI stack `blimpy`/`turboSETI`). See [Data Formats & the Ecosystem](data-formats.md) and
+  [Chapter 16](notebooks/16_data_formats_and_ecosystem.ipynb).
 
 ## Communities worth your time
 
