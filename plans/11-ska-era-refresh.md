@@ -1,6 +1,26 @@
-# Plan 11 — SKA-era & 2025–2026 currency refresh 📋 Proposed
+# Plan 11 — SKA-era & 2025–2026 currency refresh ✅ Delivered
 
 > Flagged by **research-currency (#2 top, plus #3 and #6)**. Scope: small–medium.
+>
+> **Delivered (all link-verified, HTTP 200):**
+> - **Timeline** (`docs/papers-timeline.md`) — added SKA-Low first image (March 2025, 1,024/131,072
+>   antennas) and SKA-Mid first fringes (Jan 2026, two 15 m dishes); the 2020s intro now names the
+>   SKA's first light.
+> - **EDGES caveat** — the 2018 Bowman/EDGES entry is flagged **contested**, with a new 2022
+>   SARAS-3 (Singh et al.) row noting the 95.3% rejection of the cosmic-dawn profile.
+> - **Telescopes** (`docs/telescopes.md`) — the SKAO row moved from "Under construction … will be
+>   the world's largest" to current early-array milestones (SKA-Low first image; SKA-Mid first
+>   fringes, ~7 of 197 dishes on site) and "becoming the world's largest". DSA-2000/ngVLA were left
+>   as accurate "planned/under development" (no verified 2025–26 milestone to update without
+>   overclaiming).
+> - **`MAINTAINING.md`** — a quarterly currency process built on the repo's own `dataset-watch` /
+>   `find-radio-papers` / `archive-scout` tooling plus the lychee link-checker, with
+>   verify-then-write / annotate-don't-erase principles. Linked from `CONTRIBUTING.md`.
+>
+> Sources: [SKA-Low first image](https://www.skao.int/en/news/560/first-image-released-one-ska-low-station),
+> [SKA-Mid first fringes](https://www.skao.int/en/news/693/ska-mid-milestone),
+> [SARAS-3](https://doi.org/10.1038/s41550-022-01610-5).
+> The optional standalone cosmic-dawn/EoR section remains a possible follow-up.
 
 ## Context
 
