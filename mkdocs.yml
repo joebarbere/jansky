@@ -74,6 +74,9 @@ nav:
       - "6. Detecting the Hydrogen Line": notebooks/06_hydrogen_line.ipynb
       - "26. Meteor Scatter & Passive Radar": notebooks/26_meteor_scatter.ipynb
       - "27. VLF & the Ionosphere (SuperSID)": notebooks/27_vlf_ionosphere.ipynb
+      - "28. GNU Radio Flowgraphs": notebooks/28_gnuradio_flowgraphs.ipynb
+      - "29. No-Hardware HI: VIRGO & PICTOR": notebooks/29_virgo_pictor.ipynb
+      - "30. RASDR & Radio-Sky Spectrograph": notebooks/30_rasdr_radio_sky.ipynb
   - "Part III — Interferometry & Imaging":
       - "7. Why Interferometry?": notebooks/07_why_interferometry.ipynb
       - "8. Aperture Synthesis & the uv-plane": notebooks/08_aperture_synthesis.ipynb
@@ -95,6 +98,13 @@ nav:
       - "22. The Cosmic Microwave Background": notebooks/22_cosmic_microwave_background.ipynb
       - "23. Solar & Jupiter Radio Astronomy": notebooks/23_solar_and_jupiter.ipynb
       - "24. Molecular Lines & Masers": notebooks/24_molecular_and_masers.ipynb
+  - "Appendices — Maths Lab":
+      - "A. Fourier & Convolution": notebooks/31_mathslab_fourier_convolution.ipynb
+      - "B. Detection Theory & Matched Filtering": notebooks/32_mathslab_matched_filtering.ipynb
+      - "C. Noise Statistics & RFI Excision": notebooks/33_mathslab_noise_rfi.ipynb
+      - "D. Coordinates, Time & the Sky": notebooks/34_mathslab_coordinates_time.ipynb
+      - "E. Linear Algebra for Calibration": notebooks/35_mathslab_calibration.ipynb
+      - "F. Special Functions & Beams": notebooks/36_mathslab_special_functions.ipynb
   - Reference:
       - Glossary: glossary.md
       - Mathematical Preliminaries: math-preliminaries.md

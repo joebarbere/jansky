@@ -34,6 +34,7 @@ __all__ = [
     "closure_amplitude",
     "disk_visibility",
     "hbt_g2",
+    "solve_point_source_gains",
 ]
 
 
@@ -411,3 +412,39 @@ def hbt_g2(baseline: np.ndarray, angular_diameter: float, wavelength: float) -> 
     intensity interferometer.
     """
     return 1.0 + disk_visibility(baseline, angular_diameter, wavelength) ** 2
+
+
+# --------------------------------------------------------------------------- #
+# Gain calibration as linear algebra (the calibration Maths Lab). A measured
+# visibility matrix of an unresolved calibrator is V_ij = g_i g_j^*, i.e. the
+# outer product g g^H -- a rank-1 Hermitian matrix. So the complex per-antenna
+# gains are recovered from its leading eigenvector (up to one global phase).
+# Real packages (CASA, StefCal) generalise this to resolved models and noise.
+# --------------------------------------------------------------------------- #
+def solve_point_source_gains(vis: np.ndarray) -> np.ndarray:
+    """Recover complex antenna gains from a point-source visibility matrix.
+
+    For an unresolved calibrator, ``V = g gᴴ``; the gains are the top eigenvector
+    of the Hermitian ``V`` scaled by the square root of its (positive) leading
+    eigenvalue. The solution is determined only up to a global phase, so the
+    result is rotated to make ``g[0]`` real and positive.
+
+    Parameters
+    ----------
+    vis
+        ``(n_ant, n_ant)`` complex visibility matrix of a point source.
+
+    Returns
+    -------
+    numpy.ndarray
+        Complex per-antenna gains, ``(n_ant,)``.
+    """
+    vis = np.asarray(vis, dtype=complex)
+    # Use the magnitude of the largest-|eigenvalue| eigenpair.
+    evals, evecs = np.linalg.eigh(vis)
+    top = int(np.argmax(np.abs(evals)))
+    gains = evecs[:, top] * np.sqrt(abs(evals[top]))
+    # Fix the global phase so g[0] is real positive.
+    if gains[0] != 0:
+        gains = gains * np.exp(-1j * np.angle(gains[0]))
+    return gains
