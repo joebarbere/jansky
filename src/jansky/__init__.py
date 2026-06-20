@@ -12,6 +12,8 @@ units
     Conversions between janskys, brightness temperature, and decibels.
 signals
     Noise generation, the radiometer equation, synthetic spectra, beam shapes.
+seti
+    The Doppler-drift technosignature search and the ON/OFF cadence test.
 interferometry
     uv-coverage, the dirty beam, a minimal Hogbom CLEAN, van Cittert--Zernike.
 data
@@ -39,6 +41,7 @@ from jansky import (
     formats,
     interferometry,
     plotting,
+    seti,
     signals,
     timing,
     transients,
@@ -51,6 +54,7 @@ __all__ = [
     "formats",
     "interferometry",
     "plotting",
+    "seti",
     "signals",
     "timing",
     "transients",
