@@ -101,3 +101,32 @@ def test_fringe_phase_zero_on_boresight():
     # and matches 2*pi*b*sin(theta)/lambda
     val = interferometry.fringe_phase(2.0, np.radians(30), 0.21)
     assert np.isclose(val, 2 * np.pi * 2.0 * 0.5 / 0.21)
+
+
+def test_closure_phase_invariant_to_station_phases():
+    import numpy as np
+    rng = np.random.default_rng(7)
+    # true visibilities on a triangle (i,j,k)
+    v = {k: complex(rng.normal(), rng.normal()) for k in ("ij", "jk", "ki")}
+    cp_true = interferometry.closure_phase(v["ij"], v["jk"], v["ki"])
+    # corrupt with per-station phases: V_ab -> e^{i(pa - pb)} V_ab
+    p = {s: rng.uniform(-np.pi, np.pi) for s in "ijk"}
+    vij = np.exp(1j * (p["i"] - p["j"])) * v["ij"]
+    vjk = np.exp(1j * (p["j"] - p["k"])) * v["jk"]
+    vki = np.exp(1j * (p["k"] - p["i"])) * v["ki"]
+    cp_corrupt = interferometry.closure_phase(vij, vjk, vki)
+    assert np.isclose(np.angle(np.exp(1j * (cp_true - cp_corrupt))), 0.0, atol=1e-9)
+
+
+def test_closure_amplitude_invariant_to_station_gains():
+    import numpy as np
+    rng = np.random.default_rng(8)
+    v = {k: complex(rng.normal(), rng.normal()) for k in ("ij", "kl", "ik", "jl")}
+    ca_true = interferometry.closure_amplitude(v["ij"], v["kl"], v["ik"], v["jl"])
+    a = {s: rng.uniform(0.5, 2.0) for s in "ijkl"}  # per-station amplitude errors
+    vij = a["i"] * a["j"] * v["ij"]
+    vkl = a["k"] * a["l"] * v["kl"]
+    vik = a["i"] * a["k"] * v["ik"]
+    vjl = a["j"] * a["l"] * v["jl"]
+    ca_corrupt = interferometry.closure_amplitude(vij, vkl, vik, vjl)
+    assert np.isclose(ca_true, ca_corrupt, rtol=1e-12)

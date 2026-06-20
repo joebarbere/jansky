@@ -77,6 +77,7 @@ nav:
       - "8. Aperture Synthesis & the uv-plane": notebooks/08_aperture_synthesis.ipynb
       - "9. Deconvolution & CLEAN": notebooks/09_deconvolution_clean.ipynb
       - "17. Coherent Interferometry (KrakenSDR)": notebooks/17_coherent_interferometry_kraken.ipynb
+      - "19. The EHT & VLBI": notebooks/19_eht_and_vlbi.ipynb
   - "Part IV — Real Data & Research":
       - "10. Accessing Open Archives": notebooks/10_open_archives.ipynb
       - "11. HI 21cm & Galactic Rotation": notebooks/11_hi_rotation_curve.ipynb

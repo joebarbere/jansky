@@ -29,6 +29,8 @@ __all__ = [
     "calibrate_phases",
     "fringe_phase",
     "estimate_source_angle",
+    "closure_phase",
+    "closure_amplitude",
 ]
 
 
@@ -344,3 +346,32 @@ def _complex_rng(seed: int | None = 0):
                 + 1j * generator.normal(0, 1 / np.sqrt(2), size))
 
     return draw
+
+
+# --------------------------------------------------------------------------- #
+# Closure quantities (VLBI / the Event Horizon Telescope). A measured visibility
+# carries per-station corruptions: V_ij_meas = g_i g_j* V_ij, where g = a e^{i*phi}.
+# Certain products of visibilities cancel those station terms exactly:
+#   - closure phase  (triangle i,j,k): arg(V_ij V_jk V_ki) is free of station PHASES;
+#   - closure amplitude (quad i,j,k,l): |V_ij||V_kl| / (|V_ik||V_jl|) is free of station GAINS.
+# They are the robust observables that let sparse global arrays image black holes.
+# --------------------------------------------------------------------------- #
+def closure_phase(v_ij: complex, v_jk: complex, v_ki: complex) -> float:
+    """Closure phase of a station triangle: ``arg(V_ij · V_jk · V_ki)`` (radians).
+
+    Invariant to per-station phase errors, because each station's phase appears
+    once with each sign around the loop and cancels.
+    """
+    return float(np.angle(v_ij * v_jk * v_ki))
+
+
+def closure_amplitude(v_ij: complex, v_kl: complex, v_ik: complex, v_jl: complex) -> float:
+    """Closure amplitude of a station quadrangle: ``|V_ij||V_kl| / (|V_ik||V_jl|)``.
+
+    Invariant to per-station amplitude (gain) errors, which cancel between
+    numerator and denominator.
+    """
+    denom = abs(v_ik) * abs(v_jl)
+    if denom == 0:
+        raise ValueError("closure amplitude undefined (zero denominator visibility)")
+    return float(abs(v_ij) * abs(v_kl) / denom)
