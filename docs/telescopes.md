@@ -5,6 +5,13 @@ they can see, and what they're famous for. It complements the institution-focuse
 [Resources](resources.md) page (which links observatory *organisations*); this page is about
 the *instruments*. Several appear in photographs on the [Visual Tour](visual-tour.md).
 
+!!! tip "See them on a map"
+    Download **[`telescopes.kml`](assets/telescopes.kml)** and open it in
+    [Google Earth](https://earth.google.com/) (or any KML viewer) to see all 40 facilities as
+    pins — red = single dishes, blue = arrays, green = VLBI networks (a representative point),
+    white = historic/decommissioned. *(VLBI networks span continents, so their pin marks the
+    operations centre or a flagship station, noted in the marker.)*
+
 !!! note "On the numbers"
     Frequency ranges are approximate and marked "~"; many facilities cover their band in
     discrete receivers rather than continuously. Dish sizes are physical apertures. Everything

@@ -108,6 +108,14 @@ supports. Titles are quoted as YouTube returns them.
 - **[Breakthrough Listen's SETI search at MeerKAT](https://www.youtube.com/watch?v=dkLUkOT52VI)** — Berkeley SETI — Searching for technosignatures with the MeerKAT array.
 - **[Jill Tarter: Time to Stop SETI?](https://www.youtube.com/watch?v=O9K9OBd3vHk)** — Dr Brian Keating — The SETI pioneer on the state and future of the search.
 
+### Feature documentaries — PBS NOVA
+
+> **Pairs with** [Chapter 8 · Aperture Synthesis](notebooks/08_aperture_synthesis.ipynb) (VLBI) and the EHT entry in [Radio Telescopes](telescopes.md). NOVA's YouTube catalogue leans toward black holes and the Event Horizon Telescope — itself a planet-spanning array of radio observatories.
+
+- **[Black Holes: The Universe's Mind-Blowing Mystery | NOVA | PBS](https://www.youtube.com/watch?v=BoZTjwCSBCw)** — PBS NOVA — How the Event Horizon Telescope, a planet-spanning network of radio observatories, imaged the M87 and Sgr A\* black holes.
+- **[Black Hole Apocalypse: What's Inside a Black Hole? | Full Documentary | NOVA | PBS](https://www.youtube.com/watch?v=1LYSfpKog4w)** — PBS NOVA — Janna Levin's two-hour journey through black-hole science, including the EHT radio-interferometry effort.
+- **[Decoding the Universe: Cosmos | Full Documentary | NOVA | PBS](https://www.youtube.com/watch?v=5BNPeFHU7QQ)** — PBS NOVA — 50 years of cosmic discovery, from Voyager to dark energy to the EHT black-hole image.
+
 ---
 
 *Have a great channel or video to add? Open an issue on the repository. For written

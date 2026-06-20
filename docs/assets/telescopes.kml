@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>jansky — Radio Telescopes of the World</name>
+    <description><![CDATA[Markers for the radio telescopes in the jansky course catalogue. Pin colours: red = large single dishes, blue = interferometers & arrays, green = VLBI networks (representative point), white = historic/decommissioned. See https://github.com/joebarbere/jansky for the full catalogue.]]></description>
+
+    <Style id="single-dish"><IconStyle><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href></Icon></IconStyle></Style>
+    <Style id="array"><IconStyle><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href></Icon></IconStyle></Style>
+    <Style id="vlbi"><IconStyle><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href></Icon></IconStyle></Style>
+    <Style id="historic"><IconStyle><scale>1.0</scale><Icon><href>http://maps.google.com/mapfiles/kml/pushpin/wht-pushpin.png</href></Icon></IconStyle></Style>
+
+    <Folder>
+      <name>Large single-dish telescopes</name>
+      <Placemark><name>FAST (500 m)</name><description>Pingtang, Guizhou, China — world's largest filled-aperture single dish.</description><styleUrl>#single-dish</styleUrl><Point><coordinates>106.8566,25.6528,0</coordinates></Point></Placemark>
+      <Placemark><name>Green Bank Telescope (100 m)</name><description>Green Bank, West Virginia, USA — world's largest fully steerable dish.</description><styleUrl>#single-dish</styleUrl><Point><coordinates>-79.8398,38.4331,0</coordinates></Point></Placemark>
+      <Placemark><name>Effelsberg 100-m</name><description>Bad Münstereifel, Germany — MPIfR; pulsar timing &amp; VLBI.</description><styleUrl>#single-dish</styleUrl><Point><coordinates>6.8836,50.5247,0</coordinates></Point></Placemark>
+      <Placemark><name>Arecibo (305 m)</name><description>Puerto Rico — iconic giant dish; collapsed Dec 2020 (former dish location).</description><styleUrl>#single-dish</styleUrl><Point><coordinates>-66.7528,18.3442,0</coordinates></Point></Placemark>
+      <Placemark><name>Lovell Telescope (76 m), Jodrell Bank</name><description>Cheshire, UK — tracked Sputnik; UNESCO site.</description><styleUrl>#single-dish</styleUrl><Point><coordinates>-2.3085,53.2367,0</coordinates></Point></Placemark>
+      <Placemark><name>Parkes "Murriyang" (64 m)</name><description>NSW, Australia — pulsar powerhouse; relayed Apollo 11.</description><styleUrl>#single-dish</styleUrl><Point><coordinates>148.2635,-32.9981,0</coordinates></Point></Placemark>
+      <Placemark><name>Sardinia Radio Telescope (64 m)</name><description>San Basilio, Sardinia, Italy — active-surface dish.</description><styleUrl>#single-dish</styleUrl><Point><coordinates>9.2452,39.4931,0</coordinates></Point></Placemark>
+      <Placemark><name>Nançay Radio Telescope</name><description>Sologne, France — decimetric band; pulsar timing.</description><styleUrl>#single-dish</styleUrl><Point><coordinates>2.1972,47.3800,0</coordinates></Point></Placemark>
+      <Placemark><name>TNRT (40 m)</name><description>Doi Saket, Chiang Mai, Thailand — largest in SE Asia.</description><styleUrl>#single-dish</styleUrl><Point><coordinates>99.2170,18.8643,0</coordinates></Point></Placemark>
+      <Placemark><name>QTT (110 m, under construction)</name><description>Qitai, Xinjiang, China — will be world's largest fully steerable dish (~2028).</description><styleUrl>#single-dish</styleUrl><Point><coordinates>89.6825,43.6011,0</coordinates></Point></Placemark>
+      <Placemark><name>Yebes 40 m</name><description>Guadalajara, Spain — cm/mm surveys &amp; astro-geodetic VLBI.</description><styleUrl>#single-dish</styleUrl><Point><coordinates>-3.0887,40.5252,0</coordinates></Point></Placemark>
+      <Placemark><name>Tianma 65 m</name><description>Shanghai, China — largest fully steerable dish in Asia.</description><styleUrl>#single-dish</styleUrl><Point><coordinates>121.1359,31.0920,0</coordinates></Point></Placemark>
+      <Placemark><name>Usuda Deep Space Center 64 m</name><description>Nagano, Japan — JAXA deep-space tracking (Hayabusa).</description><styleUrl>#single-dish</styleUrl><Point><coordinates>138.3622,36.1331,0</coordinates></Point></Placemark>
+    </Folder>
+
+    <Folder>
+      <name>Interferometers &amp; connected arrays</name>
+      <Placemark><name>Karl G. Jansky Very Large Array (VLA)</name><description>Plains of San Agustin, New Mexico, USA — 27 × 25 m; the most productive radio telescope.</description><styleUrl>#array</styleUrl><Point><coordinates>-107.6184,34.0784,0</coordinates></Point></Placemark>
+      <Placemark><name>ALMA</name><description>Chajnantor plateau (~5000 m), Chile — 66 antennas; world's largest mm/submm array.</description><styleUrl>#array</styleUrl><Point><coordinates>-67.7550,-23.0290,0</coordinates></Point></Placemark>
+      <Placemark><name>ATCA</name><description>Narrabri, NSW, Australia — 6 × 22 m reconfigurable array.</description><styleUrl>#array</styleUrl><Point><coordinates>149.5502,-30.3128,0</coordinates></Point></Placemark>
+      <Placemark><name>WSRT / Apertif (Westerbork)</name><description>Drenthe, Netherlands — 14 × 25 m; pioneering synthesis array.</description><styleUrl>#array</styleUrl><Point><coordinates>6.6033,52.9145,0</coordinates></Point></Placemark>
+      <Placemark><name>e-MERLIN (UK)</name><description>Distributed UK array; marker = HQ, Jodrell Bank.</description><styleUrl>#array</styleUrl><Point><coordinates>-2.3085,53.2367,0</coordinates></Point></Placemark>
+      <Placemark><name>GMRT / uGMRT</name><description>Khodad, near Pune, India — 30 × 45 m metre-wave array.</description><styleUrl>#array</styleUrl><Point><coordinates>74.0506,19.0930,0</coordinates></Point></Placemark>
+      <Placemark><name>NOEMA</name><description>Plateau de Bure, French Alps — 12 × 15 m; most powerful mm interferometer in the north.</description><styleUrl>#array</styleUrl><Point><coordinates>5.9079,44.6339,0</coordinates></Point></Placemark>
+      <Placemark><name>CHIME</name><description>DRAO, Penticton BC, Canada — fixed cylinders; prolific FRB detection.</description><styleUrl>#array</styleUrl><Point><coordinates>-119.6237,49.3208,0</coordinates></Point></Placemark>
+      <Placemark><name>MeerKAT</name><description>Karoo, Northern Cape, South Africa — 64 × 13.5 m; SKA precursor.</description><styleUrl>#array</styleUrl><Point><coordinates>21.4108,-30.7211,0</coordinates></Point></Placemark>
+      <Placemark><name>ASKAP</name><description>Murchison (MRO), WA, Australia — 36 × 12 m; wide-field surveys.</description><styleUrl>#array</styleUrl><Point><coordinates>116.6310,-26.6960,0</coordinates></Point></Placemark>
+      <Placemark><name>MWA (Murchison Widefield Array)</name><description>Murchison (MRO), WA, Australia — low-frequency aperture array.</description><styleUrl>#array</styleUrl><Point><coordinates>116.6708,-26.7033,0</coordinates></Point></Placemark>
+      <Placemark><name>LOFAR</name><description>Europe-wide; marker = core "Superterp", Exloo, Netherlands.</description><styleUrl>#array</styleUrl><Point><coordinates>6.8698,52.9153,0</coordinates></Point></Placemark>
+      <Placemark><name>SKA / SKAO</name><description>Under construction; marker = SKAO HQ, Jodrell Bank, UK (sites: WA Australia &amp; Karoo South Africa).</description><styleUrl>#array</styleUrl><Point><coordinates>-2.3071,53.2367,0</coordinates></Point></Placemark>
+      <Placemark><name>DSA-110 / DSA-2000</name><description>DSA-110 at OVRO, California (DSA-2000 planned in Nevada) — FRB localisation.</description><styleUrl>#array</styleUrl><Point><coordinates>-118.2828,37.2314,0</coordinates></Point></Placemark>
+      <Placemark><name>ngVLA (in development)</name><description>Marker = VLA core site, New Mexico; stations across USA/Mexico/Canada.</description><styleUrl>#array</styleUrl><Point><coordinates>-107.6184,34.0784,0</coordinates></Point></Placemark>
+      <Placemark><name>Allen Telescope Array (ATA)</name><description>Hat Creek Radio Observatory, California — 42 × 6.1 m; SETI.</description><styleUrl>#array</styleUrl><Point><coordinates>-121.4733,40.8174,0</coordinates></Point></Placemark>
+      <Placemark><name>Owens Valley Radio Observatory (OVRO)</name><description>Owens Valley, California — 40 m dish, OVRO-LWA, hosts DSA/COMAP.</description><styleUrl>#array</styleUrl><Point><coordinates>-118.2820,37.2339,0</coordinates></Point></Placemark>
+    </Folder>
+
+    <Folder>
+      <name>VLBI networks (representative point)</name>
+      <Placemark><name>VLBA</name><description>10-station network; marker = NRAO VLBA operations center, Socorro, NM, USA.</description><styleUrl>#vlbi</styleUrl><Point><coordinates>-106.9082,34.0787,0</coordinates></Point></Placemark>
+      <Placemark><name>EVN (European VLBI Network)</name><description>Network; marker = JIVE correlator, Dwingeloo, Netherlands.</description><styleUrl>#vlbi</styleUrl><Point><coordinates>6.3962,52.8121,0</coordinates></Point></Placemark>
+      <Placemark><name>Event Horizon Telescope (EHT)</name><description>Global mm-VLBI; marker = flagship station ALMA, Chajnantor, Chile.</description><styleUrl>#vlbi</styleUrl><Point><coordinates>-67.7550,-23.0290,0</coordinates></Point></Placemark>
+      <Placemark><name>LBA (Long Baseline Array)</name><description>Southern-hemisphere network; marker = ATNF / Parkes, Australia.</description><styleUrl>#vlbi</styleUrl><Point><coordinates>148.2635,-32.9981,0</coordinates></Point></Placemark>
+      <Placemark><name>KVN (Korean VLBI Network)</name><description>4-station network; marker = KVN Yonsei station, Seoul, South Korea.</description><styleUrl>#vlbi</styleUrl><Point><coordinates>126.9410,37.5650,0</coordinates></Point></Placemark>
+    </Folder>
+
+    <Folder>
+      <name>Historic &amp; decommissioned</name>
+      <Placemark><name>Jansky's rotating antenna ("merry-go-round")</name><description>Holmdel, New Jersey, USA — first detection of cosmic radio emission (1932).</description><styleUrl>#historic</styleUrl><Point><coordinates>-74.1808,40.3681,0</coordinates></Point></Placemark>
+      <Placemark><name>Grote Reber's dish</name><description>Original site Wheaton, Illinois, USA (dish now relocated to Green Bank) — first parabolic radio telescope (1937).</description><styleUrl>#historic</styleUrl><Point><coordinates>-88.1070,41.8661,0</coordinates></Point></Placemark>
+      <Placemark><name>One-Mile / Ryle Telescope</name><description>MRAO Lord's Bridge, Cambridge, UK — pioneered Earth-rotation aperture synthesis.</description><styleUrl>#historic</styleUrl><Point><coordinates>0.0420,52.1670,0</coordinates></Point></Placemark>
+      <Placemark><name>Big Ear (Ohio State Radio Observatory)</name><description>Delaware, Ohio, USA — the "Wow!" signal (1977); demolished 1998.</description><styleUrl>#historic</styleUrl><Point><coordinates>-83.0480,40.2500,0</coordinates></Point></Placemark>
+      <Placemark><name>RATAN-600</name><description>Zelenchukskaya, Caucasus, Russia — world's largest-diameter (ring) radio telescope.</description><styleUrl>#historic</styleUrl><Point><coordinates>41.5872,43.8186,0</coordinates></Point></Placemark>
+    </Folder>
+  </Document>
+</kml>
