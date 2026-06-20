@@ -66,3 +66,6 @@ for scientific accuracy. They're optional, but handy if you use Claude Code.
 Open a PR against `main` with a clear description. Keep changes focused; if you're
 proposing a larger piece of work, the `plans/` directory is where course expansions
 are tracked. Be kind, cite your sources, and have fun. 📡
+
+For keeping the course current (new telescopes, papers, and link rot), see
+[`MAINTAINING.md`](MAINTAINING.md).

@@ -244,7 +244,7 @@ gravitational-wave source, and a 2-solar-mass neutron star.
 | 2017 | Chatterjee, S. et al. | A Direct Localization of a Fast Radio Burst and Its Host | Nature 541, 58 | First sub-arcsecond FRB localisation | [ADS](https://ui.adsabs.harvard.edu/abs/2017Natur.541...58C) |
 | 2017 | Tendulkar, S. P. et al. | The Host Galaxy and Redshift of the Repeating FRB 121102 | ApJ 834, L7 | First FRB redshift (z = 0.193) | [ADS](https://ui.adsabs.harvard.edu/abs/2017ApJ...834L...7T) |
 | 2017 | Hallinan, G. et al. | A Radio Counterpart to a Neutron Star Merger (GW170817) | Science 358, 1579 | First radio detection of a GW source — radio multi-messenger astronomy | [ADS](https://ui.adsabs.harvard.edu/abs/2017Sci...358.1579H) |
-| 2018 | Bowman, J. D. et al. | An Absorption Profile Centred at 78 MHz … (EDGES) | Nature 555, 67 | Claimed first detection of the cosmic-dawn 21 cm signal | [ADS](https://ui.adsabs.harvard.edu/abs/2018Natur.555...67B) |
+| 2018 | Bowman, J. D. et al. | An Absorption Profile Centred at 78 MHz … (EDGES) | Nature 555, 67 | Claimed first detection of the cosmic-dawn 21 cm signal — **contested** (see SARAS-3, 2022) | [ADS](https://ui.adsabs.harvard.edu/abs/2018Natur.555...67B) |
 | 2018 | Mooley, K. P. et al. | Superluminal Motion of a Relativistic Jet in GW170817 | Nature 561, 355 | VLBI proof of a narrow successful jet — linked BNS mergers to short GRBs | [ADS](https://ui.adsabs.harvard.edu/abs/2018Natur.561..355M) |
 | 2019 | Event Horizon Telescope Collaboration | First M87 EHT Results. I. The Shadow of the Supermassive Black Hole | ApJ 875, L1 | The first image of a black-hole shadow (horizon-scale mm-VLBI) | [ADS](https://ui.adsabs.harvard.edu/abs/2019ApJ...875L...1E) |
 | 2019 | CHIME/FRB Collaboration | A Second Source of Repeating Fast Radio Bursts | Nature 566, 235 | Showed repeaters are not unique to FRB 121102 | [ADS](https://ui.adsabs.harvard.edu/abs/2019Natur.566..235C) |
@@ -253,7 +253,8 @@ gravitational-wave source, and a 2-solar-mass neutron star.
 ## 2020s — galactic FRBs, Sgr A*, and the nanohertz sky
 
 A galactic FRB tied to a magnetar, the EHT's polarised rings and the Sgr A* image, the
-nanohertz gravitational-wave background, and long-period radio transients.
+nanohertz gravitational-wave background, long-period radio transients, and the first light
+of the Square Kilometre Array.
 
 | Year | Authors | Title | Journal | Why it matters | Link |
 |---|---|---|---|---|---|
@@ -263,6 +264,7 @@ nanohertz gravitational-wave background, and long-period radio transients.
 | 2021 | CHIME/FRB Collaboration | The First CHIME/FRB Fast Radio Burst Catalog | ApJS 257, 59 | 536 bursts — turned FRB study into population science | [ADS](https://ui.adsabs.harvard.edu/abs/2021ApJS..257...59C) |
 | 2022 | Hurley-Walker, N. et al. | A Radio Transient with Unusually Slow Periodic Emission | Nature 601, 526 | An 18-min periodic transient — launched the long-period radio transient class | [ADS](https://ui.adsabs.harvard.edu/abs/2022Natur.601..526H) |
 | 2022 | Event Horizon Telescope Collaboration | First Sgr A* EHT Results. I. The Shadow of the Milky Way's Black Hole | ApJ 930, L12 | First image of the Milky Way's central black hole | [ADS](https://ui.adsabs.harvard.edu/abs/2022ApJ...930L..12E) |
+| 2022 | Singh, S. et al. (SARAS-3) | On the Detection of a Cosmic Dawn Signal in the Radio Background | Nat. Astron. 6, 607 | Independent radiometer disfavours the EDGES 2018 cosmic-dawn profile at 95.3% — the claim remains contested | [DOI](https://doi.org/10.1038/s41550-022-01610-5) |
 | 2023 | Agazie, G. et al. (NANOGrav) | The NANOGrav 15 yr Data Set: Evidence for a Gravitational-wave Background | ApJ 951, L8 | First strong (Hellings–Downs) evidence for a nanohertz GW background | [ADS](https://ui.adsabs.harvard.edu/abs/2023ApJ...951L...8A) |
 | 2023 | Reardon, D. J. et al. (PPTA) | Search for an Isotropic GW Background with the Parkes Pulsar Timing Array | ApJ 951, L6 | Independent PPTA evidence for the nanohertz GWB | [ADS](https://ui.adsabs.harvard.edu/abs/2023ApJ...951L...6R) |
 | 2023 | Ryder, S. D. et al. | A Luminous Fast Radio Burst That Probes the Universe at Redshift 1 | Science 382, 294 | The most distant FRB then known — extends the Macquart relation | [DOI](https://doi.org/10.1126/science.adf2678) |
@@ -270,6 +272,8 @@ nanohertz gravitational-wave background, and long-period radio transients.
 | 2025 | de Ruiter, I. et al. | Sporadic Radio Pulses from a White Dwarf Binary at the Orbital Period | Nat. Astron. 9, 672 | Showed a long-period transient is a WD/M-dwarf binary pulsing at the orbital period | [DOI](https://doi.org/10.1038/s41550-025-02491-0) |
 | 2025 | Wang, Z. et al. | Detection of X-ray Emission from a Bright Long-Period Radio Transient | Nature 642 | First X-ray detection of a long-period radio transient (ASKAP J1832−0911) | [DOI](https://doi.org/10.1038/s41586-025-09077-w) |
 | 2025 | Eftekhari, T. et al. | The Massive, Quiescent Elliptical Host of the Repeating FRB 20240209A | ApJ 979, L22 | A repeating FRB in an old elliptical galaxy — challenges young-magnetar-only models | [ADS](https://ui.adsabs.harvard.edu/abs/2025ApJ...979L..22E) |
+| 2025 | SKA Observatory | First Image Released from One SKA-Low Station | (SKAO milestone) | First light for SKA-Low — 1,024 of 131,072 antennas image ~25 deg² and ~85 galaxies; the SKA era begins | [SKAO](https://www.skao.int/en/news/560/first-image-released-one-ska-low-station) |
+| 2026 | SKA Observatory | SKA-Mid Achieves "First Fringes" | (SKAO milestone) | SKA-Mid works as an interferometer for the first time (two 15 m dishes observe a radio galaxy ~2.6 Gly away) | [SKAO](https://www.skao.int/en/news/693/ska-mid-milestone) |
 
 ---
 
