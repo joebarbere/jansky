@@ -50,7 +50,7 @@ angle on the sky vs. a statistical quantity, for instance).
 | $\kappa$ | kappa | **opacity / absorption coefficient** ($\kappa_\nu$, cm$^2$ g$^{-1}$ or cm$^{-1}$) | |
 | $\epsilon$, $\varepsilon$ | epsilon | **emissivity / emission coefficient** $\epsilon_\nu$; also a small quantity | |
 | $\Phi$ | phi (cap) | a **flux** (e.g. photon flux) **or a phase / potential** | |
-| $\chi$ | chi | **$\chi^2$** the goodness-of-fit statistic; also an angle | almost always seen as $\chi^2$ |
+| $\chi$ | chi | **$\chi^2$** the goodness-of-fit statistic; also the **polarisation (E-vector) angle** $\chi=\tfrac12\arctan(U/Q)$ | $\chi^2$ vs polarisation angle is pure context (Ch 37) |
 | $\beta$ | beta | a **velocity in units of $c$**, $\beta = v/c$; also a power-law slope | |
 | $\gamma$ | gamma | **Lorentz factor** $\gamma = (1-\beta^2)^{-1/2}$; also a power-law index | |
 | $\pi$ | pi | the constant $3.14159\ldots$ (and $2\pi$ everywhere in Fourier work) | |
@@ -92,6 +92,8 @@ These are the workhorses. The subscript $\nu$ (or $_\lambda$) almost always read
 | $b$, $\ell$ | **Galactic latitude / longitude** (note: $\ell$ also = longitude) | deg | Ch. 11 |
 | $z$ | **redshift** ($1+z = \nu_\mathrm{emit}/\nu_\mathrm{obs}$) | dimensionless | Ch. 14 |
 | $\mathrm{DM}$ | **dispersion measure** (integrated electron column to a pulsar) | pc cm$^{-3}$ | Ch. 13 |
+| $\mathrm{RM}$ | **rotation measure** ($\Delta\chi = \mathrm{RM}\,\lambda^2$; $\propto\!\int n_e B_\parallel\,dl$) | rad m$^{-2}$ | Ch. 37 |
+| $I,Q,U,V$ | **Stokes parameters** (total, two linear, circular polarisation) | same as $S_\nu$ | Ch. 37 |
 | $N_\mathrm{H}$, $N_\mathrm{HI}$ | **column density** of (neutral) hydrogen | cm$^{-2}$ | Ch. 11 |
 | $\mathrm{EM}$ | **emission measure** ($\int n_e^2\,dl$) | pc cm$^{-6}$ | Ch. 2 |
 | $v_\mathrm{LSR}$ | **velocity w.r.t. the Local Standard of Rest** | km s$^{-1}$ | Ch. 11 |
