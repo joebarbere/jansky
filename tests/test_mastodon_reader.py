@@ -117,3 +117,34 @@ def test_run_tui_without_extra_raises(monkeypatch):
     monkeypatch.setattr(builtins, "__import__", fake_import)
     with pytest.raises(SystemExit):
         mr.run_tui([])
+
+
+def _two_handle_fetch(monkeypatch):
+    def fake_fetch(handle, per_account):
+        return [
+            mr.Post(handle, handle, mr._parse_dt("2026-02-01T00:00:00Z"),
+                    f"post about pulsars from {handle}", "u1"),
+            mr.Post(handle, handle, mr._parse_dt("2026-03-01T00:00:00Z"),
+                    f"post about galaxies from {handle}", "u2"),
+        ]
+    monkeypatch.setattr(mr, "fetch_account_posts", fake_fetch)
+
+
+def test_gather_posts_query_filter(monkeypatch):
+    _two_handle_fetch(monkeypatch)
+    posts = mr.gather_posts(["@a@x.social", "@b@y.social"], query="PULSAR")
+    assert posts and all("pulsar" in p.text.lower() for p in posts)
+    assert len(posts) == 2  # one per account
+
+
+def test_gather_posts_account_filter(monkeypatch):
+    _two_handle_fetch(monkeypatch)
+    posts = mr.gather_posts(["@falcke@x.social", "@astron@y.social"], accounts=["astron"])
+    assert posts and all("astron" in p.handle for p in posts)
+
+
+def test_posts_to_json_roundtrips():
+    import json
+    posts = [mr.Post("A", "@a@x", mr._parse_dt("2026-01-01T00:00:00Z"), "hi", "u", ["img"])]
+    data = json.loads(mr._posts_to_json(posts))
+    assert data[0]["handle"] == "@a@x" and data[0]["images"] == ["img"]

@@ -25,8 +25,13 @@ flowchart LR
 | **Measurement Set** (MS) | Calibrated interferometer visibilities | CASA | CASA, `pyuvdata` | casacore *(see Ch 12)* |
 | **UVFITS / UVH5** | Visibilities (interchange) | correlators, `pyuvdata` | `pyuvdata` | [RASG / pyuvdata](https://radioastronomysoftwaregroup.github.io/) |
 | **SigMF** (`.sigmf-meta` + `.sigmf-data`) | SDR recordings: JSON metadata + raw samples | any SDR | `jansky.formats`, `sigmf` | [sigmf.org](https://sigmf.org/) |
-| **SPS** (`.sps`) | Radio-Sky Spectrograph spectra | Radio-Sky Spectrograph / Radio JOVE | *(reader deferred — see below)* | [Typinski (2015) SPS spec](http://radiojove.org/SUG/Refs/) |
-| **SPD** (`.spd`) | Radio-SkyPipe strip-chart | Radio-SkyPipe | *(reader deferred)* | [radiosky.com](https://radiosky.com/) |
+| **SPS** (`.sps`) | Radio-Sky Spectrograph spectra | Radio-Sky Spectrograph / Radio JOVE | *(reader deferred — see below)* | [Radio JOVE](https://radiojove.gsfc.nasa.gov/) · [data: radiojove.net](https://radiojove.net/) |
+| **SPD** (`.spd`) | Radio-SkyPipe strip-chart | Radio-SkyPipe | *(reader deferred)* | [radiosky.com](https://www.radiosky.com/skypipeishere.html) |
+
+!!! tip "Where to find SkyPipe / SPS data"
+    Actual `.spd`/`.sps` observations live in the **Radio JOVE Data Archive** ([radiojove.net](https://radiojove.net/))
+    and the **MASER/VESPA** collection at Paris Observatory — see the
+    [Amateur & Radio JOVE / SkyPipe data](resources.md#amateur-radio-jove-skypipe-data) table in Resources.
 
 ## Using `jansky.formats`
 

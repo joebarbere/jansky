@@ -99,12 +99,25 @@ jansky/
 │   ├── formats        # GUPPI, SigMF, the Radio-Sky Spectrograph protocol
 │   ├── transients · timing · seti · solar · molecular            # the science modules
 │   ├── meteor · vlf   # amateur-observing simulations
-│   └── rfi            # robust statistics & spectral-kurtosis flagging
+│   ├── rfi            # robust statistics & spectral-kurtosis flagging
+│   └── mastodon_reader  # read the community's posts (+ optional TUI, --extra tui)
+├── scripts/          # generate_figures.py · dataset_watch.py (watch the archives)
 ├── containers/       # Dockerfiles + compose (JupyterLab, CASA, GNU Radio)
 ├── tests/            # pytest for every helper module; nbmake smoke-tests
 ├── plans/            # delivered-status records of the expansion plans
-└── .claude/agents/   # the subagents used to author & review the course
+└── .claude/          # research tooling for Claude Code
+    ├── agents/       # subagents: notebook-author, science-reviewer,
+    │                 #   radio-research-assistant, archive-scout
+    └── skills/       # radio-mastodon · dataset-watch · find-radio-papers · radio-source-lookup
 ```
+
+### Research helpers (Claude Code)
+
+Working in this repo with [Claude Code](https://claude.com/claude-code)? It ships **skills** and
+**agents** for radio-astronomy research: read/search the community feed (`radio-mastodon`), check
+the archives for new data or preprints (`dataset-watch`), find papers (`find-radio-papers`), look
+up a source across catalogues (`radio-source-lookup`), and two research subagents
+(`radio-research-assistant`, `archive-scout`).
 
 ## Common tasks
 
