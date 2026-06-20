@@ -35,6 +35,8 @@ timing
     Pulsar timing arrays and the Hellings--Downs nanohertz-GW correlation.
 plotting
     Shared matplotlib styling so every chapter's figures look consistent.
+rfi
+    Robust statistics and spectral kurtosis for RFI flagging.
 
 The package is named after Karl Jansky, who in 1932 discovered radio emission
 from the Milky Way and after whom the unit of spectral flux density is named.
@@ -51,6 +53,7 @@ from jansky import (
     meteor,
     molecular,
     plotting,
+    rfi,
     seti,
     signals,
     solar,
@@ -68,6 +71,7 @@ __all__ = [
     "meteor",
     "molecular",
     "plotting",
+    "rfi",
     "seti",
     "signals",
     "solar",

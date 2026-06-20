@@ -146,3 +146,13 @@ def test_disk_visibility_first_null():
     lam, theta = 1.0, 1e-3
     b_null = 3.8317 * lam / (np.pi * theta)  # first zero of 2 J1(x)/x
     assert abs(interferometry.disk_visibility(b_null, theta, lam)) < 1e-3
+
+
+def test_solve_point_source_gains_recovers_gains():
+    import numpy as np
+    rng = np.random.default_rng(11)
+    g = rng.uniform(0.5, 2.0, 6) * np.exp(1j * rng.uniform(-np.pi, np.pi, 6))
+    g = g * np.exp(-1j * np.angle(g[0]))  # reference phase
+    vis = np.outer(g, np.conj(g))
+    recovered = interferometry.solve_point_source_gains(vis)
+    assert np.allclose(recovered, g, atol=1e-6)
