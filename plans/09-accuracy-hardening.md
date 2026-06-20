@@ -1,6 +1,27 @@
-# Plan 09 — Scientific-accuracy hardening 📋 Proposed
+# Plan 09 — Scientific-accuracy hardening ✅ Delivered
 
 > Flagged by **science-rigor (#2 top, plus #3–#6)**. Scope: small–medium.
+>
+> **Delivered:**
+> - **`src/jansky/constants.py`** — single source of truth (`DM_CONST`, `FP_COEFF_MHZ`,
+>   `R_SUN_KM`, the Newkirk `A`/`B`, `CO_J10_GHZ`, `MACQUART_SLOPE`), each with a provenance
+>   comment; `transients`, `solar`, and `molecular` now import from it (re-exporting their old
+>   names for back-compat).
+> - **`tests/test_accuracy.py`** — published-value tests: NGC 4258 central mass (~4×10⁷ M☉),
+>   the Hellings–Downs 90° value (≈ −0.145, anti-correlated), a 1.4 GHz Tb↔flux Jy anchor, the
+>   canonical 4.15 ms dispersion delay, a real-FRB Macquart redshift, and a 1500 km/s type-II
+>   shock recovery. Plus a test that the modules share the centralised constants.
+> - **YMW16** (Yao, Manchester & Wang 2017) added to `references.md` as the current-standard
+>   DM→distance model over NE2001.
+> - **Macquart slope** docstring now flags the ~900 pc cm⁻³/z value as cosmology/baryon-fraction
+>   *model-dependent*.
+>
+> **Scoped out (intentionally):** the CMB-dipole reconciliation — notebook 22 is already
+> self-consistent (the "≈ 3.4 mK" is an explicit rounded hand-calc immediately followed by the
+> precise 3.3615/3.3621 mK from v = 369.82 km/s); the HD normalization is already documented in
+> `timing.py`; and Ch 13/18 never call NE2001 "the standard", so there was nothing to soften.
+> YMW16 was added to the bibliography but not the year-by-year timeline, which is curated as the
+> top-3 papers per year.
 
 ## Context
 

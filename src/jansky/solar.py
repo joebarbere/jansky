@@ -14,6 +14,11 @@ from __future__ import annotations
 
 import numpy as np
 
+from .constants import FP_COEFF_MHZ as _FP_COEFF
+from .constants import NEWKIRK_A as _NEWKIRK_A
+from .constants import NEWKIRK_B as _NEWKIRK_B
+from .constants import R_SUN_KM
+
 __all__ = [
     "R_SUN_KM",
     "plasma_frequency",
@@ -24,14 +29,8 @@ __all__ = [
     "shock_speed_from_track",
 ]
 
-#: Solar radius in km.
-R_SUN_KM = 6.957e5
-
-# Plasma frequency: f_p[MHz] = 8.977e-3 * sqrt(n_e[cm^-3]).
-_FP_COEFF = 8.977e-3
-# Newkirk (1961) coronal density model: n_e = fold * 4.2e4 * 10^(4.32 / r).
-_NEWKIRK_A = 4.2e4
-_NEWKIRK_B = 4.32
+# R_SUN_KM, the plasma-frequency coefficient, and the Newkirk (1961) model
+# coefficients all come from jansky.constants (re-exported here for back-compat).
 
 
 def plasma_frequency(n_e_cm3: np.ndarray) -> np.ndarray:

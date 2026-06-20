@@ -18,6 +18,8 @@ from dataclasses import dataclass
 
 import numpy as np
 
+from .constants import DM_CONST, MACQUART_SLOPE
+
 __all__ = [
     "DM_CONST",
     "dispersion_delay",
@@ -29,8 +31,9 @@ __all__ = [
     "macquart_redshift",
 ]
 
-#: Dispersion constant in MHz^2 cm^3 pc^-1 s (the conventional value, k_DM).
-DM_CONST = 4.148808e3
+# DM_CONST (k_DM, MHz^2 cm^3 pc^-1 s) now lives in jansky.constants and is
+# re-exported here so existing imports (`from jansky.transients import DM_CONST`)
+# keep working.
 
 
 def dispersion_delay(dm: float, f_lo_mhz: float, f_hi_mhz: float) -> float:
@@ -169,7 +172,7 @@ def boxcar_snr(series: np.ndarray, widths: np.ndarray) -> tuple[float, int, int]
     return best
 
 
-def macquart_redshift(dm_excess: float, slope: float = 900.0) -> float:
+def macquart_redshift(dm_excess: float, slope: float = MACQUART_SLOPE) -> float:
     """Rough redshift from an FRB's extragalactic DM via the Macquart relation.
 
     The mean cosmic dispersion grows roughly linearly with redshift,
@@ -177,5 +180,9 @@ def macquart_redshift(dm_excess: float, slope: float = 900.0) -> float:
     (Macquart et al. 2020), so :math:`z \\approx \\mathrm{DM_{excess}}/900`. This
     is an *order-of-magnitude* estimate -- after subtracting the Milky Way and
     host contributions, and with large sightline scatter.
+
+    The slope itself is **model-dependent**: it follows from the cosmic baryon
+    density and the assumed fraction of baryons in the diffuse ionised IGM, so it
+    is not a universal constant (see :data:`jansky.constants.MACQUART_SLOPE`).
     """
     return float(dm_excess / slope)

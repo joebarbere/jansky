@@ -53,6 +53,11 @@ originals — many of these papers are short, readable, and historic.
   Spectroscopic Survey of Emission Regions.* ApJ 159, 379. — Rotation curves and dark
   matter, the science context for Chapter 11.
   [DOI](https://doi.org/10.1086/150317)
+- **Yao, J. M., Manchester, R. N. & Wang, N. (2017).** *A New Electron-density Model for
+  Estimation of Pulsar and FRB Distances (YMW16).* ApJ 835, 29. — The current-standard
+  Galactic free-electron model for turning a dispersion measure into a distance, now generally
+  preferred over the older NE2001 (Cordes & Lazio 2002) for pulsars and FRBs (Chapters 13, 18).
+  [DOI](https://doi.org/10.3847/1538-4357/835/1/29)
 
 ## Textbooks & standing references
 
