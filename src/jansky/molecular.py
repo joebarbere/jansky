@@ -16,6 +16,8 @@ import astropy.constants as const
 import astropy.units as u
 import numpy as np
 
+from .constants import CO_J10_GHZ
+
 __all__ = [
     "CO_J10",
     "co_line_frequency",
@@ -24,8 +26,8 @@ __all__ = [
     "maser_central_mass",
 ]
 
-#: CO J=1->0 rest frequency.
-CO_J10 = 115.271202 * u.GHz
+#: CO J=1->0 rest frequency (value from :data:`jansky.constants.CO_J10_GHZ`).
+CO_J10 = CO_J10_GHZ * u.GHz
 
 
 def co_line_frequency(j_upper: int) -> u.Quantity:
