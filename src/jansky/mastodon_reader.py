@@ -173,14 +173,28 @@ def gather_posts(
     per_account: int = 5,
     *,
     md_path: str | Path = MASTODON_MD,
+    query: str | None = None,
+    accounts: list[str] | None = None,
     on_error=None,
 ) -> list[Post]:
     """Fetch posts from every handle and return them newest-first.
 
     Accounts that fail (network error, blocked API, unknown user) are skipped; ``on_error`` is
     called with ``(handle, exception)`` if provided, otherwise a note is printed to stderr.
+
+    Parameters
+    ----------
+    query
+        If given, keep only posts whose text contains it (case-insensitive).
+    accounts
+        If given, restrict to handles that contain any of these substrings
+        (case-insensitive) — e.g. ``["falcke", "astron"]``.
     """
     handles = handles if handles is not None else parse_handles(md_path)
+    if accounts:
+        needles = [a.lower() for a in accounts]
+        handles = [h for h in handles if any(n in h.lower() for n in needles)]
+
     all_posts: list[Post] = []
     for handle in handles:
         try:
@@ -190,6 +204,10 @@ def gather_posts(
                 on_error(handle, exc)
             else:
                 print(f"[skip] {handle}: {exc}", file=sys.stderr)
+
+    if query:
+        q = query.lower()
+        all_posts = [p for p in all_posts if q in p.text.lower()]
     all_posts.sort(key=lambda p: p.created_at, reverse=True)
     return all_posts
 
@@ -210,7 +228,13 @@ def _print_posts(posts: list[Post]) -> None:
             print(f"  \U0001f517 {post.url}")
 
 
-def run_tui(handles: list[str] | None = None, per_account: int = 5) -> None:
+def run_tui(
+    handles: list[str] | None = None,
+    per_account: int = 5,
+    *,
+    query: str | None = None,
+    accounts: list[str] | None = None,
+) -> None:
     """Launch the terminal UI (requires the ``tui`` extra). Imports textual lazily."""
     try:
         from jansky._mastodon_tui import MastodonApp
@@ -220,7 +244,22 @@ def run_tui(handles: list[str] | None = None, per_account: int = 5) -> None:
             "    uv sync --extra tui\n"
             f"(missing: {exc.name})"
         ) from exc
-    MastodonApp(handles=handles, per_account=per_account).run()
+    MastodonApp(
+        handles=handles, per_account=per_account, query=query, accounts=accounts
+    ).run()
+
+
+def _posts_to_json(posts: list[Post]) -> str:
+    import json
+
+    return json.dumps([
+        {
+            "author": p.author, "handle": p.handle,
+            "created_at": p.created_at.isoformat(), "text": p.text,
+            "url": p.url, "images": p.images, "boosted": p.boosted,
+        }
+        for p in posts
+    ], indent=2)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -229,6 +268,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--no-tui", action="store_true", help="print posts instead of the TUI")
     parser.add_argument("--limit", type=int, default=5, help="posts per account (default 5)")
+    parser.add_argument("--search", metavar="TERM", help="keep only posts containing TERM")
+    parser.add_argument("--account", action="append", metavar="SUBSTR",
+                        help="restrict to handles matching SUBSTR (repeatable)")
+    parser.add_argument("--json", action="store_true", help="print posts as JSON (implies --no-tui)")
     parser.add_argument("--list-handles", action="store_true", help="just list the handles and exit")
     parser.add_argument("--md", default=str(MASTODON_MD), help="path to mastodon.md")
     args = parser.parse_args(argv)
@@ -239,10 +282,16 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     handles = parse_handles(args.md)
-    if args.no_tui:
-        _print_posts(gather_posts(handles, args.limit, md_path=args.md))
+    if args.no_tui or args.json:
+        posts = gather_posts(
+            handles, args.limit, md_path=args.md, query=args.search, accounts=args.account,
+        )
+        if args.json:
+            print(_posts_to_json(posts))
+        else:
+            _print_posts(posts)
         return 0
-    run_tui(handles, args.limit)
+    run_tui(handles, args.limit, query=args.search, accounts=args.account)
     return 0
 
 

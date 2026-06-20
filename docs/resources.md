@@ -59,6 +59,24 @@ Virtual Observatory entry points:
 | **ATNF Pulsar Catalogue** | The `psrcat` catalogue with an interactive query interface | [atnf.csiro.au/.../psrcat](https://www.atnf.csiro.au/research/pulsar/psrcat/) |
 | **LAMBDA** | NASA's Legacy Archive for Microwave Background Data Analysis | [lambda.gsfc.nasa.gov](https://lambda.gsfc.nasa.gov/) |
 
+### Amateur & Radio JOVE / SkyPipe data
+
+Where to find **Radio-SkyPipe** (`.spd`) and **Radio-Sky Spectrograph** (`.sps`) data — the
+decametric Jupiter/solar observations from the NASA Radio JOVE project and the amateur community
+(the formats themselves are covered in [Data Formats](data-formats.md)):
+
+| Source | Contents | Link |
+|---|---|---|
+| **Radio JOVE Data Archive** | The active NASA Radio JOVE archive: ~two decades of observer SkyPipe (`.spd`) / SPS (`.sps`) Sun/Jupiter/galaxy data; open search & download *(uploading needs a submitter account)* | [radiojove.net](https://radiojove.net/) · [archive](https://radiojove.net/archive.html) |
+| **Radio JOVE Project (NASA GSFC)** | The project portal; observing, the SPS/SPD format docs, links to the archive | [radiojove.gsfc.nasa.gov](https://radiojove.gsfc.nasa.gov/) |
+| **MASER (Paris Observatory / PADC)** | Low-frequency radio archive hosting a Radio JOVE collection (converted to CDF) plus the Nançay Decameter Array, Voyager/Cassini, ExPRES | [maser.obspm.fr](https://maser.obspm.fr/) · [Radio JOVE dir](https://maser.obspm.fr/data/radiojove/) |
+| **VESPA** | Virtual European Solar & Planetary Access — query decametric/planetary radio data (incl. the `radiojove` schema and the NDA) as VOTable | [vespa.obspm.fr](https://vespa.obspm.fr/planetary/data/) |
+| **UFRO (Univ. of Florida)** | Internet Jupiter Radio Observatory — real-time decametric spectrograph/strip-chart data (incl. a 20.1 MHz Radio JOVE channel) | [ufro.astro.ufl.edu](https://ufro.astro.ufl.edu/observatory.htm) |
+| **Radio-SkyPipe live servers** | Not an archive but the live feed: observers publish strip-charts you can browse in Radio-SkyPipe's client mode | [radiosky.com](https://www.radiosky.com/skypipeishere.html) |
+
+*Note: the old `radiojove.org` domain is dead (it now redirects to an unrelated parked site) — use
+**radiojove.net** and **radiojove.gsfc.nasa.gov** instead.*
+
 ## Software & tools
 
 The [References](references.md) page covers **CASA**, **astropy/astroquery**,

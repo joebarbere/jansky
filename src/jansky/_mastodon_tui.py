@@ -56,10 +56,19 @@ class MastodonApp(App):
         ("r", "refresh", "Refresh"),
     ]
 
-    def __init__(self, handles: list[str] | None = None, per_account: int = 5) -> None:
+    def __init__(
+        self,
+        handles: list[str] | None = None,
+        per_account: int = 5,
+        *,
+        query: str | None = None,
+        accounts: list[str] | None = None,
+    ) -> None:
         super().__init__()
         self._handles = handles
         self._per_account = per_account
+        self._query = query
+        self._accounts = accounts
         self._image_token = 0
 
     def compose(self) -> ComposeResult:
@@ -77,7 +86,10 @@ class MastodonApp(App):
     # ---- data loading (worker thread) ------------------------------------ #
     @work(thread=True, exclusive=True)
     def _load_posts(self) -> None:
-        posts = gather_posts(self._handles, self._per_account, on_error=lambda h, e: None)
+        posts = gather_posts(
+            self._handles, self._per_account,
+            query=self._query, accounts=self._accounts, on_error=lambda h, e: None,
+        )
         self.call_from_thread(self._populate, posts)
 
     def _populate(self, posts: list[Post]) -> None:
