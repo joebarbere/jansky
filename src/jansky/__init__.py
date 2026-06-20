@@ -18,6 +18,8 @@ solar
     Coronal density, plasma frequency, and type II burst / CME shock speed.
 interferometry
     uv-coverage, the dirty beam, a minimal Hogbom CLEAN, van Cittert--Zernike.
+molecular
+    The CO rotational ladder and the Keplerian maser-disk black-hole weigh-in.
 data
     Cached downloaders for the sample datasets used in the research chapters.
 formats
@@ -42,6 +44,7 @@ from jansky import (
     data,
     formats,
     interferometry,
+    molecular,
     plotting,
     seti,
     signals,
@@ -56,6 +59,7 @@ __all__ = [
     "data",
     "formats",
     "interferometry",
+    "molecular",
     "plotting",
     "seti",
     "signals",
