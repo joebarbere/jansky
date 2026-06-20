@@ -64,6 +64,7 @@ flowchart TD
   C22[22 · CMB]
   C23[23 · Solar & Jupiter]
   C24[24 · Molecular & masers]
+  C38[38 · Machine learning]
   C15[15 · Capstone]
   C9 --> C10 --> C11
   C10 --> C12
@@ -71,6 +72,8 @@ flowchart TD
   C10 --> C14
   C13 --> C18
   C13 --> C20
+  C18 --> C38
+  C3 --> C38
   C3 --> C21
   C2 --> C22
   C2 --> C23
@@ -90,6 +93,7 @@ flowchart TD
   C8 -.-> LA
   C37 -.-> LA
   C18 -.-> LB
+  C38 -.-> LB
   C3 -.-> LC
   C10 -.-> LD
   C9 -.-> LE
@@ -119,8 +123,9 @@ Faraday rotation) reuses the same Fourier machinery in $\lambda^2$ space.
 
 ### ⏱️ Pulsars, transients & the nanohertz sky
 
-Time-domain radio astronomy end to end. **3 → 10 → 13 → 18 → 20.** Pair with **Lab B** (matched
-filtering / detection) and **Lab D** (coordinates & time).
+Time-domain radio astronomy end to end. **3 → 10 → 13 → 18 → 20 → 38.** Pair with **Lab B**
+(matched filtering / detection) and **Lab D** (coordinates & time). Chapter 38 pits a learned
+classifier against the Lab B matched filter on the FRBs from Chapter 18.
 
 ### 🔭 Just the physics & maths
 
@@ -135,7 +140,7 @@ technique you'd like to see derived from scratch.
 | Maths Lab | Worked technique | Most useful for |
 |---|---|---|
 | **[A · Fourier & convolution](notebooks/31_mathslab_fourier_convolution.ipynb)** | FT pairs, convolution theorem, sampling | Ch 8 (uv-plane), Ch 9 (CLEAN), Ch 37 (RM synthesis), Ch 3 |
-| **[B · Matched filtering](notebooks/32_mathslab_matched_filtering.ipynb)** | Detection theory, the matched filter | Ch 18 (FRBs), Ch 13 (pulsars), Ch 3 |
+| **[B · Matched filtering](notebooks/32_mathslab_matched_filtering.ipynb)** | Detection theory, the matched filter | Ch 18 (FRBs), Ch 13 (pulsars), Ch 38 (ML baseline), Ch 3 |
 | **[C · Noise & RFI](notebooks/33_mathslab_noise_rfi.ipynb)** | Noise statistics, robust RFI excision | Ch 3 (radiometer), Ch 5 (SDR) |
 | **[D · Coordinates & time](notebooks/34_mathslab_coordinates_time.ipynb)** | Sky coordinates, time systems | Ch 10 (archives), Ch 11, Ch 13 |
 | **[E · Calibration](notebooks/35_mathslab_calibration.ipynb)** | Linear algebra for gain/closure | Ch 9 (CLEAN), Ch 12 (VLA imaging) |

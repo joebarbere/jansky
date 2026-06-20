@@ -101,6 +101,7 @@ nav:
       - "22. The Cosmic Microwave Background": notebooks/22_cosmic_microwave_background.ipynb
       - "23. Solar & Jupiter Radio Astronomy": notebooks/23_solar_and_jupiter.ipynb
       - "24. Molecular Lines & Masers": notebooks/24_molecular_and_masers.ipynb
+      - "38. Machine Learning in Radio Astronomy": notebooks/38_machine_learning.ipynb
   - "Appendices — Maths Lab":
       - "A. Fourier & Convolution": notebooks/31_mathslab_fourier_convolution.ipynb
       - "B. Detection Theory & Matched Filtering": notebooks/32_mathslab_matched_filtering.ipynb

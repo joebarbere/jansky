@@ -66,6 +66,12 @@ formats = [
 hi = [
     "astro-virgo>=2.0",
 ]
+# Machine learning for radio astronomy (Chapter 38). scikit-learn carries the
+# base path (offline, lightweight); a true CNN can use torch if you install it
+# yourself — the chapter guards the torch import and degrades to the sklearn path.
+ml = [
+    "scikit-learn>=1.3",
+]
 # Terminal UI for the Mastodon reader (python -m jansky.mastodon_reader), with
 # inline image viewing via terminal graphics protocols.
 tui = [
