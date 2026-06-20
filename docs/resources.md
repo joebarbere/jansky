@@ -69,6 +69,7 @@ toolbox:
 | **AOFlagger** | RFI detection and flagging | [gitlab.com/aroffringa/aoflagger](https://gitlab.com/aroffringa/aoflagger) |
 | **CARTA** | Interactive image/cube visualization for ALMA, VLA and SKA pathfinders | [cartavis.org](https://cartavis.org/) |
 | **astropy / astroquery** | Core Python astronomy library and archive-query package | [astropy.org](https://www.astropy.org/) · [astroquery](https://astroquery.readthedocs.io/) |
+| **VIRGO** | Open-source Python package for amateur spectral-line radio astronomy (powers PICTOR) | [github.com/0xCoto/VIRGO](https://github.com/0xCoto/VIRGO) |
 | **PRESTO** | Pulsar search and analysis toolkit | [github.com/scottransom/presto](https://github.com/scottransom/presto) |
 | **PINT** | High-precision pulsar timing (NANOGrav) | [github.com/nanograv/PINT](https://github.com/nanograv/PINT) |
 | **DSPSR / PSRCHIVE** | Pulsar signal processing and data archiving libraries | [dspsr](http://dspsr.sourceforge.net/) · [psrchive](http://psrchive.sourceforge.net/) |
