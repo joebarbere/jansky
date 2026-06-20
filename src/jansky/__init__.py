@@ -10,6 +10,8 @@ Submodules
 ----------
 units
     Conversions between janskys, brightness temperature, and decibels.
+vlf
+    VLF ionospheric monitoring and sudden-ionospheric-disturbance detection.
 signals
     Noise generation, the radiometer equation, synthetic spectra, beam shapes.
 seti
@@ -18,6 +20,8 @@ solar
     Coronal density, plasma frequency, and type II burst / CME shock speed.
 interferometry
     uv-coverage, the dirty beam, a minimal Hogbom CLEAN, van Cittert--Zernike.
+meteor
+    Meteor-scatter echoes (underdense/overdense) and ping detection.
 molecular
     The CO rotational ladder and the Keplerian maser-disk black-hole weigh-in.
 data
@@ -44,6 +48,7 @@ from jansky import (
     data,
     formats,
     interferometry,
+    meteor,
     molecular,
     plotting,
     seti,
@@ -52,6 +57,7 @@ from jansky import (
     timing,
     transients,
     units,
+    vlf,
 )
 
 __all__ = [
@@ -59,6 +65,7 @@ __all__ = [
     "data",
     "formats",
     "interferometry",
+    "meteor",
     "molecular",
     "plotting",
     "seti",
@@ -67,4 +74,5 @@ __all__ = [
     "timing",
     "transients",
     "units",
+    "vlf",
 ]
