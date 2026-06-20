@@ -1,6 +1,11 @@
-# Plan 06 — Publish the docs site to GitHub Pages 📋 Proposed
+# Plan 06 — Publish the docs site to GitHub Pages ✅ Delivered
 
 > Flagged by **engineering (#3)**. Scope: small. Best done after [Plan 05](05-ci-pipeline.md).
+>
+> **Delivered:** `.github/workflows/gh-pages.yml` (build + `actions/deploy-pages` on push to
+> `main`), `site_url` in `mkdocs.yml`, the `Documentation` URL in `pyproject.toml`, and a
+> "Read the course online" link in `README.md`. **One manual step remains:** in the repo
+> Settings → Pages, set *Source = GitHub Actions* so the first deploy can publish.
 
 ## Context
 

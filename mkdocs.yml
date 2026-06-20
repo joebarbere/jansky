@@ -1,6 +1,7 @@
 site_name: jansky
 site_description: A hands-on radio astronomy course in Python
 site_author: Joe Barbere
+site_url: https://joebarbere.github.io/jansky/
 repo_url: https://github.com/joebarbere/jansky
 repo_name: joebarbere/jansky
 

@@ -76,7 +76,7 @@ tui = [
 
 [project.urls]
 Homepage = "https://github.com/joebarbere/jansky"
-Documentation = "https://github.com/joebarbere/jansky"
+Documentation = "https://joebarbere.github.io/jansky/"
 
 [build-system]
 requires = ["hatchling"]

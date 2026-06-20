@@ -12,6 +12,9 @@ and plots — each chapter citing the seminal papers so you can read the origina
 Every chapter uses the real libraries working astronomers use — `astropy`, `astroquery`,
 `spectral-cube`, CASA, PINT — so you build transferable skills, not toy ones.
 
+📖 **Read the course online:** <https://joebarbere.github.io/jansky/> — the full site with
+every notebook, the bibliography, glossary, and telescope/papers references rendered in-browser.
+
 ## Quickstart
 
 ### Local (recommended)
