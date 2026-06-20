@@ -127,9 +127,9 @@ def rmsf(wavelength: np.ndarray, phi: np.ndarray, weights: np.ndarray | None = N
     :math:`\\lambda^2` sampling. Its width sets the Faraday-depth resolution.
     """
     lam2 = np.asarray(wavelength, dtype=float) ** 2
-    lam0_2 = lam2.mean()
     phi = np.asarray(phi, dtype=float)
     w = np.ones_like(lam2) if weights is None else np.asarray(weights, dtype=float)
+    lam0_2 = np.average(lam2, weights=w)  # weighted mean lambda^2 (Brentjens & de Bruyn)
     phase = np.exp(-2j * phi[:, None] * (lam2[None, :] - lam0_2))
     return (phase * w[None, :]).sum(axis=1) / w.sum()
 
@@ -160,9 +160,9 @@ def rm_synthesis(
         Optional per-channel weights (e.g. inverse variance). Uniform if omitted.
     """
     lam2 = np.asarray(wavelength, dtype=float) ** 2
-    lam0_2 = lam2.mean()
     p = np.asarray(p_complex, dtype=complex)
     phi = np.asarray(phi, dtype=float)
     w = np.ones_like(lam2) if weights is None else np.asarray(weights, dtype=float)
+    lam0_2 = np.average(lam2, weights=w)  # weighted mean lambda^2 (Brentjens & de Bruyn)
     phase = np.exp(-2j * phi[:, None] * (lam2[None, :] - lam0_2))
     return (p[None, :] * phase * w[None, :]).sum(axis=1) / w.sum()

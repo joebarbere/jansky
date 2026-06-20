@@ -64,6 +64,20 @@ def test_rm_synthesis_peaks_at_injected_rm():
     assert np.isclose(np.abs(f).max(), 0.7, atol=0.05)
 
 
+def test_rm_synthesis_with_nonuniform_weights():
+    """Non-uniform weights use the weighted-mean lambda0^2 and still peak at RM."""
+    freqs = np.linspace(700e6, 1800e6, 256)
+    rm_true = 50.0
+    lam, p = _polarized_spectrum(rm_true, 0.3, freqs)
+    weights = np.linspace(0.2, 1.0, lam.size)  # deliberately non-uniform
+    phi = np.linspace(-200.0, 200.0, 2001)
+    f = pol.rm_synthesis(lam, p, phi, weights=weights)
+    assert np.isclose(phi[np.argmax(np.abs(f))], rm_true, atol=1.0)
+    # The RMSF is still normalised to 1 at phi = 0 with weights.
+    r = pol.rmsf(lam, phi, weights=weights)
+    assert np.isclose(np.abs(r[np.argmin(np.abs(phi))]), 1.0, atol=1e-6)
+
+
 def test_rmsf_is_peaked_and_normalized_at_zero():
     freqs = np.linspace(700e6, 1800e6, 256)
     lam = 299792458.0 / freqs
