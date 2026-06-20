@@ -145,7 +145,7 @@ def fetch_account_posts(handle: str, limit: int = 5, timeout: float = 15.0) -> l
 
     resp = requests.get(
         f"{base}/api/v1/accounts/{account_id}/statuses",
-        params={"limit": limit, "exclude_replies": "true"},
+        params={"limit": str(limit), "exclude_replies": "true"},
         headers=headers,
         timeout=timeout,
     )

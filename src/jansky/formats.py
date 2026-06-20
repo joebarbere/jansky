@@ -250,7 +250,7 @@ def iter_guppi_blocks(path: str | Path):
 # SigMF — open Signal Metadata Format (https://sigmf.org).
 # Two files: <base>.sigmf-meta (JSON) and <base>.sigmf-data (raw samples).
 # --------------------------------------------------------------------------- #
-_SIGMF_DTYPES = {
+_SIGMF_DTYPES: dict[str, np.dtype] = {
     "cf32_le": np.dtype("<c8"),
     "cf64_le": np.dtype("<c16"),
     "ci16_le": np.dtype("<i2"),  # interleaved I/Q handled below
@@ -290,7 +290,7 @@ def write_sigmf(
     }
     if extra_global:
         glob.update(extra_global)
-    capture = {"core:sample_start": 0}
+    capture: dict[str, float] = {"core:sample_start": 0}
     if center_freq is not None:
         capture["core:frequency"] = float(center_freq)
     meta = {"global": glob, "captures": [capture], "annotations": []}
@@ -302,8 +302,8 @@ def read_sigmf(basepath: str | Path) -> tuple[np.ndarray, dict]:
     """Read a SigMF recording, returning ``(samples, metadata)``."""
     base = Path(basepath)
     meta = json.loads(base.with_suffix(".sigmf-meta").read_text())
-    datatype = meta["global"]["core:datatype"]
-    dtype = _SIGMF_DTYPES.get(datatype, np.dtype("<c8"))
+    datatype = str(meta["global"]["core:datatype"])
+    dtype: np.dtype = _SIGMF_DTYPES.get(datatype, np.dtype("<c8"))
     samples = np.fromfile(base.with_suffix(".sigmf-data"), dtype=dtype)
     return samples, meta
 

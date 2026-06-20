@@ -90,6 +90,8 @@ packages = ["src/jansky"]
 dev = [
     "ruff>=0.6",
     "pytest>=8.2",
+    "pytest-cov>=5.0",
+    "mypy>=1.11",
     "nbmake>=1.5",
     "jupyterlab>=4.2",
     "nbformat>=5.10",
@@ -116,3 +118,29 @@ addopts = "-ra"
 filterwarnings = [
     "ignore::DeprecationWarning",
 ]
+
+[tool.coverage.run]
+source = ["jansky"]
+# The TUI module needs the optional `tui` extra (textual/pillow); exclude it from
+# the default coverage floor so a base `uv sync` run isn't penalised for it.
+omit = ["*/_mastodon_tui.py"]
+
+[tool.coverage.report]
+# Enforced only when coverage is collected (a `--cov` run, e.g. CI's unit-test
+# step); the plain `pytest` and the nbmake notebook runs are unaffected.
+fail_under = 85
+exclude_also = [
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+
+[tool.mypy]
+# Scoped to the helper package; the notebooks and tests are not type-checked.
+files = ["src/jansky"]
+python_version = "3.10"
+# The scientific stack (astropy, scipy, matplotlib, textual, ...) ships partial or
+# no stubs; don't fail on their missing types. We still check our own code.
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true

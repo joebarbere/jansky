@@ -44,11 +44,11 @@ def rng(seed: int | None = 0) -> np.random.Generator:
 
 
 def radiometer_sensitivity(
-    t_sys: float,
-    bandwidth: float,
-    integration_time: float,
+    t_sys: float | np.ndarray,
+    bandwidth: float | np.ndarray,
+    integration_time: float | np.ndarray,
     n_pol: int = 1,
-) -> float:
+) -> float | np.ndarray:
     """Temperature sensitivity from the radiometer equation.
 
     :math:`\\Delta T = T_\\mathrm{sys} / \\sqrt{n_\\mathrm{pol}\\,B\\,\\tau}`.
@@ -130,7 +130,8 @@ def integrate_noise(
     samples = signal + generator.normal(0.0, per_sample_sigma, size=n_samples)
     # Running mean -> the estimate after integrating up to each time.
     estimate = np.cumsum(samples) / np.arange(1, n_samples + 1)
-    expected_sigma = radiometer_sensitivity(t_sys, bandwidth, times)
+    # `times` is an array, so the envelope is too.
+    expected_sigma = np.asarray(radiometer_sensitivity(t_sys, bandwidth, times))
     return RadiometerResult(times=times, estimate=estimate, expected_sigma=expected_sigma)
 
 
