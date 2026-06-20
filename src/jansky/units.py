@@ -25,6 +25,7 @@ __all__ = [
     "brightness_temperature_to_flux",
     "flux_to_brightness_temperature",
     "rayleigh_jeans_brightness",
+    "planck_brightness",
     "to_decibels",
     "from_decibels",
 ]
@@ -77,6 +78,33 @@ def rayleigh_jeans_brightness(
     # The RJ brightness is per unit solid angle; steradian is dimensionless, so
     # we attach it explicitly to get the conventional surface-brightness units.
     b_nu = 2 * const.k_B * temperature * frequency**2 / const.c**2 / u.sr
+    return b_nu.to(u.W / u.m**2 / u.Hz / u.sr)
+
+
+def planck_brightness(temperature: u.Quantity, frequency: u.Quantity) -> u.Quantity:
+    """Full Planck blackbody surface brightness :math:`B_\\nu(T)`.
+
+    :math:`B_\\nu = \\dfrac{2 h \\nu^3}{c^2}\\dfrac{1}{e^{h\\nu/k_B T} - 1}`. Unlike
+    :func:`rayleigh_jeans_brightness` it is exact at all frequencies; the two
+    agree when :math:`h\\nu \\ll k_B T` (the radio regime). This is the curve the
+    cosmic microwave background follows to extraordinary precision (Chapter 22).
+
+    Parameters
+    ----------
+    temperature
+        Blackbody temperature (e.g. ``2.725 * u.K`` for the CMB).
+    frequency
+        Observing frequency.
+
+    Returns
+    -------
+    astropy.units.Quantity
+        Spectral radiance per solid angle (``W m^-2 Hz^-1 sr^-1``).
+    """
+    temperature = u.Quantity(temperature, u.K)
+    frequency = u.Quantity(frequency, u.Hz)
+    x = (const.h * frequency / (const.k_B * temperature)).to_value(u.dimensionless_unscaled)
+    b_nu = (2 * const.h * frequency**3 / const.c**2) / (np.expm1(x)) / u.sr
     return b_nu.to(u.W / u.m**2 / u.Hz / u.sr)
 
 

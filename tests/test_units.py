@@ -52,3 +52,22 @@ def test_decibel_known_values():
 def test_flux_positive(freq):
     flux = units.brightness_temperature_to_flux(100 * u.K, freq, 1e-7 * u.sr)
     assert flux.to_value(u.Jy) > 0
+
+
+def test_planck_reduces_to_rayleigh_jeans_in_radio():
+    # At radio frequencies (h nu << k T) Planck ~= Rayleigh-Jeans.
+    T = 100 * u.K
+    nu = 1.4 * u.GHz
+    planck = units.planck_brightness(T, nu)
+    rj = units.rayleigh_jeans_brightness(T, nu)
+    assert np.isclose(planck.value, rj.to_value(planck.unit), rtol=1e-3)
+
+
+def test_planck_peaks_and_positive():
+    # CMB blackbody is positive and the value near its peak (~160 GHz) exceeds
+    # a low-frequency point of the same curve.
+    T = 2.725 * u.K
+    low = units.planck_brightness(T, 5 * u.GHz)
+    peak = units.planck_brightness(T, 160 * u.GHz)
+    assert low.value > 0 and peak.value > 0
+    assert peak.value > low.value
