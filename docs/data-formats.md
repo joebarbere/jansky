@@ -112,5 +112,22 @@ its **Options → Radio → RTL Bridge/TCP** input selected.
 - **CASA** — calibration & imaging of Measurement Sets; already covered in
   [Chapter 12](notebooks/12_vla_imaging.ipynb) and [Resources](resources.md).
 
+## Bundled real starter datasets
+
+So you can work with *real bytes* — not just simulation — `jansky.data` registers a handful of
+small (< 2 MB) real files served from stable raw-GitHub URLs, cached on first use into `data/`:
+
+```bash
+python -m jansky.data --list                     # see them all (small first, then opt-in large)
+python -m jansky.data --fetch pint-ngc6440e-par  # download one
+```
+
+The starter set includes a real search-mode **PSRFITS** and **SIGPROC filterbank** (from the
+[`your`](https://github.com/thepetabyteproject/your) test suite) and the real **NANOGrav timing
+model + TOAs** for PSR J1748−2021E in NGC 6440 (`NGC6440E.par`/`.tim`, the
+[PINT](https://github.com/nanograv/PINT) example). The 576 MB HI4PI all-sky map is kept as an
+opt-in `"large"` entry, off the default path; offline, `jansky.data.synthetic_hi_cube()` stands
+in. Every URL is checked by `scripts/check_dataset_urls.py`.
+
 See also: [Projects, Kits & Hacks](projects.md) for the hardware that produces these files, and
 the [Bibliography](references.md) for the science.

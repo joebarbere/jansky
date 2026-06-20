@@ -1,6 +1,28 @@
-# Plan 14 — Real-data starter set 📋 Proposed
+# Plan 14 — Real-data starter set ◑ Mostly delivered
 
 > Flagged by **archive/real-data (#1 top, plus #3)**. Scope: medium.
+>
+> **Delivered:**
+> - **Small real-data registry** in `src/jansky/data.py` — a `category` field ("small"/"large")
+>   on `Dataset`, plus five real files (all < 2 MB, stable raw-GitHub URLs, HTTP 200-verified):
+>   `psrfits-small` and `filterbank-small`/`filterbank-example` (real PSRFITS/SIGPROC from the
+>   `your` test suite) and `pint-ngc6440e-par`/`pint-ngc6440e-tim` (the real NANOGrav timing
+>   model + TOAs for PSR J1748−2021E in NGC 6440). The 576 MB HI4PI map is **demoted to
+>   `category="large"`**, off the default path. New `small_datasets()` helper; `--list` now groups
+>   small-first.
+> - **`scripts/check_dataset_urls.py`** — verifies every registered URL still resolves (overlaps
+>   [Plan 16](16-real-archive-chapters.md)); a green run is the evidence the starter files are
+>   fetchable. All six URLs currently resolve.
+> - **Tests** (`tests/test_data.py`) — registry well-formedness, the small-vs-large split, and a
+>   network-gated real fetch (downloads the real `NGC6440E.par`, skipped offline). `docs/data-formats.md`
+>   documents the starter set.
+>
+> **Remaining follow-up:** wiring the real files into the chapters as the *default* read path —
+> Ch 13 de-dispersing the real `your` filterbank (via the existing `Your(psrfits_path)` branch)
+> and Ch 11 reducing a real HI cutout. That needs notebook re-authoring with the `your`/PINT
+> readers and a real download at execute time (preserving the synthetic offline fallback), best
+> done as a dedicated notebook pass. A small static HI4PI *cutout* was not added — no verified
+> sub-5 MB static source exists; the synthetic HI cube remains the offline HI path.
 
 ## Context
 

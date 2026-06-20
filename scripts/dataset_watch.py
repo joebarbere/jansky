@@ -66,13 +66,22 @@ ARXIV_FEEDS = [
 WATCH_PAGES = [
     WatchPage("NRAO Science Data Archive", "https://data.nrao.edu/", "VLA/VLBA/ALMA-NA"),
     WatchPage("ALMA Science Archive", "https://almascience.org/aq/", "mm/submm"),
-    WatchPage("ATNF Pulsar Catalogue", "https://www.atnf.csiro.au/research/pulsar/psrcat/",
-              "watch the version number"),
+    WatchPage(
+        "ATNF Pulsar Catalogue",
+        "https://www.atnf.csiro.au/research/pulsar/psrcat/",
+        "watch the version number",
+    ),
     WatchPage("NASA LAMBDA", "https://lambda.gsfc.nasa.gov/product/", "CMB / foreground products"),
-    WatchPage("Radio JOVE Data Archive", "https://radiojove.net/archive.html",
-              "observer SkyPipe (.spd) / SPS (.sps) data"),
-    WatchPage("MASER Radio JOVE collection", "https://maser.obspm.fr/data/radiojove/",
-              "PADC decametric / Radio JOVE"),
+    WatchPage(
+        "Radio JOVE Data Archive",
+        "https://radiojove.net/archive.html",
+        "observer SkyPipe (.spd) / SPS (.sps) data",
+    ),
+    WatchPage(
+        "MASER Radio JOVE collection",
+        "https://maser.obspm.fr/data/radiojove/",
+        "PADC decametric / Radio JOVE",
+    ),
 ]
 
 
@@ -93,7 +102,8 @@ def query_arxiv(feed: ArxivFeed, timeout: float = 20.0) -> list[dict]:
             "sortOrder": "descending",
             "max_results": feed.max_results,
         },
-        headers=_UA, timeout=timeout,
+        headers=_UA,
+        timeout=timeout,
     )
     resp.raise_for_status()
     ns = {"a": "http://www.w3.org/2005/Atom"}
@@ -102,8 +112,7 @@ def query_arxiv(feed: ArxivFeed, timeout: float = 20.0) -> list[dict]:
     for entry in root.findall("a:entry", ns):
         arxiv_id = (entry.findtext("a:id", default="", namespaces=ns) or "").rsplit("/", 1)[-1]
         title = re.sub(r"\s+", " ", entry.findtext("a:title", default="", namespaces=ns)).strip()
-        out.append({"id": arxiv_id, "title": title,
-                    "link": f"https://arxiv.org/abs/{arxiv_id}"})
+        out.append({"id": arxiv_id, "title": title, "link": f"https://arxiv.org/abs/{arxiv_id}"})
     return out
 
 
@@ -202,11 +211,16 @@ def main(argv: list[str] | None = None) -> int:
     save_state(state, Path(args.state))
 
     if args.json:
-        print(json.dumps({
-            "new_papers": report.new_papers,
-            "changed_pages": report.changed_pages,
-            "errors": report.errors,
-        }, indent=2))
+        print(
+            json.dumps(
+                {
+                    "new_papers": report.new_papers,
+                    "changed_pages": report.changed_pages,
+                    "errors": report.errors,
+                },
+                indent=2,
+            )
+        )
     else:
         _print_report(report)
     return 0
