@@ -85,6 +85,7 @@ nav:
       - "14. Multi-wavelength Diversion": notebooks/14_multiwavelength.ipynb
       - "15. Capstone": notebooks/15_capstone.ipynb
       - "16. Data Formats & the Ecosystem": notebooks/16_data_formats_and_ecosystem.ipynb
+      - "18. Fast Radio Bursts": notebooks/18_fast_radio_bursts.ipynb
   - Reference:
       - Glossary: glossary.md
       - Mathematical Preliminaries: math-preliminaries.md
