@@ -191,6 +191,11 @@ Where to buy the components for the projects above.
   [greatscottgadgets.com](https://greatscottgadgets.com/hackrf/one/)
 - **Ettus Research / USRP** — High-end, calibrated USRP platforms for instrumentation budgets.
   [ettus.com](https://www.ettus.com/)
+- **KrakenSDR** — Five RTL-SDR receivers on one board sharing a single clock, phase-coherent
+  by design — the affordable on-ramp to amateur *interferometry* and direction finding (a
+  stock RTL-SDR has no external clock input, which is what makes coherent multi-receiver work
+  hard; see [Field Notes](field-notes.md#interferometry-is-genuinely-hard)). ~$450.
+  [krakenrf.com](https://www.krakenrf.com/)
 
 ### Low-noise amplifiers (LNAs) & filters
 
@@ -265,6 +270,22 @@ You don't have to go it alone — amateur radio astronomy is small, friendly, an
   [britastro.org](https://britastro.org/section_information_/radio-astronomy-section-overview)
 - **Open Source Radio Telescopes** — A community catalogue of open, reproducible builds.
   [opensourceradiotelescopes.org](http://www.opensourceradiotelescopes.org/)
+- **Cloudy Nights — scientific/amateur astronomy forum** — A large, friendly community whose
+  scientific subforum is an active place to ask radio-astronomy questions.
+  [cloudynights.com](https://www.cloudynights.com/forum/88-scientific-amateur-astronomy/)
+- **SatNOGS** — A global network of open-source satellite ground stations; a great way to put
+  an SDR + antenna to collaborative use. [satnogs.org](https://satnogs.org/)
+- **saveitforparts (YouTube)** — Entertaining, instructive builds of radio telescopes and
+  satellite receivers from salvaged parts. [youtube.com/@saveitforparts](https://www.youtube.com/@saveitforparts)
+
+!!! tip "You can always just listen"
+    Radio astronomy is **receive-only** — no licence required. (A licence is only for
+    *transmitting*.) Before buying anything, you can even tune real receivers over the web with
+    [WebSDR](http://websdr.org/) or [KiwiSDR](http://kiwisdr.com/).
+
+For more hard-won practical advice from the amateur community — what's actually discoverable,
+the hardware gotchas, why interferometry is hard, and the RFI traps — see
+[Field Notes from the Community](field-notes.md).
 
 For observatories, archives, university groups, and journals, see [Resources](resources.md);
 for the foundational papers behind these experiments, see the [References](references.md).
