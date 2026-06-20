@@ -51,6 +51,26 @@ to discover more.
 `#radioastronomy` · `#astronomy` · `#astrophysics` · `#astrodon` (the astronomy-community
 cross-instance tag) · topic tags like `#pulsars`, `#FRB`, `#VLBI`, `#SKA`.
 
+## Read the feed in your terminal
+
+The course ships a small reader that pulls these accounts' recent **public** posts straight from
+Mastodon's API — no login or token needed — and shows them as text or in a terminal UI with
+inline images:
+
+```bash
+# plain text (works anywhere, no extra dependencies)
+uv run python -m jansky.mastodon_reader --no-tui --limit 3
+
+# the terminal UI with image viewing (needs the optional extra)
+uv sync --extra tui
+uv run python -m jansky.mastodon_reader        # or: make mastodon
+```
+
+It reads the handles directly from this page, so the feed stays in sync with the list above.
+Images render inline in terminals that speak the **kitty**, **iTerm2**, or **sixel** graphics
+protocols (kitty, WezTerm, iTerm2, Konsole, foot, …); elsewhere they fall back to Unicode blocks.
+In the UI: arrow keys to browse, `o` to open a post in your browser, `r` to refresh, `q` to quit.
+
 ---
 
 !!! note "This list is a snapshot"

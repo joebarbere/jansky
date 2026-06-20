@@ -115,6 +115,7 @@ make docs-serve      # live docs at http://localhost:8000
 make test            # unit tests
 make test-notebooks  # execute the Part I notebooks end-to-end
 make fetch-data      # list sample datasets (ARGS="--fetch hi4pi-sample" to download)
+make mastodon        # read the listed astronomers' Mastodon posts (TUI; needs --extra tui)
 ```
 
 ## Going deeper

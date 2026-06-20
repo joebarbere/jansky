@@ -66,6 +66,13 @@ formats = [
 hi = [
     "astro-virgo>=2.0",
 ]
+# Terminal UI for the Mastodon reader (python -m jansky.mastodon_reader), with
+# inline image viewing via terminal graphics protocols.
+tui = [
+    "textual>=0.60",
+    "textual-image>=0.7",
+    "pillow>=10.0",
+]
 
 [project.urls]
 Homepage = "https://github.com/joebarbere/jansky"
