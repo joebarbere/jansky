@@ -56,13 +56,20 @@ def radiometer_heatmap() -> None:
     )
     fig, ax = plt.subplots(figsize=(8, 5))
     sns.heatmap(
-        df, ax=ax, cmap="rocket_r", norm=matplotlib.colors.LogNorm(),
-        annot=True, fmt=".2g", linewidths=0.5,
+        df,
+        ax=ax,
+        cmap="rocket_r",
+        norm=matplotlib.colors.LogNorm(),
+        annot=True,
+        fmt=".2g",
+        linewidths=0.5,
         cbar_kws={"label": r"$\Delta T$  (K)"},
     )
     ax.set_xlabel("Bandwidth  $B$")
     ax.set_ylabel("Integration time  $\\tau$  (s)")
-    ax.set_title("Radiometer sensitivity  $\\Delta T = T_{sys}/\\sqrt{B\\,\\tau}$  ($T_{sys}=50$ K)")
+    ax.set_title(
+        "Radiometer sensitivity  $\\Delta T = T_{sys}/\\sqrt{B\\,\\tau}$  ($T_{sys}=50$ K)"
+    )
     _save(fig, "radiometer_heatmap.png")
 
 
@@ -72,8 +79,12 @@ def signal_emerges() -> None:
     rows = []
     for trial in range(40):
         res = signals.integrate_noise(
-            t_sys=30.0, bandwidth=1e6, total_time=100.0, signal=true_signal,
-            n_samples=300, seed=trial,
+            t_sys=30.0,
+            bandwidth=1e6,
+            total_time=100.0,
+            signal=true_signal,
+            n_samples=300,
+            seed=trial,
         )
         for t, est in zip(res.times, res.estimate, strict=True):
             rows.append({"time": t, "estimate": est})
@@ -104,8 +115,12 @@ def spectral_index() -> None:
 
     fig, ax = plt.subplots(figsize=(8, 5))
     sns.scatterplot(x=freq, y=flux, ax=ax, color=ACCENT, s=40, label="synthetic data")
-    ax.plot(freq, 0.5 + model(freq, *popt), color="crimson",
-            label=fr"fit: $\alpha = {popt[1]:.2f}$ (true $-0.8$)")
+    ax.plot(
+        freq,
+        0.5 + model(freq, *popt),
+        color="crimson",
+        label=rf"fit: $\alpha = {popt[1]:.2f}$ (true $-0.8$)",
+    )
     ax.axhline(0.5, ls=":", color="gray", label="thermal floor")
     ax.set(xscale="log", yscale="log")
     ax.set_xlabel("Frequency  (GHz)")
@@ -123,12 +138,24 @@ def beam_patterns() -> None:
     fwhm = np.radians(0.6)
     gauss = signals.gaussian_beam(theta, fwhm)
     deg = np.degrees(theta)
-    df = pd.concat([
-        pd.DataFrame({"angle": deg, "power_dB": units.to_decibels(np.clip(airy, 1e-6, None)),
-                      "pattern": "Airy (uniform dish)"}),
-        pd.DataFrame({"angle": deg, "power_dB": units.to_decibels(np.clip(gauss, 1e-6, None)),
-                      "pattern": "Gaussian (tapered)"}),
-    ])
+    df = pd.concat(
+        [
+            pd.DataFrame(
+                {
+                    "angle": deg,
+                    "power_dB": units.to_decibels(np.clip(airy, 1e-6, None)),
+                    "pattern": "Airy (uniform dish)",
+                }
+            ),
+            pd.DataFrame(
+                {
+                    "angle": deg,
+                    "power_dB": units.to_decibels(np.clip(gauss, 1e-6, None)),
+                    "pattern": "Gaussian (tapered)",
+                }
+            ),
+        ]
+    )
     fig, ax = plt.subplots(figsize=(8, 5))
     sns.lineplot(data=df, x="angle", y="power_dB", hue="pattern", ax=ax)
     ax.set_ylim(-50, 2)
@@ -143,15 +170,26 @@ def brightness_temperature() -> None:
     temps = np.array([10, 30, 100, 300, 1000, 3000, 10000])  # K
     freqs = np.array([0.3, 0.6, 1.4, 5, 15, 45]) * u.GHz
     omega = 1e-6 * u.sr
-    grid = np.array([
-        [units.brightness_temperature_to_flux(t * u.K, f, omega).to_value(u.Jy) for f in freqs]
-        for t in temps
-    ])
-    df = pd.DataFrame(grid, index=[f"{t:g}" for t in temps],
-                      columns=[f"{f.to_value(u.GHz):g}" for f in freqs])
+    grid = np.array(
+        [
+            [units.brightness_temperature_to_flux(t * u.K, f, omega).to_value(u.Jy) for f in freqs]
+            for t in temps
+        ]
+    )
+    df = pd.DataFrame(
+        grid, index=[f"{t:g}" for t in temps], columns=[f"{f.to_value(u.GHz):g}" for f in freqs]
+    )
     fig, ax = plt.subplots(figsize=(8, 5))
-    sns.heatmap(df, ax=ax, cmap="mako", norm=matplotlib.colors.LogNorm(),
-                annot=True, fmt=".1g", linewidths=0.5, cbar_kws={"label": "Flux density (Jy)"})
+    sns.heatmap(
+        df,
+        ax=ax,
+        cmap="mako",
+        norm=matplotlib.colors.LogNorm(),
+        annot=True,
+        fmt=".1g",
+        linewidths=0.5,
+        cbar_kws={"label": "Flux density (Jy)"},
+    )
     ax.set_xlabel("Frequency  (GHz)")
     ax.set_ylabel("Brightness temperature  (K)")
     ax.set_title(r"Rayleigh--Jeans: flux density over a $10^{-6}$ sr source")
@@ -164,13 +202,22 @@ def uv_coverage() -> None:
     antennas = rng.uniform(-60, 60, size=(8, 2))
     snap = interferometry.uv_coverage(antennas)
     track = interferometry.uv_coverage(antennas, hour_angles=np.linspace(-np.pi / 3, np.pi / 3, 80))
-    df = pd.concat([
-        pd.DataFrame({"u": track[:, 0], "v": track[:, 1], "kind": "12 h Earth rotation"}),
-        pd.DataFrame({"u": snap[:, 0], "v": snap[:, 1], "kind": "snapshot"}),
-    ])
+    df = pd.concat(
+        [
+            pd.DataFrame({"u": track[:, 0], "v": track[:, 1], "kind": "12 h Earth rotation"}),
+            pd.DataFrame({"u": snap[:, 0], "v": snap[:, 1], "kind": "snapshot"}),
+        ]
+    )
     fig, ax = plt.subplots(figsize=(6.5, 6))
-    sns.scatterplot(data=df, x="u", y="v", hue="kind", s=10, ax=ax,
-                    palette={"snapshot": "crimson", "12 h Earth rotation": ACCENT})
+    sns.scatterplot(
+        data=df,
+        x="u",
+        y="v",
+        hue="kind",
+        s=10,
+        ax=ax,
+        palette={"snapshot": "crimson", "12 h Earth rotation": ACCENT},
+    )
     ax.set_aspect("equal")
     ax.set_xlabel("u  (m)")
     ax.set_ylabel("v  (m)")
@@ -186,21 +233,38 @@ def pulsar_ppdot() -> None:
     pdot_normal = 10 ** rng.normal(-15, 1.0, 250)
     p_ms = 10 ** rng.normal(-2.4, 0.18, 40)  # ~3-6 ms
     pdot_ms = 10 ** rng.normal(-20, 0.6, 40)
-    df = pd.DataFrame({
-        "P": np.concatenate([p_normal, p_ms]),
-        "Pdot": np.concatenate([pdot_normal, pdot_ms]),
-        "type": ["normal"] * len(p_normal) + ["millisecond"] * len(p_ms),
-    })
+    df = pd.DataFrame(
+        {
+            "P": np.concatenate([p_normal, p_ms]),
+            "Pdot": np.concatenate([pdot_normal, pdot_ms]),
+            "type": ["normal"] * len(p_normal) + ["millisecond"] * len(p_ms),
+        }
+    )
     fig, ax = plt.subplots(figsize=(7.5, 6))
-    sns.scatterplot(data=df, x="P", y="Pdot", hue="type", style="type", ax=ax,
-                    palette={"normal": ACCENT, "millisecond": "crimson"}, s=28, alpha=0.8)
+    sns.scatterplot(
+        data=df,
+        x="P",
+        y="Pdot",
+        hue="type",
+        style="type",
+        ax=ax,
+        palette={"normal": ACCENT, "millisecond": "crimson"},
+        s=28,
+        alpha=0.8,
+    )
     p_line = np.array([1e-3, 20])
     for age_yr, label in [(1e3, "1 kyr"), (1e6, "1 Myr"), (1e9, "1 Gyr")]:
         # Characteristic age tau = P / (2 Pdot) -> Pdot = P / (2 tau).
         age_s = age_yr * 3.156e7
         ax.plot(p_line, p_line / (2 * age_s), ls="--", color="gray", lw=0.8)
-        ax.text(p_line[-1], p_line[-1] / (2 * age_s), f"  {label}", color="gray",
-                va="center", fontsize=8)
+        ax.text(
+            p_line[-1],
+            p_line[-1] / (2 * age_s),
+            f"  {label}",
+            color="gray",
+            va="center",
+            fontsize=8,
+        )
     ax.set(xscale="log", yscale="log")
     ax.set_xlabel("Spin period  $P$  (s)")
     ax.set_ylabel("Period derivative  $\\dot{P}$  (s/s)")
@@ -224,14 +288,21 @@ def resolution_infographic() -> None:
         data.append({"instrument": name, "resolution_arcsec": arcsec})
     df = pd.DataFrame(data)
     fig, ax = plt.subplots(figsize=(8.5, 5))
-    sns.barplot(data=df, y="instrument", x="resolution_arcsec", ax=ax,
-                hue="instrument", palette="viridis", legend=False)
+    sns.barplot(
+        data=df,
+        y="instrument",
+        x="resolution_arcsec",
+        ax=ax,
+        hue="instrument",
+        palette="viridis",
+        legend=False,
+    )
     ax.set_xscale("log")
     ax.set_xlabel("Angular resolution  $1.22\\,\\lambda/D$  (arcsec, smaller = sharper)")
     ax.set_ylabel("")
     ax.set_title("Why we build big arrays: angular resolution compared")
     for i, v in enumerate(df["resolution_arcsec"]):
-        label = f"{v:.2g}″" if v >= 0.01 else f"{v*1000:.2g} mas"
+        label = f"{v:.2g}″" if v >= 0.01 else f"{v * 1000:.2g} mas"
         ax.text(v, i, f"  {label}", va="center", fontsize=9)
     _save(fig, "resolution_infographic.png")
 

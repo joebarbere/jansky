@@ -36,32 +36,85 @@ __all__ = [
     "data_dir",
     "fetch",
     "list_datasets",
+    "small_datasets",
     "synthetic_hi_cube",
 ]
 
 
 @dataclass(frozen=True)
 class Dataset:
-    """Metadata for a downloadable sample dataset."""
+    """Metadata for a downloadable sample dataset.
+
+    ``category`` is ``"small"`` for the bundled starter files (all < 2 MB, the
+    default path the chapters reach for) or ``"large"`` for opt-in bulk data that
+    is never on the default/offline path.
+    """
 
     name: str
     url: str
     filename: str
     description: str
     size_hint: str = "unknown"
+    category: str = "small"
 
 
 # Registry of static sample datasets. Real, large archive queries are done with
-# astroquery in the notebooks; these are small, stable starter files. When a URL
-# is unavailable, fetch() raises with a clear message and points at the offline
-# synthetic alternative where one exists.
+# astroquery in the notebooks; these are small, stable starter files served from
+# stable raw-GitHub URLs. When a URL is unavailable, fetch() raises with a clear
+# message and points at the offline synthetic alternative where one exists.
+#
+# The "small" entries are real bytes under ~2 MB so the research chapters can read
+# an actual file rather than always falling back to simulation. The 576 MB HI4PI
+# all-sky map is kept as an opt-in "large" entry, off the default path.
 DATASETS: dict[str, Dataset] = {
+    # --- small, real starter files (the default path; all < 2 MB) ---
+    "psrfits-small": Dataset(
+        name="psrfits-small",
+        url="https://raw.githubusercontent.com/thepetabyteproject/your/main/tests/data/small.fits",
+        filename="your_small.fits",
+        description="Small real search-mode PSRFITS file (from the `your` test suite).",
+        size_hint="~278 KB",
+    ),
+    "filterbank-small": Dataset(
+        name="filterbank-small",
+        url="https://raw.githubusercontent.com/thepetabyteproject/your/main/tests/data/small.fil",
+        filename="your_small.fil",
+        description="Small real SIGPROC filterbank file (from the `your` test suite).",
+        size_hint="~4 KB",
+    ),
+    "filterbank-example": Dataset(
+        name="filterbank-example",
+        url="https://raw.githubusercontent.com/thepetabyteproject/your/main/tests/data/28.fil",
+        filename="your_28.fil",
+        description="The `your` example SIGPROC filterbank (real search-mode data) — "
+        "large enough to de-disperse and inspect in Chapter 13.",
+        size_hint="~1.6 MB",
+    ),
+    "pint-ngc6440e-par": Dataset(
+        name="pint-ngc6440e-par",
+        url="https://raw.githubusercontent.com/nanograv/PINT/master/src/pint/data/examples/NGC6440E.par",
+        filename="NGC6440E.par",
+        description="Timing model (.par) for PSR J1748-2021E in NGC 6440 — real NANOGrav "
+        "data (PINT example); pairs with pint-ngc6440e-tim.",
+        size_hint="~0.5 KB",
+    ),
+    "pint-ngc6440e-tim": Dataset(
+        name="pint-ngc6440e-tim",
+        url="https://raw.githubusercontent.com/nanograv/PINT/master/src/pint/data/examples/NGC6440E.tim",
+        filename="NGC6440E.tim",
+        description="TOAs (.tim) for PSR J1748-2021E in NGC 6440 — real NANOGrav data "
+        "(PINT example); pairs with pint-ngc6440e-par.",
+        size_hint="~4 KB",
+    ),
+    # --- large, opt-in (never on the default/offline path) ---
     "hi4pi-sample": Dataset(
         name="hi4pi-sample",
         url="https://lambda.gsfc.nasa.gov/data/foregrounds/HI4PI/NHI_HPX.fits",
         filename="HI4PI_NHI_HPX.fits",
-        description="HI4PI all-sky neutral-hydrogen column-density map, HEALPix (HI 21cm).",
+        description="HI4PI all-sky neutral-hydrogen column-density map, HEALPix (HI 21cm). "
+        "Large — prefer jansky.data.synthetic_hi_cube() for offline work.",
         size_hint="~576 MB",
+        category="large",
     ),
 }
 
@@ -85,6 +138,15 @@ def data_dir() -> Path:
 def list_datasets() -> list[str]:
     """Return the names of all registered sample datasets."""
     return sorted(DATASETS)
+
+
+def small_datasets() -> list[str]:
+    """Return the names of the small (< 2 MB) real starter datasets.
+
+    These are the default path the research chapters reach for, so they can read
+    a real file offline-cached rather than always simulating.
+    """
+    return sorted(n for n, d in DATASETS.items() if d.category == "small")
 
 
 def fetch(name: str, *, force: bool = False) -> Path:
@@ -120,11 +182,12 @@ def fetch(name: str, *, force: bool = False) -> Path:
     try:
         _download(spec.url, target)
     except Exception as exc:  # noqa: BLE001 - re-raised with guidance below
-        hint = (
-            " For offline work, use jansky.data.synthetic_hi_cube() instead."
-            if name == "hi4pi-sample"
-            else ""
-        )
+        if name == "hi4pi-sample":
+            hint = " For offline work, use jansky.data.synthetic_hi_cube() instead."
+        elif spec.category == "small":
+            hint = " The chapters fall back to simulated data when this is unavailable offline."
+        else:
+            hint = ""
         raise RuntimeError(f"Failed to download {name!r} from {spec.url}: {exc}.{hint}") from exc
     return target
 
@@ -196,10 +259,18 @@ def _main(argv: list[str] | None = None) -> int:
 
     if args.list or not args.fetch:
         print(f"Cache directory: {data_dir()}")
-        print("Available datasets:")
-        for name in list_datasets():
-            spec = DATASETS[name]
-            print(f"  {name:18s} {spec.size_hint:>10s}  {spec.description}")
+        # Small real starter files first (the default path), then opt-in large data.
+        for category, heading in (
+            ("small", "Small real starter files"),
+            ("large", "Large (opt-in)"),
+        ):
+            names = [n for n in list_datasets() if DATASETS[n].category == category]
+            if not names:
+                continue
+            print(f"\n{heading}:")
+            for name in names:
+                spec = DATASETS[name]
+                print(f"  {name:20s} {spec.size_hint:>10s}  {spec.description}")
         if not args.fetch:
             return 0
 
