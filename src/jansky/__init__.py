@@ -21,6 +21,8 @@ formats
     network protocol, and optional wrappers for the heavier I/O libraries.
 transients
     Dispersion, de-dispersion, and single-pulse DM searching for FRBs/pulsars.
+timing
+    Pulsar timing arrays and the Hellings--Downs nanohertz-GW correlation.
 plotting
     Shared matplotlib styling so every chapter's figures look consistent.
 
@@ -38,6 +40,7 @@ from jansky import (
     interferometry,
     plotting,
     signals,
+    timing,
     transients,
     units,
 )
@@ -49,6 +52,7 @@ __all__ = [
     "interferometry",
     "plotting",
     "signals",
+    "timing",
     "transients",
     "units",
 ]
