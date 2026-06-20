@@ -14,6 +14,8 @@ signals
     Noise generation, the radiometer equation, synthetic spectra, beam shapes.
 seti
     The Doppler-drift technosignature search and the ON/OFF cadence test.
+solar
+    Coronal density, plasma frequency, and type II burst / CME shock speed.
 interferometry
     uv-coverage, the dirty beam, a minimal Hogbom CLEAN, van Cittert--Zernike.
 data
@@ -43,6 +45,7 @@ from jansky import (
     plotting,
     seti,
     signals,
+    solar,
     timing,
     transients,
     units,
@@ -56,6 +59,7 @@ __all__ = [
     "plotting",
     "seti",
     "signals",
+    "solar",
     "timing",
     "transients",
     "units",
