@@ -16,6 +16,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import numpy as np
+from scipy import special
 
 __all__ = [
     "uv_coverage",
@@ -31,6 +32,8 @@ __all__ = [
     "estimate_source_angle",
     "closure_phase",
     "closure_amplitude",
+    "disk_visibility",
+    "hbt_g2",
 ]
 
 
@@ -375,3 +378,36 @@ def closure_amplitude(v_ij: complex, v_kl: complex, v_ik: complex, v_jl: complex
     if denom == 0:
         raise ValueError("closure amplitude undefined (zero denominator visibility)")
     return float(abs(v_ij) * abs(v_kl) / denom)
+
+
+# --------------------------------------------------------------------------- #
+# Intensity interferometry (Hanbury Brown & Twiss, 1954). Instead of combining
+# amplitude+phase, HBT correlates the INTENSITY fluctuations at two detectors.
+# For chaotic (thermal) light the excess correlation is g2(b) = 1 + |V(b)|^2,
+# where V(b) is the ordinary van Cittert-Zernike visibility. So measuring g2 vs
+# baseline recovers |V|^2 and hence the source's angular size -- with timing only
+# needing to match the bandwidth, not the phase. This sidesteps the phase-
+# coherence problem that makes amplitude VLBI so hard (see field-notes.md).
+# --------------------------------------------------------------------------- #
+def disk_visibility(baseline: np.ndarray, angular_diameter: float, wavelength: float) -> np.ndarray:
+    """Van Cittert--Zernike visibility of a uniform circular disk.
+
+    :math:`V(b) = 2 J_1(x)/x` with :math:`x = \\pi\\,\\theta\\,b/\\lambda`, where
+    :math:`\\theta` is the disk's angular diameter, ``b`` the baseline, and
+    :math:`\\lambda` the wavelength (consistent units). The first zero at
+    :math:`x=3.83` gives the classic resolution :math:`b \\approx 1.22\\lambda/\\theta`.
+    """
+    x = np.pi * angular_diameter * np.asarray(baseline, dtype=float) / wavelength
+    with np.errstate(invalid="ignore", divide="ignore"):
+        return np.where(x == 0.0, 1.0, 2.0 * special.j1(x) / x)
+
+
+def hbt_g2(baseline: np.ndarray, angular_diameter: float, wavelength: float) -> np.ndarray:
+    """HBT second-order (intensity) correlation :math:`g^{(2)}(b) = 1 + |V(b)|^2`.
+
+    Equals 2 at zero baseline (a fully correlated source) and falls to 1 as the
+    baseline resolves the source. Fitting a measured ``g2`` curve recovers the
+    angular diameter -- the principle behind Hanbury Brown & Twiss's stellar
+    intensity interferometer.
+    """
+    return 1.0 + disk_visibility(baseline, angular_diameter, wavelength) ** 2

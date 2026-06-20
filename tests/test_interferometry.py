@@ -130,3 +130,19 @@ def test_closure_amplitude_invariant_to_station_gains():
     vjl = a["j"] * a["l"] * v["jl"]
     ca_corrupt = interferometry.closure_amplitude(vij, vkl, vik, vjl)
     assert np.isclose(ca_true, ca_corrupt, rtol=1e-12)
+
+
+def test_hbt_g2_limits():
+    import numpy as np
+    lam, theta = 1.0, 1e-3
+    assert np.isclose(interferometry.disk_visibility(0.0, theta, lam), 1.0)
+    assert np.isclose(interferometry.hbt_g2(0.0, theta, lam), 2.0)
+    # at a large baseline the source is resolved -> g2 approaches 1
+    assert interferometry.hbt_g2(50_000.0, theta, lam) < 1.05
+
+
+def test_disk_visibility_first_null():
+    import numpy as np
+    lam, theta = 1.0, 1e-3
+    b_null = 3.8317 * lam / (np.pi * theta)  # first zero of 2 J1(x)/x
+    assert abs(interferometry.disk_visibility(b_null, theta, lam)) < 1e-3

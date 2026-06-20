@@ -78,6 +78,7 @@ nav:
       - "9. Deconvolution & CLEAN": notebooks/09_deconvolution_clean.ipynb
       - "17. Coherent Interferometry (KrakenSDR)": notebooks/17_coherent_interferometry_kraken.ipynb
       - "19. The EHT & VLBI": notebooks/19_eht_and_vlbi.ipynb
+      - "25. Intensity Interferometry (HBT)": notebooks/25_intensity_interferometry.ipynb
   - "Part IV — Real Data & Research":
       - "10. Accessing Open Archives": notebooks/10_open_archives.ipynb
       - "11. HI 21cm & Galactic Rotation": notebooks/11_hi_rotation_curve.ipynb
@@ -91,6 +92,7 @@ nav:
       - "21. SETI: The Search for Technosignatures": notebooks/21_seti.ipynb
       - "22. The Cosmic Microwave Background": notebooks/22_cosmic_microwave_background.ipynb
       - "23. Solar & Jupiter Radio Astronomy": notebooks/23_solar_and_jupiter.ipynb
+      - "24. Molecular Lines & Masers": notebooks/24_molecular_and_masers.ipynb
   - Reference:
       - Glossary: glossary.md
       - Mathematical Preliminaries: math-preliminaries.md
