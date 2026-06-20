@@ -38,7 +38,7 @@ implemented. ⭐ marks an agent top-pick or a cross-agent consensus item.
 | ⭐ [09 — Scientific-accuracy hardening](09-accuracy-hardening.md) ✅ | Rigor | small–medium |
 | ⭐ [10 — Polarisation & Faraday rotation chapter](10-polarisation-faraday.md) ✅ | Content | medium |
 | ⭐ [11 — SKA-era & 2025–2026 refresh](11-ska-era-refresh.md) ✅ | Content | small–medium |
-| [12 — Machine learning in radio astronomy](12-ml-in-radio.md) | Content | medium |
+| [12 — Machine learning in radio astronomy](12-ml-in-radio.md) ✅ | Content | medium |
 | [13 — RFI mitigation & calibration chapters](13-rfi-and-calibration-chapters.md) | Content | medium–large |
 | ⭐ [14 — Real-data starter set](14-real-data-starter-set.md) | Real data | medium |
 | ⭐ [15 — Implement SPS/SPD readers](15-sps-spd-readers.md) | Real data | medium–large |

@@ -1,6 +1,27 @@
-# Plan 12 — Machine learning in radio astronomy chapter 📋 Proposed
+# Plan 12 — Machine learning in radio astronomy chapter ✅ Delivered
 
 > Flagged by **research-currency (#4)**. Scope: medium.
+>
+> **Delivered:**
+> - **New chapter** `notebooks/38_machine_learning.ipynb` (Part IV) — frames the ML task types on
+>   radio data, then a fully-offline worked example: classify dispersed FRB pulses vs RFI/noise
+>   confusers (pure noise, narrowband RFI, zero-DM broadband) in synthetic dynamic spectra built
+>   from `jansky.transients.disperse_pulse`. Trains a scikit-learn MLP and compares it to the
+>   classical **matched-filter / DM-search baseline** (`dedisperse` + `boxcar_snr`): the learned
+>   model (test AUC 1.00) beats the classical detector (AUC 0.858) specifically on the zero-DM
+>   confuser it cannot distinguish on DM-search score alone. Confusion matrices + ROC; honest
+>   caveats (simulator-as-ground-truth, data hunger, domain shift, why matched filtering is still
+>   the production workhorse). Cites Eatough et al. (2009), Zackay & Ofek (2017), Agarwal et al.
+>   (2020, FETCH). Authored by `notebook-author`; reviewed by `science-reviewer`.
+> - **Dependency** — new `ml` optional extra (`scikit-learn`) in `pyproject.toml`; an optional
+>   torch CNN is guarded behind `try/except` and stays reader-installed (the base path runs on
+>   sklearn only). `--extra ml` added to the weekly `notebooks.yml` run.
+> - **Docs** — glossary (CNN, confusion matrix, machine learning, ROC/AUC, train/validation/test
+>   split), nav entry, and `docs/learning-paths.md` integration (map node + pulsars-&-transients
+>   route + Maths-Lab B service row).
+>
+> Verification: 107 unit tests pass, nbmake on Ch 38 passes (~20 s on the `ml` extra), ruff +
+> mypy + mkdocs --strict green.
 
 ## Context
 
