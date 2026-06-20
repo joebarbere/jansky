@@ -49,27 +49,29 @@ def test_fetch_account_posts_mocked(monkeypatch):
             assert params["acct"] == "tvern"
             return _FakeResp({"id": "42", "display_name": "Tessa V."})
         if "/accounts/42/statuses" in url:
-            return _FakeResp([
-                {
-                    "reblog": None,
-                    "created_at": "2026-06-01T12:00:00.000Z",
-                    "content": "<p>A new <b>EMU</b> radio map!</p>",
-                    "url": "https://mastodon.social/@tvern/1",
-                    "media_attachments": [
-                        {"type": "image", "url": "https://img/1.png"},
-                        {"type": "video", "url": "https://vid/1.mp4"},
-                    ],
-                },
-                {
-                    "reblog": {
-                        "created_at": "2026-05-30T09:00:00.000Z",
-                        "content": "<p>boosted thing</p>",
-                        "url": "https://other/@x/2",
-                        "media_attachments": [],
+            return _FakeResp(
+                [
+                    {
+                        "reblog": None,
+                        "created_at": "2026-06-01T12:00:00.000Z",
+                        "content": "<p>A new <b>EMU</b> radio map!</p>",
+                        "url": "https://mastodon.social/@tvern/1",
+                        "media_attachments": [
+                            {"type": "image", "url": "https://img/1.png"},
+                            {"type": "video", "url": "https://vid/1.mp4"},
+                        ],
                     },
-                    "created_at": "2026-05-31T09:00:00.000Z",
-                },
-            ])
+                    {
+                        "reblog": {
+                            "created_at": "2026-05-30T09:00:00.000Z",
+                            "content": "<p>boosted thing</p>",
+                            "url": "https://other/@x/2",
+                            "media_attachments": [],
+                        },
+                        "created_at": "2026-05-31T09:00:00.000Z",
+                    },
+                ]
+            )
         raise AssertionError(f"unexpected url {url}")
 
     monkeypatch.setattr(mr.requests, "get", fake_get)
@@ -97,7 +99,8 @@ def test_gather_posts_skips_failures_and_sorts(monkeypatch):
     monkeypatch.setattr(mr, "fetch_account_posts", fake_fetch)
     errors = []
     posts = mr.gather_posts(
-        ["@good@x.social", "@bad@x.social"], per_account=5,
+        ["@good@x.social", "@bad@x.social"],
+        per_account=5,
         on_error=lambda h, e: errors.append(h),
     )
     assert [p.text for p in posts] == ["new", "old"]  # newest first
@@ -107,6 +110,7 @@ def test_gather_posts_skips_failures_and_sorts(monkeypatch):
 def test_run_tui_without_extra_raises(monkeypatch):
     # Simulate the TUI deps being absent -> a helpful SystemExit.
     import builtins
+
     real_import = builtins.__import__
 
     def fake_import(name, *a, **k):
@@ -122,11 +126,22 @@ def test_run_tui_without_extra_raises(monkeypatch):
 def _two_handle_fetch(monkeypatch):
     def fake_fetch(handle, per_account):
         return [
-            mr.Post(handle, handle, mr._parse_dt("2026-02-01T00:00:00Z"),
-                    f"post about pulsars from {handle}", "u1"),
-            mr.Post(handle, handle, mr._parse_dt("2026-03-01T00:00:00Z"),
-                    f"post about galaxies from {handle}", "u2"),
+            mr.Post(
+                handle,
+                handle,
+                mr._parse_dt("2026-02-01T00:00:00Z"),
+                f"post about pulsars from {handle}",
+                "u1",
+            ),
+            mr.Post(
+                handle,
+                handle,
+                mr._parse_dt("2026-03-01T00:00:00Z"),
+                f"post about galaxies from {handle}",
+                "u2",
+            ),
         ]
+
     monkeypatch.setattr(mr, "fetch_account_posts", fake_fetch)
 
 
@@ -145,6 +160,7 @@ def test_gather_posts_account_filter(monkeypatch):
 
 def test_posts_to_json_roundtrips():
     import json
+
     posts = [mr.Post("A", "@a@x", mr._parse_dt("2026-01-01T00:00:00Z"), "hi", "u", ["img"])]
     data = json.loads(mr._posts_to_json(posts))
     assert data[0]["handle"] == "@a@x" and data[0]["images"] == ["img"]

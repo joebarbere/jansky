@@ -31,7 +31,7 @@ implemented. ⭐ marks an agent top-pick or a cross-agent consensus item.
 
 | Plan | Theme | Scope |
 |---|---|---|
-| ⭐ [05 — CI pipeline](05-ci-pipeline.md) | Engineering | small–medium |
+| ⭐ [05 — CI pipeline](05-ci-pipeline.md) ✅ | Engineering | small–medium |
 | [06 — Publish docs to GitHub Pages](06-publish-docs.md) ✅ | Engineering | small |
 | [07 — Notebook output hygiene](07-notebook-hygiene.md) | Engineering | medium |
 | [08 — Quality tooling (types, coverage, contributing, link-check)](08-quality-tooling.md) | Engineering | medium |

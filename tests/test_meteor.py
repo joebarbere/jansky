@@ -10,7 +10,7 @@ from jansky import meteor
 def test_underdense_echo_shape():
     t = np.linspace(0, 1, 1000)
     echo = meteor.underdense_echo(t, t0=0.2, amplitude=10.0, decay_time=0.1)
-    assert np.all(echo[t < 0.2] == 0.0)          # nothing before arrival
+    assert np.all(echo[t < 0.2] == 0.0)  # nothing before arrival
     assert np.isclose(echo[np.searchsorted(t, 0.2)], 10.0, atol=0.1)  # rise to peak
     # exponential decay: one decay-time later ~ amplitude/e
     idx = np.searchsorted(t, 0.3)

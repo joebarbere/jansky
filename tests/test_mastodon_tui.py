@@ -32,12 +32,22 @@ def test_tui_populates_and_shows_detail(monkeypatch):
     from jansky import _mastodon_tui as tui
 
     posts = [
-        mr.Post("ESO", "@esoastronomy@mastodon.social",
-                datetime(2026, 6, 1, tzinfo=timezone.utc),
-                "A radio map of the sky", "https://m/1", images=["https://img/a.png"]),
-        mr.Post("ASTRON", "@astron@mastodon.nl",
-                datetime(2026, 5, 1, tzinfo=timezone.utc),
-                "LOFAR results", "https://m/2", images=[]),
+        mr.Post(
+            "ESO",
+            "@esoastronomy@mastodon.social",
+            datetime(2026, 6, 1, tzinfo=timezone.utc),
+            "A radio map of the sky",
+            "https://m/1",
+            images=["https://img/a.png"],
+        ),
+        mr.Post(
+            "ASTRON",
+            "@astron@mastodon.nl",
+            datetime(2026, 5, 1, tzinfo=timezone.utc),
+            "LOFAR results",
+            "https://m/2",
+            images=[],
+        ),
     ]
     monkeypatch.setattr(tui, "gather_posts", lambda *a, **k: posts)
 

@@ -59,8 +59,7 @@ def plot_uv_coverage(uv: np.ndarray, ax: plt.Axes | None = None, **kwargs):
     return ax
 
 
-def show_image(image: np.ndarray, ax: plt.Axes | None = None, title: str | None = None,
-               **kwargs):
+def show_image(image: np.ndarray, ax: plt.Axes | None = None, title: str | None = None, **kwargs):
     """Display a 2-D image with a colorbar using the course defaults.
 
     Parameters

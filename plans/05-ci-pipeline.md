@@ -1,7 +1,16 @@
-# Plan 05 — Continuous integration pipeline 📋 Proposed
+# Plan 05 — Continuous integration pipeline ✅ Delivered
 
 > Flagged by **engineering (#1)** and **science-rigor (#1)** — the strongest cross-agent
 > signal. Scope: small–medium.
+>
+> **Delivered:** `.github/workflows/ci.yml` (ruff check + `ruff format --check` + `pytest`
+> with the `tui` extra + Part I `--nbmake` smoke-test + strict docs build, matrixed over
+> Python 3.10 and 3.12) and `.github/workflows/notebooks.yml` (weekly + manual full-notebook
+> nbmake run with all extras and a 600 s per-cell timeout). CI + Docs status badges added to
+> `README.md`; `src/` and `tests/` normalised with `ruff format` so the format gate is green.
+> **Follow-up:** the full notebook run leans on the synthetic-fallback design rather than
+> per-cell network markers — tagging the handful of genuinely network-only cells is left as a
+> later refinement if the scheduled run proves flaky.
 
 ## Context
 

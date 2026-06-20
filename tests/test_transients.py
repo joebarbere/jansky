@@ -22,8 +22,13 @@ def test_dm_search_recovers_true_dm():
     dt = 1e-3  # s
     true_dm = 150.0
     dynspec = transients.disperse_pulse(
-        n_time=512, freqs_mhz=freqs, dm=true_dm, dt=dt,
-        t0_index=50, amplitude=8.0, seed=1,
+        n_time=512,
+        freqs_mhz=freqs,
+        dm=true_dm,
+        dt=dt,
+        t0_index=50,
+        amplitude=8.0,
+        seed=1,
     )
     trials = np.arange(0, 300, 5.0)
     result = transients.dm_search(dynspec, freqs, dt, trials)

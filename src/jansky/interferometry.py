@@ -292,9 +292,7 @@ def cross_correlate(channel_a: np.ndarray, channel_b: np.ndarray) -> complex:
     return complex(np.mean(np.asarray(channel_a) * np.conj(np.asarray(channel_b))))
 
 
-def calibrate_phases(
-    channels: np.ndarray, reference: int = 0
-) -> np.ndarray:
+def calibrate_phases(channels: np.ndarray, reference: int = 0) -> np.ndarray:
     """Estimate per-receiver instrumental phase offsets from a boresight source.
 
     With a calibration source on boresight (geometric phase = 0), the
@@ -346,8 +344,9 @@ def _complex_rng(seed: int | None = 0):
     generator = np.random.default_rng(seed)
 
     def draw(size):
-        return (generator.normal(0, 1 / np.sqrt(2), size)
-                + 1j * generator.normal(0, 1 / np.sqrt(2), size))
+        return generator.normal(0, 1 / np.sqrt(2), size) + 1j * generator.normal(
+            0, 1 / np.sqrt(2), size
+        )
 
     return draw
 

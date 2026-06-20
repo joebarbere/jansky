@@ -12,8 +12,8 @@ def test_mad_sigma_robust_to_outliers():
     x = rng.normal(0, 1, 10000)
     base = rfi.mad_sigma(x)
     x[:50] = 1000.0  # strong RFI spikes
-    assert abs(rfi.mad_sigma(x) - base) < 0.1   # MAD barely moves
-    assert x.std() > 5                          # but the std is wrecked
+    assert abs(rfi.mad_sigma(x) - base) < 0.1  # MAD barely moves
+    assert x.std() > 5  # but the std is wrecked
 
 
 def test_flag_outliers_catches_spikes():

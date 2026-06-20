@@ -29,10 +29,12 @@ def test_spectrogram_roundtrip_npz(tmp_path):
 def test_guppi_roundtrip(tmp_path):
     rng = np.random.default_rng(1)
     nchan, ntime, npol = 4, 16, 2
-    volts = (rng.integers(-20, 20, (nchan, ntime, npol))
-             + 1j * rng.integers(-20, 20, (nchan, ntime, npol)))
+    volts = rng.integers(-20, 20, (nchan, ntime, npol)) + 1j * rng.integers(
+        -20, 20, (nchan, ntime, npol)
+    )
     path = formats.write_guppi(
-        tmp_path / "x.0000.raw", volts,
+        tmp_path / "x.0000.raw",
+        volts,
         header={"OBSFREQ": 1420.0, "TBIN": 1e-6, "SRC_NAME": "TESTSRC"},
     )
 
@@ -56,7 +58,10 @@ def test_sigmf_roundtrip(tmp_path):
     rng = np.random.default_rng(2)
     samples = (rng.normal(size=1000) + 1j * rng.normal(size=1000)).astype("complex64")
     formats.write_sigmf(
-        tmp_path / "rec", samples, sample_rate=2.4e6, center_freq=1.42e9,
+        tmp_path / "rec",
+        samples,
+        sample_rate=2.4e6,
+        center_freq=1.42e9,
     )
     back, meta = formats.read_sigmf(tmp_path / "rec")
     assert meta["global"]["core:datatype"] == "cf32_le"
@@ -77,6 +82,7 @@ def test_rss_handshake_and_sweep_encoding():
 
 def test_rss_handshake_rejects_bad_channel_count():
     import pytest
+
     with pytest.raises(ValueError):
         formats.rss_handshake(21_000_000, 5_000_000, 50)  # < 100
 
@@ -88,8 +94,11 @@ def test_rss_client_streams_to_mock_server():
     rng = np.random.default_rng(3)
     sent = [rng.integers(0, 4096, n_chan) for _ in range(4)]
     with formats.RSSClient(
-        center_hz=21_000_000, bandwidth_hz=5_000_000, n_channels=n_chan,
-        host=server.host, port=server.port,
+        center_hz=21_000_000,
+        bandwidth_hz=5_000_000,
+        n_channels=n_chan,
+        host=server.host,
+        port=server.port,
     ) as rss:
         for sweep in sent:
             rss.send_sweep(sweep)
@@ -104,6 +113,7 @@ def test_rss_client_streams_to_mock_server():
 
 def test_deferred_readers_raise():
     import pytest
+
     with pytest.raises(NotImplementedError):
         formats.read_sps("nope.sps")
     with pytest.raises(NotImplementedError):

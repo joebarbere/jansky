@@ -57,7 +57,9 @@ def test_errors_collected_not_raised(monkeypatch):
     monkeypatch.setattr(dw, "query_arxiv", boom)
     monkeypatch.setattr(dw, "page_hash", boom)
     state = {"arxiv_seen": {}, "page_hashes": {}}
-    report = dw.check(state, arxiv_feeds=[dw.ArxivFeed("f", "q")], watch_pages=[dw.WatchPage("p", "u")])
+    report = dw.check(
+        state, arxiv_feeds=[dw.ArxivFeed("f", "q")], watch_pages=[dw.WatchPage("p", "u")]
+    )
     assert len(report.errors) == 2
     assert report.new_papers == {} and report.changed_pages == []
 
@@ -89,5 +91,10 @@ def test_query_arxiv_parses_atom(monkeypatch):
 
     monkeypatch.setattr(dw.requests, "get", lambda *a, **k: _Resp())
     out = dw.query_arxiv(dw.ArxivFeed("t", "q"))
-    assert out == [{"id": "2601.12345v1", "title": "A radio burst",
-                    "link": "https://arxiv.org/abs/2601.12345v1"}]
+    assert out == [
+        {
+            "id": "2601.12345v1",
+            "title": "A radio burst",
+            "link": "https://arxiv.org/abs/2601.12345v1",
+        }
+    ]
