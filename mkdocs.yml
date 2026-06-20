@@ -76,4 +76,9 @@ nav:
       - "13. Pulsars": notebooks/13_pulsars.ipynb
       - "14. Multi-wavelength Diversion": notebooks/14_multiwavelength.ipynb
       - "15. Capstone": notebooks/15_capstone.ipynb
-  - References: references.md
+  - Reference:
+      - Glossary: glossary.md
+      - Mathematical Preliminaries: math-preliminaries.md
+      - Reading the Notation: notation.md
+      - Resources & Institutions: resources.md
+      - Bibliography: references.md
