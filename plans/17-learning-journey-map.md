@@ -1,6 +1,23 @@
-# Plan 17 — Learning-journey map & Maths-Lab wiring 📋 Proposed
+# Plan 17 — Learning-journey map & Maths-Lab wiring ◑ Mostly delivered
 
 > Flagged by **pedagogy (#1 top, plus #3)**. Scope: medium.
+>
+> **Delivered:**
+> - **Master course map** — new **`docs/learning-paths.md`**: a full Mermaid over **all 36
+>   chapters** with prerequisites and dashed edges to the Maths Lab, plus five **themed routes**
+>   (laptop-only, RTL-SDR, interferometry, pulsars & transients, just the physics) and a
+>   **Maths-Lab → chapter** service table (the "Ch 18 builds on Ch 13 + Lab B" visibility, in one
+>   page). Wired into `mkdocs.yml` nav and linked from `docs/index.md`.
+> - **Per-chapter header standard** — added the standardized prerequisites admonition
+>   (*Prerequisites · Maths Lab · time · difficulty*) and the Maths-Lab back-link requirement to
+>   `.claude/agents/notebook-author.md`, so every future chapter complies.
+>
+> **Remaining follow-up (mechanical, best done by agent fan-out):** retrofitting the prerequisites
+> admonition into the **headers of all 36 existing notebooks**, and adding the **bidirectional
+> in-notebook back-links** between each science chapter and the Lab(s) it uses. The map and the
+> service table already give learners this information centrally; the per-notebook rollout is a
+> token-heavy sweep across 36 `.ipynb` files (each edit must keep `nbmake` + `--strict` green) and
+> is left for a dedicated pass.
 
 ## Context
 
