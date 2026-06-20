@@ -49,6 +49,10 @@ flowchart TD
   I --> II --> III --> IV
 ```
 
+That's the linear core (Chapters 1–15). The course actually has **36 chapters** plus a Maths
+Lab — see **[Learning Paths](learning-paths.md)** for the full map, every chapter's prerequisites,
+and themed routes (laptop-only, RTL-SDR, interferometry, pulsars & transients, just the physics).
+
 Prefer pictures to prose? Start with the **[Visual Tour](visual-tour.md)** — diagrams, plots,
 photographs, and videos for the whole course.
 

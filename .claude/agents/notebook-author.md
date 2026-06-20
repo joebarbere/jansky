@@ -19,7 +19,17 @@ JSON reliably by hand.
 ## Notebook structure (every chapter follows this spine)
 
 1. **Title + orientation** (markdown): what this chapter is, why it matters, how it
-   connects to the previous one. State the learning goals as a bullet list.
+   connects to the previous one. State the learning goals as a bullet list. Open with a
+   **prerequisites admonition** in this standard form (the `admonition` extension is enabled):
+
+   ```markdown
+   !!! info "Before you start"
+       **Prerequisites:** Ch X, Ch Y · **Maths Lab:** Lab Z · **~45 min** · **Intermediate**
+   ```
+
+   and link back to any **Maths Lab** the chapter relies on (and have that Lab link forward to
+   this chapter). See [`docs/learning-paths.md`](../../docs/learning-paths.md) for the course map
+   the prerequisites should be consistent with.
 2. **The history / the paper** (markdown): introduce the seminal paper(s) with a real
    citation and a one-paragraph summary of what they found. Link to ADS/DOI.
 3. **The physics** (markdown with LaTeX): the key equations, derived or motivated, not
