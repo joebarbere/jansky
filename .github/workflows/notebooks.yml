@@ -35,7 +35,7 @@ jobs:
         run: >-
           uv sync
           --extra pulsar --extra dynamics --extra sdr --extra seti
-          --extra formats --extra hi --extra tui
+          --extra formats --extra hi --extra tui --extra ml
 
       - name: Execute all notebooks
         # A generous per-cell timeout lets the genuinely heavy cells finish; the

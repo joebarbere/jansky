@@ -87,6 +87,16 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   the microwave. Discovered as excess antenna temperature by Penzias & Wilson (1965); see
   Chapter 22.
 
+**CNN (convolutional neural network)**
+: A neural network whose layers slide learned filters across the input, giving it
+  translation invariance — well matched to image-like data such as the dynamic spectra used to
+  classify FRBs vs RFI (Chapter 38).
+
+**Confusion matrix**
+: A table of a classifier's predictions vs the true labels (true/false positives and
+  negatives), from which accuracy, precision, and recall are read. The basic scorecard for a
+  classification model (Chapter 38).
+
 **CME (coronal mass ejection)**
 : An eruption of plasma from the Sun whose shock drives a type II radio burst; its speed can be
   read off the burst's frequency drift (Chapter 23).
@@ -250,6 +260,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 
 ## M
 
+**Machine learning (ML)**
+: Algorithms that learn a task from labelled (or unlabelled) examples rather than from
+  hand-coded rules. In radio astronomy, used for FRB/RFI classification, source-finding, and
+  parameter estimation — powerful but data-hungry, and only as good as its training set
+  (Chapter 38).
+
 **Macquart relation**
 : The roughly linear relation between a fast radio burst's dispersion measure and its redshift,
   which turns FRBs into probes of the universe's diffuse "missing" baryons (Chapter 18).
@@ -346,6 +362,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   transparent enough for ground-based radio astronomy, bounded below by the ionosphere and
   above by molecular (mainly water) absorption (Chapter 1).
 
+**ROC curve & AUC**
+: The Receiver Operating Characteristic plots a classifier's true-positive rate against its
+  false-positive rate as the decision threshold varies; the Area Under the Curve (AUC, 0.5 =
+  chance, 1.0 = perfect) summarises it in one number. The standard way to compare detectors —
+  e.g. a learned classifier vs a matched filter (Chapter 38).
+
 **RASDR (Radio Astronomy SDR)**
 : A LimeSDR-based amateur radio-astronomy receiver (myriadrf) that streams spectra to Radio-Sky
   Spectrograph over a TCP protocol (Chapter 30).
@@ -438,6 +460,11 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   radiometer equation and the single most important sensitivity number (Chapters 3–4).
 
 ## T
+
+**Training / validation / test split**
+: Partitioning labelled data so a model *learns* on one subset, is *tuned* on a second, and is
+  *evaluated* on a held-out third it never saw. Reporting performance on the test set guards
+  against over-fitting and over-optimistic accuracy (Chapter 38).
 
 **Tapering / weighting**
 : How visibilities are weighted before imaging, trading resolution against sensitivity.
