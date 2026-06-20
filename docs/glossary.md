@@ -72,10 +72,28 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   repeatedly subtracting a scaled dirty beam at the brightest pixel, then restore with a
   clean beam. The workhorse of radio imaging (Chapter 9).
 
+**Closure amplitude**
+: A ratio of four visibility amplitudes ($|V_{ij}||V_{kl}| / |V_{ik}||V_{jl}|$) that cancels
+  antenna-based *gain* errors. With closure phase, the robust observable that lets sparse VLBI
+  arrays like the EHT image black holes (Chapter 19).
+
 **Closure phase**
 : The sum of visibility phases around a triangle of baselines, which cancels all
   antenna-based phase errors. It is therefore a robust observable, central to VLBI and to
-  self-calibration.
+  self-calibration (Chapter 19).
+
+**CMB (cosmic microwave background)**
+: The relic radiation of the hot early universe — a near-perfect 2.725 K blackbody peaking in
+  the microwave. Discovered as excess antenna temperature by Penzias & Wilson (1965); see
+  Chapter 22.
+
+**CME (coronal mass ejection)**
+: An eruption of plasma from the Sun whose shock drives a type II radio burst; its speed can be
+  read off the burst's frequency drift (Chapter 23).
+
+**CO line**
+: The rotational transitions of carbon monoxide (J=1→0 at 115 GHz and its harmonics), the
+  standard millimetre tracer of cold molecular gas (Chapter 24).
 
 **Continuum**
 : Broadband emission that varies smoothly with frequency, as opposed to narrow spectral
@@ -101,6 +119,15 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : Recovering the true sky from a dirty image by removing the effect of the dirty beam.
   Because *uv* coverage is incomplete, this is an ill-posed problem that needs an algorithm
   like CLEAN to constrain (Chapter 9).
+
+**De-dispersion**
+: Removing the frequency-dependent dispersion delay by shifting each channel back in time so a
+  broadband pulse re-aligns; the core of pulsar and FRB searches (Chapters 13, 18).
+
+**Doppler drift**
+: The slow change in a narrowband signal's frequency from the relative acceleration of
+  transmitter and receiver (e.g. a planet's spin and orbit). SETI searches integrate along
+  trial drift rates to recover such signals (Chapter 21).
 
 **Dirty beam / dirty image**
 : The point-spread function produced by the array's actual (incomplete) *uv* sampling, and
@@ -155,7 +182,25 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   $G = A_e/(2k_B)$ in K/Jy. In calibration, "gains" also means the per-antenna complex
   amplitude and phase corrections solved for during reduction.
 
+**GNU Radio**
+: An open-source toolkit for building signal-processing "flowgraphs" from blocks
+  (source → filter → FFT → sink); the basis of many amateur radio-astronomy receivers (Chapter 28).
+
+**GUPPI raw**
+: A voltage-data file format (FITS-like ASCII header + 8-bit complex samples) from Green Bank /
+  Breakthrough Listen backends; the input to the SETI search pipeline (Chapter 16).
+
 ## H
+
+**Hanbury Brown–Twiss (HBT) / intensity interferometry**
+: Correlating the *intensity* fluctuations of two detectors rather than their amplitudes;
+  recovers a source's angular size while needing only modest timing — sidestepping the
+  phase-coherence burden of ordinary interferometry (Chapter 25).
+
+**Hellings–Downs curve**
+: The characteristic quadrupolar correlation between pulsar pairs as a function of their angular
+  separation — the fingerprint of a gravitational-wave background in a pulsar timing array
+  (Chapter 20).
 
 **HI / 21 cm line**
 : The spectral line of neutral atomic hydrogen at 1420.4 MHz (wavelength 21 cm), from the
@@ -185,6 +230,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   for Karl Jansky, who in 1932 first detected radio waves from the Milky Way — and the
   namesake of this course.
 
+## K
+
+**KrakenSDR**
+: A five-channel, phase-coherent RTL-SDR (all sharing one clock) that makes amateur
+  interferometry and radio direction-finding practical (Chapter 17).
+
 ## L
 
 **LSR (Local Standard of Rest)**
@@ -194,12 +245,33 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 
 ## M
 
+**Macquart relation**
+: The roughly linear relation between a fast radio burst's dispersion measure and its redshift,
+  which turns FRBs into probes of the universe's diffuse "missing" baryons (Chapter 18).
+
+**Maser**
+: A microwave laser — naturally occurring, compact, very bright spectral-line emission (e.g.
+  H₂O at 22 GHz). Masers orbiting in a Keplerian disk weighed the NGC 4258 black hole (Chapter 24).
+
+**Matched filter**
+: The optimal linear detector for a *known* signal shape in white noise: correlate the data with
+  a copy of the template. De-dispersion and the SETI drift search are matched filters
+  (Chapters 18, 21; Maths Lab B).
+
 **Measurement Set (MS)**
 : CASA's on-disk data format for visibility data: a set of tables holding the correlated
   data plus all the metadata (antennas, frequencies, pointing). The standard input for
   Chapter 12.
 
+**Meteor scatter**
+: Radio reflection off the ionised trail of a meteor; forward-scattering a distant transmitter
+  lets amateurs count meteors as brief "pings" (Chapter 26).
+
 ## N
+
+**Nanohertz gravitational waves**
+: Gravitational waves with ~year periods, from supermassive-black-hole binaries — detectable only
+  by pulsar timing arrays via the Hellings–Downs correlation (Chapter 20).
 
 **Noise temperature ($T_N$)**
 : The temperature of a fictitious resistor that would generate the same noise power as a
@@ -222,6 +294,14 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : The point on the sky to which the interferometer's phases are referenced (the assumed
   centre of the field). Visibility phase measures position *relative to* the phase centre.
 
+**PICTOR**
+: A free online hydrogen-line radio telescope you can point from a web browser; powered by the
+  VIRGO package (Chapter 29).
+
+**Plasma frequency ($f_p$)**
+: The natural oscillation frequency of an ionised gas, $f_p \propto \sqrt{n_e}$. Radio waves
+  below it cannot propagate; in the solar corona it sets the frequency of solar bursts (Chapter 23).
+
 **Polarisation / Stokes parameters**
 : The orientation state of the electromagnetic wave. The four **Stokes parameters** $(I, Q,
   U, V)$ fully describe it: $I$ is total intensity, $Q$ and $U$ linear polarisation, $V$
@@ -237,6 +317,10 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   us as regular pulses — a cosmic clock. Discovered by Bell and Hewish in 1967; the subject
   of Chapter 13.
 
+**Pulsar timing array (PTA)**
+: A set of millisecond pulsars timed for years as a galaxy-scale gravitational-wave detector.
+  NANOGrav/EPTA/PPTA reported evidence for a nanohertz GW background in 2023 (Chapter 20).
+
 ## Q
 
 **Quasar**
@@ -249,6 +333,10 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : The range of frequencies (roughly 10 MHz to ~1 THz) at which Earth's atmosphere is
   transparent enough for ground-based radio astronomy, bounded below by the ionosphere and
   above by molecular (mainly water) absorption (Chapter 1).
+
+**RASDR (Radio Astronomy SDR)**
+: A LimeSDR-based amateur radio-astronomy receiver (myriadrf) that streams spectra to Radio-Sky
+  Spectrograph over a TCP protocol (Chapter 30).
 
 **Radiometer equation**
 : The relation giving the noise on a measurement,
@@ -271,6 +359,10 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   2k_B T_{\text{sys}} / A_e$, in janskys. A single number summarising an antenna's
   sensitivity — lower is better.
 
+**SETI (search for extraterrestrial intelligence)**
+: The radio search for artificial narrowband signals (technosignatures), told apart from nature
+  by being narrowband and Doppler-drifting (Chapter 21).
+
 **Self-calibration**
 : Using a strong source in the field itself to solve for time-varying antenna gains and
   phases, then re-imaging — iterating image and calibration together. It dramatically
@@ -281,15 +373,27 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   currently on your meridian. A sidereal day is ~4 minutes shorter than a solar day — the
   same 4 minutes by which Jansky's hiss rose earlier each day.
 
+**SigMF**
+: An open "Signal Metadata Format" for SDR recordings — a JSON metadata sidecar
+  (`.sigmf-meta`) plus a raw binary data file (`.sigmf-data`) (Chapter 16).
+
 **Spectral index ($\alpha$)**
 : The power-law slope of a source's spectrum, $S_\nu \propto \nu^{\alpha}$. A steep negative
   index signals synchrotron emission; a flatter or positive one suggests thermal or
   self-absorbed sources — the basis of separating emission mechanisms (Chapter 2).
 
+**Spectral kurtosis**
+: A statistic that flags RFI by spotting signals too steady (continuous-wave) or too spiky to be
+  natural Gaussian noise; it is ≈ 1 for clean noise (Maths Lab C).
+
 **Spectral line**
 : Emission or absorption confined to a narrow range of frequencies, from a specific atomic
   or molecular transition (e.g. HI at 1420 MHz). Its Doppler shift gives velocity; its width
   gives temperature and turbulence.
+
+**Sudden ionospheric disturbance (SID)**
+: A jump in a VLF transmitter's received amplitude when a solar flare's X-rays ionise the
+  ionospheric D-layer — the basis of SuperSID flare monitoring (Chapter 27).
 
 **Synchrotron radiation**
 : Radiation from relativistic electrons spiralling in magnetic fields. It dominates the radio
@@ -313,6 +417,14 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   resolution; **Briggs/robust** weighting tunes smoothly between the two. *Tapering* further
   down-weights long baselines to emphasise extended structure (Chapters 8–9).
 
+**Technosignature**
+: An observable sign of technology — for radio, an artificial narrowband transmission — sought by
+  SETI (Chapter 21).
+
+**Type II burst**
+: A slow-drifting solar radio burst produced by a shock (often a CME) climbing outward through
+  the corona; its frequency drift gives the shock speed (Chapter 23).
+
 ## U
 
 **u-v plane / visibility**
@@ -322,6 +434,10 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   (Chapter 8).
 
 ## V
+
+**VIRGO**
+: An open-source Python package for single-dish spectral-line and continuum radio astronomy; the
+  engine behind the PICTOR online telescope (Chapters 16, 29).
 
 **VLBI (very long baseline interferometry)**
 : Interferometry with antennas thousands of kilometres apart — even on different continents —

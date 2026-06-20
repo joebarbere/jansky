@@ -34,6 +34,9 @@ to discover more.
 | Heino Falcke | `@hfalcke@mastodon.social` | Professor of Astrophysics, Radboud University; Event Horizon Telescope | [profile](https://mastodon.social/@hfalcke) |
 | Robert Minchin | `@Robminchin@mastodon.online` | Astronomer at NRAO; formerly Arecibo & SOFIA | [profile](https://mastodon.online/@Robminchin) |
 | Juan Carlos Muñoz | `@astro_jcm@mastodon.online` | Astronomer & science communicator; Media Officer at ESO | [profile](https://mastodon.online/@astro_jcm) |
+| Benjamin Winkel | `@HIprocessor@mastodon.social` | Radio astronomer, MPIfR/Effelsberg; HI4PI / EBHIS surveys; CRAF chair | [profile](https://mastodon.social/@HIprocessor) |
+| Andreas Brunthaler | `@brunthal@mastodon.social` | Astronomer, MPIfR; Milky Way & Sgr A* VLBI (Reid & Brunthaler 2004) | [profile](https://mastodon.social/@brunthal) |
+| Rami Mandow (CosmicRami) | `@CosmicRami@aus.social` | Pulsar astronomer (Parkes "Murriyang") & science communicator | [profile](https://aus.social/@CosmicRami) |
 
 ## Instances, groups & hashtags
 
