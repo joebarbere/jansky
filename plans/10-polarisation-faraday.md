@@ -1,6 +1,26 @@
-# Plan 10 — Polarisation & Faraday rotation chapter 📋 Proposed
+# Plan 10 — Polarisation & Faraday rotation chapter ✅ Delivered
 
 > Flagged by **research-currency (#1 top)**. Scope: medium.
+>
+> **Delivered:**
+> - **New chapter** `notebooks/37_polarisation_faraday.ipynb` (Part III) — Stokes parameters,
+>   the Faraday λ² law and rotation measure, and **RM synthesis** / Faraday tomography. Recovers
+>   an injected RM two ways (χ-vs-λ² fit and RM synthesis) on synthetic ASKAP/POSSUM-like spectra,
+>   noiseless and noisy; shows the RMSF as the Faraday "dirty beam" across three survey bands;
+>   includes a cosmic-magnetism / RM-grid section. Runs fully offline; 7 committed figures. Cites
+>   Burn (1966), Brentjens & de Bruyn (2005), Dreher et al. (1987), Garrington et al. (1988), with
+>   back-links to the timeline. (Authored by the `notebook-author` agent; reviewed by
+>   `science-reviewer`.)
+> - **Helper** `src/jansky/polarization.py` — `stokes_linear`, `linear_polarization_fraction`,
+>   `polarization_angle`, `complex_polarization`, `faraday_rotate`, `rotation_measure_fit`, `rmsf`,
+>   `rm_synthesis` — with `tests/test_polarization.py` (RM synthesis recovers the injected RM;
+>   Stokes round-trips; RMSF normalised). Registered in `jansky.__init__`.
+> - **Docs** — glossary entries (Faraday rotation, polarisation fraction & angle, rotation
+>   measure, RM synthesis, Stokes), notation rows (χ, RM, I/Q/U/V), nav entry, and integration
+>   into `docs/learning-paths.md` (map node + interferometry route + Maths-Lab A service row).
+>
+> Verification: `pytest` 106 passed/1 skipped (incl. nbmake on Ch 37), `ruff`, `mypy`, and
+> `mkdocs --strict` all green.
 
 ## Context
 

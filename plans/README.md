@@ -36,7 +36,7 @@ implemented. ⭐ marks an agent top-pick or a cross-agent consensus item.
 | [07 — Notebook output hygiene](07-notebook-hygiene.md) | Engineering | medium |
 | [08 — Quality tooling (types, coverage, contributing, link-check)](08-quality-tooling.md) ✅ | Engineering | medium |
 | ⭐ [09 — Scientific-accuracy hardening](09-accuracy-hardening.md) ✅ | Rigor | small–medium |
-| ⭐ [10 — Polarisation & Faraday rotation chapter](10-polarisation-faraday.md) | Content | medium |
+| ⭐ [10 — Polarisation & Faraday rotation chapter](10-polarisation-faraday.md) ✅ | Content | medium |
 | ⭐ [11 — SKA-era & 2025–2026 refresh](11-ska-era-refresh.md) ✅ | Content | small–medium |
 | [12 — Machine learning in radio astronomy](12-ml-in-radio.md) | Content | medium |
 | [13 — RFI mitigation & calibration chapters](13-rfi-and-calibration-chapters.md) | Content | medium–large |
