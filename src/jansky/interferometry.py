@@ -24,6 +24,11 @@ __all__ = [
     "dirty_image",
     "hogbom_clean",
     "CleanResult",
+    "simulate_coherent_channels",
+    "cross_correlate",
+    "calibrate_phases",
+    "fringe_phase",
+    "estimate_source_angle",
 ]
 
 
@@ -211,3 +216,131 @@ def hogbom_clean(
         residual = residual - flux * shifted_beam
 
     return CleanResult(model=model, residual=residual, components=components)
+
+
+# --------------------------------------------------------------------------- #
+# Coherent multi-receiver interferometry (e.g. KrakenSDR: 5 phase-coherent
+# RTL-SDR channels on one clock). A point source's wavefront reaches receiver i
+# at position x_i with a geometric phase 2*pi*x_i*sin(theta)/lambda; each
+# receiver adds an unknown instrumental phase offset (the calibration problem).
+# Cross-correlating two channels gives a complex "visibility" whose phase
+# encodes the source direction once the instrumental offsets are removed.
+# These power the KrakenSDR chapter and connect back to Chapters 7-8.
+# --------------------------------------------------------------------------- #
+def simulate_coherent_channels(
+    positions: np.ndarray,
+    source_angle: float,
+    wavelength: float,
+    n_samples: int = 4096,
+    snr: float = 5.0,
+    phase_offsets: np.ndarray | None = None,
+    seed: int | None = 0,
+) -> np.ndarray:
+    """Simulate complex baseband from a coherent multi-receiver array.
+
+    All receivers share one clock (as in a KrakenSDR), so they see a common
+    source signal modulated by each receiver's geometric + instrumental phase.
+
+    Parameters
+    ----------
+    positions
+        1-D receiver positions along the array axis (same length unit as
+        ``wavelength``), shape ``(n_rx,)``.
+    source_angle
+        Source angle from boresight (broadside), in radians.
+    wavelength
+        Observing wavelength.
+    n_samples
+        Number of complex samples per receiver.
+    snr
+        Voltage signal-to-noise ratio per receiver.
+    phase_offsets
+        Per-receiver instrumental phase offsets (radians). Default: zeros.
+        Pass random offsets to exercise calibration.
+    seed
+        Seed for reproducibility.
+
+    Returns
+    -------
+    numpy.ndarray
+        Complex array ``(n_rx, n_samples)``.
+    """
+    positions = np.asarray(positions, dtype=float)
+    n_rx = positions.size
+    if phase_offsets is None:
+        phase_offsets = np.zeros(n_rx)
+    phase_offsets = np.asarray(phase_offsets, dtype=float)
+
+    generator = _complex_rng(seed)
+    # Common source signal (unit-power complex Gaussian) seen by every receiver.
+    source = generator(n_samples)
+    geometric = 2 * np.pi * positions * np.sin(source_angle) / wavelength
+    total_phase = (geometric + phase_offsets)[:, None]
+    signal = snr * source[None, :] * np.exp(1j * total_phase)
+    noise = generator((n_rx, n_samples))
+    return signal + noise
+
+
+def cross_correlate(channel_a: np.ndarray, channel_b: np.ndarray) -> complex:
+    """Complex visibility between two channels: ``<a · conj(b)>``."""
+    return complex(np.mean(np.asarray(channel_a) * np.conj(np.asarray(channel_b))))
+
+
+def calibrate_phases(
+    channels: np.ndarray, reference: int = 0
+) -> np.ndarray:
+    """Estimate per-receiver instrumental phase offsets from a boresight source.
+
+    With a calibration source on boresight (geometric phase = 0), the
+    cross-correlation phase between receiver ``i`` and the reference is exactly
+    the instrumental phase difference. Returns offsets *relative to* the
+    reference receiver, suitable for subtracting before imaging.
+
+    Parameters
+    ----------
+    channels
+        ``(n_rx, n_samples)`` complex data of a boresight calibration source.
+    reference
+        Index of the reference receiver.
+
+    Returns
+    -------
+    numpy.ndarray
+        Estimated phase offsets (radians), ``offsets[reference] == 0``.
+    """
+    channels = np.asarray(channels)
+    ref = channels[reference]
+    return np.array([np.angle(cross_correlate(ch, ref)) for ch in channels])
+
+
+def fringe_phase(baseline: float, source_angle: float, wavelength: float) -> float:
+    """Expected interferometer fringe phase ``2*pi*b*sin(theta)/lambda`` (radians)."""
+    return 2 * np.pi * baseline * np.sin(source_angle) / wavelength
+
+
+def estimate_source_angle(
+    channel_a: np.ndarray,
+    channel_b: np.ndarray,
+    baseline: float,
+    wavelength: float,
+) -> float:
+    """Recover a source angle from the measured fringe phase of one baseline.
+
+    Inverts :func:`fringe_phase`: ``theta = arcsin(phase * lambda / (2*pi*b))``.
+    Unambiguous only for baselines shorter than ~lambda/2 (otherwise the phase
+    wraps); longer baselines give finer resolution but aliased angles.
+    """
+    phase = np.angle(cross_correlate(channel_a, channel_b))
+    arg = phase * wavelength / (2 * np.pi * baseline)
+    return float(np.arcsin(np.clip(arg, -1.0, 1.0)))
+
+
+def _complex_rng(seed: int | None = 0):
+    """Return a function drawing unit-power complex Gaussian samples."""
+    generator = np.random.default_rng(seed)
+
+    def draw(size):
+        return (generator.normal(0, 1 / np.sqrt(2), size)
+                + 1j * generator.normal(0, 1 / np.sqrt(2), size))
+
+    return draw

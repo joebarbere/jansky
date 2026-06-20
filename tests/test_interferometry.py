@@ -61,3 +61,43 @@ def test_clean_threshold_stops_early():
     result = interferometry.hogbom_clean(dirty, beam, gain=0.5, n_iter=1000, threshold=0.1)
     # With a clean delta beam, geometric decay stops once peak < 0.1.
     assert np.abs(result.residual).max() <= 0.1
+
+
+def test_coherent_calibration_recovers_offsets():
+    import numpy as np
+    lam = 1.0
+    pos = np.arange(5) * 0.5
+    offsets = np.array([0.0, 1.2, -0.7, 2.5, -1.9])
+    cal = interferometry.simulate_coherent_channels(
+        pos, 0.0, lam, snr=30, phase_offsets=offsets, seed=1
+    )
+    est = interferometry.calibrate_phases(cal)
+    # wrap difference into (-pi, pi]; should be tiny at high SNR
+    err = np.angle(np.exp(1j * (est - offsets)))
+    assert np.max(np.abs(err)) < 0.02
+
+
+def test_coherent_recovers_source_angle():
+    import numpy as np
+    lam = 1.0
+    pos = np.arange(5) * 0.5
+    offsets = np.array([0.0, 1.2, -0.7, 2.5, -1.9])
+    true_angle = np.radians(18.0)
+    cal = interferometry.simulate_coherent_channels(
+        pos, 0.0, lam, snr=30, phase_offsets=offsets, seed=1
+    )
+    est = interferometry.calibrate_phases(cal)
+    obs = interferometry.simulate_coherent_channels(
+        pos, true_angle, lam, snr=30, phase_offsets=offsets, seed=2
+    )
+    corr = obs * np.exp(-1j * est)[:, None]
+    angle = interferometry.estimate_source_angle(corr[1], corr[0], baseline=0.5, wavelength=lam)
+    assert abs(np.degrees(angle) - 18.0) < 1.0
+
+
+def test_fringe_phase_zero_on_boresight():
+    import numpy as np
+    assert interferometry.fringe_phase(2.0, 0.0, 0.21) == 0.0
+    # and matches 2*pi*b*sin(theta)/lambda
+    val = interferometry.fringe_phase(2.0, np.radians(30), 0.21)
+    assert np.isclose(val, 2 * np.pi * 2.0 * 0.5 / 0.21)
