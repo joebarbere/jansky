@@ -50,6 +50,22 @@ dynamics = [
 sdr = [
     "pyrtlsdr>=0.3",
 ]
+# SETI / Breakthrough Listen stack (Chapter 16): GUPPI/filterbank I/O and the
+# Doppler-drift search. Heavy (some pieces want a GPU) — keep optional.
+seti = [
+    "blimpy>=2.1",
+    "turbo-seti>=2.3",
+]
+# Interferometry data interchange (Chapter 16): pyuvdata round-trips between
+# Measurement Set, UVFITS and UVH5; SigMF helpers.
+formats = [
+    "pyuvdata>=3.0",
+    "sigmf>=1.2",
+]
+# Single-dish HI/continuum with VIRGO (the engine behind PICTOR).
+hi = [
+    "astro-virgo>=2.0",
+]
 
 [project.urls]
 Homepage = "https://github.com/joebarbere/jansky"
