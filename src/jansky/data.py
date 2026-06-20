@@ -111,9 +111,7 @@ def fetch(name: str, *, force: bool = False) -> Path:
         offline synthetic alternative when one is available.
     """
     if name not in DATASETS:
-        raise KeyError(
-            f"Unknown dataset {name!r}. Known datasets: {', '.join(list_datasets())}"
-        )
+        raise KeyError(f"Unknown dataset {name!r}. Known datasets: {', '.join(list_datasets())}")
     spec = DATASETS[name]
     target = data_dir() / spec.filename
     if target.exists() and not force:
@@ -127,9 +125,7 @@ def fetch(name: str, *, force: bool = False) -> Path:
             if name == "hi4pi-sample"
             else ""
         )
-        raise RuntimeError(
-            f"Failed to download {name!r} from {spec.url}: {exc}.{hint}"
-        ) from exc
+        raise RuntimeError(f"Failed to download {name!r} from {spec.url}: {exc}.{hint}") from exc
     return target
 
 
@@ -142,9 +138,10 @@ def _download(url: str, target: Path) -> None:
     with requests.get(url, stream=True, timeout=60) as resp:
         resp.raise_for_status()
         total = int(resp.headers.get("content-length", 0))
-        with open(tmp, "wb") as fh, tqdm(
-            total=total, unit="B", unit_scale=True, desc=target.name
-        ) as bar:
+        with (
+            open(tmp, "wb") as fh,
+            tqdm(total=total, unit="B", unit_scale=True, desc=target.name) as bar,
+        ):
             for chunk in resp.iter_content(chunk_size=1 << 16):
                 fh.write(chunk)
                 bar.update(len(chunk))
@@ -185,9 +182,7 @@ def synthetic_hi_cube(
     # Centre velocity sweeps with position to mimic differential rotation.
     centre = v_lsr + n_chan / 2 + 0.15 * (xx - n_pix / 2)
     width = 4.0
-    cube = np.exp(
-        -0.5 * ((channels[:, None, None] - centre[None, :, :]) / width) ** 2
-    )
+    cube = np.exp(-0.5 * ((channels[:, None, None] - centre[None, :, :]) / width) ** 2)
     cube += rng.normal(0.0, 0.02, size=cube.shape)
     return cube
 

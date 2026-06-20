@@ -33,10 +33,12 @@ class PostItem(ListItem):
         boost = " \U0001f501" if post.boosted else ""
         camera = " \U0001f5bc" if post.images else ""
         first_line = (post.text.splitlines() or [""])[0]
-        super().__init__(Label(
-            f"[b]{escape(post.author)}[/b]{boost}{camera}\n"
-            f"[dim]{when}[/dim]  {escape(first_line[:60])}"
-        ))
+        super().__init__(
+            Label(
+                f"[b]{escape(post.author)}[/b]{boost}{camera}\n"
+                f"[dim]{when}[/dim]  {escape(first_line[:60])}"
+            )
+        )
         self.post = post
 
 
@@ -87,8 +89,11 @@ class MastodonApp(App):
     @work(thread=True, exclusive=True)
     def _load_posts(self) -> None:
         posts = gather_posts(
-            self._handles, self._per_account,
-            query=self._query, accounts=self._accounts, on_error=lambda h, e: None,
+            self._handles,
+            self._per_account,
+            query=self._query,
+            accounts=self._accounts,
+            on_error=lambda h, e: None,
         )
         self.call_from_thread(self._populate, posts)
 
@@ -119,9 +124,11 @@ class MastodonApp(App):
         detail.remove_children()
         when = post.created_at.astimezone().strftime("%Y-%m-%d %H:%M")
         boost = "  \U0001f501 boosted" if post.boosted else ""
-        detail.mount(Static(
-            f"[b]{escape(post.author)}[/b]  [dim]{escape(post.handle)}[/dim]\n[dim]{when}{boost}[/dim]"
-        ))
+        detail.mount(
+            Static(
+                f"[b]{escape(post.author)}[/b]  [dim]{escape(post.handle)}[/dim]\n[dim]{when}{boost}[/dim]"
+            )
+        )
         detail.mount(Static(post.text or "(no text)", markup=False))
         if post.url:
             detail.mount(Static(f"{post.url}   (press o to open)", markup=False))

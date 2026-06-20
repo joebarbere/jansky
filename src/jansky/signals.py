@@ -134,8 +134,9 @@ def integrate_noise(
     return RadiometerResult(times=times, estimate=estimate, expected_sigma=expected_sigma)
 
 
-def power_law(frequency: np.ndarray, amplitude: float, spectral_index: float,
-              reference: float = 1.0) -> np.ndarray:
+def power_law(
+    frequency: np.ndarray, amplitude: float, spectral_index: float, reference: float = 1.0
+) -> np.ndarray:
     """Power-law flux density :math:`S(\\nu) = A (\\nu/\\nu_0)^{\\alpha}`.
 
     Non-thermal synchrotron sources follow such a power law with a negative

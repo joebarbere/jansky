@@ -1,0 +1,44 @@
+name: Full notebook run
+
+# Weekly (and on-demand) execution of every notebook via nbmake. This is the
+# real test of the course's headline promise — "complete the entire course
+# offline" — because all 36 chapters import src/jansky and degrade to synthetic
+# data when a network/hardware source is unavailable. Kept off the PR critical
+# path because it is slow; it catches helper/astropy/archive drift that the
+# Part I smoke-test in ci.yml cannot.
+
+on:
+  schedule:
+    # Mondays at 06:00 UTC.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: notebooks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-all:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python 3.12
+        run: uv python install 3.12
+
+      - name: Sync (all optional extras so every chapter's imports resolve)
+        run: >-
+          uv sync
+          --extra pulsar --extra dynamics --extra sdr --extra seti
+          --extra formats --extra hi --extra tui
+
+      - name: Execute all notebooks
+        # A generous per-cell timeout lets the genuinely heavy cells finish; the
+        # notebooks fall back to synthetic data when an archive/hardware source
+        # is unreachable, so the run does not depend on external services.
+        run: uv run pytest --nbmake --nbmake-timeout=600 notebooks/*.ipynb

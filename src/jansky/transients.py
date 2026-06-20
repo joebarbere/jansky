@@ -143,8 +143,9 @@ def dm_search(
     dm_trials = np.asarray(dm_trials, dtype=float)
     snr = np.array([_snr(dedisperse(dynspec, freqs_mhz, dm, dt)) for dm in dm_trials])
     best = int(np.argmax(snr))
-    return DMSearchResult(dms=dm_trials, snr=snr, best_dm=float(dm_trials[best]),
-                          best_snr=float(snr[best]))
+    return DMSearchResult(
+        dms=dm_trials, snr=snr, best_dm=float(dm_trials[best]), best_snr=float(snr[best])
+    )
 
 
 def boxcar_snr(series: np.ndarray, widths: np.ndarray) -> tuple[float, int, int]:

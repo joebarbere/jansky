@@ -134,7 +134,9 @@ def fetch_account_posts(handle: str, limit: int = 5, timeout: float = 15.0) -> l
 
     lookup = requests.get(
         f"{base}/api/v1/accounts/lookup",
-        params={"acct": user}, headers=headers, timeout=timeout,
+        params={"acct": user},
+        headers=headers,
+        timeout=timeout,
     )
     lookup.raise_for_status()
     account = lookup.json()
@@ -144,7 +146,8 @@ def fetch_account_posts(handle: str, limit: int = 5, timeout: float = 15.0) -> l
     resp = requests.get(
         f"{base}/api/v1/accounts/{account_id}/statuses",
         params={"limit": limit, "exclude_replies": "true"},
-        headers=headers, timeout=timeout,
+        headers=headers,
+        timeout=timeout,
     )
     resp.raise_for_status()
 
@@ -153,18 +156,21 @@ def fetch_account_posts(handle: str, limit: int = 5, timeout: float = 15.0) -> l
         boosted = status.get("reblog") is not None
         source = status["reblog"] if boosted else status
         images = [
-            m["url"] for m in source.get("media_attachments", [])
+            m["url"]
+            for m in source.get("media_attachments", [])
             if m.get("type") == "image" and m.get("url")
         ]
-        posts.append(Post(
-            author=display,
-            handle=handle,
-            created_at=_parse_dt(source.get("created_at", "")),
-            text=strip_html(source.get("content", "")),
-            url=source.get("url", ""),
-            images=images,
-            boosted=boosted,
-        ))
+        posts.append(
+            Post(
+                author=display,
+                handle=handle,
+                created_at=_parse_dt(source.get("created_at", "")),
+                text=strip_html(source.get("content", "")),
+                url=source.get("url", ""),
+                images=images,
+                boosted=boosted,
+            )
+        )
     return posts
 
 
@@ -244,22 +250,27 @@ def run_tui(
             "    uv sync --extra tui\n"
             f"(missing: {exc.name})"
         ) from exc
-    MastodonApp(
-        handles=handles, per_account=per_account, query=query, accounts=accounts
-    ).run()
+    MastodonApp(handles=handles, per_account=per_account, query=query, accounts=accounts).run()
 
 
 def _posts_to_json(posts: list[Post]) -> str:
     import json
 
-    return json.dumps([
-        {
-            "author": p.author, "handle": p.handle,
-            "created_at": p.created_at.isoformat(), "text": p.text,
-            "url": p.url, "images": p.images, "boosted": p.boosted,
-        }
-        for p in posts
-    ], indent=2)
+    return json.dumps(
+        [
+            {
+                "author": p.author,
+                "handle": p.handle,
+                "created_at": p.created_at.isoformat(),
+                "text": p.text,
+                "url": p.url,
+                "images": p.images,
+                "boosted": p.boosted,
+            }
+            for p in posts
+        ],
+        indent=2,
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -269,10 +280,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--no-tui", action="store_true", help="print posts instead of the TUI")
     parser.add_argument("--limit", type=int, default=5, help="posts per account (default 5)")
     parser.add_argument("--search", metavar="TERM", help="keep only posts containing TERM")
-    parser.add_argument("--account", action="append", metavar="SUBSTR",
-                        help="restrict to handles matching SUBSTR (repeatable)")
-    parser.add_argument("--json", action="store_true", help="print posts as JSON (implies --no-tui)")
-    parser.add_argument("--list-handles", action="store_true", help="just list the handles and exit")
+    parser.add_argument(
+        "--account",
+        action="append",
+        metavar="SUBSTR",
+        help="restrict to handles matching SUBSTR (repeatable)",
+    )
+    parser.add_argument(
+        "--json", action="store_true", help="print posts as JSON (implies --no-tui)"
+    )
+    parser.add_argument(
+        "--list-handles", action="store_true", help="just list the handles and exit"
+    )
     parser.add_argument("--md", default=str(MASTODON_MD), help="path to mastodon.md")
     args = parser.parse_args(argv)
 
@@ -284,7 +303,11 @@ def main(argv: list[str] | None = None) -> int:
     handles = parse_handles(args.md)
     if args.no_tui or args.json:
         posts = gather_posts(
-            handles, args.limit, md_path=args.md, query=args.search, accounts=args.account,
+            handles,
+            args.limit,
+            md_path=args.md,
+            query=args.search,
+            accounts=args.account,
         )
         if args.json:
             print(_posts_to_json(posts))

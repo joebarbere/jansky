@@ -50,9 +50,7 @@ def to_jansky(flux: u.Quantity) -> u.Quantity:
     return flux.to(u.Jy)
 
 
-def rayleigh_jeans_brightness(
-    temperature: u.Quantity, frequency: u.Quantity
-) -> u.Quantity:
+def rayleigh_jeans_brightness(temperature: u.Quantity, frequency: u.Quantity) -> u.Quantity:
     """Surface brightness of a blackbody in the Rayleigh--Jeans limit.
 
     :math:`B_\\nu = 2 k_B T \\nu^2 / c^2`. Valid when

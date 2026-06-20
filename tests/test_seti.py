@@ -9,9 +9,7 @@ from jansky import seti
 
 def test_drift_search_recovers_true_drift():
     true_drift = 0.25  # channels per time sample
-    wf = seti.drifting_tone(
-        n_time=128, n_freq=512, drift_rate=true_drift, snr=6.0, seed=1
-    )
+    wf = seti.drifting_tone(n_time=128, n_freq=512, drift_rate=true_drift, snr=6.0, seed=1)
     trials = np.arange(-1.0, 1.01, 0.05)
     result = seti.drift_search(wf, trials)
     assert abs(result.best_drift - true_drift) <= 0.05
@@ -36,14 +34,19 @@ def test_blank_pointing_has_no_signal():
 def test_cadence_rejects_interference():
     trials = np.arange(-0.5, 0.51, 0.05)
     # ON scans: strong drifting tone present
-    on = [seti.drift_search(
-        seti.drifting_tone(80, 400, 0.2, snr=10, seed=s), trials) for s in (10, 11, 12)]
+    on = [
+        seti.drift_search(seti.drifting_tone(80, 400, 0.2, snr=10, seed=s), trials)
+        for s in (10, 11, 12)
+    ]
     # OFF scans: blank
-    off = [seti.drift_search(
-        seti.drifting_tone(80, 400, 0.2, snr=10, present=False, seed=s), trials)
-        for s in (20, 21)]
+    off = [
+        seti.drift_search(seti.drifting_tone(80, 400, 0.2, snr=10, present=False, seed=s), trials)
+        for s in (20, 21)
+    ]
     assert seti.cadence_detection(on, off, threshold=8.0)
     # Interference present in OFF too -> rejected
-    off_rfi = [seti.drift_search(
-        seti.drifting_tone(80, 400, 0.0, snr=10, seed=s), trials) for s in (30, 31)]
+    off_rfi = [
+        seti.drift_search(seti.drifting_tone(80, 400, 0.0, snr=10, seed=s), trials)
+        for s in (30, 31)
+    ]
     assert not seti.cadence_detection(on, off_rfi, threshold=8.0)

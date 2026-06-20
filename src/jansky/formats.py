@@ -86,7 +86,10 @@ def save_spectrogram(path: str | Path, spec: Spectrogram) -> Path:
     """
     path = Path(path)
     np.savez_compressed(
-        path, times=spec.times, freqs=spec.freqs, power=spec.power,
+        path,
+        times=spec.times,
+        freqs=spec.freqs,
+        power=spec.power,
         meta=json.dumps(spec.meta),
     )
     return path if path.suffix == ".npz" else path.with_suffix(".npz")
@@ -96,7 +99,9 @@ def load_spectrogram(path: str | Path) -> Spectrogram:
     """Load a :class:`Spectrogram` written by :func:`save_spectrogram`."""
     with np.load(Path(path), allow_pickle=False) as data:
         return Spectrogram(
-            times=data["times"], freqs=data["freqs"], power=data["power"],
+            times=data["times"],
+            freqs=data["freqs"],
+            power=data["power"],
             meta=json.loads(str(data["meta"])),
         )
 
@@ -321,8 +326,7 @@ def rss_handshake(center_hz: int, bandwidth_hz: int, n_channels: int, offset_hz:
     if not (100 <= n_channels <= 512):
         raise ValueError("RSS supports 100–512 channels")
     return (
-        f"F {int(center_hz)}|S {int(bandwidth_hz)}|"
-        f"O {int(offset_hz)}|C {int(n_channels)}|"
+        f"F {int(center_hz)}|S {int(bandwidth_hz)}|O {int(offset_hz)}|C {int(n_channels)}|"
     ).encode("ascii")
 
 
@@ -466,9 +470,7 @@ def read_filterbank(path: str | Path):
     try:
         from blimpy import Waterfall
     except ImportError as exc:  # pragma: no cover - optional path
-        raise ImportError(
-            "read_filterbank needs blimpy: `uv sync --extra seti`"
-        ) from exc
+        raise ImportError("read_filterbank needs blimpy: `uv sync --extra seti`") from exc
     return Waterfall(str(path))
 
 

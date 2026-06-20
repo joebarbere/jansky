@@ -1,5 +1,8 @@
 # jansky
 
+[![CI](https://github.com/joebarbere/jansky/actions/workflows/ci.yml/badge.svg)](https://github.com/joebarbere/jansky/actions/workflows/ci.yml)
+[![Docs](https://github.com/joebarbere/jansky/actions/workflows/gh-pages.yml/badge.svg)](https://joebarbere.github.io/jansky/)
+
 **A hands-on radio astronomy course in Python** — from *"what is a radio wave from space?"*
 to *downloading real telescope data and doing original analysis*.
 

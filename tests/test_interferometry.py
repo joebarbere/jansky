@@ -65,6 +65,7 @@ def test_clean_threshold_stops_early():
 
 def test_coherent_calibration_recovers_offsets():
     import numpy as np
+
     lam = 1.0
     pos = np.arange(5) * 0.5
     offsets = np.array([0.0, 1.2, -0.7, 2.5, -1.9])
@@ -79,6 +80,7 @@ def test_coherent_calibration_recovers_offsets():
 
 def test_coherent_recovers_source_angle():
     import numpy as np
+
     lam = 1.0
     pos = np.arange(5) * 0.5
     offsets = np.array([0.0, 1.2, -0.7, 2.5, -1.9])
@@ -97,6 +99,7 @@ def test_coherent_recovers_source_angle():
 
 def test_fringe_phase_zero_on_boresight():
     import numpy as np
+
     assert interferometry.fringe_phase(2.0, 0.0, 0.21) == 0.0
     # and matches 2*pi*b*sin(theta)/lambda
     val = interferometry.fringe_phase(2.0, np.radians(30), 0.21)
@@ -105,6 +108,7 @@ def test_fringe_phase_zero_on_boresight():
 
 def test_closure_phase_invariant_to_station_phases():
     import numpy as np
+
     rng = np.random.default_rng(7)
     # true visibilities on a triangle (i,j,k)
     v = {k: complex(rng.normal(), rng.normal()) for k in ("ij", "jk", "ki")}
@@ -120,6 +124,7 @@ def test_closure_phase_invariant_to_station_phases():
 
 def test_closure_amplitude_invariant_to_station_gains():
     import numpy as np
+
     rng = np.random.default_rng(8)
     v = {k: complex(rng.normal(), rng.normal()) for k in ("ij", "kl", "ik", "jl")}
     ca_true = interferometry.closure_amplitude(v["ij"], v["kl"], v["ik"], v["jl"])
@@ -134,6 +139,7 @@ def test_closure_amplitude_invariant_to_station_gains():
 
 def test_hbt_g2_limits():
     import numpy as np
+
     lam, theta = 1.0, 1e-3
     assert np.isclose(interferometry.disk_visibility(0.0, theta, lam), 1.0)
     assert np.isclose(interferometry.hbt_g2(0.0, theta, lam), 2.0)
@@ -143,6 +149,7 @@ def test_hbt_g2_limits():
 
 def test_disk_visibility_first_null():
     import numpy as np
+
     lam, theta = 1.0, 1e-3
     b_null = 3.8317 * lam / (np.pi * theta)  # first zero of 2 J1(x)/x
     assert abs(interferometry.disk_visibility(b_null, theta, lam)) < 1e-3
@@ -150,6 +157,7 @@ def test_disk_visibility_first_null():
 
 def test_solve_point_source_gains_recovers_gains():
     import numpy as np
+
     rng = np.random.default_rng(11)
     g = rng.uniform(0.5, 2.0, 6) * np.exp(1j * rng.uniform(-np.pi, np.pi, 6))
     g = g * np.exp(-1j * np.angle(g[0]))  # reference phase

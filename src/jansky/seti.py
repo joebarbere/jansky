@@ -114,8 +114,10 @@ def drift_search(waterfall: np.ndarray, drift_rates: np.ndarray) -> DriftSearchR
     snr = np.array([_snr(dedrift(waterfall, d)) for d in drift_rates])
     best = int(np.argmax(snr))
     return DriftSearchResult(
-        drift_rates=drift_rates, snr=snr,
-        best_drift=float(drift_rates[best]), best_snr=float(snr[best]),
+        drift_rates=drift_rates,
+        snr=snr,
+        best_drift=float(drift_rates[best]),
+        best_snr=float(snr[best]),
     )
 
 
