@@ -1,0 +1,79 @@
+site_name: jansky
+site_description: A hands-on radio astronomy course in Python
+site_author: Joe Barbere
+repo_url: https://github.com/joebarbere/jansky
+repo_name: joebarbere/jansky
+
+docs_dir: docs
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+    - scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - toc.follow
+
+plugins:
+  - search
+  # Renders the course notebooks directly into the site. The notebooks live in
+  # the repo's top-level notebooks/ directory and are surfaced under docs/ via a
+  # symlink (docs/notebooks -> ../notebooks) so this single source of truth is
+  # both runnable in JupyterLab and published here.
+  - mkdocs-jupyter:
+      include_source: true
+      execute: false
+      ignore_h1_titles: true
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - attr_list
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+
+extra_javascript:
+  # MathJax so the LaTeX in the lessons renders.
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Setup: setup.md
+  - "Part I — Foundations":
+      - "1. What is Radio Astronomy?": notebooks/01_what_is_radio_astronomy.ipynb
+      - "2. The Physics of Radio Emission": notebooks/02_physics_of_radio_emission.ipynb
+      - "3. Signals, Noise & the Radiometer Equation": notebooks/03_signals_noise_radiometer.ipynb
+  - "Part II — Instrumentation & Hardware":
+      - "4. Antennas & Receivers": notebooks/04_antennas_and_receivers.ipynb
+      - "5. Hands-on SDR (optional)": notebooks/05_sdr_basics.ipynb
+      - "6. Detecting the Hydrogen Line": notebooks/06_hydrogen_line.ipynb
+  - "Part III — Interferometry & Imaging":
+      - "7. Why Interferometry?": notebooks/07_why_interferometry.ipynb
+      - "8. Aperture Synthesis & the uv-plane": notebooks/08_aperture_synthesis.ipynb
+      - "9. Deconvolution & CLEAN": notebooks/09_deconvolution_clean.ipynb
+  - "Part IV — Real Data & Research":
+      - "10. Accessing Open Archives": notebooks/10_open_archives.ipynb
+      - "11. HI 21cm & Galactic Rotation": notebooks/11_hi_rotation_curve.ipynb
+      - "12. Continuum Imaging with the VLA": notebooks/12_vla_imaging.ipynb
+      - "13. Pulsars": notebooks/13_pulsars.ipynb
+      - "14. Multi-wavelength Diversion": notebooks/14_multiwavelength.ipynb
+      - "15. Capstone": notebooks/15_capstone.ipynb
+  - References: references.md

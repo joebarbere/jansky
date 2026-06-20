@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# jansky dataset cache (downloaded at runtime; keep the dir, ignore contents)
+/data/*
+!/data/.gitkeep
+
+# mkdocs-jupyter render cache
+/.cache/

@@ -1,0 +1,52 @@
+# Compose file for the jansky course containers.
+#
+# Works with both `podman compose` and `docker compose`. The `lab` service is
+# the one you want almost all the time:
+#
+#   podman compose -f containers/compose.yaml up lab        # -> http://localhost:8888
+#
+# The `casa` and `gnuradio` services are opt-in (heavy, chapter-specific) and
+# live behind a compose profile so they are not built/started by default.
+#
+# Build context is the repo root (..) so the Dockerfiles can COPY the project.
+
+services:
+  lab:
+    build:
+      context: ..
+      dockerfile: containers/Dockerfile
+    image: jansky:latest
+    ports:
+      - "8888:8888"
+    volumes:
+      # Live-mount the course content so edits land in your working tree.
+      - ../notebooks:/workspace/notebooks
+      - ../docs:/workspace/docs
+      - ../data:/workspace/data
+
+  casa:
+    profiles: ["interferometry"]
+    build:
+      context: ..
+      dockerfile: containers/casa.Dockerfile
+    image: jansky-casa:latest
+    ports:
+      - "8889:8889"
+    volumes:
+      - ../notebooks:/workspace/notebooks
+      - ../data:/workspace/data
+
+  gnuradio:
+    profiles: ["sdr"]
+    build:
+      context: ..
+      dockerfile: containers/gnuradio.Dockerfile
+    image: jansky-gnuradio:latest
+    ports:
+      - "8890:8890"
+    # Uncomment to pass a USB SDR through to the container:
+    # devices:
+    #   - "/dev/bus/usb:/dev/bus/usb"
+    volumes:
+      - ../notebooks:/workspace/notebooks
+      - ../data:/workspace/data
