@@ -35,6 +35,8 @@ timing
     Pulsar timing arrays and the Hellings--Downs nanohertz-GW correlation.
 plotting
     Shared matplotlib styling so every chapter's figures look consistent.
+polarization
+    Stokes parameters, the Faraday lambda^2 law, and RM synthesis.
 rfi
     Robust statistics and spectral kurtosis for RFI flagging.
 
@@ -53,6 +55,7 @@ from jansky import (
     meteor,
     molecular,
     plotting,
+    polarization,
     rfi,
     seti,
     signals,
@@ -71,6 +74,7 @@ __all__ = [
     "meteor",
     "molecular",
     "plotting",
+    "polarization",
     "rfi",
     "seti",
     "signals",
