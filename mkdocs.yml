@@ -46,7 +46,13 @@ markdown_extensions:
       generic: true
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.superfences
+  - md_in_html
+  - pymdownx.superfences:
+      custom_fences:
+        # Render ```mermaid fenced blocks as diagrams (Material auto-loads mermaid.js).
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - toc:
       permalink: true
 
@@ -57,6 +63,7 @@ extra_javascript:
 nav:
   - Home: index.md
   - Setup: setup.md
+  - Visual Tour: visual-tour.md
   - "Part I — Foundations":
       - "1. What is Radio Astronomy?": notebooks/01_what_is_radio_astronomy.ipynb
       - "2. The Physics of Radio Emission": notebooks/02_physics_of_radio_emission.ipynb

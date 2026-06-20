@@ -26,6 +26,32 @@ code, and plots — and cites the seminal papers so you can read the originals.
 Hardware chapters (5 & 6) are **optional** — clearly marked, with archival/simulated
 fallbacks so you can complete the whole course with nothing but a laptop.
 
+### The journey at a glance
+
+```mermaid
+flowchart TD
+  subgraph I[Part I · Foundations]
+    direction LR
+    C1[1 · What is radio astronomy] --> C2[2 · Radio emission] --> C3[3 · Noise & radiometer]
+  end
+  subgraph II[Part II · Instrumentation]
+    direction LR
+    C4[4 · Antennas] --> C5[5 · SDR] --> C6[6 · Hydrogen line]
+  end
+  subgraph III[Part III · Interferometry]
+    direction LR
+    C7[7 · Why interferometry] --> C8[8 · Aperture synthesis] --> C9[9 · CLEAN]
+  end
+  subgraph IV[Part IV · Real research]
+    direction LR
+    C10[10 · Archives] --> C11[11 · HI rotation] --> C12[12 · VLA imaging] --> C13[13 · Pulsars] --> C14[14 · Multi-wavelength] --> C15[15 · Capstone]
+  end
+  I --> II --> III --> IV
+```
+
+Prefer pictures to prose? Start with the **[Visual Tour](visual-tour.md)** — diagrams, plots,
+photographs, and videos for the whole course.
+
 ## A taste of what's inside
 
 - Reproduce Jansky's discovery and Reber's first radio maps.
