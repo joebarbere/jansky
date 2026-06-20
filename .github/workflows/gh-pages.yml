@@ -1,0 +1,62 @@
+name: Publish docs
+
+# Build the MkDocs site and deploy it to GitHub Pages on every push to main.
+# The site renders the committed notebook outputs (mkdocs-jupyter runs with
+# execute: false), so no notebook execution is needed here — just a docs build.
+#
+# One-time repo setup: Settings → Pages → Build and deployment → Source = "GitHub Actions".
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow the GITHUB_TOKEN to deploy to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let an in-progress deploy finish; queue (don't cancel) newer ones.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install docs toolchain
+        # The dev group carries mkdocs-material + mkdocs-jupyter; --no-install-project
+        # skips building the jansky wheel (the strict, execute:false build never imports it).
+        run: uv sync --no-install-project
+
+      - name: Build site (strict)
+        # --strict turns broken internal links/anchors into a build failure.
+        run: uv run mkdocs build --strict
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
