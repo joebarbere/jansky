@@ -180,7 +180,8 @@ repurpose for hydrogen-line and 11 GHz builds (see [Projects](projects.md)). Lau
 
 ## Watch & learn
 
-Curated, verified videos that pair with the course. Click a thumbnail to watch on YouTube.
+A hand-picked few to get started — click a thumbnail to watch on YouTube. For the **full
+library** of channels and videos organised by topic, see [Watch on YouTube](videos.md).
 
 ### Foundations
 
