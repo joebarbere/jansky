@@ -38,6 +38,9 @@ fmt: ## Auto-format with ruff
 fetch-data: ## List sample datasets (use ARGS="--fetch hi4pi-sample" to download)
 	uv run python -m jansky.data $(ARGS) --list
 
+mastodon: ## Read the listed astronomers' Mastodon posts in a TUI (needs --extra tui)
+	uv run --extra tui python -m jansky.mastodon_reader $(ARGS)
+
 container: ## Build & run the JupyterLab container (podman or docker)
 	podman compose -f containers/compose.yaml up lab
 
