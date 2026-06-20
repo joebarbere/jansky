@@ -19,6 +19,8 @@ data
 formats
     Data formats & the ecosystem: GUPPI raw, SigMF, the Radio-Sky Spectrograph
     network protocol, and optional wrappers for the heavier I/O libraries.
+transients
+    Dispersion, de-dispersion, and single-pulse DM searching for FRBs/pulsars.
 plotting
     Shared matplotlib styling so every chapter's figures look consistent.
 
@@ -30,7 +32,15 @@ from __future__ import annotations
 
 __version__ = "0.1.0"
 
-from jansky import data, formats, interferometry, plotting, signals, units
+from jansky import (
+    data,
+    formats,
+    interferometry,
+    plotting,
+    signals,
+    transients,
+    units,
+)
 
 __all__ = [
     "__version__",
@@ -39,5 +49,6 @@ __all__ = [
     "interferometry",
     "plotting",
     "signals",
+    "transients",
     "units",
 ]
