@@ -158,6 +158,11 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 
 ## F
 
+**Faraday rotation**
+: The rotation of a linearly polarised wave's plane of polarisation as it passes through a
+  magnetised plasma, by an angle $\Delta\chi = \mathrm{RM}\,\lambda^2$. The $\lambda^2$
+  dependence is the signature that lets the **rotation measure** be recovered (Chapter 37).
+
 **Fast radio burst (FRB)**
 : A millisecond-duration, highly dispersed radio flash, mostly extragalactic in origin.
   Their large DMs make them probes of the otherwise-invisible diffuse cosmic baryons.
@@ -305,7 +310,14 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 **Polarisation / Stokes parameters**
 : The orientation state of the electromagnetic wave. The four **Stokes parameters** $(I, Q,
   U, V)$ fully describe it: $I$ is total intensity, $Q$ and $U$ linear polarisation, $V$
-  circular. Synchrotron emission is often linearly polarised, which probes magnetic fields.
+  circular. Synchrotron emission is often linearly polarised, which probes magnetic fields
+  (Chapter 37).
+
+**Polarisation fraction & angle**
+: The **linear polarisation fraction** $p = \sqrt{Q^2+U^2}/I$ (how polarised the emission is)
+  and the **polarisation (E-vector) angle** $\chi = \tfrac12\arctan(U/Q)$ (its orientation). The
+  factor of two reflects that polarisation is a "headless vector" — a $\pi$ rotation is the same
+  state (Chapter 37).
 
 **Primary beam**
 : The single-dish response pattern that sets an interferometer's field of view; sources far
@@ -347,6 +359,18 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : Human-made signals — phones, radar, satellites, microwave ovens — that contaminate radio
   data. Identifying and excising RFI ("flagging") is a routine and unglamorous part of every
   reduction.
+
+**RM synthesis (Faraday tomography)**
+: A Fourier-like transform of the complex polarisation $P(\lambda^2) = Q + iU$ into **Faraday
+  depth** $\phi$, reconstructing emission as a function of $\phi$ (Burn 1966; Brentjens & de
+  Bruyn 2005). For a single Faraday-thin screen the result peaks at $\phi = \mathrm{RM}$; its
+  resolution is set by the $\lambda^2$ coverage via the **RMSF** (Chapter 37).
+
+**Rotation measure (RM)**
+: The constant of proportionality in **Faraday rotation**, $\Delta\chi = \mathrm{RM}\,\lambda^2$,
+  equal to $0.81\int n_e B_\parallel\,\mathrm{d}l$ (rad m$^{-2}$, with $n_e$ in cm$^{-3}$,
+  $B_\parallel$ in µG, $l$ in pc). It measures the line-of-sight magnetic field weighted by
+  electron density — the workhorse probe of cosmic magnetism (Chapter 37).
 
 **Right ascension (RA, $\alpha$)**
 : The celestial analogue of longitude, measured eastward along the celestial equator,
@@ -390,6 +414,10 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : Emission or absorption confined to a narrow range of frequencies, from a specific atomic
   or molecular transition (e.g. HI at 1420 MHz). Its Doppler shift gives velocity; its width
   gives temperature and turbulence.
+
+**Stokes parameters ($I, Q, U, V$)**
+: See **Polarisation / Stokes parameters** (under P) — the four numbers that fully describe a
+  wave's polarisation state (Chapter 37).
 
 **Sudden ionospheric disturbance (SID)**
 : A jump in a VLF transmitter's received amplitude when a solar flare's X-rays ionise the

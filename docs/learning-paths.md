@@ -43,10 +43,13 @@ flowchart TD
   C17[17 · Coherent interferometry · KrakenSDR]
   C19[19 · EHT & VLBI]
   C25[25 · Intensity interferometry · HBT]
+  C37[37 · Polarisation & Faraday rotation]
   C3 --> C7 --> C8 --> C9
   C8 --> C17
   C9 --> C19
   C7 --> C25
+  C8 --> C37
+  C2 --> C37
 
   %% ---- Part IV: Real data & research ----
   C10[10 · Open archives]
@@ -85,6 +88,7 @@ flowchart TD
   LE([Lab E · Calibration])
   LF([Lab F · Special functions])
   C8 -.-> LA
+  C37 -.-> LA
   C18 -.-> LB
   C3 -.-> LC
   C10 -.-> LD
@@ -109,8 +113,9 @@ Build up to capturing real signals, then branch into the amateur projects. **1 �
 
 ### 🛰️ Interferometry & imaging
 
-The aperture-synthesis spine and where it leads. **3 → 7 → 8 → 9 → 17 → 19 → 25 → 12.**
-Pair with **Lab A** (Fourier) and **Lab E** (calibration).
+The aperture-synthesis spine and where it leads. **3 → 7 → 8 → 9 → 17 → 19 → 25 → 37 → 12.**
+Pair with **Lab A** (Fourier) and **Lab E** (calibration). Chapter 37 (polarisation &
+Faraday rotation) reuses the same Fourier machinery in $\lambda^2$ space.
 
 ### ⏱️ Pulsars, transients & the nanohertz sky
 
@@ -129,7 +134,7 @@ technique you'd like to see derived from scratch.
 
 | Maths Lab | Worked technique | Most useful for |
 |---|---|---|
-| **[A · Fourier & convolution](notebooks/31_mathslab_fourier_convolution.ipynb)** | FT pairs, convolution theorem, sampling | Ch 8 (uv-plane), Ch 9 (CLEAN), Ch 3 |
+| **[A · Fourier & convolution](notebooks/31_mathslab_fourier_convolution.ipynb)** | FT pairs, convolution theorem, sampling | Ch 8 (uv-plane), Ch 9 (CLEAN), Ch 37 (RM synthesis), Ch 3 |
 | **[B · Matched filtering](notebooks/32_mathslab_matched_filtering.ipynb)** | Detection theory, the matched filter | Ch 18 (FRBs), Ch 13 (pulsars), Ch 3 |
 | **[C · Noise & RFI](notebooks/33_mathslab_noise_rfi.ipynb)** | Noise statistics, robust RFI excision | Ch 3 (radiometer), Ch 5 (SDR) |
 | **[D · Coordinates & time](notebooks/34_mathslab_coordinates_time.ipynb)** | Sky coordinates, time systems | Ch 10 (archives), Ch 11, Ch 13 |
