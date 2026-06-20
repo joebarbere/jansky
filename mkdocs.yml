@@ -72,6 +72,8 @@ nav:
       - "4. Antennas & Receivers": notebooks/04_antennas_and_receivers.ipynb
       - "5. Hands-on SDR (optional)": notebooks/05_sdr_basics.ipynb
       - "6. Detecting the Hydrogen Line": notebooks/06_hydrogen_line.ipynb
+      - "26. Meteor Scatter & Passive Radar": notebooks/26_meteor_scatter.ipynb
+      - "27. VLF & the Ionosphere (SuperSID)": notebooks/27_vlf_ionosphere.ipynb
   - "Part III — Interferometry & Imaging":
       - "7. Why Interferometry?": notebooks/07_why_interferometry.ipynb
       - "8. Aperture Synthesis & the uv-plane": notebooks/08_aperture_synthesis.ipynb
