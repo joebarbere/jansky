@@ -22,6 +22,10 @@ originals — many of these papers are short, readable, and historic.
 - **Ewen, H. I. & Purcell, E. M. (1951).** *Radiation from Galactic Hydrogen at 1420 Mc/sec.*
   Nature 168, 356. — First detection of the 21 cm HI line.
   [DOI](https://doi.org/10.1038/168356a0)
+- **Kalberla, P. M. W., Burton, W. B., Hartmann, D., et al. (2005).** *The Leiden/Argentine/Bonn
+  (LAB) Survey of Galactic HI.* A&A 440, 775. — The all-sky Galactic HI survey; Chapter 11 reads
+  a small real $(b, v)$ slice of it at $l = 12°$ for a tangent-point rotation point.
+  [DOI](https://doi.org/10.1051/0004-6361:20041864)
 - **HI4PI Collaboration (2016).** *HI4PI: A full-sky HI survey based on EBHIS and GASS.*
   A&A 594, A116. — The modern all-sky HI dataset used in Chapter 11.
   [DOI](https://doi.org/10.1051/0004-6361/201629178)
