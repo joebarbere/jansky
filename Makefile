@@ -2,7 +2,7 @@
 # Everything goes through uv so you get the pinned Python 3.12 environment.
 
 .DEFAULT_GOAL := help
-.PHONY: help setup lab docs docs-serve test test-notebooks cov typecheck lint fmt fetch-data clean container
+.PHONY: help setup lab docs docs-serve test test-notebooks cov typecheck lint fmt fetch-data check-urls clean container
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -43,6 +43,9 @@ fmt: ## Auto-format with ruff
 
 fetch-data: ## List sample datasets (use ARGS="--fetch hi4pi-sample" to download)
 	uv run python -m jansky.data $(ARGS) --list
+
+check-urls: ## Verify dataset + docs/resources.md links still resolve
+	uv run python scripts/check_dataset_urls.py --docs $(ARGS)
 
 mastodon: ## Read the listed astronomers' Mastodon posts in a TUI (needs --extra tui)
 	uv run --extra tui python -m jansky.mastodon_reader $(ARGS)

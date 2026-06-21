@@ -33,7 +33,7 @@ bands, locations), see **[Radio Telescopes of the World](telescopes.md)**.
 | **SARAO / MeerKAT** | South African Radio Astronomy Observatory; operates MeerKAT and leads SA's SKA role | [sarao.ac.za](https://www.sarao.ac.za/) |
 | **NAOJ Nobeyama** | National Astronomical Observatory of Japan; home of the Nobeyama 45 m mm-wave telescope | [nro.nao.ac.jp](https://www.nro.nao.ac.jp/en/) |
 | **FAST** | Five-hundred-metre Aperture Spherical Telescope, the largest single dish, Guizhou, China | [fast.bao.ac.cn](https://fast.bao.ac.cn/en/) |
-| **Arecibo / NAIC** | Legacy site of the 305 m Arecibo dish (collapsed 2020), now an educational facility | [naic.edu](https://www.naic.edu/) |
+| **Arecibo / NAIC** | Legacy site of the 305 m Arecibo dish (collapsed 2020), now the NSF Arecibo C3 education centre | [nsf.gov/arecibo](https://www.nsf.gov/news/media-toolkits/arecibo) |
 | **IRAM** (NOEMA, 30 m) | Institut de Radioastronomie Millimétrique, Grenoble; operates the 30 m and NOEMA | [iram-institute.org](https://iram-institute.org/) |
 | **Jodrell Bank / e-MERLIN** | University of Manchester; the Lovell Telescope and the UK e-MERLIN array | [jodrellbank.manchester.ac.uk](https://www.jodrellbank.manchester.ac.uk/) |
 | **GMRT** | Giant Metrewave Radio Telescope (NCRA-TIFR), near Pune, India | [gmrt.ncra.tifr.res.in](http://www.gmrt.ncra.tifr.res.in/) |
@@ -71,7 +71,7 @@ decametric Jupiter/solar observations from the NASA Radio JOVE project and the a
 | **Radio JOVE Project (NASA GSFC)** | The project portal; observing, the SPS/SPD format docs, links to the archive | [radiojove.gsfc.nasa.gov](https://radiojove.gsfc.nasa.gov/) |
 | **MASER (Paris Observatory / PADC)** | Low-frequency radio archive hosting a Radio JOVE collection (converted to CDF) plus the Nançay Decameter Array, Voyager/Cassini, ExPRES | [maser.obspm.fr](https://maser.obspm.fr/) · [Radio JOVE dir](https://maser.obspm.fr/data/radiojove/) |
 | **VESPA** | Virtual European Solar & Planetary Access — query decametric/planetary radio data (incl. the `radiojove` schema and the NDA) as VOTable | [vespa.obspm.fr](https://vespa.obspm.fr/planetary/data/) |
-| **UFRO (Univ. of Florida)** | Internet Jupiter Radio Observatory — real-time decametric spectrograph/strip-chart data (incl. a 20.1 MHz Radio JOVE channel) | [ufro.astro.ufl.edu](https://ufro.astro.ufl.edu/observatory.htm) |
+| **UFRO (Univ. of Florida)** | UF Dept. of Astronomy, home of the Radio Observatory's Internet Jupiter Radio Observatory (decametric spectrograph data; the dedicated IJRO feed is intermittently offline) | [astro.ufl.edu](https://www.astro.ufl.edu/) |
 | **Radio-SkyPipe live servers** | Not an archive but the live feed: observers publish strip-charts you can browse in Radio-SkyPipe's client mode | [radiosky.com](https://www.radiosky.com/skypipeishere.html) |
 
 *Note: the old `radiojove.org` domain is dead (it now redirects to an unrelated parked site) — use
@@ -137,7 +137,7 @@ sense of where the work happens.
   [casaguides.nrao.edu](https://casaguides.nrao.edu/)
 - **AAS** — American Astronomical Society — [aas.org](https://aas.org/)
 - **IAU** — International Astronomical Union — [iau.org](https://www.iau.org/),
-  including [Commission B4 (Radio Astronomy)](https://www.iau.org/science/scientific_bodies/commissions/B4/)
+  including [Commission B4 (Radio Astronomy)](https://iau.org/CommissionB4/CommissionB4/Home.aspx)
 - **URSI** — International Union of Radio Science — [ursi.org](https://www.ursi.org/)
 - **arXiv astro-ph** — the open-access preprint server's astrophysics listing —
   [arxiv.org/list/astro-ph/recent](https://arxiv.org/list/astro-ph/recent)
