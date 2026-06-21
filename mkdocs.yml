@@ -93,6 +93,7 @@ nav:
       - "7. Why Interferometry?": notebooks/07_why_interferometry.ipynb
       - "8. Aperture Synthesis & the uv-plane": notebooks/08_aperture_synthesis.ipynb
       - "9. Deconvolution & CLEAN": notebooks/09_deconvolution_clean.ipynb
+      - "41. Practical Calibration": notebooks/41_practical_calibration.ipynb
       - "17. Coherent Interferometry (KrakenSDR)": notebooks/17_coherent_interferometry_kraken.ipynb
       - "19. The EHT & VLBI": notebooks/19_eht_and_vlbi.ipynb
       - "25. Intensity Interferometry (HBT)": notebooks/25_intensity_interferometry.ipynb

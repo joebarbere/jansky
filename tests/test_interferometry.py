@@ -164,3 +164,57 @@ def test_solve_point_source_gains_recovers_gains():
     vis = np.outer(g, np.conj(g))
     recovered = interferometry.solve_point_source_gains(vis)
     assert np.allclose(recovered, g, atol=1e-6)
+
+
+def _random_gains(rng, n):
+    g = rng.uniform(0.5, 2.0, n) * np.exp(1j * rng.uniform(-np.pi, np.pi, n))
+    return g * np.exp(-1j * np.angle(g[0]))  # reference phase: g[0] real positive
+
+
+def test_apply_gains_matches_measurement_equation():
+    rng = np.random.default_rng(2)
+    g = _random_gains(rng, 5)
+    model = np.ones((5, 5), dtype=complex)
+    obs = interferometry.apply_gains(model, g)
+    # V_obs_ij = g_i conj(g_j); diagonal is |g_i|^2; matrix is Hermitian.
+    assert np.allclose(obs, np.outer(g, np.conj(g)))
+    assert np.allclose(np.diag(obs), np.abs(g) ** 2)
+    assert np.allclose(obs, obs.conj().T)
+
+
+def test_stefcal_recovers_point_source_gains():
+    rng = np.random.default_rng(7)
+    g = _random_gains(rng, 8)
+    model = np.ones((8, 8), dtype=complex)
+    obs = interferometry.apply_gains(model, g)
+    recovered = interferometry.solve_gains_stefcal(obs, model)
+    assert np.allclose(recovered, g, atol=1e-6)
+    # Agrees with the eigen-solver on a point source.
+    assert np.allclose(recovered, interferometry.solve_point_source_gains(obs), atol=1e-6)
+
+
+def test_stefcal_recovers_gains_on_a_resolved_model():
+    # A general (resolved-source) Hermitian model, not just a point source.
+    rng = np.random.default_rng(20)
+    n = 7
+    base = rng.normal(size=(n, n)) + 1j * rng.normal(size=(n, n))
+    model = base + base.conj().T  # Hermitian model visibilities
+    g = _random_gains(rng, n)
+    obs = interferometry.apply_gains(model, g)
+    recovered = interferometry.solve_gains_stefcal(obs, model)
+    # Correcting the observed data by the recovered gains returns the model.
+    corrected = interferometry.apply_gains(obs, 1.0 / recovered)
+    off = ~np.eye(n, dtype=bool)
+    assert np.allclose(corrected[off], model[off], atol=1e-6)
+
+
+def test_stefcal_is_robust_to_noise():
+    rng = np.random.default_rng(31)
+    g = _random_gains(rng, 10)
+    model = np.ones((10, 10), dtype=complex)
+    obs = interferometry.apply_gains(model, g)
+    noise = 0.02 * (rng.normal(size=obs.shape) + 1j * rng.normal(size=obs.shape))
+    noise = noise + noise.conj().T
+    recovered = interferometry.solve_gains_stefcal(obs + noise, model)
+    # Recovered gains stay close to truth despite 2% visibility noise.
+    assert np.max(np.abs(recovered - g)) < 0.1

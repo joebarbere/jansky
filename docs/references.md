@@ -41,6 +41,17 @@ originals — many of these papers are short, readable, and historic.
 - **Ryle, M. & Vonberg, D. D. (1946).** *Solar Radiation on 175 Mc/s.* Nature 158, 339. —
   An early radio interferometer.
   [DOI](https://doi.org/10.1038/158339b0)
+- **Cornwell, T. J. & Wilkinson, P. N. (1981).** *A New Method for Making Maps with Unstable
+  Radio Interferometers.* MNRAS 196, 1067. — Self-calibration: solve antenna gains against the
+  source's own model and iterate (Chapter 41).
+  [ADS](https://ui.adsabs.harvard.edu/abs/1981MNRAS.196.1067C/abstract)
+- **Pearson, T. J. & Readhead, A. C. S. (1984).** *Image Formation by Self-Calibration in Radio
+  Astronomy.* ARA&A 22, 97. — The closure quantities and the self-calibration method reviewed
+  (Chapter 41).
+  [ADS](https://ui.adsabs.harvard.edu/abs/1984ARA%26A..22...97P/abstract)
+- **Hamaker, J. P., Bregman, J. D. & Sault, R. J. (1996).** *Understanding Radio Polarimetry. I.*
+  A&AS 117, 137. — The matrix "measurement equation" formalism behind modern calibration
+  (Chapter 41). [DOI](https://doi.org/10.1051/aas:1996146)
 - **Högbom, J. A. (1974).** *Aperture Synthesis with a Non-Regular Distribution of
   Interferometer Baselines.* A&AS 15, 417. — The CLEAN algorithm (Chapter 9).
   [ADS](https://ui.adsabs.harvard.edu/abs/1974A%26AS...15..417H)
