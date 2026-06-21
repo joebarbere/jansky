@@ -45,9 +45,10 @@ __all__ = [
 class Dataset:
     """Metadata for a downloadable sample dataset.
 
-    ``category`` is ``"small"`` for the bundled starter files (all < 2 MB, the
-    default path the chapters reach for) or ``"large"`` for opt-in bulk data that
-    is never on the default/offline path.
+    ``category`` is ``"small"`` for the real starter files the chapters reach for
+    by default (mostly a couple of MB; the Radio JOVE ``.sps`` is the largest at
+    ~12 MB) or ``"large"`` for opt-in bulk data that is never on the default/offline
+    path.
     """
 
     name: str
@@ -106,6 +107,15 @@ DATASETS: dict[str, Dataset] = {
         "(PINT example); pairs with pint-ngc6440e-par.",
         size_hint="~4 KB",
     ),
+    "radiojove-sps": Dataset(
+        name="radiojove-sps",
+        url="https://maser.obspm.fr/data/maser4py/tests/data/radiojove/sps/161210000000.sps",
+        filename="radiojove_aj4co_20161210.sps",
+        description="Real Radio JOVE Radio-Sky Spectrograph (.sps) recording — a "
+        "dual-polarisation 16-32 MHz Jupiter/solar dynamic spectrum (AJ4CO/Typinski, "
+        "2016-12-10); read with jansky.formats.read_sps.",
+        size_hint="~12 MB",
+    ),
     # --- large, opt-in (never on the default/offline path) ---
     "hi4pi-sample": Dataset(
         name="hi4pi-sample",
@@ -141,10 +151,11 @@ def list_datasets() -> list[str]:
 
 
 def small_datasets() -> list[str]:
-    """Return the names of the small (< 2 MB) real starter datasets.
+    """Return the names of the real starter datasets (the default path).
 
-    These are the default path the research chapters reach for, so they can read
-    a real file offline-cached rather than always simulating.
+    These are the small real files the research chapters reach for, so they can
+    read a real file offline-cached rather than always simulating. All are a few
+    MB at most (the Radio JOVE ``.sps`` is the largest at ~12 MB).
     """
     return sorted(n for n, d in DATASETS.items() if d.category == "small")
 

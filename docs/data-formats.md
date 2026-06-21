@@ -25,8 +25,8 @@ flowchart LR
 | **Measurement Set** (MS) | Calibrated interferometer visibilities | CASA | CASA, `pyuvdata` | casacore *(see Ch 12)* |
 | **UVFITS / UVH5** | Visibilities (interchange) | correlators, `pyuvdata` | `pyuvdata` | [RASG / pyuvdata](https://radioastronomysoftwaregroup.github.io/) |
 | **SigMF** (`.sigmf-meta` + `.sigmf-data`) | SDR recordings: JSON metadata + raw samples | any SDR | `jansky.formats`, `sigmf` | [sigmf.org](https://sigmf.org/) |
-| **SPS** (`.sps`) | Radio-Sky Spectrograph spectra | Radio-Sky Spectrograph / Radio JOVE | *(reader deferred — see below)* | [Radio JOVE](https://radiojove.gsfc.nasa.gov/) · [data: radiojove.net](https://radiojove.net/) |
-| **SPD** (`.spd`) | Radio-SkyPipe strip-chart | Radio-SkyPipe | *(reader deferred)* | [radiosky.com](https://www.radiosky.com/skypipeishere.html) |
+| **SPS** (`.sps`) | Radio-Sky Spectrograph spectra | Radio-Sky Spectrograph / Radio JOVE | `jansky.formats.read_sps` | [Radio JOVE](https://radiojove.gsfc.nasa.gov/) · [data: radiojove.net](https://radiojove.net/) |
+| **SPD** (`.spd`) | Radio-SkyPipe strip-chart | Radio-SkyPipe | `jansky.formats.read_spd` | [radiosky.com](https://www.radiosky.com/skypipeishere.html) |
 
 !!! tip "Where to find SkyPipe / SPS data"
     Actual `.spd`/`.sps` observations live in the **Radio JOVE Data Archive** ([radiojove.net](https://radiojove.net/))
@@ -92,12 +92,13 @@ assert server.config["C"] == 256   # the decoded sweeps are in server.sweeps
 To feed the real application instead, point `RSSClient` at `127.0.0.1:8888` with RSS running and
 its **Options → Radio → RTL Bridge/TCP** input selected.
 
-!!! note "SPS / SPD readers are deferred — on purpose"
-    The authoritative `.sps` (Typinski 2015) and `.spd` binary layouts were not
-    machine-readable when this module was written, and we don't guess binary formats.
-    `formats.read_sps()` / `read_spd()` raise `NotImplementedError` with a pointer; for live
-    Radio-Sky data use the RSS protocol above. Implementing the file readers from a verified spec
-    is tracked in [`plans/04-data-formats-and-seti-software.md`](https://github.com/joebarbere/jansky/blob/main/plans/04-data-formats-and-seti-software.md).
+!!! success "Reading `.sps` / `.spd` files"
+    `formats.read_sps()` and `read_spd()` parse the Radio-Sky binary layout (a 156-byte
+    little-endian header, a `0xFF`-delimited notes block, then **big-endian** `uint16` sweeps for
+    SPS or `int16`/`float64` time samples for SPD) into a `Spectrogram`. `read_sps` is validated
+    byte-for-byte against a **real Radio JOVE recording** — fetch it with
+    `python -m jansky.data --fetch radiojove-sps` (AJ4CO/Typinski, a dual-polarisation 16–32 MHz
+    Jupiter dynamic spectrum). For *live* streaming data, use the RSS protocol above instead.
 
 ## The wider ecosystem
 

@@ -1,11 +1,25 @@
-# Plan 15 — Implement the SPS/SPD readers 📋 Proposed (de-risked — format now fully specified)
+# Plan 15 — Implement the SPS/SPD readers ✅ Delivered
 
 > Flagged by **archive/real-data (#2 top)**. Scope: medium–large. Closes the one outstanding item
 > from [Plan 04](04-data-formats-and-seti-software.md).
 >
-> **Update (2026-06-21):** GitHub research found an authoritative open reference implementation
-> (`maserlib/maser4py`), so the binary layout is no longer a guess — see *Confidence* below. Ready
-> to implement.
+> **Delivered (2026-06-21):**
+> - **`jansky.formats.read_sps` / `read_spd`** implemented, returning the `Spectrogram` dataclass.
+>   The layout was recovered clean-room from the open reference (`maserlib/maser4py`) — see the
+>   *Confidence* section below for the full spec. `read_sps` handles single- and dual-polarisation
+>   files (feeds in `meta["feeds"]`, descending Hz axis, sync-delimiter check); `read_spd` handles
+>   the int16/float64 × timestamp/no-timestamp variants.
+> - **Validated byte-for-byte against a real recording:** a network-gated test fetches the real
+>   AJ4CO/Typinski Jupiter `.sps` (registered as the `radiojove-sps` dataset in `jansky.data`) and
+>   confirms author, 300 channels, dual-pol, 16–32 MHz, the 0xFEFE sync on every sweep, and that
+>   the recovered `nstep` (10412) equals the `SWEEPS` metadata. `read_spd` is round-trip tested
+>   against synthetic files built to the documented layout (no public real `.spd` sample found yet).
+> - **Docs/records updated:** `docs/data-formats.md` (deferral note → "implemented"); Plan 04's
+>   outstanding item marked resolved.
+>
+> **Remaining follow-up:** wiring a real `.sps` read into Ch 23 (Solar & Jupiter) / Ch 30 (RASDR) —
+> a notebook pass (the reader + dataset are ready); and validating `read_spd` against a real `.spd`
+> if one surfaces. Verification: `ruff` + `mypy` + full `pytest` (incl. the real-sample test) green.
 
 ## Context
 
