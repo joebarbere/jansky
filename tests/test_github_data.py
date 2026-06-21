@@ -6,6 +6,8 @@ This is an offline, deterministic test (no network). Live-URL checking is done b
 
 from __future__ import annotations
 
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -75,3 +77,13 @@ def test_every_entry_url_appears_on_the_page():
     page = PAGE_PATH.read_text()
     missing = [e["url"] for e in _entries() if e["url"] not in page]
     assert not missing, f"urls in YAML but not in docs/github.md: {missing}"
+
+
+def test_stats_block_in_sync():
+    """The generated 'At a glance' block must match the YAML (run --write to fix)."""
+    result = subprocess.run(
+        [sys.executable, str(REPO / "scripts" / "github_stats.py"), "--check"],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr

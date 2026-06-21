@@ -16,6 +16,20 @@ is cross-linked; where a tool has a **canonical paper**, it is cited.
     (Bitbucket). Those are gathered under [Beyond GitHub](#beyond-github-gitlab-sourceforge-bitbucket)
     so the picture is honest, not just GitHub-shaped.
 
+## At a glance
+
+<!-- BEGIN github-stats -->
+*143 catalogued entries across 18 categories — generated from `docs/data/radio_github.yml` by `scripts/github_stats.py` (kept in sync by a test).*
+
+| Kind | Entries |
+|---|---|
+| Organizations & collaborations | 36 |
+| Software repositories | 86 |
+| People | 12 |
+| Beyond GitHub (GitLab / SourceForge) | 9 |
+| **Total** | **143** |
+<!-- END github-stats -->
+
 ---
 
 ## Organizations & collaborations
@@ -178,6 +192,16 @@ The institutional and collaboration accounts that publish the field's software.
   network: [ecallisto_ng](https://github.com/i4Ds/ecallisto_ng). *Paper:*
   [Benz et al. 2009, SoPh 260, 375](https://ui.adsabs.harvard.edu/abs/2009SoPh..260..375B/abstract).
   *In the course:* [Ch 23](notebooks/23_solar_and_jupiter.ipynb).
+- **[healpy](https://github.com/healpy)** — the [healpy](https://github.com/healpy/healpy) HEALPix
+  Python ecosystem (the pixelisation behind the HI4PI map the course reads in
+  [Ch 11](notebooks/11_hi_rotation_curve.ipynb)). *Paper:*
+  [Zonca et al. 2019, JOSS 4, 1298](https://doi.org/10.21105/joss.01298).
+- **[simonsobs](https://github.com/simonsobs)** — the Simons Observatory CMB stack
+  ([pixell](https://github.com/simonsobs/pixell), [so_noise_models](https://github.com/simonsobs/so_noise_models)).
+  *In the course:* [Ch 22](notebooks/22_cosmic_microwave_background.ipynb).
+- **[Cosmoglobe](https://github.com/Cosmoglobe)** — Bayesian CMB + radio-foreground component separation
+  ([Commander](https://github.com/Cosmoglobe/Commander)). *In the course:*
+  [Ch 22](notebooks/22_cosmic_microwave_background.ipynb), [Ch 37](notebooks/37_polarisation_faraday.ipynb).
 
 ---
 
@@ -406,6 +430,44 @@ power-spectrum sensitivity, and the wide-field calibration/imaging that foregrou
   for 21 cm intensity mapping (CHIME). *Paper:* [Shaw et al. 2014, ApJ 781, 57](https://arxiv.org/abs/1302.0327).
   *In the course:* [Ch 22](notebooks/22_cosmic_microwave_background.ipynb).
 
+### CMB, HEALPix & foreground maps
+
+The CMB shares its tooling — all-sky HEALPix maps, angular power spectra, and the synchrotron /
+free-free foregrounds that *are* radio emission — with radio astronomy.
+
+- **[healpy/healpy](https://github.com/healpy/healpy)** — the Python HEALPix interface (read/write/
+  visualise all-sky maps, `anafast` power spectra). Python, GPL-2. *Paper:*
+  [Zonca et al. 2019, JOSS 4, 1298](https://doi.org/10.21105/joss.01298). *In the course:*
+  [Ch 22](notebooks/22_cosmic_microwave_background.ipynb), [Ch 11](notebooks/11_hi_rotation_curve.ipynb).
+- **[simonsobs/pixell](https://github.com/simonsobs/pixell)** — rectangular-pixel (flat-sky) CMB map
+  analysis used by ACT/Simons Observatory. *In the course:*
+  [Ch 22](notebooks/22_cosmic_microwave_background.ipynb).
+- **[mreineck/ducc](https://github.com/mreineck/ducc)** *(GitHub mirror of the MPCDF GitLab)* — fast
+  spherical-harmonic transforms & interferometric gridding (the SHT engine inside healpy and WSClean).
+  *In the course:* [Ch 22](notebooks/22_cosmic_microwave_background.ipynb), [Ch 8](notebooks/08_aperture_synthesis.ipynb).
+- **[LSSTDESC/NaMaster](https://github.com/LSSTDESC/NaMaster)** — pseudo-$C_\ell$ angular power spectra
+  of masked spin-0/spin-2 (T & polarisation) maps. *Paper:*
+  [Alonso et al. 2019, MNRAS 484, 4127](https://ui.adsabs.harvard.edu/abs/2019MNRAS.484.4127A/abstract).
+  *In the course:* [Ch 22](notebooks/22_cosmic_microwave_background.ipynb), [Ch 37](notebooks/37_polarisation_faraday.ipynb).
+- **[galsci/pysm](https://github.com/galsci/pysm)** — PySM 3: full-sky simulated Galactic foregrounds
+  (synchrotron, free-free, dust, AME) + CMB. *Paper:*
+  [Zonca et al. 2021, JOSS 6, 3783](https://doi.org/10.21105/joss.03783). *In the course:*
+  [Ch 22](notebooks/22_cosmic_microwave_background.ipynb), [Ch 37](notebooks/37_polarisation_faraday.ipynb).
+- **[simonsobs/so_noise_models](https://github.com/simonsobs/so_noise_models)** — Simons Observatory
+  noise/sensitivity forecasts (also used in 21 cm foreground work). *In the course:*
+  [Ch 22](notebooks/22_cosmic_microwave_background.ipynb).
+- **[hpc4cmb/toast](https://github.com/hpc4cmb/toast)** — time-ordered-data simulation & map-making for
+  CMB experiments (POLARBEAR, BICEP, SO, CMB-S4). *In the course:*
+  [Ch 22](notebooks/22_cosmic_microwave_background.ipynb).
+- **[Cosmoglobe/Commander](https://github.com/Cosmoglobe/Commander)** — Bayesian Gibbs-sampling joint
+  CMB + radio-foreground component separation (Planck/BeyondPlanck). Fortran, GPL-3. *Paper:*
+  [Eriksen et al. 2008, ApJ 676, 10](https://ui.adsabs.harvard.edu/abs/2008ApJ...676...10E/abstract).
+  *In the course:* [Ch 22](notebooks/22_cosmic_microwave_background.ipynb), [Ch 37](notebooks/37_polarisation_faraday.ipynb).
+- **[cmbant/CAMB](https://github.com/cmbant/CAMB)** *(theory)* — the Boltzmann code for CMB power spectra
+  the chapter compares maps against. *Paper:*
+  [Lewis et al. 2000, ApJ 538, 473](https://doi.org/10.1086/309179). *In the course:*
+  [Ch 22](notebooks/22_cosmic_microwave_background.ipynb).
+
 ### Solar & heliophysics radio
 
 Solar radio bursts, dynamic spectra, and the spacecraft radio receivers that track space weather.
@@ -513,6 +575,9 @@ Several cornerstone tools are *not* primarily on GitHub — listed here so the m
   GPU single-pulse search.
 - **GILDAS / CLASS** (IRAM) — [iram.fr/IRAMFR/GILDAS](https://www.iram.fr/IRAMFR/GILDAS/). Single-dish &
   mm-interferometry spectral-line reduction.
+- **HEALPix** (C++/Fortran/IDL) — [sourceforge.net/projects/healpix](https://sourceforge.net/projects/healpix/).
+  The reference sphere-pixelisation library ([healpy](https://github.com/healpy/healpy) is its Python
+  interface). *Paper:* [Górski et al. 2005, ApJ 622, 759](https://ui.adsabs.harvard.edu/abs/2005ApJ...622..759G/abstract).
 
 ---
 

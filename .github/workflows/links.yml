@@ -1,9 +1,12 @@
 name: Link check
 
 # The docs cite hundreds of external URLs (papers, archives, telescopes, videos)
-# that inevitably rot. lychee checks them on a schedule (and on demand) rather
-# than on PRs, so a flaky external host never blocks a merge. Failures open an
-# issue listing the dead links to fix.
+# that inevitably rot. lychee checks the markdown on a schedule (and on demand)
+# rather than on PRs, so a flaky external host never blocks a merge. A second job
+# runs the project's own checker over the things lychee can't see from markdown:
+# the jansky.data dataset registry and the structured github catalogue YAML (which
+# also classifies publisher/SourceForge bot-blocks as warnings, not failures).
+# Both open an issue on failure.
 
 on:
   schedule:
@@ -36,4 +39,34 @@ jobs:
         with:
           title: "Broken documentation links (lychee)"
           content-filepath: ./lychee/out.md
+          labels: docs, automated
+
+  data-urls:
+    # Datasets (jansky.data) + the github catalogue YAML — links lychee can't reach
+    # from markdown. Uses scripts/check_dataset_urls.py (ok/warn/fail classifier).
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Sync
+        run: uv sync
+
+      - name: Check dataset + catalogue URLs
+        id: checkurls
+        run: |
+          set +e
+          uv run python scripts/check_dataset_urls.py --github | tee urls-report.txt
+          echo "exit_code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Open an issue on broken URLs
+        if: steps.checkurls.outputs.exit_code != '0'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Broken dataset / catalogue URLs (check_dataset_urls)"
+          content-filepath: ./urls-report.txt
           labels: docs, automated
