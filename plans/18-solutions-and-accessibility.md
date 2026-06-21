@@ -1,7 +1,26 @@
-# Plan 18 — Worked solutions, onboarding & accessibility 📋 Proposed
+# Plan 18 — Worked solutions, onboarding & accessibility ◑ Infrastructure delivered
 
 > Flagged by **pedagogy (#2 top, plus #4, #5, #6)**. Scope: medium–large (mechanical,
 > parallelizable per chapter).
+>
+> **Delivered (the cross-cutting infrastructure):**
+> - **Colourblind-safe palette** — `src/jansky/plotting.py` now sets an Okabe–Ito (Wong 2011)
+>   `axes.prop_cycle` in `JANSKY_STYLE` (exposed as `plotting.COLORBLIND_CYCLE`), so every figure
+>   that calls `use_jansky_style()` gets a colour-vision-safe line cycle for free — no red/green
+>   reliance. Unit-tested.
+> - **Onboarding** — new **`docs/start-here.md`** "choose your track" guide (set-up → pick a route →
+>   how to work a chapter → where to get unstuck), wired into the nav (second item), the homepage,
+>   and the README, and cross-linked to the [Plan 17](17-learning-journey-map.md) track anchors.
+> - **Author standards** — `.claude/agents/notebook-author.md` now *requires* the collapsible
+>   `<details><summary>Solution</summary>…</details>` pattern for every exercise (prompt →
+>   scaffold → hidden solution, not a pre-filled answer), descriptive figure captions / alt text,
+>   and the colourblind cycle. Future chapters comply by default.
+>
+> **Remaining follow-up (mechanical, per-notebook — best as an agent fan-out):** retrofit the
+> collapsible worked-solution blocks into the *existing* 39 chapters' "Try it yourself" sections,
+> add alt-text captions to key existing figures, and add the optional guarded `@interact` slider
+> cells (Ch 3 integrate-down, Ch 9 CLEAN gain, Ch 18 DM butterfly, Maths Lab A windowing) behind an
+> `ipywidgets` extra. The standard and palette are now in place to make that rollout uniform.
 
 ## Context
 

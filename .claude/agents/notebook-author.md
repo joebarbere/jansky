@@ -36,11 +36,28 @@ JSON reliably by hand.
    just stated. Use `$...$` / `$$...$$`.
 4. **Code** (code cells): import `numpy`, `matplotlib`, `astropy`, and the relevant
    `jansky` helpers (`from jansky import signals, units, interferometry, plotting, data`).
-   Call `plotting.use_jansky_style()` early. Prefer the real scientific libraries
+   Call `plotting.use_jansky_style()` early — this also sets the **colourblind-safe**
+   line-colour cycle (`plotting.COLORBLIND_CYCLE`, Okabe–Ito), so do NOT hard-code
+   red/green pairs to distinguish series. Prefer the real scientific libraries
    (astropy, astroquery, spectral-cube, ...) so learners meet the tools scientists use.
    Every code cell must run top-to-bottom without error on the base environment.
-5. **A figure or two** that make the concept visual.
-6. **"Try it yourself"** (markdown): 2–3 exercises.
+5. **A figure or two** that make the concept visual. Every figure needs a one-line
+   **descriptive caption / alt text** in the surrounding markdown (what the reader should
+   see), not just a title — for accessibility and for the rendered site.
+6. **"Try it yourself"** (markdown): 2–3 exercises. Each exercise is a *prompt* (optionally
+   with a scaffolded learner cell) followed by a **collapsible worked solution** so the
+   answer is not spoiled before the attempt. Use this exact pattern (renders in both
+   JupyterLab and the mkdocs-jupyter site):
+
+   ```markdown
+   <details><summary>Solution</summary>
+
+   ...the worked answer, with code and a sentence on why...
+
+   </details>
+   ```
+
+   Do NOT pre-fill the answer inline in an open cell.
 7. **Recap + what's next** (markdown).
 
 ## Rules

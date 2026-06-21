@@ -10,8 +10,25 @@ from __future__ import annotations
 
 import matplotlib.pyplot as plt
 import numpy as np
+from cycler import cycler
 
-__all__ = ["use_jansky_style", "plot_uv_coverage", "show_image"]
+__all__ = ["COLORBLIND_CYCLE", "use_jansky_style", "plot_uv_coverage", "show_image"]
+
+
+#: Okabe--Ito colourblind-safe categorical palette (Wong 2011, *Nature Methods*),
+#: ordered so adjacent series stay distinguishable for the common colour-vision
+#: deficiencies. Used as the default line-colour cycle so figures are legible
+#: without relying on red/green contrast. Yellow is last as it is low-contrast on
+#: white. https://www.nature.com/articles/nmeth.1618
+COLORBLIND_CYCLE = [
+    "#0072B2",  # blue
+    "#E69F00",  # orange
+    "#009E73",  # bluish green
+    "#D55E00",  # vermillion
+    "#CC79A7",  # reddish purple
+    "#56B4E9",  # sky blue
+    "#F0E442",  # yellow
+]
 
 
 #: The course's matplotlib rcParams, applied by :func:`use_jansky_style`.
@@ -27,6 +44,8 @@ JANSKY_STYLE = {
     "font.size": 11,
     "image.cmap": "inferno",
     "image.origin": "lower",
+    # Colourblind-safe default line cycle (overridable per-plot).
+    "axes.prop_cycle": cycler(color=COLORBLIND_CYCLE),
 }
 
 
