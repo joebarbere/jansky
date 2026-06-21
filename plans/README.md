@@ -44,7 +44,7 @@ implemented. ⭐ marks an agent top-pick or a cross-agent consensus item.
 | ⭐ [15 — Implement SPS/SPD readers](15-sps-spd-readers.md) | Real data | medium–large |
 | [16 — Finish the real-archive chapters](16-real-archive-chapters.md) | Real data | medium |
 | ⭐ [17 — Learning-journey map](17-learning-journey-map.md) ◑ | Pedagogy | medium |
-| [18 — Worked solutions, onboarding & accessibility](18-solutions-and-accessibility.md) | Pedagogy | medium–large |
+| [18 — Worked solutions, onboarding & accessibility](18-solutions-and-accessibility.md) ◑ | Pedagogy | medium–large |
 
 Plan **15** supersedes the Plan 04 follow-up below (a real Radio JOVE sample to validate against
 has since been found at MASER).

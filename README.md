@@ -17,6 +17,8 @@ Every chapter uses the real libraries working astronomers use — `astropy`, `as
 
 📖 **Read the course online:** <https://joebarbere.github.io/jansky/> — the full site with
 every notebook, the bibliography, glossary, and telescope/papers references rendered in-browser.
+New to it? The **[Start Here](https://joebarbere.github.io/jansky/start-here/)** page helps you
+pick a track (laptop-only, RTL-SDR, interferometry, transients, or just the physics).
 
 ## Quickstart
 

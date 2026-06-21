@@ -22,6 +22,14 @@ def test_use_jansky_style_applies_rcparams():
     assert plt.rcParams["axes.spines.top"] is False
 
 
+def test_use_jansky_style_sets_colorblind_cycle():
+    plotting.use_jansky_style()
+    cycle_colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
+    assert cycle_colors == plotting.COLORBLIND_CYCLE
+    # The Okabe-Ito palette has no pure red/green pair as adjacent defaults.
+    assert "#0072B2" in cycle_colors  # blue first
+
+
 def test_plot_uv_coverage_returns_axes():
     uv = np.column_stack([np.linspace(-100, 100, 50), np.linspace(50, -50, 50)])
     ax = plotting.plot_uv_coverage(uv)

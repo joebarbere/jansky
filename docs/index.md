@@ -67,7 +67,8 @@ photographs, and videos for the whole course.
 
 ## Get started
 
-Head to the [Setup](setup.md) page to install the environment (local with `uv`, or via
+New here? **[Start Here](start-here.md)** helps you pick a track in a minute. Otherwise head
+straight to the [Setup](setup.md) page to install the environment (local with `uv`, or via
 containers), then open **Chapter 1**. The [References](references.md) page collects the
 landmark papers and textbooks the course draws on.
 
