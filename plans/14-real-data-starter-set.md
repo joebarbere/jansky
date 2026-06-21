@@ -17,11 +17,13 @@
 >   network-gated real fetch (downloads the real `NGC6440E.par`, skipped offline). `docs/data-formats.md`
 >   documents the starter set.
 >
-> **Remaining follow-up:** wiring the real files into the chapters as the *default* read path —
-> Ch 13 de-dispersing the real `your` filterbank (via the existing `Your(psrfits_path)` branch)
-> and Ch 11 reducing a real HI cutout. That needs notebook re-authoring with the `your`/PINT
-> readers and a real download at execute time (preserving the synthetic offline fallback), best
-> done as a dedicated notebook pass. A small static HI4PI *cutout* was not added — no verified
+> **Chapter wiring — Ch 13 done.** Chapter 13 (Pulsars), previously 100% synthetic, now runs a
+> **real PINT timing fit** on the registered `pint-ngc6440e-par`/`-tim` (PSR J1748−2021E) and plots
+> the real NANOGrav timing residuals, guarded behind the `pulsar` extra with an offline fallback.
+> Chapter 23 similarly reads the real `.sps` Jupiter recording (see [Plan 15](15-sps-spd-readers.md)).
+>
+> **Remaining follow-up:** Ch 13 also de-dispersing the real `your` filterbank (`filterbank-example`),
+> and Ch 11 reducing a real HI cutout. A small static HI4PI *cutout* was not added — no verified
 > sub-5 MB static source exists; the synthetic HI cube remains the offline HI path.
 
 ## Context
