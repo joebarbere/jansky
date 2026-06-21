@@ -416,10 +416,21 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 
 ## S
 
+**SED (Saturn Electrostatic Discharge)**
+: An impulsive HF radio burst (1–40 MHz) from lightning in Saturn's storms, first seen by
+  Voyager and studied in detail by Cassini — planetary lightning detected by exactly the
+  dynamic-spectrum and polarimetry methods this course teaches (Chapter 40).
+
 **SEFD (system-equivalent flux density)**
 : The flux density of a source that would double the system noise, $\mathrm{SEFD} =
   2k_B T_{\text{sys}} / A_e$, in janskys. A single number summarising an antenna's
   sensitivity — lower is better.
+
+**Sferic**
+: The broadband radio impulse ("radio atmospheric") from a lightning return stroke; its energy
+  peaks in the VLF band (~5–10 kHz) and propagates globally in the Earth–ionosphere waveguide.
+  Sferics are the signal lightning-location networks trilaterate, and a textbook broadband-RFI
+  contaminant for radio telescopes (Chapters 40, 39).
 
 **SETI (search for extraterrestrial intelligence)**
 : The radio search for artificial narrowband signals (technosignatures), told apart from nature
@@ -492,6 +503,16 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : An observable sign of technology — for radio, an artificial narrowband transmission — sought by
   SETI (Chapter 21).
 
+**TOGA (Time of Group Arrival)**
+: The refined arrival-time measure used by the Blitzortung lightning network — derived from the
+  dispersed sferic's group delay rather than a single onset sample — fed into multilateration to
+  geolocate strokes (Chapter 40).
+
+**Tweek**
+: A sferic that has propagated far in the night-time Earth–ionosphere waveguide; near the ~1.6–1.8
+  kHz waveguide cutoff its group velocity falls to zero, stretching the low-frequency tail into a
+  brief descending tone whose cutoff measures the D-layer height (Chapter 40).
+
 **Type II burst**
 : A slow-drifting solar radio burst produced by a shock (often a CME) climbing outward through
   the corona; its frequency drift gives the shock speed (Chapter 23).
@@ -514,6 +535,14 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : Interferometry with antennas thousands of kilometres apart — even on different continents —
   recording independently and correlating later. It yields the highest angular resolution in
   astronomy (micro-arcseconds), as in the Event Horizon Telescope.
+
+## W
+
+**Whistler**
+: Lightning energy that leaked up a geomagnetic field line and dispersed in the magnetospheric
+  plasma, returning as a descending tone with group delay $t \propto f^{-1/2}$ — the close cousin
+  of the interstellar $t \propto \nu^{-2}$ pulsar/FRB sweep, and de-dispersed by the same machinery
+  (Chapters 40, 13, 18).
 
 ## Z
 

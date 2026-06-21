@@ -88,6 +88,7 @@ nav:
       - "28. GNU Radio Flowgraphs": notebooks/28_gnuradio_flowgraphs.ipynb
       - "29. No-Hardware HI: VIRGO & PICTOR": notebooks/29_virgo_pictor.ipynb
       - "30. RASDR & Radio-Sky Spectrograph": notebooks/30_rasdr_radio_sky.ipynb
+      - "40. Lightning as a Radio Source": notebooks/40_lightning_sferics.ipynb
   - "Part III — Interferometry & Imaging":
       - "7. Why Interferometry?": notebooks/07_why_interferometry.ipynb
       - "8. Aperture Synthesis & the uv-plane": notebooks/08_aperture_synthesis.ipynb

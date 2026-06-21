@@ -20,6 +20,8 @@ solar
     Coronal density, plasma frequency, and type II burst / CME shock speed.
 interferometry
     uv-coverage, the dirty beam, a minimal Hogbom CLEAN, van Cittert--Zernike.
+lightning
+    Sferics, tweeks, whistlers, whistler de-dispersion, and TOA geolocation.
 meteor
     Meteor-scatter echoes (underdense/overdense) and ping detection.
 molecular
@@ -52,6 +54,7 @@ from jansky import (
     data,
     formats,
     interferometry,
+    lightning,
     meteor,
     molecular,
     plotting,
@@ -71,6 +74,7 @@ __all__ = [
     "data",
     "formats",
     "interferometry",
+    "lightning",
     "meteor",
     "molecular",
     "plotting",
