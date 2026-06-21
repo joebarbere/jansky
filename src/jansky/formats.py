@@ -18,13 +18,16 @@ What's implemented here, to spec
   commit: a ``F …|S …|O …|C …|`` handshake then 2-byte little-endian ("LoHi")
   spectra, highest channel first, each sweep ended by ``0xFE 0xFE``.
   (:class:`RSSClient`, :class:`MockRSSServer`.)
+* **SPS** (Radio-Sky Spectrograph spectrogram file) and **SPD** (Radio-SkyPipe
+  strip-chart file). The binary layout — a 156-byte little-endian header, a
+  ``0xFF``-delimited notes block, then big-endian ``uint16`` sweeps (SPS) or
+  ``int16``/``float64`` time samples (SPD) — is documented at
+  ``radiosky.com/skypipehelp/V2/datastructure.html``. :func:`read_sps` is
+  validated byte-for-byte against a real Radio JOVE recording (AJ4CO/Typinski via
+  the MASER archive); :func:`read_spd` follows the same spec (round-trip tested).
 
-What's deferred (do not fake the bytes)
----------------------------------------
-* **SPS** (Radio-Sky Spectrograph file, Typinski 2015) and **SPD** (Radio-SkyPipe)
-  — the authoritative specs were not machine-readable at implementation time, so
-  :func:`read_sps`/:func:`read_spd` raise :class:`NotImplementedError` with a
-  pointer rather than guess a binary layout. See ``docs/data-formats.md``.
+What's deferred to mature libraries
+-----------------------------------
 * **Filterbank / HDF5 / Measurement Set / UVFITS** — handled by mature libraries
   (``blimpy``, ``pyuvdata``); :func:`read_filterbank` is a thin, optional wrapper.
 """
@@ -33,6 +36,7 @@ from __future__ import annotations
 
 import json
 import socket
+import struct
 import threading
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -474,22 +478,202 @@ def read_filterbank(path: str | Path):
     return Waterfall(str(path))
 
 
-def read_sps(path: str | Path):  # pragma: no cover - intentionally not implemented
-    """Read a Radio-Sky Spectrograph ``.sps`` file — **deferred**.
+# --------------------------------------------------------------------------- #
+# Radio-Sky Spectrograph (.sps) and Radio-SkyPipe (.spd) files.
+#
+# Shared layout (radiosky.com/skypipehelp/V2/datastructure.html), validated
+# against a real Radio JOVE .sps recording:
+#   * 156-byte little-endian primary header (struct _SPX_HDR_FMT);
+#   * a `note_length`-byte notes block: free text, then key/value pairs bracketed
+#     by `*[[*` ... `*]]*` and delimited by 0xFF (no key/value separator);
+#   * the data records (big-endian uint16 sweeps for SPS; int16/float64 time
+#     samples for SPD).
+# Times in the header are decimal days since 1899-12-30 00:00; add 2415018.5 for
+# the Julian Date. NB: the header is little-endian but SPS *sample* data is
+# big-endian -- the non-obvious detail that makes validating on real bytes vital.
+# --------------------------------------------------------------------------- #
 
-    The authoritative binary layout (Typinski 2015) was not machine-readable when
-    this module was written, and we do not guess binary formats. Until the spec is
-    validated, read live RSS data with :class:`RSSClient` instead, and see
-    ``docs/data-formats.md`` and ``plans/04-data-formats-and-seti-software.md``.
+_SPX_HDR_FMT = "<10s6d1h10s20s20s40s1h1i"
+_SPX_HDR_LEN = 156
+_SPX_EPOCH_JD = 2415018.5  # JD of 1899-12-30 00:00
+_SPX_SYNC = 0xFEFE  # trailing sweep delimiter in SPS records
+
+
+def _spx_header(raw: bytes) -> dict:
+    """Decode the 156-byte SPS/SPD primary header."""
+    if len(raw) < _SPX_HDR_LEN:
+        raise ValueError("file is shorter than the 156-byte SPS/SPD header")
+    v = struct.unpack(_SPX_HDR_FMT, raw[:_SPX_HDR_LEN])
+
+    def _s(b: bytes) -> str:
+        return b.decode("latin1").strip("\x00").strip()
+
+    return {
+        "software": _s(v[0]),
+        "start_jd": v[1] + _SPX_EPOCH_JD,
+        "stop_jd": v[2] + _SPX_EPOCH_JD,
+        "latitude": v[3],
+        "longitude": v[4],
+        "chartmax": v[5],
+        "chartmin": v[6],
+        "timezone": v[7],
+        "source": _s(v[8]),
+        "author": _s(v[9]),
+        "obsname": _s(v[10]),
+        "obsloc": _s(v[11]),
+        "nchannels": v[12],
+        "note_length": v[13],
+    }
+
+
+def _spx_notes(raw_notes: bytes) -> tuple[str, list[str]]:
+    """Split a notes block into (free_text, [key/value items]).
+
+    Items live between ``*[[*`` and ``*]]*`` and are separated by ``0xFF``.
     """
-    raise NotImplementedError(
-        "SPS file reading is deferred pending verification against the Typinski "
-        "(2015) spec; use RSSClient for live data. See docs/data-formats.md."
-    )
+    start = raw_notes.find(b"*[[*")
+    stop = raw_notes.find(b"*]]*")
+    if start < 0 or stop < 0:
+        return raw_notes.decode("latin1", "replace"), []
+    free_text = raw_notes[:start].decode("latin1", "replace")
+    items = [it.decode("latin1") for it in raw_notes[start + 4 : stop].split(b"\xff")]
+    return free_text, items
 
 
-def read_spd(path: str | Path):  # pragma: no cover - intentionally not implemented
-    """Read a Radio-SkyPipe ``.spd`` file — **deferred** (see :func:`read_sps`)."""
-    raise NotImplementedError(
-        "SPD file reading is deferred pending a verified spec. See docs/data-formats.md."
+def _spx_note(items: list[str], key: str) -> str | None:
+    """Value of the first note item starting with ``key`` (or ``None``)."""
+    for it in items:
+        if it.startswith(key):
+            return it[len(key) :]
+    return None
+
+
+def _sps_feed_names(items: list[str], nfeed: int) -> list[str]:
+    """Polarisation labels for the feeds, read from the BANNER notes when present."""
+    if nfeed == 1:
+        return ["S"]
+    names = []
+    for i in range(nfeed):
+        banner = (_spx_note(items, f"BANNER{i}") or "").upper()
+        names.append("RR" if "RCP" in banner else "LL" if "LCP" in banner else f"CH{i}")
+    return names
+
+
+def read_sps(path: str | Path) -> Spectrogram:
+    """Read a Radio-Sky Spectrograph ``.sps`` spectrogram file.
+
+    Returns a :class:`Spectrogram` whose ``power`` is the first feed's dynamic
+    spectrum ``(n_sweep, n_channel)``. For a dual-polarisation file, both feeds
+    are in ``meta["feeds"]`` (keyed by ``"RR"``/``"LL"``/``"S"``). ``freqs`` runs
+    from the high to the low band edge (Hz); ``times`` is seconds since the start.
+    ``meta`` carries the full header and the parsed notes.
+
+    Validated byte-for-byte against a real Radio JOVE recording (AJ4CO/Typinski).
+    """
+    raw = Path(path).read_bytes()
+    hdr = _spx_header(raw)
+    note_len = hdr["note_length"]
+    free_text, items = _spx_notes(raw[_SPX_HDR_LEN : _SPX_HDR_LEN + note_len])
+
+    nfreq = hdr["nchannels"]
+    nfeed = 2 if (_spx_note(items, "DUALSPECFILE") or "").strip() == "True" else 1
+    lowf = float(_spx_note(items, "LOWF") or "nan")
+    hif = float(_spx_note(items, "HIF") or "nan")
+
+    bytes_per_step = (nfreq * nfeed + 1) * 2  # +1 = trailing 0xFEFE sync sample
+    body = raw[_SPX_HDR_LEN + note_len :]
+    nstep = len(body) // bytes_per_step
+    if nstep == 0:
+        raise ValueError("no complete SPS sweeps found after the header/notes")
+
+    sweeps = np.frombuffer(body[: nstep * bytes_per_step], dtype=">u2").reshape(
+        nstep, nfreq * nfeed + 1
     )
+    # Samples are ordered (channel, feed); the last column is the sync delimiter.
+    samples = sweeps[:, : nfreq * nfeed].reshape(nstep, nfreq, nfeed).astype(float)
+
+    freqs = np.linspace(hif, lowf, nfreq)  # Hz, high edge first
+    duration_s = (hdr["stop_jd"] - hdr["start_jd"]) * 86400.0
+    times = np.linspace(0.0, duration_s, nstep, endpoint=False) if nstep > 1 else np.zeros(1)
+
+    feed_names = _sps_feed_names(items, nfeed)
+    feeds = {name: samples[:, :, i] for i, name in enumerate(feed_names)}
+
+    meta = {
+        **hdr,
+        "file_type": "SPS",
+        "nfeed": nfeed,
+        "dual": nfeed == 2,
+        "fmin_hz": lowf,
+        "fmax_hz": hif,
+        "feed_names": feed_names,
+        "feeds": feeds,
+        "free_text": free_text,
+        "note_items": items,
+        "sync_ok": bool(np.all(sweeps[:, -1] == _SPX_SYNC)),
+    }
+    return Spectrogram(times=times, freqs=freqs, power=feeds[feed_names[0]], meta=meta)
+
+
+def read_spd(path: str | Path) -> Spectrogram:
+    """Read a Radio-SkyPipe ``.spd`` strip-chart (time-series) file.
+
+    SPD files hold ``nchannels`` strip-chart traces, all at a single frequency
+    (20.1 MHz for Radio JOVE), rather than a spectrum. The returned
+    :class:`Spectrogram` therefore uses the channel axis as ``freqs`` (all set to
+    20.1 MHz; channel labels in ``meta["channel_labels"]``) and ``power`` has
+    shape ``(n_step, n_channel)``. Samples are ``int16`` when the file was saved
+    with *Integer Save*, else ``float64``; each record optionally carries an
+    8-byte ``float64`` timestamp unless saved with *No Time Stamps*.
+
+    Implemented to the documented layout and round-trip tested; the format shares
+    its header/notes structure with :func:`read_sps`, which is validated against
+    real bytes.
+    """
+    raw = Path(path).read_bytes()
+    hdr = _spx_header(raw)
+    note_len = hdr["note_length"]
+    free_text, items = _spx_notes(raw[_SPX_HDR_LEN : _SPX_HDR_LEN + note_len])
+
+    integer_save = any(it.strip() == "Integer Save" for it in items)
+    no_timestamps = any(it.strip() == "No Time Stamps" for it in items)
+    nfeed = hdr["nchannels"]
+
+    sample_dt = np.dtype("<i2") if integer_save else np.dtype("<f8")
+    ts_bytes = 0 if no_timestamps else 8
+    bytes_per_step = nfeed * sample_dt.itemsize + ts_bytes
+    body = raw[_SPX_HDR_LEN + note_len :]
+    nstep = len(body) // bytes_per_step
+    if nstep == 0:
+        raise ValueError("no complete SPD records found after the header/notes")
+
+    power = np.empty((nstep, nfeed), dtype=float)
+    times_jd = np.empty(nstep, dtype=float)
+    for k in range(nstep):
+        rec = body[k * bytes_per_step : (k + 1) * bytes_per_step]
+        if no_timestamps:
+            samples = rec
+        else:
+            times_jd[k] = struct.unpack("<d", rec[:8])[0] + _SPX_EPOCH_JD
+            samples = rec[8:]
+        power[k] = np.frombuffer(samples[: nfeed * sample_dt.itemsize], dtype=sample_dt)
+
+    if no_timestamps:
+        times_jd = np.linspace(hdr["start_jd"], hdr["stop_jd"], nstep, endpoint=False)
+    times = (times_jd - times_jd[0]) * 86400.0 if nstep > 1 else np.zeros(1)
+
+    channel_labels = [(_spx_note(items, f"CHL{i}") or f"CH{i}") for i in range(nfeed)]
+    freqs = np.full(nfeed, 20.1e6)  # SPD is a single-frequency strip chart
+
+    meta = {
+        **hdr,
+        "file_type": "SPD",
+        "nfeed": nfeed,
+        "integer_save": integer_save,
+        "no_timestamps": no_timestamps,
+        "channel_labels": channel_labels,
+        "free_text": free_text,
+        "note_items": items,
+        "frequency_hz": 20.1e6,
+    }
+    return Spectrogram(times=times, freqs=freqs, power=power, meta=meta)

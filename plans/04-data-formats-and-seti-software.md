@@ -14,10 +14,11 @@ VIRGO/PICTOR) into the course. **Shipped** (PR #11):
 The RSS protocol is reused again in [Chapter 30 (RASDR)](../notebooks/30_rasdr_radio_sky.ipynb),
 and the VIRGO/PICTOR path in [Chapter 29](../notebooks/29_virgo_pictor.ipynb).
 
-## ⚠ Outstanding (deferred on purpose)
+## ✅ Resolved — the SPS/SPD readers (was deferred)
 
-`jansky.formats.read_sps` and `read_spd` raise `NotImplementedError`. The authoritative `.sps`
-(Typinski 2015) and `.spd` binary layouts were not machine-readable at implementation time (the
-spec link now redirects to a parked domain; RSS_Help2 is a scanned image), and we do not guess
-binary formats. The live `RSSClient` protocol covers the Radio-Sky data path. **Revisit the file
-readers when a verifiable spec is available.**
+`jansky.formats.read_sps` and `read_spd` were initially deferred (the binary spec was not
+machine-readable at the time). They are now **implemented** — see
+[Plan 15](15-sps-spd-readers.md). The layout was recovered from an open reference
+implementation (`maserlib/maser4py`) and `read_sps` is validated byte-for-byte against a real
+Radio JOVE recording (AJ4CO/Typinski via MASER, registered as the `radiojove-sps` dataset). The
+live `RSSClient` protocol still covers the streaming Radio-Sky data path.
