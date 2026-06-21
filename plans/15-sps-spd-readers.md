@@ -17,9 +17,14 @@
 > - **Docs/records updated:** `docs/data-formats.md` (deferral note → "implemented"); Plan 04's
 >   outstanding item marked resolved.
 >
-> **Remaining follow-up:** wiring a real `.sps` read into Ch 23 (Solar & Jupiter) / Ch 30 (RASDR) —
-> a notebook pass (the reader + dataset are ready); and validating `read_spd` against a real `.spd`
-> if one surfaces. Verification: `ruff` + `mypy` + full `pytest` (incl. the real-sample test) green.
+> **Chapter wiring (Ch 23):** Chapter 23 (Solar & Jupiter) now ends its Jupiter section by loading
+> the **real** AJ4CO `.sps` recording with `read_sps`, background-subtracting it, and plotting the
+> 16–32 MHz dynamic spectrum — so the course shows a genuine Radio JOVE observation alongside the
+> simulated storms (offline fallback preserved).
+>
+> **Remaining follow-up:** the same wiring for Ch 30 (RASDR) if desired; and validating `read_spd`
+> against a real `.spd` if one surfaces. Verification: `ruff` + `mypy` + full `pytest` (incl. the
+> real-sample test) + `nbmake` on Ch 23 + `mkdocs --strict` green.
 
 ## Context
 
