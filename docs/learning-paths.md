@@ -65,6 +65,7 @@ flowchart TD
   C23[23 · Solar & Jupiter]
   C24[24 · Molecular & masers]
   C38[38 · Machine learning]
+  C39[39 · RFI mitigation]
   C15[15 · Capstone]
   C9 --> C10 --> C11
   C10 --> C12
@@ -74,6 +75,7 @@ flowchart TD
   C13 --> C20
   C18 --> C38
   C3 --> C38
+  C3 --> C39
   C3 --> C21
   C2 --> C22
   C2 --> C23
@@ -95,6 +97,7 @@ flowchart TD
   C18 -.-> LB
   C38 -.-> LB
   C3 -.-> LC
+  C39 -.-> LC
   C10 -.-> LD
   C9 -.-> LE
   C4 -.-> LF
@@ -141,7 +144,7 @@ technique you'd like to see derived from scratch.
 |---|---|---|
 | **[A · Fourier & convolution](notebooks/31_mathslab_fourier_convolution.ipynb)** | FT pairs, convolution theorem, sampling | Ch 8 (uv-plane), Ch 9 (CLEAN), Ch 37 (RM synthesis), Ch 3 |
 | **[B · Matched filtering](notebooks/32_mathslab_matched_filtering.ipynb)** | Detection theory, the matched filter | Ch 18 (FRBs), Ch 13 (pulsars), Ch 38 (ML baseline), Ch 3 |
-| **[C · Noise & RFI](notebooks/33_mathslab_noise_rfi.ipynb)** | Noise statistics, robust RFI excision | Ch 3 (radiometer), Ch 5 (SDR) |
+| **[C · Noise & RFI](notebooks/33_mathslab_noise_rfi.ipynb)** | Noise statistics, robust RFI excision | Ch 3 (radiometer), Ch 39 (RFI flagging), Ch 5 (SDR) |
 | **[D · Coordinates & time](notebooks/34_mathslab_coordinates_time.ipynb)** | Sky coordinates, time systems | Ch 10 (archives), Ch 11, Ch 13 |
 | **[E · Calibration](notebooks/35_mathslab_calibration.ipynb)** | Linear algebra for gain/closure | Ch 9 (CLEAN), Ch 12 (VLA imaging) |
 | **[F · Special functions & beams](notebooks/36_mathslab_special_functions.ipynb)** | Bessel/sinc, beam patterns | Ch 4 (antennas), Ch 8 |
