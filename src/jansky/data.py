@@ -125,6 +125,16 @@ DATASETS: dict[str, Dataset] = {
         "inspect with pyuvdata (the `formats` extra), no CASA container needed.",
         size_hint="~4 MB",
     ),
+    "lab-hi-l12": Dataset(
+        name="lab-hi-l12",
+        url="https://vizier.cfa.harvard.edu/ftp/cats/VIII/76/bvmaps/L0120.fits.gz",
+        filename="lab_hi_l12.fits.gz",
+        description="Real Galactic HI 21cm (b, v) slice at Galactic longitude l = 12 deg from "
+        "the Leiden/Argentine/Bonn (LAB) all-sky survey (Kalberla et al. 2005) — calibrated "
+        "brightness temperature in K; the b = 0 row is a real inner-Galaxy HI spectrum whose "
+        "terminal velocity gives a tangent-point rotation-curve point (read with astropy.io.fits).",
+        size_hint="~366 KB",
+    ),
     # --- large, opt-in (never on the default/offline path) ---
     "hi4pi-sample": Dataset(
         name="hi4pi-sample",
