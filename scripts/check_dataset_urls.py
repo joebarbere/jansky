@@ -19,7 +19,8 @@ Usage::
     uv run python scripts/check_dataset_urls.py --category small
     uv run python scripts/check_dataset_urls.py --docs          # + docs/resources.md
     uv run python scripts/check_dataset_urls.py --docs docs/telescopes.md
-    make check-urls                                             # datasets + resources, via make
+    uv run python scripts/check_dataset_urls.py --github        # + docs/data/radio_github.yml
+    make check-urls                                             # datasets + resources + github, via make
 """
 
 from __future__ import annotations
@@ -38,6 +39,7 @@ from jansky.data import DATASETS
 _LINK_RE = re.compile(r"\]\((https?://[^)\s]+)\)|<(https?://[^>\s]+)>")
 
 _DEFAULT_DOC = "docs/resources.md"
+_DEFAULT_GITHUB_YAML = "docs/data/radio_github.yml"
 
 # Many sites reject the default python-requests User-Agent with a 403; a
 # browser-like UA gets an honest status without pretending to be a person.
@@ -55,6 +57,21 @@ def extract_doc_urls(path: str | Path) -> list[str]:
     urls = {a or b for a, b in _LINK_RE.findall(text)}
     # Strip a trailing punctuation that sometimes sneaks into a match.
     return sorted(u.rstrip(".,;") for u in urls)
+
+
+def extract_yaml_urls(path: str | Path) -> list[str]:
+    """Return the unique URLs from a github-catalogue YAML (entry + paper links)."""
+    import yaml  # imported lazily so the dataset-only path needs no PyYAML
+
+    data = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+    urls: set[str] = set()
+    for entry in data.get("entries", []):
+        if isinstance(entry.get("url"), str):
+            urls.add(entry["url"])
+        paper = entry.get("paper")
+        if isinstance(paper, dict) and isinstance(paper.get("url"), str):
+            urls.add(paper["url"])
+    return sorted(urls)
 
 
 # Codes where the *server answered* but blocked the bot (auth/forbidden/rate
@@ -108,6 +125,12 @@ def main(argv: list[str] | None = None) -> int:
         metavar="FILE",
         help=f"also check doc links (default: {_DEFAULT_DOC})",
     )
+    parser.add_argument(
+        "--github",
+        nargs="*",
+        metavar="FILE",
+        help=f"also check the github-catalogue YAML links (default: {_DEFAULT_GITHUB_YAML})",
+    )
     args = parser.parse_args(argv)
 
     targets: list[tuple[str, str]] = []
@@ -122,6 +145,12 @@ def main(argv: list[str] | None = None) -> int:
         for doc in doc_files:
             for url in extract_doc_urls(doc):
                 targets.append((Path(doc).stem, url))
+
+    if args.github is not None:
+        yaml_files = args.github or [_DEFAULT_GITHUB_YAML]
+        for yml in yaml_files:
+            for url in extract_yaml_urls(yml):
+                targets.append((Path(yml).stem, url))
 
     print(f"Checking {len(targets)} URL(s)...\n")
     failures = _check_targets(targets)
