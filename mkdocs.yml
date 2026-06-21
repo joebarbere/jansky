@@ -58,8 +58,16 @@ markdown_extensions:
       permalink: true
 
 extra_javascript:
-  # MathJax so the LaTeX in the lessons renders.
+  # MathJax so the LaTeX in the lessons renders. The local config (loaded first)
+  # enables single-dollar inline math, which the notebooks emit; without it the
+  # chapters show literal $...$ instead of typeset symbols.
+  - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Rewrites relative notebook/doc links inside rendered notebooks to the site's
+# URL form (mkdocs-jupyter leaves them pointing at .ipynb/.md, which 404).
+hooks:
+  - mkdocs_hooks.py
 
 nav:
   - Home: index.md
