@@ -19,11 +19,16 @@
 > microsecond timing residuals (post-fit RMS ≈ 21 µs ≈ the TOA errors), guarded behind the `pulsar`
 > extra with an offline fallback. Closes the Ch 13/20 par/tim item.
 >
+> **Ch 18 real filterbank — done.** Chapter 18 (FRBs) now points the same `dm_search` at the real
+> `your` example filterbank (`filterbank-example`, registered in `jansky.data`): it reads the
+> 336-channel L-band recording with `your`, runs the butterfly over 0–1000 pc cm⁻³, and recovers a
+> genuine dispersed burst at **DM ≈ 474 pc cm⁻³, S/N 13.3** (vs 3.4 at DM 0) — guarded behind the
+> `pulsar` extra with an offline fallback.
+>
 > **Remaining follow-up — the rest of the chapter real-data wiring** (the heavier half): Ch 10
 > HEASARC SNR query with offline fallback; Ch 12 a real small VLA Measurement Set via `pyuvdata`;
-> Ch 18 a real single-pulse filterbank for the DM search; and a short guided "download real data"
-> walkthrough. Each needs notebook re-authoring with a real fetch at execute time (preserving the
-> offline fallback) — best done as a dedicated notebook pass.
+> and a short guided "download real data" walkthrough. Each needs notebook re-authoring with a real
+> fetch at execute time (preserving the offline fallback) — best done as a dedicated notebook pass.
 
 ## Context
 
