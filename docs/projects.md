@@ -170,6 +170,46 @@ assume you already own a computer.
   [Stanford SOLAR Center](https://solar-center.stanford.edu/SID/sidmonitor/) ·
   [SARA SuperSID kit](https://www.radio-astronomy.org/store/projects/supersid)
 
+### Lightning & sferics
+
+Lightning is the loudest natural radio source you can hear from the backyard: every return
+stroke radiates a broadband impulse that peaks in the VLF band (~5–10 kHz) and reaches up into
+VHF. Those impulses — **sferics** — bounce around the Earth–ionosphere waveguide as **tweeks**
+and, when they leak up a geomagnetic field line and disperse, return as whistling **whistlers**.
+The physics is the same plasma dispersion you meet with pulsars and FRBs (a whistler's group
+delay goes as $t \propto f^{-1/2}$, the close cousin of the interstellar $t \propto \nu^{-2}$),
+and lightning is also a textbook *broadband RFI* source that radio observatories must flag — so
+these builds tie straight back to [Chapter 13 (Pulsars)](notebooks/13_pulsars.ipynb),
+[Chapter 18 (FRBs)](notebooks/18_fast_radio_bursts.ipynb),
+[Chapter 27 (VLF & the Ionosphere)](notebooks/27_vlf_ionosphere.ipynb), and
+[Chapter 39 (RFI Mitigation)](notebooks/39_rfi_mitigation.ipynb). The same techniques even
+detect lightning on *other planets* — Saturn's electrostatic discharges and Jupiter's whistlers
+were found by Voyager, Cassini, and Juno.
+
+- **Join Blitzortung / LightningMaps (citizen-science geolocation)** — The most rewarding build:
+  a small VLF loop/ferrite antenna and a GPS-timestamped controller board upload sferic arrival
+  times to a global server, which trilaterates each strike by **time-of-arrival** (the same
+  hyperbolic geometry as VLBI in [Chapter 19](notebooks/19_eht_and_vlbi.ipynb)). Hundreds of
+  stations feed the live map; kits are ~$50–200 and the data are free to use.
+  [How to cover your area](https://www.blitzortung.org/en/cover_your_area.php) ·
+  [live map](https://www.lightningmaps.org/) ·
+  [WWLLN (the academic network)](https://wwlln.net/)
+- **AS3935 "Franklin" lightning sensor** — A single I²C/SPI chip with a 500 kHz resonant front
+  end and an on-board classifier that flags strikes vs man-made "disturbers" and estimates
+  distance (1–40 km). Cheap (~$25) and Raspberry-Pi/Arduino-friendly — great for a "storm is
+  approaching" alarm, though it's single-station (no direction or geolocation) and its 500 kHz
+  band misses the VLF energy peak.
+  [SparkFun hookup guide](https://learn.sparkfun.com/tutorials/sparkfun-as3935-lightning-detector-hookup-guide-v20) ·
+  [ScioSense AS3935](https://www.sciosense.com/as3935-franklin-lightning-sensor-ic/)
+- **Soundcard / RTL-SDR sferic & whistler receiver** — Because VLF lightning emission lands in
+  the audio band, a loop antenna + high-gain pre-amp + a 96 kHz sound card records raw sferics,
+  tweeks, and whistlers with no down-conversion — point a spectrogram at it and the descending
+  whistler tones appear directly. (An RTL-SDR with an upconverter, or HF direct-sampling, catches
+  the "crashes" higher up the band.) The open-source [vlfrx-tools](https://github.com/daedalus/vlfrx-tools)
+  toolkit adds GPS-locked timing and sferic analysis; the
+  [INSPIRE Project](https://theinspireproject.org/default.asp?contentID=4) (already above) is the
+  classic listen-first on-ramp.
+
 ---
 
 ## Sources for radio-astronomy parts
