@@ -40,11 +40,13 @@ flowchart TD
   C7[7 · Why interferometry]
   C8[8 · Aperture synthesis]
   C9[9 · Deconvolution & CLEAN]
+  C41[41 · Practical calibration]
   C17[17 · Coherent interferometry · KrakenSDR]
   C19[19 · EHT & VLBI]
   C25[25 · Intensity interferometry · HBT]
   C37[37 · Polarisation & Faraday rotation]
   C3 --> C7 --> C8 --> C9
+  C9 --> C41
   C8 --> C17
   C9 --> C19
   C7 --> C25
@@ -146,7 +148,7 @@ technique you'd like to see derived from scratch.
 | **[B · Matched filtering](notebooks/32_mathslab_matched_filtering.ipynb)** | Detection theory, the matched filter | Ch 18 (FRBs), Ch 13 (pulsars), Ch 38 (ML baseline), Ch 3 |
 | **[C · Noise & RFI](notebooks/33_mathslab_noise_rfi.ipynb)** | Noise statistics, robust RFI excision | Ch 3 (radiometer), Ch 39 (RFI flagging), Ch 5 (SDR) |
 | **[D · Coordinates & time](notebooks/34_mathslab_coordinates_time.ipynb)** | Sky coordinates, time systems | Ch 10 (archives), Ch 11, Ch 13 |
-| **[E · Calibration](notebooks/35_mathslab_calibration.ipynb)** | Linear algebra for gain/closure | Ch 9 (CLEAN), Ch 12 (VLA imaging) |
+| **[E · Calibration](notebooks/35_mathslab_calibration.ipynb)** | Linear algebra for gain/closure | Ch 41 (practical calibration), Ch 9 (CLEAN), Ch 12 (VLA imaging) |
 | **[F · Special functions & beams](notebooks/36_mathslab_special_functions.ipynb)** | Bessel/sinc, beam patterns | Ch 4 (antennas), Ch 8 |
 
 ---

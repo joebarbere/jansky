@@ -35,6 +35,8 @@ __all__ = [
     "disk_visibility",
     "hbt_g2",
     "solve_point_source_gains",
+    "apply_gains",
+    "solve_gains_stefcal",
 ]
 
 
@@ -444,6 +446,90 @@ def solve_point_source_gains(vis: np.ndarray) -> np.ndarray:
     top = int(np.argmax(np.abs(evals)))
     gains = evecs[:, top] * np.sqrt(abs(evals[top]))
     # Fix the global phase so g[0] is real positive.
+    if gains[0] != 0:
+        gains = gains * np.exp(-1j * np.angle(gains[0]))
+    return gains
+
+
+def apply_gains(vis_model: np.ndarray, gains: np.ndarray) -> np.ndarray:
+    """Corrupt model visibilities with per-antenna complex gains (the forward model).
+
+    Applies the radio-interferometer measurement equation
+    :math:`V^\\mathrm{obs}_{ij} = g_i\\,V^\\mathrm{model}_{ij}\\,g_j^{*}`, i.e.
+    ``diag(g) · V · diag(g)ᴴ``. Inverting this -- solving for the gains and dividing
+    them out -- is what calibration does.
+
+    Parameters
+    ----------
+    vis_model
+        ``(n_ant, n_ant)`` true/model visibility matrix.
+    gains
+        ``(n_ant,)`` complex per-antenna gains.
+
+    Returns
+    -------
+    numpy.ndarray
+        The corrupted ``(n_ant, n_ant)`` visibility matrix.
+    """
+    g = np.asarray(gains, dtype=complex)
+    v = np.asarray(vis_model, dtype=complex)
+    return g[:, None] * v * np.conj(g)[None, :]
+
+
+def solve_gains_stefcal(
+    vis_obs: np.ndarray,
+    vis_model: np.ndarray,
+    n_iter: int = 100,
+    tol: float = 1e-10,
+) -> np.ndarray:
+    """Solve antenna gains against a sky model (the StefCal algorithm).
+
+    Given observed visibilities :math:`V^\\mathrm{obs}` and a model
+    :math:`V^\\mathrm{model}`, find the per-antenna complex gains minimising
+    :math:`\\sum_{i\\neq j} |V^\\mathrm{obs}_{ij} - g_i\\,V^\\mathrm{model}_{ij}\\,g_j^{*}|^2`.
+    Each iteration updates every antenna in closed form,
+    :math:`g_i = \\sum_{j\\neq i} V^\\mathrm{obs}_{ij}\\,z_j^{*} / \\sum_{j\\neq i}|z_j|^2`
+    with :math:`z_j = g_j^{*}\\,V^\\mathrm{model}_{ij}`, then averages successive iterates
+    for stability (Mitchell et al. 2008; Salvini & Wijnholds 2014). This is the engine
+    of both gain calibration (model = a calibrator) and self-calibration (model = the
+    current image); for a point source it agrees with
+    :func:`solve_point_source_gains`.
+
+    Parameters
+    ----------
+    vis_obs
+        ``(n_ant, n_ant)`` observed (corrupted) visibility matrix.
+    vis_model
+        ``(n_ant, n_ant)`` model visibility matrix (e.g. ``np.ones`` for a point source).
+    n_iter
+        Maximum number of iterations.
+    tol
+        Convergence tolerance on the fractional gain change.
+
+    Returns
+    -------
+    numpy.ndarray
+        Complex per-antenna gains, ``(n_ant,)``, with ``g[0]`` rotated real-positive.
+    """
+    vobs = np.asarray(vis_obs, dtype=complex)
+    vmod = np.asarray(vis_model, dtype=complex)
+    n = vobs.shape[0]
+    off = ~np.eye(n, dtype=bool)  # exclude autocorrelations from the solve
+    gains = np.ones(n, dtype=complex)
+    for _it in range(n_iter):
+        g_new = gains.copy()
+        for i in range(n):
+            z = np.conj(gains) * vmod[i, :]  # z_j = conj(g_j) * V_model_ij
+            num = np.sum((vobs[i, :] * np.conj(z))[off[i]])
+            den = np.sum((np.abs(z) ** 2)[off[i]])
+            if den > 0:
+                g_new[i] = num / den
+        # StefCal stabilisation: average the new iterate with the old.
+        updated = 0.5 * (gains + g_new)
+        change = np.linalg.norm(updated - gains) / (np.linalg.norm(gains) + 1e-30)
+        gains = updated
+        if change < tol:
+            break
     if gains[0] != 0:
         gains = gains * np.exp(-1j * np.angle(gains[0]))
     return gains

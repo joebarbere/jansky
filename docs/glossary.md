@@ -208,6 +208,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   $G = A_e/(2k_B)$ in K/Jy. In calibration, "gains" also means the per-antenna complex
   amplitude and phase corrections solved for during reduction.
 
+**Gain calibration**
+: Solving for each antenna's complex gain $g_i$ (amplitude and phase, varying with time and
+  frequency) — usually from a bright calibrator of known structure — and dividing it out of the
+  data. Bandpass calibration is the frequency-dependent case; self-calibration uses the target's
+  own model (Chapter 41, Maths Lab E).
+
 **GNU Radio**
 : An open-source toolkit for building signal-processing "flowgraphs" from blocks
   (source → filter → FFT → sink); the basis of many amateur radio-astronomy receivers (Chapter 28).
@@ -289,6 +295,11 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : The optimal linear detector for a *known* signal shape in white noise: correlate the data with
   a copy of the template. De-dispersion and the SETI drift search are matched filters
   (Chapters 18, 21; Maths Lab B).
+
+**Measurement equation**
+: The model relating what an interferometer *records* to the true sky, antenna by antenna:
+  $V^\mathrm{obs}_{ij} = g_i\,V^\mathrm{true}_{ij}\,g_j^{*} + n_{ij}$ (and its full polarised,
+  matrix form, Hamaker et al. 1996). Calibration inverts it for the gains $g_i$ (Chapter 41).
 
 **Measurement Set (MS)**
 : CASA's on-disk data format for visibility data: a set of tables holding the correlated
