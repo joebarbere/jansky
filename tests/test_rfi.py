@@ -53,6 +53,20 @@ def test_sumthreshold2d_flags_line_and_burst():
     assert clean.mean() < 0.05
 
 
+def test_sumthreshold2d_n_iter_refines():
+    """A second iteration re-flags on the cleaner residual, so it flags at least
+    as much as one pass (the n_iter parameter is not a no-op)."""
+    rng = np.random.default_rng(11)
+    ds = rng.normal(0.0, 1.0, (128, 64))
+    ds[:, 20] += 2.8  # a faint persistent line, near the detection edge
+    for t in range(40, 90):  # a faint extended drifter
+        ds[t, 30 + (t - 40) // 10] += 2.6
+    one = rfi.sumthreshold2d(ds, threshold=3.5, n_iter=1).mean()
+    two = rfi.sumthreshold2d(ds, threshold=3.5, n_iter=2).mean()
+    assert two >= one
+    assert two > one  # on this data the second pass genuinely catches more
+
+
 def test_flag_outliers_catches_spikes():
     rng = np.random.default_rng(1)
     x = rng.normal(0, 1, 1000)

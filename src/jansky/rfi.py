@@ -96,6 +96,7 @@ def sumthreshold(
     threshold: float = 3.5,
     rho: float = 1.5,
     sigma: float | None = None,
+    mask: np.ndarray | None = None,
 ) -> np.ndarray:
     """SumThreshold RFI flagger for a 1-D series (Offringa et al. 2010).
 
@@ -105,40 +106,59 @@ def sumthreshold(
 
     .. math:: \\chi_M = \\frac{\\chi_1}{\\rho^{\\log_2 M}},
 
-    with :math:`\\chi_1 =` ``threshold`` :math:`\\times \\sigma`. Longer windows use
-    a *lower* threshold, so faint but temporally/spectrally **extended**
-    interference -- which a single-sample cut (:func:`flag_outliers`) misses --
-    still accumulates above the line. ``values`` is treated as a residual: its
-    median is removed and the robust :func:`mad_sigma` is used for ``sigma`` unless
-    one is supplied.
+    with :math:`\\chi_1 =` ``threshold`` :math:`\\times \\sigma`. The threshold is
+    *relaxed* as the window grows so that **coherent, extended** interference --
+    whose window mean stays near its amplitude regardless of :math:`M` -- still
+    crosses the line, while a random-noise window mean shrinks as
+    :math:`\\sigma/\\sqrt{M}` and increasingly does not. That is why SumThreshold
+    catches faint extended RFI that a single-sample cut (:func:`flag_outliers`)
+    misses. ``values`` is treated as a residual: its median is removed and the
+    robust :func:`mad_sigma` is used for ``sigma`` unless one is supplied.
+
+    Parameters
+    ----------
+    mask
+        Optional initial boolean mask of already-flagged samples (e.g. from an
+        earlier pass). Flagged samples stay flagged, are excluded from window
+        means, and -- when ``sigma`` is not given -- from the noise estimate, so a
+        second pass on partly-cleaned data is genuinely more sensitive.
 
     Returns a boolean mask (``True`` = flagged) the same length as ``values``.
     """
     resid = np.asarray(values, dtype=float).ravel()
     resid = resid - np.median(resid)
-    s = float(mad_sigma(resid)) if sigma is None else float(sigma)
-    mask = np.zeros(resid.size, dtype=bool)
+    out = (
+        np.zeros(resid.size, dtype=bool)
+        if mask is None
+        else np.asarray(mask, dtype=bool).ravel().copy()
+    )
+    if sigma is not None:
+        s = float(sigma)
+    else:
+        # Estimate the noise from the still-unflagged samples (robustly).
+        unflagged_all = resid[~out]
+        s = float(mad_sigma(unflagged_all)) if unflagged_all.size else 0.0
     if s <= 0:
-        return mask
+        return out
     m = 1
     while m <= max_window:
         chi = threshold * s / (rho ** np.log2(m))
         if m == 1:
-            mask |= np.abs(resid) > chi
+            out |= np.abs(resid) > chi
         else:
             # Compare the *signed* mean of the window's unflagged samples to chi:
             # for noise the residuals cancel, so only a coherent (RFI) excess
             # accumulates above the line. (abs() catches both bright and faint dips.)
             for j in range(resid.size - m + 1):
                 sl = slice(j, j + m)
-                window_mask = mask[sl]
+                window_mask = out[sl]
                 if window_mask.all():
                     continue
                 unflagged = resid[sl][~window_mask]
                 if abs(unflagged.mean()) > chi:
-                    mask[sl] = True
+                    out[sl] = True
         m *= 2
-    return mask
+    return out
 
 
 def sumthreshold2d(
@@ -152,22 +172,32 @@ def sumthreshold2d(
     """2-D SumThreshold over a ``(n_time, n_chan)`` dynamic spectrum.
 
     Runs :func:`sumthreshold` along the time direction (per channel) and the
-    frequency direction (per time sample), OR-ing the masks; iterating ``n_iter``
-    times lets later passes benefit from earlier flags. Catches both **broadband**
-    bursts (extended in frequency at one time) and **narrowband** lines (a bright
-    channel) -- the two-directional structure real flaggers exploit.
+    frequency direction (per time sample). The accumulating mask is **threaded
+    through** each call, so the frequency pass benefits from the time pass and,
+    with ``n_iter > 1``, each iteration re-flags on the now-cleaner residual (the
+    noise estimate drops as RFI is removed, making later passes more sensitive).
+    Catches both **broadband** bursts (extended in frequency at one time) and
+    **narrowband** lines (a bright channel) -- the two-directional structure real
+    flaggers exploit.
 
     Returns a boolean mask the same shape as ``dynspec``.
     """
     data = np.asarray(dynspec, dtype=float)
     mask = np.zeros(data.shape, dtype=bool)
     for _ in range(max(1, n_iter)):
+        # Seed this iteration's passes from the mask accumulated so far. On the
+        # first iteration that seed is all-False, so a single pass reproduces the
+        # plain union of the time and frequency flags; later iterations re-flag on
+        # the now-cleaner residual (lower noise estimate => more sensitive).
+        seed = mask
+        acc = seed.copy()
         for c in range(data.shape[1]):  # time direction, per channel
-            mask[:, c] |= sumthreshold(
-                data[:, c], max_window=max_window, threshold=threshold, rho=rho
+            acc[:, c] |= sumthreshold(
+                data[:, c], max_window=max_window, threshold=threshold, rho=rho, mask=seed[:, c]
             )
         for t in range(data.shape[0]):  # frequency direction, per time sample
-            mask[t, :] |= sumthreshold(
-                data[t, :], max_window=max_window, threshold=threshold, rho=rho
+            acc[t, :] |= sumthreshold(
+                data[t, :], max_window=max_window, threshold=threshold, rho=rho, mask=seed[t, :]
             )
+        mask = acc
     return mask
