@@ -116,6 +116,15 @@ DATASETS: dict[str, Dataset] = {
         "2016-12-10); read with jansky.formats.read_sps.",
         size_hint="~12 MB",
     ),
+    "vla-uvfits": Dataset(
+        name="vla-uvfits",
+        url="https://raw.githubusercontent.com/RadioAstronomySoftwareGroup/rasg-datasets/main/visibility_data/VLA/day2_TDEM0003_10s_norx_1src_1spw.uvfits",
+        filename="vla_day2_TDEM0003_1src_1spw.uvfits",
+        description="Real (E)VLA continuum visibilities (UVFITS) — the CASA-guides "
+        "day2_TDEM0003 dataset: calibrator J1008+0730 at ~36 GHz, 18 antennas; "
+        "inspect with pyuvdata (the `formats` extra), no CASA container needed.",
+        size_hint="~4 MB",
+    ),
     # --- large, opt-in (never on the default/offline path) ---
     "hi4pi-sample": Dataset(
         name="hi4pi-sample",

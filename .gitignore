@@ -223,3 +223,6 @@ __marimo__/
 
 # mkdocs-jupyter render cache
 /.cache/
+
+# Artifacts written by notebooks at execute time (relative data/ paths)
+notebooks/data/

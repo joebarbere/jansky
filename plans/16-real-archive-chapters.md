@@ -32,10 +32,15 @@
 > with `heasarc` added to the defensive `ARCHIVE_LIBS` guards and a citable bundled offline
 > fallback, mirroring `cone_search_nvss`.
 >
-> **Remaining follow-up:** Ch 12 a real small VLA Measurement Set via `pyuvdata`; and a short guided
-> "download real data" walkthrough. (Separately, Ch 10's code cells are committed without executed
-> outputs — a pre-existing scaffold state worth a later re-execution pass.) Each needs notebook
-> re-authoring at execute time, best done as a dedicated pass.
+> **Ch 12 real visibilities — done.** Chapter 12's base-env "concept stand-in" now opens a **real**
+> (E)VLA Measurement Set — the CASA-guides `day2_TDEM0003` UVFITS (calibrator J1008+0730 at 36 GHz,
+> 18 antennas; registered as the `vla-uvfits` dataset) — with **`pyuvdata`** (no CASA container),
+> and plots the genuine **uv-coverage** and **amplitude-vs-baseline** (flat, the point-source
+> calibrator signature). Guarded behind the `formats` extra with an offline fallback.
+>
+> **Remaining follow-up:** a short guided "download real data" walkthrough notebook/section.
+> (Separately, Ch 10's code cells are committed without executed outputs — a pre-existing scaffold
+> state worth a later re-execution pass.)
 
 ## Context
 
