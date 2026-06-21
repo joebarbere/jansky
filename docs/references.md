@@ -59,6 +59,27 @@ originals — many of these papers are short, readable, and historic.
   preferred over the older NE2001 (Cordes & Lazio 2002) for pulsars and FRBs (Chapters 13, 18).
   [DOI](https://doi.org/10.3847/1538-4357/835/1/29)
 
+### Lightning, atmospherics & planetary radio
+
+- **Storey, L. R. O. (1953).** *An Investigation of Whistling Atmospherics.* Phil. Trans. R.
+  Soc. Lond. A 246, 113. — Established that whistlers are lightning impulses dispersed along
+  magnetospheric field lines; the founding paper of the subject (Chapter 40).
+  [DOI](https://doi.org/10.1098/rsta.1953.0011)
+- **Serhan, G. I., et al. (1980).** *The RF Spectra of First and Subsequent Lightning Return
+  Strokes in the 1- to 200-km Range.* Radio Science 15, 1089. — The empirical sferic spectrum
+  (Chapter 40). [DOI](https://doi.org/10.1029/RS015i006p01089)
+- **Zarka, P. (1985).** *Directivity of Saturn Electrostatic Discharges and Ionospheric
+  Implications.* Icarus 61, 508. — Directivity/statistics of Saturn's electrostatic
+  discharges (the lightning Voyager found at Saturn; first reported by Warwick et al. 1981)
+  (Chapter 40). [DOI](https://doi.org/10.1016/0019-1035%2885%2990139-3)
+- **Kolmašová, I., et al. (2018).** *Discovery of Rapid Whistlers Close to Jupiter Implying
+  Lightning Rates Similar to Those on Earth.* Nature Astronomy 2, 544. — Jupiter lightning from
+  Juno (Chapter 40). [DOI](https://doi.org/10.1038/s41550-018-0442-z)
+- **Rodger, C. J., et al. (2006).** *Detection Efficiency of the VLF World-Wide Lightning
+  Location Network (WWLLN): Initial Case Study.* Ann. Geophys. 24, 3197. — The academic
+  time-of-arrival lightning network (Chapter 40).
+  [DOI](https://doi.org/10.5194/angeo-24-3197-2006)
+
 ## Textbooks & standing references
 
 - **Condon, J. J. & Ransom, S. M.** *Essential Radio Astronomy.* Princeton University Press.
