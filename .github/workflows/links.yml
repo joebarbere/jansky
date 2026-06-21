@@ -22,7 +22,7 @@ jobs:
   links:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Check links in docs and README
         id: lychee
@@ -46,7 +46,7 @@ jobs:
     # from markdown. Uses scripts/check_dataset_urls.py (ok/warn/fail classifier).
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
