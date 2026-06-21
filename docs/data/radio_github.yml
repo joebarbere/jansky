@@ -1,0 +1,257 @@
+# Machine-readable companion to docs/github.md — the "Radio Astronomy on GitHub" catalogue.
+#
+# Each entry mirrors a link on that page so the two cannot silently drift
+# (tests/test_github_data.py asserts every `url` here also appears in docs/github.md,
+# that every `chapters` number maps to a real notebook, and that the schema is valid).
+# `scripts/check_dataset_urls.py --github docs/data/radio_github.yml` verifies the URLs are live
+# (run via `make check-urls`). Reuse this list programmatically; keep it in sync with the page.
+#
+# Fields per entry:
+#   name      (required) display name
+#   url       (required) primary link (unique across the file)
+#   kind      (required) one of: org | repo | person | beyond-github
+#   category  (required) thematic group (see the distinct values in the file)
+#   language  (optional) primary language
+#   chapters  (optional) jansky chapter numbers it connects to
+#   paper     (optional) {cite, url} a representative/canonical paper
+
+meta:
+  source: docs/github.md
+  note: >-
+    Curated, not exhaustive. Some cornerstone tools live on GitLab/SourceForge/Bitbucket
+    (kind "beyond-github").
+
+entries:
+  # ---- Organizations & collaborations ----
+  - { name: casacore, url: https://github.com/casacore, kind: org, category: organization, chapters: [12, 41],
+      paper: { cite: "CASA Team 2022, PASP 134, 114501", url: https://doi.org/10.1088/1538-3873/ac9642 } }
+  - { name: casangi, url: https://github.com/casangi, kind: org, category: organization,
+      paper: { cite: "McMullin et al. 2007, ASPC 376, 127", url: https://ui.adsabs.harvard.edu/abs/2007ASPC..376..127M/abstract } }
+  - { name: RadioAstronomySoftwareGroup, url: https://github.com/RadioAstronomySoftwareGroup, kind: org, category: organization, chapters: [12, 16],
+      paper: { cite: "Hazelton et al. 2017, JOSS 2, 140", url: https://doi.org/10.21105/joss.00140 } }
+  - { name: ratt-ru, url: https://github.com/ratt-ru, kind: org, category: organization, chapters: [41] }
+  - { name: lofar-astron, url: https://github.com/lofar-astron, kind: org, category: organization, chapters: [37, 39],
+      paper: { cite: "van Haarlem et al. 2013, A&A 556, A2", url: https://doi.org/10.1051/0004-6361/201220873 } }
+  - { name: ska-sa, url: https://github.com/ska-sa, kind: org, category: organization,
+      paper: { cite: "Jonas 2009, IEEE Proc. 97, 1522", url: https://doi.org/10.1109/JPROC.2009.2020713 } }
+  - { name: ska-telescope, url: https://github.com/ska-telescope, kind: org, category: organization }
+  - { name: radio-astro-tools, url: https://github.com/radio-astro-tools, kind: org, category: organization, chapters: [11] }
+  - { name: CARTAvis, url: https://github.com/CARTAvis, kind: org, category: organization,
+      paper: { cite: "Wang et al. 2026, PASP 138, 024506", url: https://doi.org/10.1088/1538-3873/ae3eb4 } }
+  - { name: GreenBankObservatory, url: https://github.com/GreenBankObservatory, kind: org, category: organization }
+  - { name: MITHaystack, url: https://github.com/MITHaystack, kind: org, category: organization, chapters: [6] }
+  - { name: jive-vlbi, url: https://github.com/jive-vlbi, kind: org, category: organization, chapters: [19] }
+  - { name: MPIfR-BDG, url: https://github.com/MPIfR-BDG, kind: org, category: organization }
+  - { name: NCRA-TIFR, url: https://github.com/NCRA-TIFR, kind: org, category: organization,
+      paper: { cite: "Intema et al. 2017, A&A 598, A78", url: https://doi.org/10.1051/0004-6361/201628536 } }
+  - { name: ATNF, url: https://github.com/ATNF, kind: org, category: organization }
+  - { name: nanograv, url: https://github.com/nanograv, kind: org, category: organization, chapters: [13, 20],
+      paper: { cite: "Agazie et al. 2023, ApJ 951, L8", url: https://ui.adsabs.harvard.edu/abs/2023ApJ...951L...8A/abstract } }
+  - { name: CHIMEFRB, url: https://github.com/CHIMEFRB, kind: org, category: organization, chapters: [18],
+      paper: { cite: "CHIME/FRB 2021, ApJS 257, 59", url: https://ui.adsabs.harvard.edu/abs/2021ApJS..257...59C/abstract } }
+  - { name: chime-experiment, url: https://github.com/chime-experiment, kind: org, category: organization }
+  - { name: UCBerkeleySETI, url: https://github.com/UCBerkeleySETI, kind: org, category: organization, chapters: [21],
+      paper: { cite: "Enriquez et al. 2017, ApJ 849, 104", url: https://doi.org/10.3847/1538-4357/aa8d1b } }
+  - { name: eventhorizontelescope, url: https://github.com/eventhorizontelescope, kind: org, category: organization, chapters: [19],
+      paper: { cite: "EHT 2019, ApJ 875, L1", url: https://ui.adsabs.harvard.edu/abs/2019ApJ...875L...1E/abstract } }
+  - { name: gnuradio, url: https://github.com/gnuradio, kind: org, category: organization, chapters: [28] }
+  - { name: WVURAIL, url: https://github.com/WVURAIL, kind: org, category: organization, chapters: [28] }
+  - { name: krakenrf, url: https://github.com/krakenrf, kind: org, category: organization, chapters: [17] }
+  - { name: myriadrf, url: https://github.com/myriadrf, kind: org, category: organization, chapters: [30] }
+  - { name: maserlib, url: https://github.com/maserlib, kind: org, category: organization, chapters: [23],
+      paper: { cite: "Cecconi et al. 2020, DSJ 19, 12", url: https://doi.org/10.5334/dsj-2020-012 } }
+  - { name: astropy, url: https://github.com/astropy, kind: org, category: organization,
+      paper: { cite: "Astropy Collaboration 2022, ApJ 935, 167", url: https://doi.org/10.3847/1538-4357/ac7c74 } }
+  - { name: HERA-Team, url: https://github.com/HERA-Team, kind: org, category: organization, chapters: [6, 41] }
+  - { name: radiocosmology, url: https://github.com/radiocosmology, kind: org, category: organization,
+      paper: { cite: "Shaw et al. 2015, PhRvD 91, 083514", url: https://arxiv.org/abs/1401.2095 } }
+  - { name: MWATelescope, url: https://github.com/MWATelescope, kind: org, category: organization, chapters: [41] }
+  - { name: EoRImaging, url: https://github.com/EoRImaging, kind: org, category: organization,
+      paper: { cite: "Barry et al. 2019, PASA 36, e026", url: https://doi.org/10.1017/pasa.2019.21 } }
+  - { name: sunpy, url: https://github.com/sunpy, kind: org, category: organization, chapters: [23],
+      paper: { cite: "SunPy Community 2020, ApJ 890, 68", url: https://doi.org/10.3847/1538-4357/ab4f7a } }
+  - { name: spedas, url: https://github.com/spedas, kind: org, category: organization, chapters: [23] }
+  - { name: i4Ds, url: https://github.com/i4Ds, kind: org, category: organization, chapters: [23],
+      paper: { cite: "Benz et al. 2009, SoPh 260, 375", url: https://ui.adsabs.harvard.edu/abs/2009SoPh..260..375B/abstract } }
+
+  # ---- Pulsar timing & analysis ----
+  - { name: PINT, url: https://github.com/nanograv/PINT, kind: repo, category: pulsar-timing, language: Python, chapters: [13, 20],
+      paper: { cite: "Luo et al. 2021, ApJ 911, 45", url: https://doi.org/10.3847/1538-4357/abe62f } }
+  - { name: PRESTO, url: https://github.com/scottransom/presto, kind: repo, category: pulsar-search, language: C, chapters: [13],
+      paper: { cite: "Ransom et al. 2002, AJ 124, 1788", url: https://doi.org/10.1086/342285 } }
+  - { name: tempo2, url: https://github.com/mattpitkin/tempo2, kind: repo, category: pulsar-timing, language: C, chapters: [13, 20],
+      paper: { cite: "Hobbs et al. 2006, MNRAS 369, 655", url: https://doi.org/10.1111/j.1365-2966.2006.10302.x } }
+  - { name: libstempo, url: https://github.com/vallis/libstempo, kind: repo, category: pulsar-timing, language: Python, chapters: [20] }
+  - { name: psrqpy, url: https://github.com/mattpitkin/psrqpy, kind: repo, category: pulsar-timing, language: Python, chapters: [13],
+      paper: { cite: "Pitkin 2018, JOSS 3, 538", url: https://doi.org/10.21105/joss.00538 } }
+  - { name: pulsar_spectra, url: https://github.com/NickSwainston/pulsar_spectra, kind: repo, category: pulsar-timing, language: Python, chapters: [13],
+      paper: { cite: "Swainston et al. 2022, PASA 39, e056", url: https://ui.adsabs.harvard.edu/abs/2022PASA...39...56S/abstract } }
+  - { name: clfd, url: https://github.com/v-morello/clfd, kind: repo, category: pulsar-timing, language: Python, chapters: [39],
+      paper: { cite: "Morello et al. 2019, MNRAS 483, 3673", url: https://doi.org/10.1093/mnras/sty3328 } }
+  - { name: enterprise, url: https://github.com/nanograv/enterprise, kind: repo, category: pulsar-timing, language: Python, chapters: [20] }
+
+  # ---- Pulsar/FRB search & real-time pipelines ----
+  - { name: your, url: https://github.com/thepetabyteproject/your, kind: repo, category: pulsar-frb-search, language: Python, chapters: [13, 18],
+      paper: { cite: "Aggarwal et al. 2020, JOSS 5, 2750", url: https://doi.org/10.21105/joss.02750 } }
+  - { name: sigpyproc3, url: https://github.com/FRBs/sigpyproc3, kind: repo, category: pulsar-frb-search, language: Python, chapters: [13, 18] }
+  - { name: riptide, url: https://github.com/v-morello/riptide, kind: repo, category: pulsar-frb-search, language: Python, chapters: [13],
+      paper: { cite: "Morello et al. 2020, MNRAS 497, 4654", url: https://doi.org/10.1093/mnras/staa2291 } }
+  - { name: PulsarX, url: https://github.com/ypmen/PulsarX, kind: repo, category: pulsar-frb-search, language: C++, chapters: [13],
+      paper: { cite: "Men & Barr 2024, A&A 679, A20", url: https://ui.adsabs.harvard.edu/abs/2024A%26A...679A..20M/abstract } }
+  - { name: TransientX, url: https://github.com/ypmen/TransientX, kind: repo, category: pulsar-frb-search, language: C++, chapters: [18],
+      paper: { cite: "Men & Barr 2024, A&A 683, A183", url: https://doi.org/10.1051/0004-6361/202348247 } }
+  - { name: peasoup, url: https://github.com/ewanbarr/peasoup, kind: repo, category: pulsar-frb-search, language: C++ }
+  - { name: cdmt, url: https://github.com/cbassa/cdmt, kind: repo, category: pulsar-frb-search, language: CUDA, chapters: [13],
+      paper: { cite: "Bassa et al. 2017", url: https://arxiv.org/abs/1607.00909 } }
+  - { name: burst_search, url: https://github.com/kiyo-masui/burst_search, kind: repo, category: pulsar-frb-search, language: Python, chapters: [18] }
+  - { name: rfpipe, url: https://github.com/realfastvla/rfpipe, kind: repo, category: pulsar-frb-search, language: Python, chapters: [18],
+      paper: { cite: "Law et al. 2018, ApJS 236, 8", url: https://doi.org/10.3847/1538-4365/aab77b } }
+  - { name: bifrost, url: https://github.com/ledatelescope/bifrost, kind: repo, category: pulsar-frb-search, language: Python,
+      paper: { cite: "Cranmer et al. 2017, JAI 6, 1750007", url: https://doi.org/10.1142/S2251171717500076 } }
+
+  # ---- FRB classification, redshifts & populations ----
+  - { name: FETCH, url: https://github.com/devanshkv/fetch, kind: repo, category: frb-ml, language: Python, chapters: [18, 38],
+      paper: { cite: "Agarwal et al. 2020, MNRAS 497, 1661", url: https://doi.org/10.1093/mnras/staa1856 } }
+  - { name: fruitbat, url: https://github.com/abatten/fruitbat, kind: repo, category: frb-ml, language: Python, chapters: [18],
+      paper: { cite: "Batten 2019, JOSS 4, 1399", url: https://doi.org/10.21105/joss.01399 } }
+  - { name: frbpoppy, url: https://github.com/davidgardenier/frbpoppy, kind: repo, category: frb-ml, language: Python,
+      paper: { cite: "Gardenier et al. 2019, A&A 632, A125", url: https://doi.org/10.1051/0004-6361/201936404 } }
+
+  # ---- Interferometric calibration & flagging ----
+  - { name: DP3, url: https://github.com/lofar-astron/DP3, kind: repo, category: calibration-flagging, language: C++, chapters: [39, 41] }
+  - { name: QuartiCal, url: https://github.com/ratt-ru/QuartiCal, kind: repo, category: calibration-flagging, language: Python, chapters: [41] }
+  - { name: codex-africanus, url: https://github.com/ratt-ru/codex-africanus, kind: repo, category: calibration-flagging, language: Python, chapters: [41],
+      paper: { cite: "Perkins et al. 2025, A&C (Africanus I)", url: https://www.sciencedirect.com/science/article/abs/pii/S2213133725000319 } }
+  - { name: killMS, url: https://github.com/saopicc/killMS, kind: repo, category: calibration-flagging, language: Python, chapters: [41],
+      paper: { cite: "Tasse 2014, A&A 566, A127", url: https://doi.org/10.1051/0004-6361/201423522 } }
+  - { name: montblanc, url: https://github.com/ska-sa/montblanc, kind: repo, category: calibration-flagging, language: Python,
+      paper: { cite: "Perkins et al. 2015, A&C 12, 73", url: https://doi.org/10.1016/j.ascom.2015.06.003 } }
+  - { name: prefactor, url: https://github.com/lofar-astron/prefactor, kind: repo, category: calibration-flagging, language: Python, chapters: [41],
+      paper: { cite: "de Gasperin et al. 2019, A&A 622, A5", url: https://doi.org/10.1051/0004-6361/201833867 } }
+  - { name: RMextract, url: https://github.com/lofar-astron/RMextract, kind: repo, category: calibration-flagging, language: Python, chapters: [37] }
+
+  # ---- Imaging & deconvolution ----
+  - { name: DDFacet, url: https://github.com/saopicc/DDFacet, kind: repo, category: imaging, language: Python, chapters: [9],
+      paper: { cite: "Tasse et al. 2018, A&A 611, A87", url: https://doi.org/10.1051/0004-6361/201731474 } }
+  - { name: eht-imaging, url: https://github.com/achael/eht-imaging, kind: repo, category: imaging, language: Python, chapters: [19],
+      paper: { cite: "Chael et al. 2018, ApJ 857, 23", url: https://doi.org/10.3847/1538-4357/aab6a8 } }
+  - { name: smili, url: https://github.com/astrosmili/smili, kind: repo, category: imaging, language: Python, chapters: [19],
+      paper: { cite: "Akiyama et al. 2017, AJ 153, 159", url: https://doi.org/10.3847/1538-3881/aa6302 } }
+  - { name: xradio, url: https://github.com/casangi/xradio, kind: repo, category: imaging, language: Python, chapters: [16] }
+
+  # ---- Visibility data, simulation & sky models ----
+  - { name: pyuvdata, url: https://github.com/RadioAstronomySoftwareGroup/pyuvdata, kind: repo, category: visibility-data, language: Python, chapters: [12, 16],
+      paper: { cite: "Hazelton et al. 2017, JOSS 2, 140", url: https://doi.org/10.21105/joss.00140 } }
+  - { name: pyuvsim, url: https://github.com/RadioAstronomySoftwareGroup/pyuvsim, kind: repo, category: visibility-data, language: Python,
+      paper: { cite: "Lanman et al. 2019, JOSS 4, 1234", url: https://doi.org/10.21105/joss.01234 } }
+  - { name: dask-ms, url: https://github.com/ratt-ru/dask-ms, kind: repo, category: visibility-data, language: Python, chapters: [16] }
+  - { name: katdal, url: https://github.com/ska-sa/katdal, kind: repo, category: visibility-data, language: Python, chapters: [12, 16] }
+
+  # ---- Spectral cubes, regions & viewers ----
+  - { name: spectral-cube, url: https://github.com/radio-astro-tools/spectral-cube, kind: repo, category: cubes-viewers, language: Python, chapters: [11] }
+  - { name: radio-beam, url: https://github.com/radio-astro-tools/radio-beam, kind: repo, category: cubes-viewers, language: Python, chapters: [11] }
+  - { name: pvextractor, url: https://github.com/radio-astro-tools/pvextractor, kind: repo, category: cubes-viewers, language: Python, chapters: [11] }
+  - { name: reproject, url: https://github.com/astropy/reproject, kind: repo, category: cubes-viewers, language: Python, chapters: [14] }
+
+  # ---- SETI ----
+  - { name: turbo_seti, url: https://github.com/UCBerkeleySETI/turbo_seti, kind: repo, category: seti, language: Python, chapters: [21],
+      paper: { cite: "Enriquez et al. 2017, ApJ 849, 104", url: https://doi.org/10.3847/1538-4357/aa8d1b } }
+  - { name: blimpy, url: https://github.com/UCBerkeleySETI/blimpy, kind: repo, category: seti, language: Python, chapters: [16, 21],
+      paper: { cite: "Price et al. 2019, JOSS 4, 1554", url: https://doi.org/10.21105/joss.01554 } }
+  - { name: setigen, url: https://github.com/bbrzycki/setigen, kind: repo, category: seti, language: Python, chapters: [21],
+      paper: { cite: "Brzycki et al. 2022, arXiv:2203.09668", url: https://arxiv.org/abs/2203.09668 } }
+
+  # ---- SDR toolchains ----
+  - { name: gnuradio, url: https://github.com/gnuradio/gnuradio, kind: repo, category: sdr, language: C++, chapters: [28] }
+  - { name: rtl-sdr, url: https://github.com/osmocom/rtl-sdr, kind: repo, category: sdr, language: C, chapters: [5] }
+  - { name: librtlsdr, url: https://github.com/librtlsdr/librtlsdr, kind: repo, category: sdr, language: C, chapters: [5] }
+  - { name: pyrtlsdr, url: https://github.com/pyrtlsdr/pyrtlsdr, kind: repo, category: sdr, language: Python, chapters: [5] }
+  - { name: gr-osmosdr, url: https://github.com/osmocom/gr-osmosdr, kind: repo, category: sdr, language: C++, chapters: [28] }
+  - { name: SoapySDR, url: https://github.com/pothosware/SoapySDR, kind: repo, category: sdr, language: C++ }
+  - { name: gqrx, url: https://github.com/gqrx-sdr/gqrx, kind: repo, category: sdr, language: C++, chapters: [5] }
+
+  # ---- Amateur single-dish, education & planetary ----
+  - { name: VIRGO, url: https://github.com/0xCoto/VIRGO, kind: repo, category: amateur-singledish, language: Python, chapters: [29],
+      paper: { cite: "Spanakis-Misirlis 2021, JOSS 6, 3067", url: https://doi.org/10.21105/joss.03067 } }
+  - { name: PICTOR, url: https://github.com/0xCoto/PICTOR, kind: repo, category: amateur-singledish, language: Python, chapters: [29] }
+  - { name: srt-py, url: https://github.com/MITHaystack/srt-py, kind: repo, category: amateur-singledish, language: Python, chapters: [6] }
+  - { name: gr-radio_astro, url: https://github.com/WVURAIL/gr-radio_astro, kind: repo, category: amateur-singledish, language: Python, chapters: [28] }
+  - { name: RASDR, url: https://github.com/myriadrf/RASDR, kind: repo, category: amateur-singledish, language: C++, chapters: [30] }
+  - { name: maser4py, url: https://github.com/maserlib/maser4py, kind: repo, category: amateur-singledish, language: Python, chapters: [23],
+      paper: { cite: "Cecconi et al. 2020, DSJ 19, 12", url: https://doi.org/10.5334/dsj-2020-012 } }
+
+  # ---- VLF & lightning ----
+  - { name: supersid, url: https://github.com/ericgibert/supersid, kind: repo, category: vlf-lightning, language: Python, chapters: [27] }
+  - { name: vlfrx-tools, url: https://github.com/daedalus/vlfrx-tools, kind: repo, category: vlf-lightning, language: C, chapters: [40] }
+
+  # ---- 21 cm cosmology, EoR & intensity mapping ----
+  - { name: 21cmFAST, url: https://github.com/21cmfast/21cmFAST, kind: repo, category: 21cm-cosmology, language: Python, chapters: [6, 22],
+      paper: { cite: "Murray et al. 2020, JOSS 5, 2582", url: https://doi.org/10.21105/joss.02582 } }
+  - { name: 21CMMC, url: https://github.com/21cmfast/21CMMC, kind: repo, category: 21cm-cosmology, language: Python, chapters: [22, 38],
+      paper: { cite: "Greig & Mesinger 2015", url: https://arxiv.org/abs/1501.06576 } }
+  - { name: tools21cm, url: https://github.com/sambit-giri/tools21cm, kind: repo, category: 21cm-cosmology, language: Python,
+      paper: { cite: "Giri et al. 2020, JOSS 5, 2363", url: https://doi.org/10.21105/joss.02363 } }
+  - { name: powerbox, url: https://github.com/steven-murray/powerbox, kind: repo, category: 21cm-cosmology, language: Python,
+      paper: { cite: "Murray 2018, JOSS 3, 850", url: https://doi.org/10.21105/joss.00850 } }
+  - { name: 21cmSense, url: https://github.com/rasg-affiliates/21cmSense, kind: repo, category: 21cm-cosmology, language: Python, chapters: [6, 8],
+      paper: { cite: "Pober et al. 2014, ApJ 782, 66", url: https://ui.adsabs.harvard.edu/abs/2014ApJ...782...66P/abstract } }
+  - { name: hera_pspec, url: https://github.com/HERA-Team/hera_pspec, kind: repo, category: 21cm-cosmology, language: Python, chapters: [41] }
+  - { name: FHD, url: https://github.com/EoRImaging/FHD, kind: repo, category: 21cm-cosmology, language: IDL, chapters: [9],
+      paper: { cite: "Sullivan et al. 2012, ApJ 759, 17", url: https://doi.org/10.1088/0004-637X/759/1/17 } }
+  - { name: mwa_hyperdrive, url: https://github.com/MWATelescope/mwa_hyperdrive, kind: repo, category: 21cm-cosmology, language: Rust, chapters: [41] }
+  - { name: healvis, url: https://github.com/RadioAstronomySoftwareGroup/healvis, kind: repo, category: 21cm-cosmology, language: Python, chapters: [8] }
+  - { name: PRISim, url: https://github.com/nithyanandan/PRISim, kind: repo, category: 21cm-cosmology, language: Python, chapters: [8] }
+  - { name: aipy, url: https://github.com/AaronParsons/aipy, kind: repo, category: 21cm-cosmology, language: Python, chapters: [8, 41] }
+  - { name: driftscan, url: https://github.com/radiocosmology/driftscan, kind: repo, category: 21cm-cosmology, language: Python, chapters: [22],
+      paper: { cite: "Shaw et al. 2014, ApJ 781, 57", url: https://arxiv.org/abs/1302.0327 } }
+
+  # ---- Solar & heliophysics radio ----
+  - { name: sunpy, url: https://github.com/sunpy/sunpy, kind: repo, category: solar-heliophysics, language: Python, chapters: [10, 23],
+      paper: { cite: "SunPy Community 2020, ApJ 890, 68", url: https://doi.org/10.3847/1538-4357/ab4f7a } }
+  - { name: radiospectra, url: https://github.com/sunpy/radiospectra, kind: repo, category: solar-heliophysics, language: Python, chapters: [23] }
+  - { name: ecallisto_ng, url: https://github.com/i4Ds/ecallisto_ng, kind: repo, category: solar-heliophysics, language: Python, chapters: [15, 23],
+      paper: { cite: "Benz et al. 2009, SoPh 260, 375", url: https://ui.adsabs.harvard.edu/abs/2009SoPh..260..375B/abstract } }
+  - { name: pyspedas, url: https://github.com/spedas/pyspedas, kind: repo, category: solar-heliophysics, language: Python, chapters: [23] }
+  - { name: ExPRES, url: https://github.com/maserlib/ExPRES, kind: repo, category: solar-heliophysics, language: IDL, chapters: [23],
+      paper: { cite: "Hess & Zarka 2011, A&A 531, A29", url: https://doi.org/10.1051/0004-6361/201116510 } }
+  - { name: LOFAR-Sun-tools, url: https://github.com/peijin94/LOFAR-Sun-tools, kind: repo, category: solar-heliophysics, language: Python, chapters: [23] }
+  - { name: SIDpy, url: https://github.com/TCDSolar/SIDpy, kind: repo, category: solar-heliophysics, language: Python, chapters: [23, 27] }
+
+  # ---- People — notable maintainers ----
+  - { name: Scott Ransom, url: https://github.com/scottransom, kind: person, category: person, chapters: [13, 20],
+      paper: { cite: "Ransom et al. 2002, AJ 124, 1788", url: https://doi.org/10.1086/342285 } }
+  - { name: André Offringa, url: https://github.com/aroffringa, kind: person, category: person, chapters: [9, 39],
+      paper: { cite: "Offringa et al. 2014, MNRAS 444, 606", url: https://doi.org/10.1093/mnras/stu1368 } }
+  - { name: Andrew Chael, url: https://github.com/achael, kind: person, category: person, chapters: [19],
+      paper: { cite: "Chael et al. 2018, ApJ 857, 23", url: https://doi.org/10.3847/1538-4357/aab6a8 } }
+  - { name: Danny C. Price, url: https://github.com/telegraphic, kind: person, category: person, chapters: [21],
+      paper: { cite: "Price et al. 2019, JOSS 4, 1554", url: https://doi.org/10.21105/joss.01554 } }
+  - { name: Adam Deller, url: https://github.com/adamdeller, kind: person, category: person, chapters: [19],
+      paper: { cite: "Deller et al. 2007, PASP 119, 318", url: https://doi.org/10.1086/513572 } }
+  - { name: Ewan Barr, url: https://github.com/ewanbarr, kind: person, category: person, chapters: [13, 18] }
+  - { name: Vincent Morello, url: https://github.com/v-morello, kind: person, category: person, chapters: [13, 39],
+      paper: { cite: "Morello et al. 2020, MNRAS 497, 4654", url: https://doi.org/10.1093/mnras/staa2291 } }
+  - { name: Devansh Agarwal, url: https://github.com/devanshkv, kind: person, category: person, chapters: [18, 38],
+      paper: { cite: "Agarwal et al. 2020, MNRAS 497, 1661", url: https://doi.org/10.1093/mnras/staa1856 } }
+  - { name: Casey Law, url: https://github.com/caseyjlaw, kind: person, category: person, chapters: [18],
+      paper: { cite: "Law et al. 2018, ApJS 236, 8", url: https://doi.org/10.3847/1538-4365/aab77b } }
+  - { name: Kiyoshi Masui, url: https://github.com/kiyo-masui, kind: person, category: person, chapters: [18],
+      paper: { cite: "Masui et al. 2015, Nature 528, 523", url: https://doi.org/10.1038/nature15769 } }
+  - { name: Cees Bassa, url: https://github.com/cbassa, kind: person, category: person, chapters: [13],
+      paper: { cite: "Bassa et al. 2017", url: https://arxiv.org/abs/1607.00909 } }
+  - { name: Apostolos Spanakis-Misirlis, url: https://github.com/0xCoto, kind: person, category: person, chapters: [29],
+      paper: { cite: "Spanakis-Misirlis 2021, JOSS 6, 3067", url: https://doi.org/10.21105/joss.03067 } }
+
+  # ---- Beyond GitHub (GitLab / SourceForge / Bitbucket) ----
+  - { name: WSClean, url: https://gitlab.com/aroffringa/wsclean, kind: beyond-github, category: beyond-github, language: C++, chapters: [9, 12],
+      paper: { cite: "Offringa et al. 2014, MNRAS 444, 606", url: https://doi.org/10.1093/mnras/stu1368 } }
+  - { name: AOFlagger, url: https://gitlab.com/aroffringa/aoflagger, kind: beyond-github, category: beyond-github, language: C++, chapters: [39],
+      paper: { cite: "Offringa et al. 2010, MNRAS 405, 155", url: https://doi.org/10.1111/j.1365-2966.2010.16471.x } }
+  - { name: RASCIL, url: https://gitlab.com/ska-telescope/external/rascil-main, kind: beyond-github, category: beyond-github, language: Python }
+  - { name: SatNOGS, url: https://gitlab.com/librespacefoundation/satnogs, kind: beyond-github, category: beyond-github }
+  - { name: PSRCHIVE, url: http://psrchive.sourceforge.net, kind: beyond-github, category: beyond-github, language: C++, chapters: [13],
+      paper: { cite: "Hotan, van Straten & Manchester 2004, PASA 21, 302", url: https://doi.org/10.1071/AS04022 } }
+  - { name: DSPSR, url: http://dspsr.sourceforge.net, kind: beyond-github, category: beyond-github, language: C++, chapters: [13],
+      paper: { cite: "van Straten & Bailes 2011, PASA 28, 1", url: https://doi.org/10.1071/AS10021 } }
+  - { name: heimdall, url: https://sourceforge.net/projects/heimdall-astro/, kind: beyond-github, category: beyond-github }
+  - { name: GILDAS, url: https://www.iram.fr/IRAMFR/GILDAS/, kind: beyond-github, category: beyond-github }

@@ -44,8 +44,8 @@ fmt: ## Auto-format with ruff
 fetch-data: ## List sample datasets (use ARGS="--fetch hi4pi-sample" to download)
 	uv run python -m jansky.data $(ARGS) --list
 
-check-urls: ## Verify dataset + docs/resources.md links still resolve
-	uv run python scripts/check_dataset_urls.py --docs $(ARGS)
+check-urls: ## Verify dataset + docs/resources.md + github-catalogue links still resolve
+	uv run python scripts/check_dataset_urls.py --docs --github $(ARGS)
 
 mastodon: ## Read the listed astronomers' Mastodon posts in a TUI (needs --extra tui)
 	uv run --extra tui python -m jansky.mastodon_reader $(ARGS)

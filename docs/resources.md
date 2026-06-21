@@ -80,8 +80,10 @@ decametric Jupiter/solar observations from the NASA Radio JOVE project and the a
 ## Software & tools
 
 The [References](references.md) page covers **CASA**, **astropy/astroquery**,
-**spectral-cube**, **radio-beam**, **PINT**, and **pyvo**. The wider radio
-toolbox:
+**spectral-cube**, **radio-beam**, **PINT**, and **pyvo**. For a much larger,
+link-verified catalogue of source code — organizations, repositories, and the people
+who maintain them, cross-referenced to the course chapters — see
+**[Radio Astronomy on GitHub](github.md)**. The wider radio toolbox:
 
 | Tool | Use | Link |
 |---|---|---|

@@ -147,6 +147,38 @@ The institutional and collaboration accounts that publish the field's software.
   [Astropy Collaboration 2022, ApJ 935, 167](https://doi.org/10.3847/1538-4357/ac7c74). *In the course:*
   used in essentially every chapter.
 
+### 21 cm cosmology, intensity mapping & solar physics
+
+- **[HERA-Team](https://github.com/HERA-Team)** — the Hydrogen Epoch of Reionization Array's
+  software: [hera_cal](https://github.com/HERA-Team/hera_cal) (redundant calibration),
+  [hera_sim](https://github.com/HERA-Team/hera_sim), [hera_qm](https://github.com/HERA-Team/hera_qm)
+  (quality metrics), [hera_pspec](https://github.com/HERA-Team/hera_pspec) (power spectra),
+  [matvis](https://github.com/HERA-Team/matvis) (fast visibility simulator). *In the course:*
+  [Ch 6](notebooks/06_hydrogen_line.ipynb), [Ch 41](notebooks/41_practical_calibration.ipynb).
+- **[radiocosmology](https://github.com/radiocosmology)** — the CHIME 21 cm-intensity-mapping
+  m-mode stack: [cora](https://github.com/radiocosmology/cora) (sky simulation),
+  [driftscan](https://github.com/radiocosmology/driftscan), [draco](https://github.com/radiocosmology/draco),
+  [caput](https://github.com/radiocosmology/caput). *Paper:* [Shaw et al. 2015, PhRvD 91, 083514](https://arxiv.org/abs/1401.2095).
+- **[MWATelescope](https://github.com/MWATelescope)** — the Murchison Widefield Array's modern
+  Rust pipeline: [mwa_hyperdrive](https://github.com/MWATelescope/mwa_hyperdrive) (calibration),
+  [Birli](https://github.com/MWATelescope/Birli) (preprocessing). *In the course:*
+  [Ch 41](notebooks/41_practical_calibration.ipynb).
+- **[EoRImaging](https://github.com/EoRImaging)** — the MWA EoR power-spectrum pipeline (IDL):
+  [FHD](https://github.com/EoRImaging/FHD) (Fast Holographic Deconvolution),
+  [eppsilon](https://github.com/EoRImaging/eppsilon) (power-spectrum estimator). *Paper:*
+  [Barry et al. 2019, PASA 36, e026](https://doi.org/10.1017/pasa.2019.21).
+- **[sunpy](https://github.com/sunpy)** — the core solar-physics Python ecosystem, including the
+  radio dynamic-spectrum package [radiospectra](https://github.com/sunpy/radiospectra). *Paper:*
+  [SunPy Community 2020, ApJ 890, 68](https://doi.org/10.3847/1538-4357/ab4f7a). *In the course:*
+  [Ch 23](notebooks/23_solar_and_jupiter.ipynb).
+- **[spedas](https://github.com/spedas)** — [pyspedas](https://github.com/spedas/pyspedas), the
+  Python framework for heliophysics/CDAWeb data (Wind/WAVES, STEREO/WAVES, PSP, Solar Orbiter radio).
+  *In the course:* [Ch 23](notebooks/23_solar_and_jupiter.ipynb).
+- **[i4Ds](https://github.com/i4Ds)** — FHNW's institute for the e-Callisto solar-radio-spectrometer
+  network: [ecallisto_ng](https://github.com/i4Ds/ecallisto_ng). *Paper:*
+  [Benz et al. 2009, SoPh 260, 375](https://ui.adsabs.harvard.edu/abs/2009SoPh..260..375B/abstract).
+  *In the course:* [Ch 23](notebooks/23_solar_and_jupiter.ipynb).
+
 ---
 
 ## Software repositories
@@ -330,6 +362,79 @@ The institutional and collaboration accounts that publish the field's software.
 - **[daedalus/vlfrx-tools](https://github.com/daedalus/vlfrx-tools)** — GPS-timestamped VLF toolkit
   (sferics, whistlers, meteor scatter). *In the course:* [Ch 40](notebooks/40_lightning_sferics.ipynb),
   [Projects](projects.md).
+
+### 21 cm cosmology, EoR & intensity mapping
+
+The faint cosmological 21 cm signal drives its own software ecosystem — signal simulation,
+power-spectrum sensitivity, and the wide-field calibration/imaging that foreground removal demands.
+
+- **[21cmfast/21cmFAST](https://github.com/21cmfast/21cmFAST)** — the canonical semi-numerical
+  simulator of the cosmic 21 cm signal through cosmic dawn and reionization. Python/C, MIT. *Paper:*
+  [Murray et al. 2020, JOSS 5, 2582](https://doi.org/10.21105/joss.02582). *In the course:*
+  [Ch 6](notebooks/06_hydrogen_line.ipynb), [Ch 22](notebooks/22_cosmic_microwave_background.ipynb).
+- **[21cmfast/21CMMC](https://github.com/21cmfast/21CMMC)** — MCMC Bayesian inference of EoR
+  astrophysics from the 21 cm power spectrum. *Paper:* [Greig & Mesinger 2015](https://arxiv.org/abs/1501.06576).
+  *In the course:* [Ch 22](notebooks/22_cosmic_microwave_background.ipynb), [Ch 38](notebooks/38_machine_learning.ipynb).
+- **[sambit-giri/tools21cm](https://github.com/sambit-giri/tools21cm)** — analysis of the large-scale
+  EoR 21 cm signal (mock LOFAR/MWA/SKA observations, statistics). *Paper:*
+  [Giri et al. 2020, JOSS 5, 2363](https://doi.org/10.21105/joss.02363).
+- **[steven-murray/powerbox](https://github.com/steven-murray/powerbox)** — Gaussian random fields with
+  a specified power spectrum (mock density/21 cm boxes). *Paper:*
+  [Murray 2018, JOSS 3, 850](https://doi.org/10.21105/joss.00850).
+- **[rasg-affiliates/21cmSense](https://github.com/rasg-affiliates/21cmSense)** — predicted sensitivity
+  of a 21 cm array to the EoR power spectrum (thermal noise + foreground avoidance). *Paper:*
+  [Pober et al. 2014, ApJ 782, 66](https://ui.adsabs.harvard.edu/abs/2014ApJ...782...66P/abstract).
+  *In the course:* [Ch 6](notebooks/06_hydrogen_line.ipynb), [Ch 8](notebooks/08_aperture_synthesis.ipynb).
+- **[HERA-Team/hera_pspec](https://github.com/HERA-Team/hera_pspec)** — HERA delay-spectrum / quadratic
+  power-spectrum estimation on calibrated visibilities. *In the course:*
+  [Ch 41](notebooks/41_practical_calibration.ipynb).
+- **[EoRImaging/FHD](https://github.com/EoRImaging/FHD)** — wide-field holographic deconvolution &
+  calibration (MWA EoR). IDL, BSD-2. *Paper:*
+  [Sullivan et al. 2012, ApJ 759, 17](https://doi.org/10.1088/0004-637X/759/1/17). *In the course:*
+  [Ch 9](notebooks/09_deconvolution_clean.ipynb).
+- **[MWATelescope/mwa_hyperdrive](https://github.com/MWATelescope/mwa_hyperdrive)** — fast GPU MWA
+  calibration. Rust, MPL-2. *In the course:* [Ch 41](notebooks/41_practical_calibration.ipynb).
+- **[RadioAstronomySoftwareGroup/healvis](https://github.com/RadioAstronomySoftwareGroup/healvis)** —
+  HEALPix-pixel visibility simulator (full-sky, for EoR pipeline tests). *In the course:*
+  [Ch 8](notebooks/08_aperture_synthesis.ipynb).
+- **[nithyanandan/PRISim](https://github.com/nithyanandan/PRISim)** — precision radio-interferometer
+  simulator (transit arrays, foregrounds). *In the course:* [Ch 8](notebooks/08_aperture_synthesis.ipynb).
+- **[AaronParsons/aipy](https://github.com/AaronParsons/aipy)** — the PAPER experiment's foundational
+  interferometry/calibration/imaging library. *In the course:* [Ch 8](notebooks/08_aperture_synthesis.ipynb),
+  [Ch 41](notebooks/41_practical_calibration.ipynb).
+- **[radiocosmology/driftscan](https://github.com/radiocosmology/driftscan)** — m-mode transit analysis
+  for 21 cm intensity mapping (CHIME). *Paper:* [Shaw et al. 2014, ApJ 781, 57](https://arxiv.org/abs/1302.0327).
+  *In the course:* [Ch 22](notebooks/22_cosmic_microwave_background.ipynb).
+
+### Solar & heliophysics radio
+
+Solar radio bursts, dynamic spectra, and the spacecraft radio receivers that track space weather.
+(The planetary/solar [maser4py](https://github.com/maserlib/maser4py) above also reads Wind/WAVES &
+STEREO/WAVES data.)
+
+- **[sunpy/sunpy](https://github.com/sunpy/sunpy)** — the core solar-physics library (maps, timeseries,
+  `Fido` archive access for Wind/STEREO radio). Python, BSD-2. *Paper:*
+  [SunPy Community 2020, ApJ 890, 68](https://doi.org/10.3847/1538-4357/ab4f7a). *In the course:*
+  [Ch 23](notebooks/23_solar_and_jupiter.ipynb), [Ch 10](notebooks/10_open_archives.ipynb).
+- **[sunpy/radiospectra](https://github.com/sunpy/radiospectra)** — solar radio dynamic spectra: reads
+  e-Callisto, STEREO/WAVES, Wind/WAVES, RSTN, and Nançay Decameter Array. *In the course:*
+  [Ch 23](notebooks/23_solar_and_jupiter.ipynb).
+- **[i4Ds/ecallisto_ng](https://github.com/i4Ds/ecallisto_ng)** — fetch & analyse e-Callisto network
+  spectrograms (with optional ML flare detection). *Paper:*
+  [Benz et al. 2009, SoPh 260, 375](https://ui.adsabs.harvard.edu/abs/2009SoPh..260..375B/abstract).
+  *In the course:* [Ch 23](notebooks/23_solar_and_jupiter.ipynb), [Ch 15](notebooks/15_capstone.ipynb).
+- **[spedas/pyspedas](https://github.com/spedas/pyspedas)** — download/plot heliophysics CDAWeb data,
+  including Wind/WAVES, STEREO/WAVES, PSP/FIELDS, and Solar Orbiter/RPW radio. Python, MIT. *In the
+  course:* [Ch 23](notebooks/23_solar_and_jupiter.ipynb).
+- **[maserlib/ExPRES](https://github.com/maserlib/ExPRES)** — simulate planetary (and solar-wind-modulated)
+  radio emission patterns. *Paper:* [Hess & Zarka 2011, A&A 531, A29](https://doi.org/10.1051/0004-6361/201116510).
+  *In the course:* [Ch 23](notebooks/23_solar_and_jupiter.ipynb).
+- **[peijin94/LOFAR-Sun-tools](https://github.com/peijin94/LOFAR-Sun-tools)** — LOFAR solar dynamic-spectrum
+  & imaging reduction (beam-formed HDF5, RFI, burst onset). *In the course:*
+  [Ch 23](notebooks/23_solar_and_jupiter.ipynb).
+- **[TCDSolar/SIDpy](https://github.com/TCDSolar/SIDpy)** — process Stanford SuperSID receiver data to
+  see solar-flare sudden ionospheric disturbances at VLF. *In the course:*
+  [Ch 27](notebooks/27_vlf_ionosphere.ipynb), [Ch 23](notebooks/23_solar_and_jupiter.ipynb).
 
 ---
 
