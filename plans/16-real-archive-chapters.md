@@ -14,12 +14,16 @@
 >   checker now exits 0 (4 remaining entries are bot-blocked-but-live 403 warnings).
 > - **`make check-urls`** target (datasets + `resources.md`).
 >
-> **Remaining follow-up — the chapter real-data wiring** (the heavier half): Ch 10 HEASARC SNR
-> query with offline fallback; Ch 12 a real small VLA Measurement Set via `pyuvdata`; Ch 13/20 the
-> real PINT `NGC6440E` par/tim residuals (the datasets are already registered — see
-> [Plan 14](14-real-data-starter-set.md)); Ch 18 a real single-pulse filterbank for the DM search;
-> and a short guided "download real data" walkthrough. Each needs notebook re-authoring with a real
-> fetch at execute time (preserving the offline fallback) — best done as a dedicated notebook pass.
+> **Ch 13 timing residuals — done.** Chapter 13 (Pulsars) now runs a **real PINT fit** on the
+> registered `NGC6440E` par/tim (PSR J1748−2021E, 62 NANOGrav TOAs, 709-day span) and plots the
+> microsecond timing residuals (post-fit RMS ≈ 21 µs ≈ the TOA errors), guarded behind the `pulsar`
+> extra with an offline fallback. Closes the Ch 13/20 par/tim item.
+>
+> **Remaining follow-up — the rest of the chapter real-data wiring** (the heavier half): Ch 10
+> HEASARC SNR query with offline fallback; Ch 12 a real small VLA Measurement Set via `pyuvdata`;
+> Ch 18 a real single-pulse filterbank for the DM search; and a short guided "download real data"
+> walkthrough. Each needs notebook re-authoring with a real fetch at execute time (preserving the
+> offline fallback) — best done as a dedicated notebook pass.
 
 ## Context
 
