@@ -73,6 +73,10 @@ entries:
   - { name: spedas, url: https://github.com/spedas, kind: org, category: organization, chapters: [23] }
   - { name: i4Ds, url: https://github.com/i4Ds, kind: org, category: organization, chapters: [23],
       paper: { cite: "Benz et al. 2009, SoPh 260, 375", url: https://ui.adsabs.harvard.edu/abs/2009SoPh..260..375B/abstract } }
+  - { name: healpy, url: https://github.com/healpy, kind: org, category: organization, chapters: [11, 22],
+      paper: { cite: "Zonca et al. 2019, JOSS 4, 1298", url: https://doi.org/10.21105/joss.01298 } }
+  - { name: simonsobs, url: https://github.com/simonsobs, kind: org, category: organization, chapters: [22] }
+  - { name: Cosmoglobe, url: https://github.com/Cosmoglobe, kind: org, category: organization, chapters: [22, 37] }
 
   # ---- Pulsar timing & analysis ----
   - { name: PINT, url: https://github.com/nanograv/PINT, kind: repo, category: pulsar-timing, language: Python, chapters: [13, 20],
@@ -205,6 +209,22 @@ entries:
   - { name: driftscan, url: https://github.com/radiocosmology/driftscan, kind: repo, category: 21cm-cosmology, language: Python, chapters: [22],
       paper: { cite: "Shaw et al. 2014, ApJ 781, 57", url: https://arxiv.org/abs/1302.0327 } }
 
+  # ---- CMB, HEALPix & foreground maps ----
+  - { name: healpy, url: https://github.com/healpy/healpy, kind: repo, category: cmb-healpix, language: Python, chapters: [11, 22],
+      paper: { cite: "Zonca et al. 2019, JOSS 4, 1298", url: https://doi.org/10.21105/joss.01298 } }
+  - { name: pixell, url: https://github.com/simonsobs/pixell, kind: repo, category: cmb-healpix, language: Python, chapters: [22] }
+  - { name: ducc, url: https://github.com/mreineck/ducc, kind: repo, category: cmb-healpix, language: C++, chapters: [8, 22] }
+  - { name: NaMaster, url: https://github.com/LSSTDESC/NaMaster, kind: repo, category: cmb-healpix, language: C, chapters: [22, 37],
+      paper: { cite: "Alonso et al. 2019, MNRAS 484, 4127", url: https://ui.adsabs.harvard.edu/abs/2019MNRAS.484.4127A/abstract } }
+  - { name: pysm, url: https://github.com/galsci/pysm, kind: repo, category: cmb-healpix, language: Python, chapters: [22, 37],
+      paper: { cite: "Zonca et al. 2021, JOSS 6, 3783", url: https://doi.org/10.21105/joss.03783 } }
+  - { name: so_noise_models, url: https://github.com/simonsobs/so_noise_models, kind: repo, category: cmb-healpix, language: Python, chapters: [22] }
+  - { name: toast, url: https://github.com/hpc4cmb/toast, kind: repo, category: cmb-healpix, language: Python, chapters: [22] }
+  - { name: Commander, url: https://github.com/Cosmoglobe/Commander, kind: repo, category: cmb-healpix, language: Fortran, chapters: [22, 37],
+      paper: { cite: "Eriksen et al. 2008, ApJ 676, 10", url: https://ui.adsabs.harvard.edu/abs/2008ApJ...676...10E/abstract } }
+  - { name: CAMB, url: https://github.com/cmbant/CAMB, kind: repo, category: cmb-healpix, language: Fortran, chapters: [22],
+      paper: { cite: "Lewis et al. 2000, ApJ 538, 473", url: https://doi.org/10.1086/309179 } }
+
   # ---- Solar & heliophysics radio ----
   - { name: sunpy, url: https://github.com/sunpy/sunpy, kind: repo, category: solar-heliophysics, language: Python, chapters: [10, 23],
       paper: { cite: "SunPy Community 2020, ApJ 890, 68", url: https://doi.org/10.3847/1538-4357/ab4f7a } }
@@ -255,3 +275,5 @@ entries:
       paper: { cite: "van Straten & Bailes 2011, PASA 28, 1", url: https://doi.org/10.1071/AS10021 } }
   - { name: heimdall, url: https://sourceforge.net/projects/heimdall-astro/, kind: beyond-github, category: beyond-github }
   - { name: GILDAS, url: https://www.iram.fr/IRAMFR/GILDAS/, kind: beyond-github, category: beyond-github }
+  - { name: HEALPix, url: https://sourceforge.net/projects/healpix/, kind: beyond-github, category: beyond-github, language: C++, chapters: [22],
+      paper: { cite: "Górski et al. 2005, ApJ 622, 759", url: https://ui.adsabs.harvard.edu/abs/2005ApJ...622..759G/abstract } }
