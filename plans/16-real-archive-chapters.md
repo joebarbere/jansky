@@ -25,10 +25,17 @@
 > genuine dispersed burst at **DM ≈ 474 pc cm⁻³, S/N 13.3** (vs 3.4 at DM 0) — guarded behind the
 > `pulsar` extra with an offline fallback.
 >
-> **Remaining follow-up — the rest of the chapter real-data wiring** (the heavier half): Ch 10
-> HEASARC SNR query with offline fallback; Ch 12 a real small VLA Measurement Set via `pyuvdata`;
-> and a short guided "download real data" walkthrough. Each needs notebook re-authoring with a real
-> fetch at execute time (preserving the offline fallback) — best done as a dedicated notebook pass.
+> **Ch 10 HEASARC — done.** Chapter 10's Exercise 2 TODO is now an implemented `heasarc_snr_search`:
+> it queries the **Green catalogue of Galactic SNRs** (`snrgreen`) via `astroquery.heasarc`'s
+> current TAP API (`Heasarc.query_region(coord, catalog=…, radius=…)`) within 5° of Cas A —
+> returning 5 real SNRs with their 1 GHz radio fluxes (Cas A itself the brightest at ~2400 Jy) —
+> with `heasarc` added to the defensive `ARCHIVE_LIBS` guards and a citable bundled offline
+> fallback, mirroring `cone_search_nvss`.
+>
+> **Remaining follow-up:** Ch 12 a real small VLA Measurement Set via `pyuvdata`; and a short guided
+> "download real data" walkthrough. (Separately, Ch 10's code cells are committed without executed
+> outputs — a pre-existing scaffold state worth a later re-execution pass.) Each needs notebook
+> re-authoring at execute time, best done as a dedicated pass.
 
 ## Context
 
