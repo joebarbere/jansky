@@ -16,6 +16,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   supermassive black hole. Many are bright radio sources, often with jets and lobes;
   *quasars* are the most luminous AGN.
 
+**AOFlagger / SumThreshold**
+: The standard automated RFI-flagging package (AOFlagger) and its core algorithm
+  (**SumThreshold**, Offringa et al. 2010): flag windows of increasing length whose mean
+  exceeds a threshold that *decreases* with window size, so faint but extended interference
+  accumulates above the noise where a single-sample cut would miss it (Chapter 39).
+
 **Antenna temperature ($T_A$)**
 : The power a receiver sees from a source, expressed as the temperature of a matched
   resistor that would deliver the same power: $P = k_B T_A \,\Delta\nu$. It is a property
@@ -176,6 +182,11 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 **Fast radio burst (FRB)**
 : A millisecond-duration, highly dispersed radio flash, mostly extragalactic in origin.
   Their large DMs make them probes of the otherwise-invisible diffuse cosmic baryons.
+
+**Flagging**
+: Marking corrupted samples (RFI, dead antennas, edge channels) so they are excluded from
+  averaging and imaging. Lossy but essential — too little leaves interference in the data, too
+  much throws away signal and biases statistics (Chapter 39; Maths Lab C).
 
 **Flux density ($S_\nu$)**
 : Power received per unit area per unit frequency, integrated over the source — measured in
@@ -361,6 +372,11 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : The range of frequencies (roughly 10 MHz to ~1 THz) at which Earth's atmosphere is
   transparent enough for ground-based radio astronomy, bounded below by the ionosphere and
   above by molecular (mainly water) absorption (Chapter 1).
+
+**Radio-quiet zone**
+: A legally protected region where radio transmissions are restricted to shield a sensitive
+  telescope — e.g. the US National Radio Quiet Zone around Green Bank, or the Murchison
+  Radio-astronomy Observatory. A regulatory complement to on-line RFI flagging (Chapter 39).
 
 **ROC curve & AUC**
 : The Receiver Operating Characteristic plots a classifier's true-positive rate against its

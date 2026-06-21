@@ -16,6 +16,57 @@ def test_mad_sigma_robust_to_outliers():
     assert x.std() > 5  # but the std is wrecked
 
 
+def test_sumthreshold_low_false_positive_on_noise():
+    rng = np.random.default_rng(7)
+    noise = rng.normal(0.0, 1.0, 2000)
+    mask = rfi.sumthreshold(noise, threshold=3.5)
+    assert mask.mean() < 0.02  # very few false flags on clean noise
+
+
+def test_sumthreshold_catches_extended_faint_burst():
+    """A faint but extended bump (each sample below the single-sample cut) is
+    caught by SumThreshold's window accumulation, where flag_outliers misses it."""
+    rng = np.random.default_rng(8)
+    series = rng.normal(0.0, 1.0, 512)
+    series[200:208] += 2.8  # width-8 bump at +2.8 sigma each (< 3.5 single-sample cut)
+    single = rfi.flag_outliers(series, threshold=3.5)
+    st = rfi.sumthreshold(series, threshold=3.5, max_window=8)
+    # The single-sample cut catches few of the bump samples; SumThreshold's window
+    # accumulation catches most -- the whole point of the algorithm.
+    assert single[200:208].sum() <= 3
+    assert st[200:208].sum() >= 6
+    assert st[200:208].sum() > single[200:208].sum()
+
+
+def test_sumthreshold2d_flags_line_and_burst():
+    rng = np.random.default_rng(9)
+    ds = rng.normal(0.0, 1.0, (64, 32))
+    ds[:, 10] += 6.0  # narrowband persistent line (a bright channel)
+    ds[30, :] += 6.0  # broadband zero-DM burst (a bright time sample)
+    mask = rfi.sumthreshold2d(ds, threshold=3.5)
+    assert mask[:, 10].mean() > 0.8  # the line channel is largely flagged
+    assert mask[30, :].mean() > 0.8  # the burst row is largely flagged
+    # Clean pixels are mostly left alone.
+    clean = mask.copy()
+    clean[:, 10] = False
+    clean[30, :] = False
+    assert clean.mean() < 0.05
+
+
+def test_sumthreshold2d_n_iter_refines():
+    """A second iteration re-flags on the cleaner residual, so it flags at least
+    as much as one pass (the n_iter parameter is not a no-op)."""
+    rng = np.random.default_rng(11)
+    ds = rng.normal(0.0, 1.0, (128, 64))
+    ds[:, 20] += 2.8  # a faint persistent line, near the detection edge
+    for t in range(40, 90):  # a faint extended drifter
+        ds[t, 30 + (t - 40) // 10] += 2.6
+    one = rfi.sumthreshold2d(ds, threshold=3.5, n_iter=1).mean()
+    two = rfi.sumthreshold2d(ds, threshold=3.5, n_iter=2).mean()
+    assert two >= one
+    assert two > one  # on this data the second pass genuinely catches more
+
+
 def test_flag_outliers_catches_spikes():
     rng = np.random.default_rng(1)
     x = rng.normal(0, 1, 1000)

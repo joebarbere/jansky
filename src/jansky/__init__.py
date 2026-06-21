@@ -38,7 +38,7 @@ plotting
 polarization
     Stokes parameters, the Faraday lambda^2 law, and RM synthesis.
 rfi
-    Robust statistics and spectral kurtosis for RFI flagging.
+    Robust statistics, spectral kurtosis, and the SumThreshold algorithm for RFI flagging.
 
 The package is named after Karl Jansky, who in 1932 discovered radio emission
 from the Milky Way and after whom the unit of spectral flux density is named.
