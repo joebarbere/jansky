@@ -198,6 +198,13 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 
 ## F
 
+**Fanaroff–Riley class (FR I / FR II)**
+: The morphological split of powerful radio galaxies: **FR I** sources are *edge-darkened*
+  (brightest near the core, jets fading outward) and lower-luminosity; **FR II** sources are
+  *edge-brightened*, with collimated jets feeding bright lobes and terminal hotspots, and higher
+  luminosity. The transition sits near $L_{178\,\mathrm{MHz}} \sim 10^{25}$ W Hz⁻¹ (Fanaroff &
+  Riley 1974) (Chapter 45).
+
 **Faraday rotation**
 : The rotation of a linearly polarised wave's plane of polarisation as it passes through a
   magnetised plasma, by an angle $\Delta\chi = \mathrm{RM}\,\lambda^2$. The $\lambda^2$
@@ -307,6 +314,13 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   interferometry and radio direction-finding practical (Chapter 17).
 
 ## L
+
+**log N–log S (source counts)**
+: The number of radio sources brighter than flux density $S$ as a function of $S$. In a static,
+  uniformly-filled Euclidean universe the integral counts follow $N(>S) \propto S^{-3/2}$
+  (differential $\mathrm{d}N/\mathrm{d}S \propto S^{-5/2}$), independent of luminosity. The
+  observed departure from this slope — steeper at bright flux, flatter at faint flux — measures
+  the cosmic evolution of the source population and helped end steady-state cosmology (Chapter 45).
 
 **LSR (Local Standard of Rest)**
 : A reference frame moving with the mean motion of stars in the Sun's neighbourhood around
@@ -421,6 +435,18 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : The range of frequencies (roughly 10 MHz to ~1 THz) at which Earth's atmosphere is
   transparent enough for ground-based radio astronomy, bounded below by the ionosphere and
   above by molecular (mainly water) absorption (Chapter 1).
+
+**Radio luminosity function**
+: The space density of radio sources per unit (logarithmic) luminosity. It is steeply
+  declining: many faint star-forming galaxies, a break, and a rapidly thinning population of
+  rare, powerful radio-loud AGN. Its convolution with cosmic evolution shapes the observed
+  source counts (Chapter 45).
+
+**Radio-loud AGN**
+: An active galactic nucleus whose accreting supermassive black hole launches powerful
+  synchrotron-emitting jets, producing the radio galaxies and radio quasars that dominate the
+  bright extragalactic radio sky. Orientation of the jet axis underlies the unified model
+  (Chapters 45, 19).
 
 **Radio-quiet zone**
 : A legally protected region where radio transmissions are restricted to shield a sensitive
