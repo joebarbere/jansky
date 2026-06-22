@@ -20,8 +20,10 @@ flowchart TD
   C2[2 · Radio emission]
   C3[3 · Noise & radiometer]
   C43[43 · Synchrotron radiation]
+  C44[44 · Free-free & HII regions]
   C1 --> C2 --> C3
   C2 --> C43
+  C2 --> C44
 
   %% ---- Part II: Instrumentation & hardware ----
   C4[4 · Antennas & receivers]

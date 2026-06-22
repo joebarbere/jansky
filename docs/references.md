@@ -39,6 +39,24 @@ originals — many of these papers are short, readable, and historic.
 - **Pacholczyk, A. G. (1970).** *Radio Astrophysics.* Freeman. — The standard synchrotron /
   minimum-energy reference (Chapter 43).
 
+### Free-free emission & HII regions
+
+- **Strömgren, B. (1939).** *The Physical State of Interstellar Hydrogen.* ApJ 89, 526. — The
+  ionization-balance radius of an HII region (Chapter 44).
+  [DOI](https://doi.org/10.1086/144074)
+- **Mezger, P. G. & Henderson, A. P. (1967).** *Galactic Nebulae. I. Observations of HII Regions
+  at 2 cm.* ApJ 147, 471. — Radio free-free continua and the emission-measure / electron-temperature
+  determination used in Chapter 44.
+  [DOI](https://doi.org/10.1086/149030)
+- **Altenhoff, W., Mezger, P. G., Strassl, H., Wendker, H. & Westerhout, G. (1960).** *Messprogramme
+  bei der Wellenlänge 11 cm am 25 m-Radioteleskop Stockert.* Veröff. Sternwärte Bonn, No. 59, 48.
+  — The radio free-free optical-depth approximation τ ∝ T_e^−1.35 ν^−2.1 EM (Chapter 44).
+- **Osterbrock, D. E. & Ferland, G. J. (2006).** *Astrophysics of Gaseous Nebulae and Active
+  Galactic Nuclei,* 2nd ed. University Science Books. — Standing reference for ionized-gas physics,
+  recombination, and radio recombination lines (Chapter 44).
+- **Rohlfs, K. & Wilson, T. L. (2004).** *Tools of Radio Astronomy,* 4th ed. Springer. — Standing
+  reference for the free-free emission/absorption coefficients (Chapter 44).
+
 ### The hydrogen line
 
 - **van de Hulst, H. C. (1945).** *Radiogolven uit het wereldruim* (Radio waves from space).
