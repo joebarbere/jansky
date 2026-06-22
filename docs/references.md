@@ -30,6 +30,35 @@ originals — many of these papers are short, readable, and historic.
   A&A 594, A116. — The modern all-sky HI dataset used in Chapter 11.
   [DOI](https://doi.org/10.1051/0004-6361/201629178)
 
+### Cosmic dawn & 21 cm cosmology
+
+- **Wouthuysen, S. A. (1952).** *On the excitation mechanism of the 21-cm radio-frequency
+  interstellar hydrogen emission line.* AJ 57, 31. — The Lyman-α coupling mechanism (Chapter 42).
+  [ADS](https://ui.adsabs.harvard.edu/abs/1952AJ.....57R..31W/abstract)
+- **Field, G. B. (1958).** *Excitation of the Hydrogen 21-cm Line.* Proc. IRE 46, 240. — The spin
+  temperature and the Wouthuysen–Field effect (Chapter 42).
+  [ADS](https://ui.adsabs.harvard.edu/abs/1958PIRE...46..240F/abstract)
+- **Madau, P., Meiksin, A. & Rees, M. J. (1997).** *21 Centimeter Tomography of the Intergalactic
+  Medium at High Redshift.* ApJ 475, 429. — The modern δT_b formula and global-signal prediction
+  (Chapter 42). [DOI](https://doi.org/10.1086/303549)
+- **Furlanetto, S. R., Oh, S. P. & Briggs, F. H. (2006).** *Cosmology at Low Frequencies: The 21 cm
+  Transition and the High-Redshift Universe.* Phys. Rep. 433, 181. — The standard review
+  (Chapter 42). [arXiv](https://arxiv.org/abs/astro-ph/0608032)
+- **Pritchard, J. R. & Loeb, A. (2012).** *21 cm cosmology in the 21st century.* Rep. Prog. Phys. 75,
+  086901. — The modern review (Chapter 42). [DOI](https://doi.org/10.1088/0034-4885/75/8/086901)
+- **Bowman, J. D., et al. (2018).** *An absorption profile centred at 78 megahertz in the sky-averaged
+  spectrum.* Nature 555, 67. — The EDGES claimed (and contested) cosmic-dawn detection (Chapter 42).
+  [DOI](https://doi.org/10.1038/nature25792)
+- **Singh, S., et al. (2022).** *On the detection of a cosmic dawn signal in the radio background.*
+  Nature Astronomy 6, 607. — SARAS 3: a non-confirmation of the EDGES profile (Chapter 42).
+  [DOI](https://doi.org/10.1038/s41550-022-01610-5)
+- **HERA Collaboration (2023).** *Improved Constraints on the 21 cm EoR Power Spectrum … with HERA
+  Phase I.* ApJ 945, 124. — The leading interferometric power-spectrum upper limits (Chapter 42).
+  [DOI](https://doi.org/10.3847/1538-4357/acaf50)
+- **Mertens, F. G., et al. (2020).** *Improved upper limits on the 21 cm signal power spectrum … from
+  LOFAR.* MNRAS 493, 1662. — A leading LOFAR EoR upper limit (Chapter 42).
+  [DOI](https://doi.org/10.1093/mnras/staa327)
+
 ### Receivers, noise & instrumentation
 
 - **Dicke, R. H. (1946).** *The Measurement of Thermal Radiation at Microwave Frequencies.*

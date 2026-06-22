@@ -26,6 +26,9 @@ meteor
     Meteor-scatter echoes (underdense/overdense) and ping detection.
 molecular
     The CO rotational ladder and the Keplerian maser-disk black-hole weigh-in.
+eor
+    Cosmic dawn & reionization: the redshifted 21 cm signal, spin temperature,
+    the global-signal trough, and smooth-foreground removal.
 data
     Cached downloaders for the sample datasets used in the research chapters.
 formats
@@ -52,6 +55,7 @@ __version__ = "0.1.0"
 
 from jansky import (
     data,
+    eor,
     formats,
     interferometry,
     lightning,
@@ -72,6 +76,7 @@ from jansky import (
 __all__ = [
     "__version__",
     "data",
+    "eor",
     "formats",
     "interferometry",
     "lightning",

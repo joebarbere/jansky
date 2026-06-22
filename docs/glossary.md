@@ -73,6 +73,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : The NRAO software suite for calibrating and imaging interferometer data, used for VLA
   imaging in Chapter 12. It reads and writes Measurement Sets.
 
+**Cosmic dawn**
+: The era ($z \sim 15$–30, observed at ~50–90 MHz) when the first stars switched on and their
+  Lyman-α photons coupled the 21 cm spin temperature to the cold gas, producing the deep
+  absorption trough in the global 21 cm signal that EDGES claimed to detect near 78 MHz
+  (Chapter 42).
+
 **CLEAN**
 : Högbom's iterative deconvolution algorithm: model the sky as a sum of point sources,
   repeatedly subtracting a scaled dirty beam at the brightest pixel, then restore with a
@@ -166,6 +172,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : The equivalent collecting area of an antenna for a matched source, $A_e = \eta_A
   A_{\text{geom}}$. It sets the gain and, with $T_{\text{sys}}$, the sensitivity via the
   SEFD.
+
+**Epoch of Reionization (EoR)**
+: The era ($z \sim 6$–10, observed at ~130–200 MHz) when ultraviolet light from the first
+  galaxies reionized the neutral intergalactic hydrogen left over from recombination,
+  extinguishing the redshifted 21 cm signal. Probed by the 21 cm power spectrum (LOFAR, MWA,
+  HERA, SKA-Low) (Chapter 42).
 
 **Ephemeris**
 : A table or model giving the predicted position (and for pulsars, the spin phase) of a
@@ -470,6 +482,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 : A statistic that flags RFI by spotting signals too steady (continuous-wave) or too spiky to be
   natural Gaussian noise; it is ≈ 1 for clean noise (Maths Lab C).
 
+**Spin temperature ($T_S$)**
+: The excitation temperature of the 21 cm hyperfine levels, set by a weighted mean of the CMB,
+  the gas kinetic temperature (collisions), and the Lyman-α colour temperature (the
+  Wouthuysen–Field effect). Whether the cosmological 21 cm line is seen in absorption or emission
+  against the CMB depends on $T_S$ vs $T_\mathrm{CMB}$ (Chapter 42).
+
 **Spectral line**
 : Emission or absorption confined to a narrow range of frequencies, from a specific atomic
   or molecular transition (e.g. HI at 1420 MHz). Its Doppler shift gives velocity; its width
@@ -554,6 +572,11 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   plasma, returning as a descending tone with group delay $t \propto f^{-1/2}$ — the close cousin
   of the interstellar $t \propto \nu^{-2}$ pulsar/FRB sweep, and de-dispersed by the same machinery
   (Chapters 40, 13, 18).
+
+**Wouthuysen–Field effect**
+: The coupling of the 21 cm spin temperature to the gas kinetic temperature by Lyman-α photons
+  scattering off neutral hydrogen. Once the first stars provide those photons, it drives the
+  cosmic-dawn absorption trough (Chapter 42).
 
 ## Z
 
