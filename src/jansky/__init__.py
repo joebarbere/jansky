@@ -45,6 +45,9 @@ polarization
 synchrotron
     The non-thermal continuum: spectral index, SSA turnover, spectral aging, and
     the minimum-energy magnetic field.
+freefree
+    The thermal continuum from ionized gas: free-free optical depth, the
+    thick-to-thin turnover, emission measure, and the Stromgren radius.
 rfi
     Robust statistics, spectral kurtosis, and the SumThreshold algorithm for RFI flagging.
 
@@ -60,6 +63,7 @@ from jansky import (
     data,
     eor,
     formats,
+    freefree,
     interferometry,
     lightning,
     meteor,
@@ -82,6 +86,7 @@ __all__ = [
     "data",
     "eor",
     "formats",
+    "freefree",
     "interferometry",
     "lightning",
     "meteor",

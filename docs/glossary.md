@@ -173,6 +173,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   A_{\text{geom}}$. It sets the gain and, with $T_{\text{sys}}$, the sensitivity via the
   SEFD.
 
+**Emission measure (EM)**
+: The line-of-sight integral of the squared electron density, $\mathrm{EM} = \int n_e^2\,
+  \mathrm{d}l$ (in pc cm⁻⁶). It sets the free-free optical depth and hence the whole thermal
+  spectrum of an HII region — fitting it (with $T_e$) to a radio spectrum measures the density
+  and depth of the ionized gas (Chapter 44).
+
 **Equipartition (minimum-energy) field**
 : The magnetic field that minimises the total energy in relativistic particles plus field for an
   observed synchrotron source; near the minimum the particle and field energies are comparable.
@@ -209,6 +215,14 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 **Flux density ($S_\nu$)**
 : Power received per unit area per unit frequency, integrated over the source — measured in
   **janskys**. The fundamental quantity describing how bright a radio source appears.
+
+**Free-free (thermal bremsstrahlung)**
+: The thermal continuum radiated by free electrons scattering off ions in ionized gas (HII
+  regions, planetary nebulae, the thermal Galactic background). It is **unpolarised** and
+  **flat**: optically thick at low frequency ($T_B \to T_e$, $S_\nu \propto \nu^2$) and
+  optically thin above the turnover, where the spectral index flattens to $\alpha \approx -0.1$.
+  The flat-vs-steep contrast with synchrotron is the standard thermal/non-thermal diagnostic
+  (Chapter 44).
 
 **Fringe**
 : The sinusoidal interference pattern an interferometer produces as a source moves through
@@ -413,6 +427,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   telescope — e.g. the US National Radio Quiet Zone around Green Bank, or the Murchison
   Radio-astronomy Observatory. A regulatory complement to on-line RFI flagging (Chapter 39).
 
+**Radio recombination line (RRL)**
+: A spectral line emitted when an electron recombines into a high-$n$ level of an ion and
+  cascades down (e.g. H109α at 5 GHz). Arising from the same ionized gas as free-free emission,
+  RRLs give the gas velocity and — combined with the continuum — an independent electron
+  temperature (Chapter 44).
+
 **ROC curve & AUC**
 : The Receiver Operating Characteristic plots a classifier's true-positive rate against its
   false-positive rate as the decision threshold varies; the Area Under the Curve (AUC, 0.5 =
@@ -508,6 +528,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 **Stokes parameters ($I, Q, U, V$)**
 : See **Polarisation / Stokes parameters** (under P) — the four numbers that fully describe a
   wave's polarisation state (Chapter 37).
+
+**Strömgren sphere**
+: The roughly spherical zone of fully ionized hydrogen around a hot star, with a sharp edge at
+  the **Strömgren radius** where the stellar ionizing-photon rate is balanced by recombinations,
+  $Q = \tfrac{4}{3}\pi R_s^3 n_e^2 \alpha_B$. It sets the size of an ionization-bounded HII region
+  (Chapter 44).
 
 **Sudden ionospheric disturbance (SID)**
 : A jump in a VLF transmitter's received amplitude when a solar flare's X-rays ionise the
