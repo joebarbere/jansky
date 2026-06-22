@@ -48,8 +48,9 @@ originals — many of these papers are short, readable, and historic.
   at 2 cm.* ApJ 147, 471. — Radio free-free continua and the emission-measure / electron-temperature
   determination used in Chapter 44.
   [DOI](https://doi.org/10.1086/149030)
-- **Altenhoff, W., Mezger, P. G., Wendker, H. & Westerhout, G. (1960).** *Veröff. Sternwärte Bonn,
-  No. 59.* — The radio free-free optical-depth approximation τ ∝ T_e^−1.35 ν^−2.1 EM (Chapter 44).
+- **Altenhoff, W., Mezger, P. G., Strassl, H., Wendker, H. & Westerhout, G. (1960).** *Messprogramme
+  bei der Wellenlänge 11 cm am 25 m-Radioteleskop Stockert.* Veröff. Sternwärte Bonn, No. 59, 48.
+  — The radio free-free optical-depth approximation τ ∝ T_e^−1.35 ν^−2.1 EM (Chapter 44).
 - **Osterbrock, D. E. & Ferland, G. J. (2006).** *Astrophysics of Gaseous Nebulae and Active
   Galactic Nuclei,* 2nd ed. University Science Books. — Standing reference for ionized-gas physics,
   recombination, and radio recombination lines (Chapter 44).
