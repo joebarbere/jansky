@@ -126,6 +126,9 @@ originals — many of these papers are short, readable, and historic.
 - **Dicke, R. H. (1946).** *The Measurement of Thermal Radiation at Microwave Frequencies.*
   Rev. Sci. Instrum. 17, 268. — The radiometer and the radiometer equation.
   [DOI](https://doi.org/10.1063/1.1770483)
+- **Perley, R. A. & Butler, B. J. (2017).** *An Accurate Flux Density Scale from 50 MHz to 50 GHz.*
+  ApJS 230, 7. — The VLA absolute flux-density scale (the standard `setjy` calibrator models used
+  in Chapter 12). [DOI](https://doi.org/10.3847/1538-4365/aa6df9)
 
 ### Interferometry & imaging
 
@@ -226,7 +229,10 @@ these, see [Projects](projects.md) and [Resources](resources.md).
 
 - **Astropy** — [astropy.org](https://www.astropy.org/) · **Astroquery** —
   [astroquery.readthedocs.io](https://astroquery.readthedocs.io/)
-- **CASA** (Common Astronomy Software Applications) — [casa.nrao.edu](https://casa.nrao.edu/)
+- **CASA** (Common Astronomy Software Applications) — [casa.nrao.edu](https://casa.nrao.edu/);
+  the software paper is **CASA Team et al. (2022),** PASP 134, 114501
+  [DOI](https://doi.org/10.1088/1538-3873/ac9642). Now pip-installable as the modular `casatools` /
+  `casatasks` wheels (used in Chapter 12).
 - **spectral-cube**, **radio-beam** — [radio-astro-tools.github.io](https://radio-astro-tools.github.io/)
 - **PINT** (pulsar timing) — [nanograv-pint.readthedocs.io](https://nanograv-pint.readthedocs.io/)
 - **Virtual Observatory / pyvo** — [pyvo.readthedocs.io](https://pyvo.readthedocs.io/)
