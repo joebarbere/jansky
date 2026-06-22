@@ -218,3 +218,41 @@ def test_stefcal_is_robust_to_noise():
     recovered = interferometry.solve_gains_stefcal(obs + noise, model)
     # Recovered gains stay close to truth despite 2% visibility noise.
     assert np.max(np.abs(recovered - g)) < 0.1
+
+
+def _random_dterms(rng, n, scale=0.05):
+    # Reference antenna 0 has zero leakage (the gauge); the rest are a few percent.
+    d = scale * (rng.normal(size=n) + 1j * rng.normal(size=n))
+    d[0] = 0.0
+    return d
+
+
+def test_apply_leakage_structure():
+    d = np.array([0.0, 0.03 + 0.01j, -0.02 + 0.04j])
+    v = interferometry.apply_leakage(2.0, d)
+    # V_RL_ij = (d_i + conj(d_j)) * I; diagonal is 2 Re(d_i) * I.
+    assert np.allclose(v, (d[:, None] + np.conj(d)[None, :]) * 2.0)
+    assert np.allclose(np.diag(v), 2.0 * d.real * 2.0)
+
+
+def test_solve_leakage_recovers_dterms():
+    rng = np.random.default_rng(5)
+    d = _random_dterms(rng, 7)
+    v = interferometry.apply_leakage(3.0, d)
+    recovered = interferometry.solve_leakage(v, 3.0)
+    assert np.allclose(recovered, d, atol=1e-9)
+    assert recovered[0] == 0.0  # reference-antenna gauge
+
+
+def test_solve_leakage_robust_to_noise_and_corrects():
+    rng = np.random.default_rng(8)
+    d = _random_dterms(rng, 9)
+    v = interferometry.apply_leakage(1.0, d)
+    noise = 0.002 * (rng.normal(size=v.shape) + 1j * rng.normal(size=v.shape))
+    recovered = interferometry.solve_leakage(v + noise, 1.0)
+    assert np.max(np.abs(recovered - d)) < 0.02
+    # Correcting the observed cross-hand by the recovered D-terms collapses the
+    # off-diagonal leakage toward zero (an unpolarised source has no true cross-hand).
+    corrected = (v + noise) - interferometry.apply_leakage(1.0, recovered)
+    off = ~np.eye(9, dtype=bool)
+    assert np.std(corrected[off]) < 0.01
