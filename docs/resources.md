@@ -173,6 +173,26 @@ the amateur community is unusually welcoming. (Kits, build write-ups, and grants
   [Radio JOVE archive](https://radiojove.net/) for Jupiter/solar recordings (see the
   [Amateur & Radio JOVE / SkyPipe data](#amateur-radio-jove-skypipe-data) table above).
 
+### Free introductory courses & tutorials
+
+A few classic, freely-available tutorials. Some have moved or gone offline; the links below are
+the current live homes with **archive.org fallbacks**, recovered June 2026 — see
+`docs/data/archived_links.yml` for full provenance (original, live, and Wayback URLs).
+
+- **JPL — *Basics of Radio Astronomy*** (Diane Fisher Miller, JPL D-13835) — the classic 109-page
+  Goldstone-Apple Valley workbook; a gentle, thorough first introduction. The JPL host was retired,
+  so the complete **public-domain** PDF is
+  [archived in this repo](assets/archive/jpl-basics-of-radio-astronomy.pdf) (recovered from the
+  [Wayback Machine](http://web.archive.org/web/20221205042007/https://www2.jpl.nasa.gov/radioastronomy/radioastronomy_all.pdf));
+  it is also catalogued on [ComPADRE](https://www.compadre.org/precollege/items/detail.cfm?ID=485)
+  and hosted chapter-by-chapter on [NASA Radio JOVE](https://radiojove.gsfc.nasa.gov/).
+- **Köppen — *Spectroscopy with the 21 cm Hydrogen Line*** — a hands-on ESA-Haystack HI observing
+  and analysis tutorial; relocated from Strasbourg to its current home at the
+  [University of Kiel](https://portia.astrophysik.uni-kiel.de/~koeppen/Haystack/).
+- **NJIT PHYS 728 — Radio Astronomy** (Dale E. Gary) — a graduate course with lecture notes and
+  problem sets; no longer online, preserved on the
+  [Wayback Machine](http://web.archive.org/web/20250503155723/https://web.njit.edu/~gary/728/).
+
 ## Key journals
 
 | Journal | Link |

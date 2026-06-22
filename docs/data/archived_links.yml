@@ -1,0 +1,44 @@
+# Recovered / archived external resources
+# ----------------------------------------
+# Some classic free radio-astronomy tutorials the course pointed at went dead
+# (hosts retired, pages moved). This manifest records, for each one: the original
+# (now-dead) URL, a current live home if one exists, the Wayback Machine snapshot,
+# and — where the licence permits — a copy mirrored into this repo. Retrieved
+# 2026-06-22. The live/Wayback URLs are link-checked via
+#   uv run python scripts/check_dataset_urls.py --docs docs/resources.md
+
+- name: "JPL — Basics of Radio Astronomy"
+  authors: "Diane Fisher Miller"
+  identifier: "JPL D-13835 (Goldstone-Apple Valley Radio Telescope program)"
+  topic: "Gentle, thorough 109-page introductory radio-astronomy workbook"
+  original_url: "https://www2.jpl.nasa.gov/radioastronomy/radioastronomy_all.pdf"  # dead: JPL www2 site retired
+  live_url: "https://www.compadre.org/precollege/items/detail.cfm?ID=485"          # ComPADRE catalogue entry (live)
+  also_live: "https://radiojove.gsfc.nasa.gov/education/educationalcd/RadioAstronomyTutorial/Workbook%20PDF%20Files/Introduction.pdf"  # NASA Radio JOVE hosts the workbook chapter-by-chapter
+  wayback_url: "http://web.archive.org/web/20221205042007/https://www2.jpl.nasa.gov/radioastronomy/radioastronomy_all.pdf"
+  local_copy: "assets/archive/jpl-basics-of-radio-astronomy.pdf"
+  license: "NASA/JPL (Caltech) educational publication — US Government work, public domain"
+  note: >
+    The complete single-file 109-page PDF survives only on the Wayback Machine (the live
+    NASA Radio JOVE host splits it into per-chapter PDFs). Because it is a public-domain
+    NASA work it is mirrored in this repo for permanence.
+
+- name: "Köppen — Spectroscopy with the 21 cm Hydrogen Line (ESA-Haystack tutorial)"
+  authors: "Joachim Köppen"
+  identifier: "Strasbourg 2010 / ESA-Haystack educational telescope tutorial"
+  topic: "Hands-on 21 cm neutral-hydrogen observing and spectral analysis"
+  original_url: "http://astro.u-strasbg.fr/~koppen/Haystack/"  # dead: Strasbourg host gone
+  live_url: "https://portia.astrophysik.uni-kiel.de/~koeppen/Haystack/"  # relocated to University of Kiel (live)
+  wayback_url: "http://web.archive.org/web/20180218224158/http://astro.u-strasbg.fr:80/~koppen/Haystack/"
+  local_copy: null
+  license: "Copyright the author — linked, not mirrored"
+  note: "Relocated from Strasbourg to the University of Kiel; the Kiel copy is current and maintained."
+
+- name: "NJIT PHYS 728 — Radio Astronomy (Dale E. Gary)"
+  authors: "Dale E. Gary (New Jersey Institute of Technology)"
+  topic: "Graduate radio-astronomy course: lecture notes and problem sets"
+  original_url: "https://web.njit.edu/~gary/728/"  # dead: 404 (the ~gary/ tree is gone)
+  live_url: null
+  wayback_url: "http://web.archive.org/web/20250503155723/https://web.njit.edu/~gary/728/"
+  local_copy: null
+  license: "Copyright the author — linked, not mirrored"
+  note: "No current live home found; the 2025 Wayback snapshot is the best surviving copy."
