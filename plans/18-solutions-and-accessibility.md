@@ -16,11 +16,13 @@
 >   scaffold → hidden solution, not a pre-filled answer), descriptive figure captions / alt text,
 >   and the colourblind cycle. Future chapters comply by default.
 >
-> **Remaining follow-up (mechanical, per-notebook — best as an agent fan-out):** retrofit the
-> collapsible worked-solution blocks into the *existing* 39 chapters' "Try it yourself" sections,
-> add alt-text captions to key existing figures, and add the optional guarded `@interact` slider
-> cells (Ch 3 integrate-down, Ch 9 CLEAN gain, Ch 18 DM butterfly, Maths Lab A windowing) behind an
-> `ipywidgets` extra. The standard and palette are now in place to make that rollout uniform.
+> **Worked-solutions rollout — done.** Collapsible `<details>Solution` blocks were retrofitted into
+> the "Try it yourself" sections of **every chapter that has exercises** (PRs #52–#58, via parallel
+> `claude` agents that verified each answer against the venv) — 85+ solution blocks across the course.
+> The two chapters added since (Ch 40 Lightning, Ch 41 Calibration) ship with solutions by default.
+> **Optional remaining:** the guarded `@interact` slider cells behind an `ipywidgets` extra —
+> intentionally deferred, since widgets need a live kernel and do not render on the static GitHub
+> Pages site (low payoff); plus a sweep of alt-text captions on older figures.
 
 ## Context
 

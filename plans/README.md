@@ -39,12 +39,12 @@ implemented. ⭐ marks an agent top-pick or a cross-agent consensus item.
 | ⭐ [10 — Polarisation & Faraday rotation chapter](10-polarisation-faraday.md) ✅ | Content | medium |
 | ⭐ [11 — SKA-era & 2025–2026 refresh](11-ska-era-refresh.md) ✅ | Content | small–medium |
 | [12 — Machine learning in radio astronomy](12-ml-in-radio.md) ✅ | Content | medium |
-| [13 — RFI mitigation & calibration chapters](13-rfi-and-calibration-chapters.md) ◑ | Content | medium–large |
-| ⭐ [14 — Real-data starter set](14-real-data-starter-set.md) ◑ | Real data | medium |
+| [13 — RFI mitigation & calibration chapters](13-rfi-and-calibration-chapters.md) ✅ | Content | medium–large |
+| ⭐ [14 — Real-data starter set](14-real-data-starter-set.md) ✅ | Real data | medium |
 | ⭐ [15 — Implement SPS/SPD readers](15-sps-spd-readers.md) ✅ | Real data | medium–large |
-| [16 — Finish the real-archive chapters](16-real-archive-chapters.md) ◑ | Real data | medium |
+| [16 — Finish the real-archive chapters](16-real-archive-chapters.md) ✅ | Real data | medium |
 | ⭐ [17 — Learning-journey map](17-learning-journey-map.md) ◑ | Pedagogy | medium |
-| [18 — Worked solutions, onboarding & accessibility](18-solutions-and-accessibility.md) ◑ | Pedagogy | medium–large |
+| [18 — Worked solutions, onboarding & accessibility](18-solutions-and-accessibility.md) ✅ | Pedagogy | medium–large |
 
 ## Outstanding follow-up
 
@@ -52,5 +52,17 @@ implemented. ⭐ marks an agent top-pick or a cross-agent consensus item.
   (see [Plan 15](15-sps-spd-readers.md)), with `read_sps` validated byte-for-byte against a real
   Radio JOVE recording. The live Radio-Sky Spectrograph protocol (`RSSClient`) still covers the
   streaming path.
+
+- **Beyond the original 18 plans**, later work added: two new chapters — **Ch 40 Lightning &
+  Sferics** (`jansky.lightning`) and **Ch 41 Practical Calibration** (`jansky.interferometry`
+  gain solvers) — real **LAB HI** data in Ch 11, a full **worked-solutions** pass across every
+  chapter, and a curated **[Radio Astronomy on GitHub](../docs/github.md)** catalogue (with a
+  machine-readable `docs/data/radio_github.yml`, a generated stats block, and a scheduled URL check).
+
+- **Genuinely optional, not yet started:** a standalone cosmic-dawn/EoR chapter (Plan 11); a
+  polarisation-calibration extension to Ch 41 (Plan 13); Ch 30 RASDR real-`.sps` wiring (Plan 15);
+  the guarded `@interact` widgets (Plan 18 — deferred, they need a live kernel); retrofitting the
+  prerequisites admonition into the headers of the older notebooks and adding Ch 40 to the
+  learning-paths map (Plan 17); and more unit-test coverage for `plotting.py` (Plan 08).
 
 The reusable subagents that built and reviewed all this live in `.claude/agents/`.
