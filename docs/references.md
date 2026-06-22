@@ -15,6 +15,30 @@ originals — many of these papers are short, readable, and historic.
   made in a backyard dish in Illinois.
   [DOI](https://doi.org/10.1086/144668)
 
+### Continuum emission mechanisms
+
+- **Alfvén, H. & Herlofson, N. (1950).** *Cosmic Radiation and Radio Stars.* Phys. Rev. 78, 616.
+  — First proposed synchrotron radiation from cosmic sources (Chapter 43).
+  [DOI](https://doi.org/10.1103/PhysRev.78.616)
+- **Shklovsky, I. S. (1953).** *On the Nature of the Crab Nebula's Optical Emission.* Dokl. Akad.
+  Nauk SSSR 90, 983. — Synchrotron interpretation of the Crab Nebula (Chapter 43).
+  [ADS](https://ui.adsabs.harvard.edu/abs/1953DoSSSR..90..983S)
+- **Burbidge, G. R. (1956).** *On Synchrotron Radiation from Messier 87.* ApJ 124, 416. — The
+  minimum-energy / equipartition magnetic-field argument (Chapter 43).
+  [DOI](https://doi.org/10.1086/146237)
+- **Kellermann, K. I. & Pauliny-Toth, I. I. K. (1969).** *The Spectra of Opaque Radio Sources.*
+  ApJ 155, L71. — The ~10¹² K inverse-Compton brightness-temperature limit (Chapter 43).
+  [DOI](https://doi.org/10.1086/180305)
+- **Miley, G. (1980).** *The Structure of Extended Extragalactic Radio Sources.* ARA&A 18, 165.
+  — Spectral (radiative) ages of radio-source lobes (Chapter 43).
+  [DOI](https://doi.org/10.1146/annurev.aa.18.090180.001121)
+- **Baars, J. W. M., et al. (1977).** *The Absolute Spectrum of Cas A; an Accurate Flux-Density
+  Scale and a Set of Secondary Calibrators.* A&A 61, 99. — The standard radio flux scale; Chapter 43
+  fits its Cas A / Cyg A spectra.
+  [ADS](https://ui.adsabs.harvard.edu/abs/1977A%26A....61...99B)
+- **Pacholczyk, A. G. (1970).** *Radio Astrophysics.* Freeman. — The standard synchrotron /
+  minimum-energy reference (Chapter 43).
+
 ### The hydrogen line
 
 - **van de Hulst, H. C. (1945).** *Radiogolven uit het wereldruim* (Radio waves from space).

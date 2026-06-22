@@ -42,6 +42,9 @@ plotting
     Shared matplotlib styling so every chapter's figures look consistent.
 polarization
     Stokes parameters, the Faraday lambda^2 law, and RM synthesis.
+synchrotron
+    The non-thermal continuum: spectral index, SSA turnover, spectral aging, and
+    the minimum-energy magnetic field.
 rfi
     Robust statistics, spectral kurtosis, and the SumThreshold algorithm for RFI flagging.
 
@@ -67,6 +70,7 @@ from jansky import (
     seti,
     signals,
     solar,
+    synchrotron,
     timing,
     transients,
     units,
@@ -88,6 +92,7 @@ __all__ = [
     "seti",
     "signals",
     "solar",
+    "synchrotron",
     "timing",
     "transients",
     "units",

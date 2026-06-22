@@ -79,6 +79,7 @@ nav:
       - "1. What is Radio Astronomy?": notebooks/01_what_is_radio_astronomy.ipynb
       - "2. The Physics of Radio Emission": notebooks/02_physics_of_radio_emission.ipynb
       - "3. Signals, Noise & the Radiometer Equation": notebooks/03_signals_noise_radiometer.ipynb
+      - "43. Synchrotron Radiation": notebooks/43_synchrotron_radiation.ipynb
   - "Part II — Instrumentation & Hardware":
       - "4. Antennas & Receivers": notebooks/04_antennas_and_receivers.ipynb
       - "5. Hands-on SDR (optional)": notebooks/05_sdr_basics.ipynb
