@@ -79,6 +79,9 @@ tui = [
     "textual-image>=0.7",
     "pillow>=10.0",
 ]
+cmb = [
+    "healpy>=1.16",
+]
 
 [project.urls]
 Homepage = "https://github.com/joebarbere/jansky"

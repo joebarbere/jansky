@@ -31,6 +31,7 @@ Some chapters use heavier libraries kept in optional extras so the base install 
 uv sync --extra pulsar     # Chapter 13: pint-pulsar, your
 uv sync --extra dynamics   # Chapter 11: galpy
 uv sync --extra sdr        # Chapters 5–6: pyrtlsdr (needs system librtlsdr)
+uv sync --extra cmb        # Chapter 22: healpy (all-sky HEALPix maps & power spectra)
 ```
 
 !!! note "Python version"
