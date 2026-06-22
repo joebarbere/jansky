@@ -27,8 +27,12 @@
 >   unit tests (recovers point-source gains to ~1e-6, robust to 2% visibility noise).
 > - **Docs** — glossary (Gain calibration, Measurement equation), nav (Part III), references
 >   (Cornwell & Wilkinson 1981, Pearson & Readhead 1984, Hamaker et al. 1996), learning-paths.
-> - Authored by `notebook-author`, reviewed by `science-reviewer`. **Optional remaining:** the
->   polarisation-calibration extension noted above.
+> - Authored by `notebook-author`, reviewed by `science-reviewer`.
+> - **Polarisation calibration added (Section 9).** Ch 41 now extends the measurement equation to
+>   the polarised case: per-antenna **D-terms** (leakage), solved from an unpolarised calibrator's
+>   cross-hand visibilities ($V^{RL}_{ij} \approx (d_i + d_j^{*})I$, gauge-fixed to a reference
+>   antenna) — feeding the Stokes Q/U science of Ch 37. New tested helpers
+>   `jansky.interferometry.apply_leakage` / `solve_leakage` (exact round-trip, noise-robust).
 
 ## Context
 

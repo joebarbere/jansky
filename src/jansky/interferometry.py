@@ -37,6 +37,8 @@ __all__ = [
     "solve_point_source_gains",
     "apply_gains",
     "solve_gains_stefcal",
+    "apply_leakage",
+    "solve_leakage",
 ]
 
 
@@ -533,3 +535,88 @@ def solve_gains_stefcal(
     if gains[0] != 0:
         gains = gains * np.exp(-1j * np.angle(gains[0]))
     return gains
+
+
+def apply_leakage(stokes_i: float, d_terms: np.ndarray) -> np.ndarray:
+    """Cross-hand visibilities of an unpolarised source under per-antenna leakage (D-terms).
+
+    Real feeds are never perfectly orthogonal: a small fraction of one polarisation
+    "leaks" into the other (the instrumental **D-terms**). To first order, the cross-hand
+    correlation of an **unpolarised** calibrator (Stokes :math:`Q = U = V = 0`, only
+    :math:`I`) is pure leakage,
+
+    .. math:: V^{RL}_{ij} \\approx (d_i + d_j^{*})\\, I,
+
+    where :math:`d_i` is antenna :math:`i`'s complex leakage. This is the polarisation
+    analogue of :func:`apply_gains`; solving it (:func:`solve_leakage`) is polarisation
+    calibration. (A teaching first-order model with one leakage per antenna; real packages
+    such as CASA's ``polcal`` solve the two feeds separately and include the source's own
+    polarisation.)
+
+    Parameters
+    ----------
+    stokes_i
+        The calibrator's Stokes I flux (arbitrary units).
+    d_terms
+        ``(n_ant,)`` complex per-antenna leakage factors (typically a few percent).
+
+    Returns
+    -------
+    numpy.ndarray
+        The ``(n_ant, n_ant)`` cross-hand visibility matrix.
+    """
+    d = np.asarray(d_terms, dtype=complex)
+    return (d[:, None] + np.conj(d)[None, :]) * stokes_i
+
+
+def solve_leakage(vis_rl: np.ndarray, stokes_i: float) -> np.ndarray:
+    """Recover per-antenna D-terms from an unpolarised calibrator's cross-hand visibilities.
+
+    Inverts :func:`apply_leakage`: given :math:`V^{RL}_{ij} = (d_i + d_j^{*})\\,I`, solve
+    the (linear) least-squares system for the per-antenna leakages, gauge-fixed to a
+    reference antenna with ``d[0] = 0`` (an unpolarised calibrator alone cannot constrain
+    the absolute R--L phase, exactly as gain calibration cannot constrain the global phase
+    in :func:`solve_gains_stefcal` — an angle calibrator supplies it).
+
+    Parameters
+    ----------
+    vis_rl
+        ``(n_ant, n_ant)`` cross-hand visibility matrix of an unpolarised calibrator.
+    stokes_i
+        The calibrator's Stokes I flux.
+
+    Returns
+    -------
+    numpy.ndarray
+        Complex per-antenna D-terms ``(n_ant,)`` with ``d[0] = 0`` (reference antenna).
+    """
+    m = np.asarray(vis_rl, dtype=complex) / stokes_i  # m_ij = d_i + conj(d_j)
+    n = m.shape[0]
+    n_un = n - 1  # antenna 0 is the reference gauge (d_0 = 0)
+    rows: list[np.ndarray] = []
+    rhs: list[float] = []
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            # Real part:  Re(d_i) + Re(d_j) = Re(m_ij)
+            r = np.zeros(2 * n_un)
+            if i > 0:
+                r[i - 1] += 1.0
+            if j > 0:
+                r[j - 1] += 1.0
+            rows.append(r)
+            rhs.append(m[i, j].real)
+            # Imag part:  Im(d_i) - Im(d_j) = Im(m_ij)
+            r2 = np.zeros(2 * n_un)
+            if i > 0:
+                r2[n_un + i - 1] += 1.0
+            if j > 0:
+                r2[n_un + j - 1] -= 1.0
+            rows.append(r2)
+            rhs.append(m[i, j].imag)
+    sol, *_ = np.linalg.lstsq(np.array(rows), np.array(rhs), rcond=None)
+    d = np.zeros(n, dtype=complex)
+    for a in range(1, n):
+        d[a] = sol[a - 1] + 1j * sol[n_un + a - 1]
+    return d
