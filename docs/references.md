@@ -155,6 +155,12 @@ originals — many of these papers are short, readable, and historic.
 - **Penzias, A. A. & Wilson, R. W. (1965).** *A Measurement of Excess Antenna Temperature at
   4080 Mc/s.* ApJ 142, 419. — The cosmic microwave background, found as radio noise.
   [DOI](https://doi.org/10.1086/148307)
+- **Planck Collaboration (2020).** *Planck 2018 results. I. Overview and the cosmological legacy of
+  Planck.* A&A 641, A1. — ESA's final-release CMB temperature/polarisation maps and the COMMANDER
+  radio foreground maps (synchrotron, free-free, AME); the modern values used in Chapter 22 (and
+  the foreground context for Chapters 42–44). Data at the
+  [Planck Legacy Archive](https://pla.esac.esa.int/pla/).
+  [DOI](https://doi.org/10.1051/0004-6361/201833880)
 - **Rubin, V. C. & Ford, W. K. (1970).** *Rotation of the Andromeda Nebula from a
   Spectroscopic Survey of Emission Regions.* ApJ 159, 379. — Rotation curves and dark
   matter, the science context for Chapter 11.
