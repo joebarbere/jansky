@@ -22,9 +22,12 @@
 > the real NANOGrav timing residuals, guarded behind the `pulsar` extra with an offline fallback.
 > Chapter 23 similarly reads the real `.sps` Jupiter recording (see [Plan 15](15-sps-spd-readers.md)).
 >
-> **Remaining follow-up:** Ch 13 also de-dispersing the real `your` filterbank (`filterbank-example`),
-> and Ch 11 reducing a real HI cutout. A small static HI4PI *cutout* was not added — no verified
-> sub-5 MB static source exists; the synthetic HI cube remains the offline HI path.
+> **Update — both done.** Ch 18 runs the real `your` filterbank (`filterbank-example`) through the
+> `dm_search` butterfly (DM ≈ 474, S/N 13.3). And **Ch 11 now reduces a real HI spectrum**: a small
+> (366 KB) `(b, v)` slice of the **LAB all-sky HI survey** at l = 12° (`lab-hi-l12`, registered in
+> `jansky.data`) — the b = 0 sightline gives a real tangent-point rotation point (v_rot ≈ 199 km/s at
+> R ≈ 1.7 kpc), with an offline fallback. (The 576 MB HI4PI all-sky cube remains opt-in; the LAB slice
+> is the small real HI path.)
 
 ## Context
 

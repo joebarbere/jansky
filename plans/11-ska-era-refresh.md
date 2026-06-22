@@ -20,7 +20,10 @@
 > Sources: [SKA-Low first image](https://www.skao.int/en/news/560/first-image-released-one-ska-low-station),
 > [SKA-Mid first fringes](https://www.skao.int/en/news/693/ska-mid-milestone),
 > [SARAS-3](https://doi.org/10.1038/s41550-022-01610-5).
-> The optional standalone cosmic-dawn/EoR section remains a possible follow-up.
+> The optional standalone cosmic-dawn/EoR *chapter* remains a possible follow-up. (The EoR/21 cm and
+> CMB *software ecosystem* — 21cmFAST, tools21cm, 21cmSense, HERA/CHIME m-mode tools, healpy/PySM —
+> is now catalogued in [`docs/github.md`](../docs/github.md), and the course covers 21 cm physics in
+> Ch 6/11 and CMB in Ch 22.)
 
 ## Context
 

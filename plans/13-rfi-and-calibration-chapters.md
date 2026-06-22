@@ -1,4 +1,4 @@
-# Plan 13 — RFI mitigation & practical calibration chapters ◑ Part A delivered
+# Plan 13 — RFI mitigation & practical calibration chapters ✅ Both delivered
 
 > Flagged by **research-currency (#5)**. Scope: medium–large (large if both as full chapters).
 >
@@ -17,10 +17,18 @@
 > - **Docs** — glossary (AOFlagger/SumThreshold, Flagging, Radio-quiet zone), nav, and learning-paths
 >   integration (map node + Maths-Lab C service row).
 >
-> **Part B remaining — practical calibration chapter** (`notebooks/40_practical_calibration.ipynb`):
-> a bandpass → gain (→ polarisation) walkthrough on a real small Measurement Set via `pyuvdata`.
-> Deferred — it depends on a real MS sample (coordinate with [Plan 16](16-real-archive-chapters.md))
-> and is the heavier half; best done as its own pass.
+> **Part B delivered — practical calibration chapter** (`notebooks/41_practical_calibration.ipynb`,
+> Part III; shipped as Ch 41 because Ch 40 became the Lightning chapter). The applied companion to
+> Maths Lab E: the measurement equation $V^\mathrm{obs}_{ij}=g_i V^\mathrm{true}_{ij} g_j^*$ →
+> gain calibration → per-channel bandpass → gain-error-vs-SNR → the Cornwell–Wilkinson self-cal loop,
+> with closure phase/amplitude as the gain-immune anchor and a guarded `pyuvdata` real-VLA aside.
+> - **Helpers** — added **`jansky.interferometry.apply_gains`** (the forward measurement equation) and
+>   **`solve_gains_stefcal`** (the antenna-based StefCal solver behind gain-cal and self-cal), with
+>   unit tests (recovers point-source gains to ~1e-6, robust to 2% visibility noise).
+> - **Docs** — glossary (Gain calibration, Measurement equation), nav (Part III), references
+>   (Cornwell & Wilkinson 1981, Pearson & Readhead 1984, Hamaker et al. 1996), learning-paths.
+> - Authored by `notebook-author`, reviewed by `science-reviewer`. **Optional remaining:** the
+>   polarisation-calibration extension noted above.
 
 ## Context
 

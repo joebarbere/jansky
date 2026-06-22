@@ -38,9 +38,11 @@
 > and plots the genuine **uv-coverage** and **amplitude-vs-baseline** (flat, the point-source
 > calibrator signature). Guarded behind the `formats` extra with an offline fallback.
 >
-> **Remaining follow-up:** a short guided "download real data" walkthrough notebook/section.
-> (Separately, Ch 10's code cells are committed without executed outputs — a pre-existing scaffold
-> state worth a later re-execution pass.)
+> **Walkthrough — covered.** The guided "download real data" walkthrough is delivered in place as
+> Chapter 10's section *"4 · Caching what you fetch with `jansky.data`"*, which takes a learner through
+> a real archive query → cache → analyse end-to-end; a separate notebook would have duplicated it.
+> (Minor open item: Ch 10's code cells are committed without executed outputs — a later re-execution
+> pass would populate them.)
 
 ## Context
 
