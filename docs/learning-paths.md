@@ -19,7 +19,9 @@ flowchart TD
   C1[1 · What is radio astronomy]
   C2[2 · Radio emission]
   C3[3 · Noise & radiometer]
+  C43[43 · Synchrotron radiation]
   C1 --> C2 --> C3
+  C2 --> C43
 
   %% ---- Part II: Instrumentation & hardware ----
   C4[4 · Antennas & receivers]

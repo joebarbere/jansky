@@ -173,6 +173,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   A_{\text{geom}}$. It sets the gain and, with $T_{\text{sys}}$, the sensitivity via the
   SEFD.
 
+**Equipartition (minimum-energy) field**
+: The magnetic field that minimises the total energy in relativistic particles plus field for an
+  observed synchrotron source; near the minimum the particle and field energies are comparable.
+  It is the standard way to estimate $B$ (a few µG to tens of µG in radio lobes) from the radio
+  luminosity and source size (Chapter 43).
+
 **Epoch of Reionization (EoR)**
 : The era ($z \sim 6$–10, observed at ~130–200 MHz) when ultraviolet light from the first
   galaxies reionized the neutral intergalactic hydrogen left over from recombination,
@@ -261,6 +267,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 **Interferometer**
 : An array of antennas whose signals are combined to act as one large telescope, achieving
   resolution set by the *longest* baseline rather than by dish size. The subject of Part III.
+
+**Inverse-Compton catastrophe**
+: The runaway cooling that caps an incoherent synchrotron source's brightness temperature at
+  ~$10^{12}$ K: above it, the relativistic electrons inverse-Compton scatter their own synchrotron
+  photons away. Apparent temperatures far higher signal relativistic (Doppler) beaming
+  (Chapter 43).
 
 **IQ data**
 : Complex baseband samples — *In-phase* (real) and *Quadrature* (imaginary) — that capture
@@ -504,7 +516,19 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 **Synchrotron radiation**
 : Radiation from relativistic electrons spiralling in magnetic fields. It dominates the radio
   continuum of AGN, supernova remnants, and galaxies, with a characteristic power-law,
-  often-polarised spectrum (Chapter 2).
+  often-polarised spectrum; a power-law electron distribution $N(E)\propto E^{-p}$ radiates
+  $S_\nu\propto\nu^{\alpha}$ with $\alpha = -(p-1)/2$ (Chapters 2, 43).
+
+**Synchrotron self-absorption (SSA)**
+: At low frequency a compact synchrotron source becomes optically thick to its own emission,
+  turning the spectrum over to the universal $S_\nu\propto\nu^{5/2}$ slope below the turnover —
+  independent of the electron index. The turnover frequency probes the source's size and field
+  (Chapter 43).
+
+**Spectral aging**
+: The steepening of a synchrotron spectrum above a *break frequency* as radiative (synchrotron +
+  inverse-Compton) losses deplete the highest-energy electrons first; the break frequency dates
+  the source (Chapter 43).
 
 **Synthesised beam**
 : The effective point-spread function of an interferometer, set by its *uv* coverage — the
