@@ -74,6 +74,7 @@ flowchart TD
   C38[38 · Machine learning]
   C39[39 · RFI mitigation]
   C42[42 · Cosmic dawn & EoR]
+  C45[45 · Radio galaxies & source counts]
   C15[15 · Capstone]
   C9 --> C10 --> C11
   C10 --> C12
@@ -90,6 +91,8 @@ flowchart TD
   C2 --> C24
   C6 --> C42
   C22 --> C42
+  C10 --> C45
+  C43 --> C45
   C11 --> C15
   C12 --> C15
   C13 --> C15

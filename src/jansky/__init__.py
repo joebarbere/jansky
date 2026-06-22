@@ -48,6 +48,9 @@ synchrotron
 freefree
     The thermal continuum from ionized gas: free-free optical depth, the
     thick-to-thin turnover, emission measure, and the Stromgren radius.
+sourcecounts
+    The extragalactic radio population: Euclidean and empirical log N-log S
+    source counts, the radio luminosity function, and cosmic evolution.
 rfi
     Robust statistics, spectral kurtosis, and the SumThreshold algorithm for RFI flagging.
 
@@ -74,6 +77,7 @@ from jansky import (
     seti,
     signals,
     solar,
+    sourcecounts,
     synchrotron,
     timing,
     transients,
@@ -97,6 +101,7 @@ __all__ = [
     "seti",
     "signals",
     "solar",
+    "sourcecounts",
     "synchrotron",
     "timing",
     "transients",

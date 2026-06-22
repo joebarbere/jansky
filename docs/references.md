@@ -57,6 +57,26 @@ originals — many of these papers are short, readable, and historic.
 - **Rohlfs, K. & Wilson, T. L. (2004).** *Tools of Radio Astronomy,* 4th ed. Springer. — Standing
   reference for the free-free emission/absorption coefficients (Chapter 44).
 
+### Radio galaxies & source counts
+
+- **Ryle, M. & Clarke, R. W. (1961).** *An Examination of the Steady-State Model in the Light of
+  Some Recent Observations of Radio Sources.* MNRAS 122, 349. — Source counts steeper than Euclidean
+  as evidence against steady-state cosmology (Chapter 45).
+  [DOI](https://doi.org/10.1093/mnras/122.4.349)
+- **Fanaroff, B. L. & Riley, J. M. (1974).** *The Morphology of Extragalactic Radio Sources of High
+  and Low Luminosity.* MNRAS 167, 31P. — The edge-darkened (FR I) vs edge-brightened (FR II)
+  morphology split and its luminosity break (Chapter 45).
+  [DOI](https://doi.org/10.1093/mnras/167.1.31P)
+- **Condon, J. J. (1992).** *Radio Emission from Normal Galaxies.* ARA&A 30, 575. — The radio
+  luminosity function and the radio–far-infrared correlation (Chapter 45).
+  [DOI](https://doi.org/10.1146/annurev.aa.30.090192.003043)
+- **de Zotti, G., et al. (2010).** *Radio and Millimeter Continuum Surveys and their Astrophysical
+  Implications.* A&ARv 18, 1. — Modern normalised differential radio source counts (Chapter 45).
+  [DOI](https://doi.org/10.1007/s00159-009-0026-0)
+- **Condon, J. J., et al. (1998).** *The NRAO VLA Sky Survey.* AJ 115, 1693. — The NVSS catalogue
+  used for the log N–log S analysis in Chapter 45.
+  [DOI](https://doi.org/10.1086/300337)
+
 ### The hydrogen line
 
 - **van de Hulst, H. C. (1945).** *Radiogolven uit het wereldruim* (Radio waves from space).
