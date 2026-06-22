@@ -114,6 +114,7 @@ nav:
       - "24. Molecular Lines & Masers": notebooks/24_molecular_and_masers.ipynb
       - "38. Machine Learning in Radio Astronomy": notebooks/38_machine_learning.ipynb
       - "39. RFI Mitigation in Practice": notebooks/39_rfi_mitigation.ipynb
+      - "42. Cosmic Dawn & the Epoch of Reionization": notebooks/42_cosmic_dawn_eor.ipynb
   - "Appendices — Maths Lab":
       - "A. Fourier & Convolution": notebooks/31_mathslab_fourier_convolution.ipynb
       - "B. Detection Theory & Matched Filtering": notebooks/32_mathslab_matched_filtering.ipynb
