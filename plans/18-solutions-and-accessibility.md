@@ -20,9 +20,7 @@
 > the "Try it yourself" sections of **every chapter that has exercises** (PRs #52–#58, via parallel
 > `claude` agents that verified each answer against the venv) — 85+ solution blocks across the course.
 > The two chapters added since (Ch 40 Lightning, Ch 41 Calibration) ship with solutions by default.
-> **Optional remaining:** the guarded `@interact` slider cells behind an `ipywidgets` extra —
-> intentionally deferred, since widgets need a live kernel and do not render on the static GitHub
-> Pages site (low payoff); plus a sweep of alt-text captions on older figures.
+> **Optional remaining:** a sweep of alt-text captions on older figures.
 
 ## Context
 
@@ -30,7 +28,7 @@ Three self-learner gaps, all confirmed by inspection across the 36 notebooks: **
 solutions** (`<details>` count is 0 — exercises are either open prompts or have answers pre-filled
 inline, which spoils the attempt), **no onboarding** for someone facing 36 chapters, and **weak
 accessibility** (only 1 notebook has alt text; line colours are raw matplotlib defaults with
-red/green pairs; only 1 notebook uses `ipywidgets` despite highly parameter-driven content).
+red/green pairs).
 
 ## Deliverables
 
@@ -46,12 +44,9 @@ red/green pairs; only 1 notebook uses `ipywidgets` despite highly parameter-driv
 - **Accessibility pass** — add a colourblind-safe categorical cycle (Okabe–Ito / Wong) to
   `JANSKY_STYLE` in `src/jansky/plotting.py` (fixes every future figure at once); add alt text /
   descriptive captions to key figures.
-- **Lightweight interactivity** — an optional, guarded `@interact` slider cell in ~6–8 high-value
-  chapters (Ch 3 integrate-down, Ch 9 CLEAN loop gain, Ch 18 DM butterfly, Maths Lab A windowing),
-  with the static render still working.
 
 ## Verification
 
 - Solutions reveal/hide in both JupyterLab and the built site; the palette change is colourblind-
-  safe (spot-check with a simulator); widget cells degrade gracefully in static render;
-  `nbmake` + `mkdocs --strict` green. New standards captured in `notebook-author.md`.
+  safe (spot-check with a simulator); `nbmake` + `mkdocs --strict` green. New standards captured in
+  `notebook-author.md`.
