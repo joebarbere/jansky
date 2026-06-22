@@ -48,7 +48,8 @@ Virtual Observatory entry points:
 
 | Archive | Contents | Link |
 |---|---|---|
-| **NRAO Science Data Archive** | VLA, VLBA and related NRAO data (see References) | [data.nrao.edu](https://data.nrao.edu/) |
+| **NRAO Science Data Archive** | VLA, VLBA and related NRAO data (see References); TAP/VO scripted access via `pyvo` + an embedded CARTA viewer | [data.nrao.edu](https://data.nrao.edu/) |
+| **VLASS** (VLA Sky Survey) | The 2–4 GHz survey of the sky north of Dec −40° at 2.5″, three epochs (2017–2024); quick-look images and the CIRADA component catalogue | [science.nrao.edu/vlass](https://science.nrao.edu/vlass) · [CIRADA catalogue](https://cirada.ca/vlasscatalogueql0) |
 | **ALMA Science Archive** | All ALMA observations; the `.org` query tool routes to a regional mirror | [almascience.org/aq](https://almascience.org/aq/) |
 | **CASDA** | CSIRO ASKAP Science Data Archive, with VO services | [research.csiro.au/casda](https://research.csiro.au/casda/) |
 | **MeerKAT / SARAO archive** | MeerKAT observational data | [archive.sarao.ac.za](https://archive.sarao.ac.za/) |
@@ -121,6 +122,8 @@ who maintain them, cross-referenced to the course chapters — see
 | **DSPSR / PSRCHIVE** | Pulsar signal processing and data archiving libraries | [dspsr](http://dspsr.sourceforge.net/) · [psrchive](http://psrchive.sourceforge.net/) |
 | **Miriad** | ATNF interferometry reduction package (notably for ATCA) | [atnf.csiro.au/.../miriad](https://www.atnf.csiro.au/computing/software/miriad/) |
 | **AIPS** | NRAO's classic interferometry reduction and imaging system | [aips.nrao.edu](http://www.aips.nrao.edu/index.shtml) |
+| **dysh** | Python-native single-dish (GBT) spectral-line reduction — position-switched HI/line data; the modern successor to GBTIDL | [dysh.readthedocs.io](https://dysh.readthedocs.io/) |
+| **astroquery — NRAO / NVAS** | Query the NRAO Science Data Archive (`astroquery.nrao`) and pull archival VLA images of a source (`astroquery.nvas`) from Python | [astroquery.nvas](https://astroquery.readthedocs.io/en/stable/nvas/nvas.html) |
 | **JPL Horizons** | Solar-system ephemerides & observing geometry — RA/Dec, rise/set, and Jupiter's Io phase / central-meridian longitude for predicting decametric-storm windows; web app + REST API + `astroquery.jplhorizons` | [ssd.jpl.nasa.gov/horizons](https://ssd.jpl.nasa.gov/horizons/app.html) |
 | **ESASky / pyESASky** | Cone-search HiPS maps, catalogues, and spectra from ESA (Planck, WMAP, LoTSS, NVSS…) in Python (`astroquery.esasky`) or as a Jupyter widget | [esasky docs](https://astroquery.readthedocs.io/en/latest/esasky/esasky.html) |
 | **astroquery — ESO/ALMA & Gaia** | Python access to the ESO/APEX archive (`astroquery.eso`, TAP/ObsCore), the ALMA Science Archive (`astroquery.alma`), and the Gaia catalogue (`astroquery.gaia`) | [astroquery.alma](https://astroquery.readthedocs.io/en/latest/alma/alma.html) · [astroquery.gaia](https://astroquery.readthedocs.io/en/latest/gaia/gaia.html) |
@@ -154,8 +157,14 @@ sense of where the work happens.
 ## Learning resources, communities & careers
 
 - **NRAO Synthesis Imaging Workshop** — the biennial graduate-level school on
-  aperture synthesis, calibration and imaging —
-  [science.nrao.edu/opportunities/courses](https://science.nrao.edu/opportunities/courses)
+  aperture synthesis, calibration and imaging; its **past lecture slides and videos are posted
+  free** — the most detailed open treatment of imaging and deconvolution anywhere —
+  [2026 SIW](https://science.nrao.edu/science/meetings/2026/2026_siw) ·
+  [courses](https://science.nrao.edu/opportunities/courses)
+- **VLA Exposure / Sensitivity Calculator** — a web tool that turns a target RMS into an
+  integration time (or vice versa) for any VLA configuration — the radiometer equation of Chapter 3
+  made operational (the ALMA equivalent is in [Projects](projects.md)) —
+  [obs.vla.nrao.edu/ect](https://obs.vla.nrao.edu/ect)
 - **ERIS** (European Radio Interferometry School) — a week of lectures and
   hands-on interferometry tutorials — [jive.eu/eris](https://www.jive.eu/eris2022/)
 - **CASA Guides** — step-by-step CASA reduction tutorials for VLA, ALMA and VLBI —
