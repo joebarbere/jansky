@@ -297,14 +297,40 @@ Where to buy the components for the projects above.
 
 ---
 
+## Documented amateur builds (worked examples)
+
+Full write-ups — schematics, antenna dimensions, photos, and results — from SARA members, useful
+as reproducible blueprints rather than just kit listings:
+
+- **1420 MHz two-dish hydrogen-line interferometer** — two 8 ft TVRO dishes on a ~4 m east–west
+  baseline feeding a SpectraCyber receiver; drift-scan fringes matched theory to ~95%, with
+  polarisation experiments documented. A concrete amateur realisation of the two-element
+  interferometry in [Chapter 7](notebooks/07_why_interferometry.ipynb) and
+  [Chapter 8](notebooks/08_aperture_synthesis.ipynb).
+  [SARA project page](https://radio-astronomy.org/node/36)
+- **Gyrator II homebrew VLF receiver** — a ~25 kHz SID receiver built from a published schematic
+  (hex loop antenna dimensions, tuning, ASCII logging) for those who'd rather build from a circuit
+  than buy a SuperSID. Pairs with [Chapter 27](notebooks/27_vlf_ionosphere.ipynb).
+  [SARA project page](https://radio-astronomy.org/node/39)
+
 ## Communities & going further
 
 You don't have to go it alone — amateur radio astronomy is small, friendly, and open.
 
-- **Society of Amateur Radio Astronomers (SARA)** — The hub: projects, the *Radio Astronomy*
-  journal, conferences, and a [Getting Started](https://www.radio-astronomy.org/getting-started)
-  guide that ties together Radio JOVE, SuperSID, INSPIRE, the IBT, and meteor work.
+- **Society of Amateur Radio Astronomers (SARA)** — The hub: projects, the bi-monthly
+  *Radio Astronomy* journal (since 1981; public
+  [article index](https://radio-astronomy.org/node/209)), six special-interest sections, and a
+  [Getting Started](https://www.radio-astronomy.org/getting-started) guide tying together Radio
+  JOVE, SuperSID, INSPIRE, the IBT, and meteor work. Student membership is ~$5/yr.
   [radio-astronomy.org](https://www.radio-astronomy.org/)
+- **SARA grants for students & teachers (~$200)** — SARA funds hands-on projects — observing
+  Jupiter/the Sun, VLF/SID and solar-flare detection, building portable telescopes — up to ~$200
+  for anyone from 5th grade through college, and for teachers: a ready way to fund a first build.
+  [grants](https://radio-astronomy.org/grants)
+- **SARA community channels** — a public [Google Group](https://groups.google.com/g/sara-list)
+  (SARA membership not required to read or join), two monthly Zoom meet-ups (the live "Observation
+  Party" and the open-forum "Drake's Lounge"), and annual conferences at Green Bank and Socorro
+  (online attendance ~$25). [meetings](https://www.radio-astronomy.org/meetings)
 - **British Astronomical Association — Radio Astronomy Group** — Active UK community with
   beginner guides and projects.
   [britastro.org](https://britastro.org/section_information_/radio-astronomy-section-overview)
@@ -317,6 +343,15 @@ You don't have to go it alone — amateur radio astronomy is small, friendly, an
   an SDR + antenna to collaborative use. [satnogs.org](https://satnogs.org/)
 - **saveitforparts (YouTube)** — Entertaining, instructive builds of radio telescopes and
   satellite receivers from salvaged parts. [youtube.com/@saveitforparts](https://www.youtube.com/@saveitforparts)
+
+!!! tip "Where your observations can go"
+    Several builds above feed live citizen-science networks where you can submit and compare your
+    own data: VLF/solar-flare traces to the
+    [Stanford SuperSID network](https://solar-center.stanford.edu/SID/sidmonitor/) and the
+    [AAVSO SID program](https://www.aavso.org/solar-sids); meteor counts to the
+    [American Meteor Society](https://www.amsmeteors.org/); Jupiter/solar recordings to the
+    [Radio JOVE archive](https://radiojove.net/); and lightning sferics to
+    [Blitzortung / LightningMaps](https://www.lightningmaps.org/).
 
 !!! tip "You can always just listen"
     Radio astronomy is **receive-only** — no licence required. (A licence is only for

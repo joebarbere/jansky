@@ -150,6 +150,29 @@ sense of where the work happens.
 - **NRAO Science Helpdesk** — ticketed support for VLA/VLBA/GBT/CASA —
   [help.nrao.edu](https://help.nrao.edu/) (ALMA: [help.almascience.org](https://help.almascience.org/))
 
+### Amateur radio astronomy & citizen science
+
+For the *hands-on* side of the course — building receivers and contributing real observations —
+the amateur community is unusually welcoming. (Kits, build write-ups, and grants are catalogued in
+[Projects](projects.md).)
+
+- **SARA — Getting Started & beginner resources** — the Society of Amateur Radio Astronomers' free
+  on-ramp: a beginner booklet, glossary, maths-support pack, and a curated list of free courses and
+  books — [getting-started](https://radio-astronomy.org/getting-started) ·
+  [resources for beginners](https://radio-astronomy.org/node/296)
+- **SARA community & grants** — a public [Google Group](https://groups.google.com/g/sara-list),
+  monthly Zoom observing meet-ups and annual Green Bank / Socorro conferences
+  ([meetings](https://www.radio-astronomy.org/meetings)), and student/teacher project
+  [grants](https://radio-astronomy.org/grants) (~$200).
+- **Open Source Radio Telescopes** — a community wiki of open, reproducible amateur builds and
+  tutorials — [opensourceradiotelescopes.org](https://opensourceradiotelescopes.org/)
+- **Contribute & compare your data** — live citizen-science networks: the
+  [Stanford SuperSID](https://solar-center.stanford.edu/SID/sidmonitor/) and
+  [AAVSO SID](https://www.aavso.org/solar-sids) solar-flare/ionosphere networks, the
+  [American Meteor Society](https://www.amsmeteors.org/) for meteor counts, and the
+  [Radio JOVE archive](https://radiojove.net/) for Jupiter/solar recordings (see the
+  [Amateur & Radio JOVE / SkyPipe data](#amateur-radio-jove-skypipe-data) table above).
+
 ## Key journals
 
 | Journal | Link |
@@ -163,6 +186,7 @@ sense of where the work happens.
 | **RAS journals** (MNRAS, GJI, RASTI) | [ras.ac.uk/journals](https://ras.ac.uk/journals) |
 | **Nature** | [nature.com](https://www.nature.com/) |
 | **Science** | [science.org](https://www.science.org/) |
+| **Radio Astronomy** — the SARA journal (amateur / citizen science, since 1981) | [radio-astronomy.org/publications](https://radio-astronomy.org/publications) |
 
 ---
 

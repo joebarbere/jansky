@@ -186,6 +186,27 @@ originals — many of these papers are short, readable, and historic.
   time-of-arrival lightning network (Chapter 40).
   [DOI](https://doi.org/10.5194/angeo-24-3197-2006)
 
+## Amateur & citizen-science radio astronomy
+
+The hands-on chapters (SDR, the hydrogen line, Radio JOVE, SuperSID, meteor scatter,
+lightning) draw on a practitioner literature the professional journals don't carry. Its main
+venue is the **Society of Amateur Radio Astronomers (SARA)**:
+
+- **SARA, *Radio Astronomy* — the Journal of the Society of Amateur Radio Astronomers.**
+  SARA's bi-monthly journal, published since 1981: build articles, observing reports, and
+  amateur results spanning Jupiter/solar, the HI line, VLF/SID, interferometry, and receivers.
+  A public **article index** (1983 onward) and a sample issue are linked from the publications
+  page. [Publications](https://radio-astronomy.org/publications) ·
+  [article index](https://radio-astronomy.org/node/209)
+- **SARA — Getting Started in Radio Astronomy.** A curated free launch page: a beginner
+  booklet, a glossary, a maths-support pack, a reading list of free courses and books, and
+  pointers to the Radio JOVE, SuperSID, INSPIRE, IBT, and meteor projects.
+  [getting-started](https://radio-astronomy.org/getting-started) ·
+  [resources for beginners](https://radio-astronomy.org/node/296)
+
+For the kits, build write-ups, citizen-science networks, grants, and community channels behind
+these, see [Projects](projects.md) and [Resources](resources.md).
+
 ## Textbooks & standing references
 
 - **Condon, J. J. & Ransom, S. M.** *Essential Radio Astronomy.* Princeton University Press.
