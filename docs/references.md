@@ -216,6 +216,25 @@ venue is the **Society of Amateur Radio Astronomers (SARA)**:
 For the kits, build write-ups, citizen-science networks, grants, and community channels behind
 these, see [Projects](projects.md) and [Resources](resources.md).
 
+## Data visualisation
+
+The craft of displaying radio data — colormaps, stretches, dynamic range — in Chapter 46.
+
+- **Lupton, R., Blanton, M. R., Fekete, G., et al. (2004).** *Preparing Red-Green-Blue Images from
+  CCD Data.* PASP 116, 133. — The **asinh** image stretch: linear near the noise, logarithmic for
+  bright pixels, so high-dynamic-range sources show their faint and bright structure at once
+  (Chapter 46). [DOI](https://doi.org/10.1086/382245)
+- **Wong, B. (2011).** *Points of View: Color Blindness.* Nature Methods 8, 441. — The Okabe–Ito
+  colourblind-safe categorical palette used as the course's default line cycle (Chapter 46).
+  [DOI](https://doi.org/10.1038/nmeth.1618)
+- **Borkin, M. A., et al. (2011).** *Evaluation of Artery Visualizations for Heart Disease
+  Diagnosis.* IEEE TVCG 17, 2479. — Quantifies how the rainbow ("jet") colormap *harms*
+  interpretation — its non-monotonic luminance invents features (Chapter 46).
+  [DOI](https://doi.org/10.1109/TVCG.2011.192)
+- **Smith, N. J. & van der Walt, S. (2015).** *A Better Default Colormap for Matplotlib.* SciPy 2015.
+  — The design of **viridis** and the case for perceptually-uniform colormaps (Chapter 46).
+  [talk](https://www.youtube.com/watch?v=xAoljeRJ3lU) · [colormaps](https://bids.github.io/colormap/)
+
 ## Textbooks & standing references
 
 - **Condon, J. J. & Ransom, S. M.** *Essential Radio Astronomy.* Princeton University Press.

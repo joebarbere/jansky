@@ -1,6 +1,6 @@
 # Learning paths
 
-The course is **36 chapters** plus a six-part **Maths Lab**. You don't have to read them in
+The course is **40 chapters** plus a six-part **Maths Lab**. You don't have to read them in
 order — most chapters need only a couple of earlier ones. This page shows the whole map, the
 prerequisites, and a few **themed routes** so you can chart a path that fits your goal and your
 hardware.
@@ -75,6 +75,7 @@ flowchart TD
   C39[39 · RFI mitigation]
   C42[42 · Cosmic dawn & EoR]
   C45[45 · Radio galaxies & source counts]
+  C46[46 · The art of radio images]
   C15[15 · Capstone]
   C9 --> C10 --> C11
   C10 --> C12
@@ -95,6 +96,7 @@ flowchart TD
   C43 --> C45
   C11 --> C15
   C12 --> C15
+  C12 --> C46
   C13 --> C15
   C14 --> C15
 
