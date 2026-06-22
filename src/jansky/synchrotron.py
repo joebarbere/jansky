@@ -172,9 +172,9 @@ def spectral_age(nu_break_ghz: float, b_field_ug: float, z: float = 0.0) -> floa
         Radiative age in Myr.
     """
     bic = b_cmb(z)
-    return 1590.0 * np.sqrt(b_field_ug) / (b_field_ug**2 + bic**2) * (
-        (1.0 + z) * nu_break_ghz
-    ) ** -0.5
+    return (
+        1590.0 * np.sqrt(b_field_ug) / (b_field_ug**2 + bic**2) * ((1.0 + z) * nu_break_ghz) ** -0.5
+    )
 
 
 def equipartition_field(
@@ -186,8 +186,9 @@ def equipartition_field(
     """Minimum-energy (≈ equipartition) magnetic field, in Gauss (Pacholczyk 1970).
 
     The total energy in relativistic particles plus magnetic field,
-    :math:`E = (1+k)\\,E_\\mathrm{e} + B^2 V/8\\pi`, is minimised when the two are nearly
-    equal; the minimising field is
+    :math:`E = (1+k)\\,E_\\mathrm{e} + B^2 V/8\\pi`, is minimised when
+    :math:`E_\\mathrm{particles} \\approx \\tfrac{2}{3}\\,E_\\mathrm{field}` -- the two are
+    equal to within a factor of order unity; the minimising field is
 
     .. math:: B_\\mathrm{min} = \\left[\\frac{24\\pi}{7}\\,(1+k)\\,c_{12}\\,
         \\frac{L}{V}\\right]^{2/7},
@@ -214,9 +215,7 @@ def equipartition_field(
     float
         Minimum-energy magnetic field, in Gauss.
     """
-    return ((24.0 * np.pi / 7.0) * (1.0 + k) * c12 * luminosity_erg_s / volume_cm3) ** (
-        2.0 / 7.0
-    )
+    return ((24.0 * np.pi / 7.0) * (1.0 + k) * c12 * luminosity_erg_s / volume_cm3) ** (2.0 / 7.0)
 
 
 def brightness_temperature_limit() -> float:
