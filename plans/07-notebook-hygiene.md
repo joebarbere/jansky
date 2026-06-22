@@ -1,7 +1,7 @@
 # Plan 07 — Notebook output hygiene 📋 Proposed
 
-> Flagged by **engineering (#2)**. Scope: medium. Coordinate with
-> [Plan 06](06-publish-docs.md).
+> Flagged by **engineering (#2)**. Scope: medium. (Pairs with the docs-publishing
+> work, which is already delivered.)
 
 ## Context
 
@@ -22,7 +22,7 @@ strategy.
     (raises build cost — measure it), **or**
   - keep `execute: false` but execute notebooks in the docs/deploy CI job before `mkdocs build`.
 - A CI check that fails if a committed notebook contains outputs.
-- Update `CONTRIBUTING.md` ([Plan 08](08-quality-tooling.md)) with the no-output policy.
+- Update `CONTRIBUTING.md` (the quality-tooling work, already delivered) with the no-output policy.
 
 ## Approach
 

@@ -39,7 +39,7 @@ see that Ch 18 builds on Ch 13 + Maths Lab B.
 - **Per-chapter header** — a standardized top-of-chapter admonition: *Prerequisites: Ch X, Maths
   Lab Y · ~45 min · Intermediate* (the `admonition` extension is already enabled). Add to
   `.claude/agents/notebook-author.md` as a required element so future chapters comply.
-- (Bundles with the "Choose your track" guide in [Plan 18](18-solutions-and-accessibility.md).)
+- (Bundles with the "Choose your track" onboarding guide, `docs/start-here.md`, already delivered.)
 
 ## Verification
 
