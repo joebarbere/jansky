@@ -58,6 +58,9 @@ Virtual Observatory entry points:
 | **IVOA / the VO** | International Virtual Observatory Alliance; defines the VO standards | [ivoa.net](https://www.ivoa.net/) |
 | **ATNF Pulsar Catalogue** | The `psrcat` catalogue with an interactive query interface | [atnf.csiro.au/.../psrcat](https://www.atnf.csiro.au/research/pulsar/psrcat/) |
 | **LAMBDA** | NASA's Legacy Archive for Microwave Background Data Analysis | [lambda.gsfc.nasa.gov](https://lambda.gsfc.nasa.gov/) |
+| **NED** (NASA/IPAC Extragalactic Database) | 2M+ extragalactic objects with cross-IDs across radio surveys (NVSS, FIRST, …), multiwavelength SEDs, and redshifts — the authoritative radio↔optical cross-match (`astroquery.ipac.ned`) | [ned.ipac.caltech.edu](https://ned.ipac.caltech.edu/) |
+| **IRSA** (NASA/IPAC Infrared Science Archive) | WISE, 2MASS, Planck, IRAS, … — including Planck polarised synchrotron/free-free foreground maps and IRAS far-IR (`astroquery.ipac.irsa`) | [irsa.ipac.caltech.edu](https://irsa.ipac.caltech.edu/) |
+| **SkyView** (NASA/GSFC) | A "virtual telescope" returning FITS cutouts from dozens of surveys — NVSS, FIRST, TGSS, VLSS, WENSS, GLEAM, Haslam 408 MHz, HI4PI (`astroquery.skyview`) | [skyview.gsfc.nasa.gov](https://skyview.gsfc.nasa.gov/) |
 
 ### Amateur & Radio JOVE / SkyPipe data
 
@@ -76,6 +79,16 @@ decametric Jupiter/solar observations from the NASA Radio JOVE project and the a
 
 *Note: the old `radiojove.org` domain is dead (it now redirects to an unrelated parked site) — use
 **radiojove.net** and **radiojove.gsfc.nasa.gov** instead.*
+
+### Planetary & spacecraft radio data (NASA PDS)
+
+NASA's **Planetary Data System — Plasma Interactions (PPI) node** is the primary archive for the
+raw, calibrated planetary *radio* data behind the Jupiter/Saturn results the course cites
+(Chapters 23 & 40) — usually met second-hand through published papers:
+
+| Source | Contents | Link |
+|---|---|---|
+| **PDS / PPI node** | Search & download **Cassini RPWS** (Saturn radio & lightning), **Voyager PRA** (Jupiter/Saturn flybys), **Juno Waves** (Jupiter), and **Galileo PWS** radio/plasma-wave data — PDS format, plus an EPN-TAP VO interface | [pds-ppi.igpp.ucla.edu](https://pds-ppi.igpp.ucla.edu/) |
 
 ## Software & tools
 
@@ -101,6 +114,7 @@ who maintain them, cross-referenced to the course chapters — see
 | **DSPSR / PSRCHIVE** | Pulsar signal processing and data archiving libraries | [dspsr](http://dspsr.sourceforge.net/) · [psrchive](http://psrchive.sourceforge.net/) |
 | **Miriad** | ATNF interferometry reduction package (notably for ATCA) | [atnf.csiro.au/.../miriad](https://www.atnf.csiro.au/computing/software/miriad/) |
 | **AIPS** | NRAO's classic interferometry reduction and imaging system | [aips.nrao.edu](http://www.aips.nrao.edu/index.shtml) |
+| **JPL Horizons** | Solar-system ephemerides & observing geometry — RA/Dec, rise/set, and Jupiter's Io phase / central-meridian longitude for predicting decametric-storm windows; web app + REST API + `astroquery.jplhorizons` | [ssd.jpl.nasa.gov/horizons](https://ssd.jpl.nasa.gov/horizons/app.html) |
 
 ## University & research groups in radio astronomy
 
@@ -166,6 +180,18 @@ the amateur community is unusually welcoming. (Kits, build write-ups, and grants
   [grants](https://radio-astronomy.org/grants) (~$200).
 - **Open Source Radio Telescopes** — a community wiki of open, reproducible amateur builds and
   tutorials — [opensourceradiotelescopes.org](https://opensourceradiotelescopes.org/)
+- **GAVRT — observe with a real NASA antenna** — the NASA/JPL + Lewis Center *Goldstone-Apple
+  Valley Radio Telescope* program lets students **remotely operate a 34 m Deep Space Network dish**
+  on guided campaigns (Jupiter Quest, Black Hole Patrol, Solar Patrol); free after a short online
+  training (details in [Projects](projects.md)) —
+  [gavrt.lewiscenter.org](https://gavrt.lewiscenter.org/) ·
+  [JPL project](https://science.jpl.nasa.gov/projects/gavrt/)
+- **NASA Radio JOVE education** — lesson plans, classroom activities, and the self-paced SunRISE
+  citizen-science training modules (solar radio, telescope operation, burst analysis) —
+  [radiojove.gsfc.nasa.gov/education](https://radiojove.gsfc.nasa.gov/education/)
+- **DSN Now** — a live dashboard of NASA's Deep Space Network: which 34 m / 70 m dishes are talking
+  to which spacecraft right now, with data rates and round-trip light times — concrete link-budget
+  and aperture examples for Chapters 3–4 — [eyes.nasa.gov/apps/dsn-now](https://eyes.nasa.gov/apps/dsn-now/)
 - **Contribute & compare your data** — live citizen-science networks: the
   [Stanford SuperSID](https://solar-center.stanford.edu/SID/sidmonitor/) and
   [AAVSO SID](https://www.aavso.org/solar-sids) solar-flare/ionosphere networks, the

@@ -331,6 +331,13 @@ You don't have to go it alone — amateur radio astronomy is small, friendly, an
   (SARA membership not required to read or join), two monthly Zoom meet-ups (the live "Observation
   Party" and the open-forum "Drake's Lounge"), and annual conferences at Green Bank and Socorro
   (online attendance ~$25). [meetings](https://www.radio-astronomy.org/meetings)
+- **GAVRT — operate a real NASA antenna (no hardware needed)** — the NASA/JPL + Lewis Center
+  *Goldstone-Apple Valley Radio Telescope* program lets students **remotely run a 34 m Deep Space
+  Network dish** over the web on guided campaigns: **Jupiter Quest** (Jupiter's GHz synchrotron
+  radiation belts, compared with Juno), **Black Hole Patrol**, and **Solar Patrol**. Free after a
+  short online training — the no-build route to research-grade data on a real instrument.
+  [gavrt.lewiscenter.org](https://gavrt.lewiscenter.org/) ·
+  [NASA program](https://www.nasa.gov/directorates/somd/space-communications-navigation-program/goldstone-apple-valley-radio-telescope-gavrt/)
 - **British Astronomical Association — Radio Astronomy Group** — Active UK community with
   beginner guides and projects.
   [britastro.org](https://britastro.org/section_information_/radio-astronomy-section-overview)
