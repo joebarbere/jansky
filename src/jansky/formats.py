@@ -1,9 +1,9 @@
 """Radio-astronomy data formats and the software ecosystem.
 
 This module is the helper layer behind the course's *"Data formats & talking to
-the ecosystem"* material (see ``plans/04-data-formats-and-seti-software.md``). It
-implements the formats and protocols we can follow to a public specification, and
-is deliberately honest about the ones we cannot yet verify byte-for-byte.
+the ecosystem"* material (Chapter 16). It implements the formats and protocols we
+can follow to a public specification, and is deliberately honest about the ones we
+cannot yet verify byte-for-byte.
 
 What's implemented here, to spec
 --------------------------------
