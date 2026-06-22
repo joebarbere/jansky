@@ -143,7 +143,11 @@ def global_signal(
         Trough amplitude in mK (negative for absorption; ~ -200 in standard ΛCDM,
         ~ -500 for the contested EDGES fit).
     width_mhz
-        Characteristic half-width :math:`\\sigma` in MHz.
+        The Gaussian width scale :math:`\\sigma` in MHz. For a plain Gaussian
+        (``flatness = 1``) the full width at half maximum is
+        :math:`\\mathrm{FWHM} \\approx 2.35\\,\\sigma`; a flatter profile is a little
+        narrower in FWHM for the same ``width_mhz`` (e.g. ``flatness = 4`` →
+        ``FWHM ≈ 2.08\\,width_mhz``).
     flatness
         Super-Gaussian exponent :math:`p \\ge 1`.
 
