@@ -35,6 +35,7 @@ bands, locations), see **[Radio Telescopes of the World](telescopes.md)**.
 | **FAST** | Five-hundred-metre Aperture Spherical Telescope, the largest single dish, Guizhou, China | [fast.bao.ac.cn](https://fast.bao.ac.cn/en/) |
 | **Arecibo / NAIC** | Legacy site of the 305 m Arecibo dish (collapsed 2020), now the NSF Arecibo C3 education centre | [nsf.gov/arecibo](https://www.nsf.gov/news/media-toolkits/arecibo) |
 | **IRAM** (NOEMA, 30 m) | Institut de Radioastronomie Millimétrique, Grenoble; operates the 30 m and NOEMA | [iram-institute.org](https://iram-institute.org/) |
+| **APEX** | The Atacama Pathfinder Experiment 12 m submm telescope on Chajnantor; ESO / MPIfR / OSO partnership | [apex-telescope.org](https://www.apex-telescope.org/) |
 | **Jodrell Bank / e-MERLIN** | University of Manchester; the Lovell Telescope and the UK e-MERLIN array | [jodrellbank.manchester.ac.uk](https://www.jodrellbank.manchester.ac.uk/) |
 | **GMRT** | Giant Metrewave Radio Telescope (NCRA-TIFR), near Pune, India | [gmrt.ncra.tifr.res.in](http://www.gmrt.ncra.tifr.res.in/) |
 | **MIT Haystack** | Radio science research center in Westford, Massachusetts (EHT, geodesy, EDGES) | [haystack.mit.edu](https://www.haystack.mit.edu/) |
@@ -61,6 +62,10 @@ Virtual Observatory entry points:
 | **NED** (NASA/IPAC Extragalactic Database) | 2M+ extragalactic objects with cross-IDs across radio surveys (NVSS, FIRST, …), multiwavelength SEDs, and redshifts — the authoritative radio↔optical cross-match (`astroquery.ipac.ned`) | [ned.ipac.caltech.edu](https://ned.ipac.caltech.edu/) |
 | **IRSA** (NASA/IPAC Infrared Science Archive) | WISE, 2MASS, Planck, IRAS, … — including Planck polarised synchrotron/free-free foreground maps and IRAS far-IR (`astroquery.ipac.irsa`) | [irsa.ipac.caltech.edu](https://irsa.ipac.caltech.edu/) |
 | **SkyView** (NASA/GSFC) | A "virtual telescope" returning FITS cutouts from dozens of surveys — NVSS, FIRST, TGSS, VLSS, WENSS, GLEAM, Haslam 408 MHz, HI4PI (`astroquery.skyview`) | [skyview.gsfc.nasa.gov](https://skyview.gsfc.nasa.gov/) |
+| **ESASky** (ESA) | Browser/Python multiwavelength sky browser — the broadest radio→microwave HiPS set (NVSS, TGSS, WENSS, SUMSS, CHIPASS, Haslam 408 MHz, LoTSS DR2, Planck, WMAP, QUIJOTE), with catalogue overlays (`astroquery.esasky`, `pyESASky`) | [sky.esa.int](https://sky.esa.int/) |
+| **Planck Legacy Archive** (ESA) | ESA's complete Planck release: 30–857 GHz sky maps + the COMMANDER **foreground** maps (synchrotron at 408 MHz ref, free-free EM/T_e, spinning-dust/AME, CO) — the primary home for the data the course meets via LAMBDA/IRSA | [pla.esac.esa.int](https://pla.esac.esa.int/pla/) |
+| **APEX archive** (ESO) | The Atacama Pathfinder Experiment submm (~200–1500 GHz) archive, with public surveys incl. **ATLASGAL** (870 µm Galactic-plane continuum) and ALLSMOG (CO) | [archive.eso.org/.../apex](https://archive.eso.org/wdb/wdb/eso/apex/form) |
+| **Gaia Archive** (ESA) | 1.8-billion-source optical catalogue; **Gaia-CRF3** ties the optical frame to ICRF radio positions, and ADQL cross-matches radio catalogues to optical/IR counterparts (`astroquery.gaia`) | [cosmos.esa.int/.../gaia](https://www.cosmos.esa.int/web/gaia/data-access) |
 
 ### Amateur & Radio JOVE / SkyPipe data
 
@@ -80,15 +85,17 @@ decametric Jupiter/solar observations from the NASA Radio JOVE project and the a
 *Note: the old `radiojove.org` domain is dead (it now redirects to an unrelated parked site) — use
 **radiojove.net** and **radiojove.gsfc.nasa.gov** instead.*
 
-### Planetary & spacecraft radio data (NASA PDS)
+### Planetary & spacecraft radio data (NASA PDS · ESA PSA)
 
-NASA's **Planetary Data System — Plasma Interactions (PPI) node** is the primary archive for the
-raw, calibrated planetary *radio* data behind the Jupiter/Saturn results the course cites
-(Chapters 23 & 40) — usually met second-hand through published papers:
+The raw, calibrated planetary *radio* and *plasma-wave* data behind the Jupiter/Saturn results and
+the lightning/whistler physics the course cites (Chapters 23, 27 & 40) — usually met second-hand
+through published papers — live at NASA's and ESA's planetary archives:
 
 | Source | Contents | Link |
 |---|---|---|
-| **PDS / PPI node** | Search & download **Cassini RPWS** (Saturn radio & lightning), **Voyager PRA** (Jupiter/Saturn flybys), **Juno Waves** (Jupiter), and **Galileo PWS** radio/plasma-wave data — PDS format, plus an EPN-TAP VO interface | [pds-ppi.igpp.ucla.edu](https://pds-ppi.igpp.ucla.edu/) |
+| **PDS / PPI node** (NASA) | Search & download **Cassini RPWS** (Saturn radio & lightning), **Voyager PRA** (Jupiter/Saturn flybys), **Juno Waves** (Jupiter), and **Galileo PWS** radio/plasma-wave data — PDS format, plus an EPN-TAP VO interface | [pds-ppi.igpp.ucla.edu](https://pds-ppi.igpp.ucla.edu/) |
+| **PSA** (ESA Planetary Science Archive) | ESA's planetary archive: **Mars Express MARSIS** (0.1–5.5 MHz ionospheric/subsurface sounding), **Rosetta RPC** (cometary plasma waves), and **Huygens** (Titan lightning search) | [psa.esa.int](https://psa.esa.int/psa/) |
+| **Cluster Science Archive** (ESA) | The 4-spacecraft **WBD wideband plasma-wave receiver** (~0.1–77 kHz) resolves individual **whistler** waveforms — a spaceborne complement to the ground whistlers of Ch 40 | [cosmos.esa.int/web/csa](https://www.cosmos.esa.int/web/csa) |
 
 ## Software & tools
 
@@ -115,6 +122,8 @@ who maintain them, cross-referenced to the course chapters — see
 | **Miriad** | ATNF interferometry reduction package (notably for ATCA) | [atnf.csiro.au/.../miriad](https://www.atnf.csiro.au/computing/software/miriad/) |
 | **AIPS** | NRAO's classic interferometry reduction and imaging system | [aips.nrao.edu](http://www.aips.nrao.edu/index.shtml) |
 | **JPL Horizons** | Solar-system ephemerides & observing geometry — RA/Dec, rise/set, and Jupiter's Io phase / central-meridian longitude for predicting decametric-storm windows; web app + REST API + `astroquery.jplhorizons` | [ssd.jpl.nasa.gov/horizons](https://ssd.jpl.nasa.gov/horizons/app.html) |
+| **ESASky / pyESASky** | Cone-search HiPS maps, catalogues, and spectra from ESA (Planck, WMAP, LoTSS, NVSS…) in Python (`astroquery.esasky`) or as a Jupyter widget | [esasky docs](https://astroquery.readthedocs.io/en/latest/esasky/esasky.html) |
+| **astroquery — ESO/ALMA & Gaia** | Python access to the ESO/APEX archive (`astroquery.eso`, TAP/ObsCore), the ALMA Science Archive (`astroquery.alma`), and the Gaia catalogue (`astroquery.gaia`) | [astroquery.alma](https://astroquery.readthedocs.io/en/latest/alma/alma.html) · [astroquery.gaia](https://astroquery.readthedocs.io/en/latest/gaia/gaia.html) |
 
 ## University & research groups in radio astronomy
 
@@ -151,6 +160,11 @@ sense of where the work happens.
   hands-on interferometry tutorials — [jive.eu/eris](https://www.jive.eu/eris2022/)
 - **CASA Guides** — step-by-step CASA reduction tutorials for VLA, ALMA and VLBI —
   [casaguides.nrao.edu](https://casaguides.nrao.edu/)
+- **ALMA Science Primer & teaching materials** (ESO) — a free introductory PDF on (sub)mm
+  interferometry, an online [sensitivity calculator](https://almascience.eso.org/proposing/sensitivity-calculator)
+  (the radiometer equation of Ch 3, applied), and the secondary-school
+  ["ALMA at School" radio-astronomy manual](https://www.eso.org/public/products/education/edu_0072/) —
+  [ALMA Science Primer](https://almascience.eso.org/proposing/alma-science-primer)
 - **AAS** — American Astronomical Society — [aas.org](https://aas.org/)
 - **IAU** — International Astronomical Union — [iau.org](https://www.iau.org/),
   including [Commission B4 (Radio Astronomy)](https://iau.org/CommissionB4/CommissionB4/Home.aspx)
@@ -198,6 +212,10 @@ the amateur community is unusually welcoming. (Kits, build write-ups, and grants
   [American Meteor Society](https://www.amsmeteors.org/) for meteor counts, and the
   [Radio JOVE archive](https://radiojove.net/) for Jupiter/solar recordings (see the
   [Amateur & Radio JOVE / SkyPipe data](#amateur-radio-jove-skypipe-data) table above).
+- **ESA Solar Radio Burst Tracker** — a Zooniverse citizen-science project where you annotate
+  **Type III solar radio bursts** in real Solar Orbiter / RPW dynamic spectra (the same burst
+  morphology as Chapter 23) to build the first Solar Orbiter burst catalogue —
+  [esa.int (project page)](https://www.esa.int/Science_Exploration/Space_Science/Solar_Orbiter/Catch_solar_bursts_in_new_citizen_science_project)
 
 ### Free introductory courses & tutorials
 
