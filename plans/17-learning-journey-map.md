@@ -12,12 +12,14 @@
 >   (*Prerequisites · Maths Lab · time · difficulty*) and the Maths-Lab back-link requirement to
 >   `.claude/agents/notebook-author.md`, so every future chapter complies.
 >
-> **Remaining follow-up (mechanical, best done by agent fan-out):** retrofitting the prerequisites
-> admonition into the **headers of all 36 existing notebooks**, and adding the **bidirectional
-> in-notebook back-links** between each science chapter and the Lab(s) it uses. The map and the
-> service table already give learners this information centrally; the per-notebook rollout is a
-> token-heavy sweep across 36 `.ipynb` files (each edit must keep `nbmake` + `--strict` green) and
-> is left for a dedicated pass.
+> **Prerequisites admonition — retrofitted (done).** The standard "Before you start" admonition
+> (*Prerequisites · Maths Lab · time · difficulty*) is now in the header of **every** notebook: the
+> 36 older chapters were back-filled via an agent fan-out (prerequisites derived from this plan's
+> map and Maths-Lab service table), and Ch 40–42 ship with it by default. Additive (title cell only),
+> `nbmake` + `mkdocs --strict` green. The map also now includes the Ch 40 node.
+>
+> **Remaining (optional):** the **bidirectional in-notebook back-links** between each science chapter
+> and the Lab(s) it uses — the map and the service table already give learners this centrally.
 
 ## Context
 
