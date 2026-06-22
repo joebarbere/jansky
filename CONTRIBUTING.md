@@ -36,14 +36,24 @@ A one-liner before pushing: `make lint typecheck cov docs`.
 
 ## Notebook policy
 
-The MkDocs site renders the **committed notebook outputs** (mkdocs-jupyter runs
-with `execute: false`), so the published figures come from what's in git. If you
-change a notebook, **re-run it top-to-bottom and commit the refreshed outputs**
-so the site stays in sync. Every notebook must run **fully offline** — network or
-hardware sources degrade to synthetic/cached data (see `src/jansky/data.py`).
+We **deliberately commit notebook outputs**. The MkDocs site renders them directly
+(mkdocs-jupyter runs with `execute: false`), so the published figures come from what's
+in git — and that is intentional: it keeps the site building reliably without executing
+42 notebooks per deploy, and it preserves the **real-data figures** (pulsar fits, the LAB
+HI spectrum, the Radio JOVE `.sps` waterfall, VLA visibilities) that need optional extras
+and network to produce. So: **do not strip outputs.** The repo carries ~47 MB of them by
+design.
 
-The scheduled `notebooks.yml` workflow executes all 36 notebooks weekly to catch
-helper/library drift.
+If you change a notebook, **re-run it top-to-bottom and commit the refreshed outputs** so
+the site stays in sync, and **strip any `stderr` stream outputs** (download bars, library
+warnings) — keep only the clean stdout/figure outputs. Every notebook must run **fully
+offline**: network or hardware sources degrade to synthetic/cached data (see
+`src/jansky/data.py`).
+
+The scheduled `notebooks.yml` workflow executes every notebook weekly to catch
+helper/library drift. Optional local hooks live in `.pre-commit-config.yaml`
+(`pip install pre-commit && pre-commit install`); the `nbstripout` hook there runs with
+`--keep-output`, so it tidies metadata **without** removing the committed figures.
 
 ## Authoring a new chapter
 
