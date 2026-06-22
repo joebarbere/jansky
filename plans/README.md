@@ -61,8 +61,7 @@ implemented. ⭐ marks an agent top-pick or a cross-agent consensus item.
 
 - **Genuinely optional, not yet started:** a standalone cosmic-dawn/EoR chapter (Plan 11); a
   polarisation-calibration extension to Ch 41 (Plan 13); Ch 30 RASDR real-`.sps` wiring (Plan 15);
-  the guarded `@interact` widgets (Plan 18 — deferred, they need a live kernel); retrofitting the
-  prerequisites admonition into the headers of the older notebooks and adding Ch 40 to the
-  learning-paths map (Plan 17); and more unit-test coverage for `plotting.py` (Plan 08).
+  retrofitting the prerequisites admonition into the headers of the older notebooks and adding Ch 40
+  to the learning-paths map (Plan 17); and more unit-test coverage for `plotting.py` (Plan 08).
 
 The reusable subagents that built and reviewed all this live in `.claude/agents/`.
