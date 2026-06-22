@@ -22,9 +22,12 @@
 > 16–32 MHz dynamic spectrum — so the course shows a genuine Radio JOVE observation alongside the
 > simulated storms (offline fallback preserved).
 >
-> **Remaining follow-up:** the same wiring for Ch 30 (RASDR) if desired; and validating `read_spd`
-> against a real `.spd` if one surfaces. Verification: `ruff` + `mypy` + full `pytest` (incl. the
-> real-sample test) + `nbmake` on Ch 23 + `mkdocs --strict` green.
+> **Update — Ch 30 wired.** Chapter 30 (RASDR) now also reads the real Radio JOVE `.sps` recording
+> with `read_sps`, inspecting its header (300 channels, 16–32 MHz, dual feed, 10,412 sweeps) as the
+> *archive* counterpart of the live RSS streaming the chapter teaches (cross-linked to Ch 23 for the
+> science). **Remaining follow-up:** validating `read_spd` against a real `.spd` if one surfaces.
+> Verification: `ruff` + `mypy` + full `pytest` (incl. the real-sample test) + `nbmake` on Ch 23/30 +
+> `mkdocs --strict` green.
 
 ## Context
 
