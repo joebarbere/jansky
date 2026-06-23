@@ -11,6 +11,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 
 ## A
 
+**Asinh stretch**
+: An image display transform, $y = \sinh^{-1}(x/a)$, that is **linear near the noise** and
+  **logarithmic for bright pixels** — so a high-dynamic-range radio source shows its faint lobes
+  and bright core at once (Lupton et al. 2004). The radio default in `jansky.plotting.radio_norm`
+  (Chapter 46).
+
 **Active galactic nucleus (AGN)**
 : A compact, luminous core at the centre of a galaxy, powered by accretion onto a
   supermassive black hole. Many are bright radio sources, often with jets and lobes;
@@ -161,6 +167,11 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   $\mathrm{DM} = \int n_e\,dl$. Because lower frequencies are delayed more, DM tells you how
   far the signal has travelled through the interstellar medium and must be removed
   ("dedispersed") to recover the pulse (Chapter 13).
+
+**Dynamic range (imaging)**
+: The ratio of the brightest pixel to the background noise (RMS) in an image — often $10^4$–$10^6$
+  for a radio map of an AGN. It is why a *linear* display shows a single white dot on black, and
+  why the asinh/log stretches exist (`jansky.plotting.dynamic_range`, Chapter 46).
 
 **Dynamic spectrum**
 : A two-dimensional plot of intensity against time and frequency. Pulses, RFI, and FRBs
@@ -379,6 +390,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   (Chapter 5).
 
 ## P
+
+**Perceptually-uniform colormap**
+: A colormap (viridis, inferno, cividis, magma) whose perceived lightness increases monotonically
+  with the data, so equal data steps look like equal colour steps. The rainbow/"jet" map is *not*
+  uniform — its non-monotonic luminance invents banding that isn't in the data — which is why it
+  is avoided here (`jansky.plotting.recommend_cmap`, Chapter 46).
 
 **Parallactic angle**
 : The angle between celestial north and the local vertical at a source, which changes as the

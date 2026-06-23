@@ -3,6 +3,11 @@
 [![CI](https://github.com/joebarbere/jansky/actions/workflows/ci.yml/badge.svg)](https://github.com/joebarbere/jansky/actions/workflows/ci.yml)
 [![Docs](https://github.com/joebarbere/jansky/actions/workflows/gh-pages.yml/badge.svg)](https://joebarbere.github.io/jansky/)
 
+![Real VLASS radio images of the galaxies M87 (FR I) and 3C 98 (FR II), rendered with an asinh stretch](docs/assets/hero.png)
+
+<sub>Real VLASS 2–4 GHz images of M87 (FR I) and 3C 98 (FR II), made with the course's own
+`jansky.plotting` toolkit (Chapter 46).</sub>
+
 **A hands-on radio astronomy course in Python** — from *"what is a radio wave from space?"*
 to *downloading real telescope data and doing original analysis*.
 
@@ -46,8 +51,8 @@ Heavy, chapter-specific tools live in their own images behind compose profiles
 
 ## The course map
 
-**36 chapters** in four parts, plus a Maths Lab appendix. The numbering reflects the order
-chapters were written; the nav groups them by theme.
+**40 chapters** in four parts, plus a six-part Maths Lab appendix (46 executable notebooks in
+all). The numbering reflects the order chapters were written; the nav groups them by theme.
 
 | # | Chapter | Highlights |
 |---|---------|-----------|
@@ -55,6 +60,8 @@ chapters were written; the nav groups them by theme.
 | 1 | What is Radio Astronomy? | Jansky & Reber; the jansky unit; the atmospheric window |
 | 2 | The Physics of Radio Emission | Rayleigh–Jeans, brightness temperature, spectral index |
 | 3 | Signals, Noise & the Radiometer Equation | Dicke 1946; watch a signal climb out of the noise |
+| 43 | Synchrotron Radiation | α = −(p−1)/2; SSA turnover; spectral aging; equipartition field |
+| 44 | Free-Free Radiation & HII Regions | the emission measure; the thick→thin turnover; Strömgren sphere |
 | **Part II — Instrumentation & Hardware** ||
 | 4 | Antennas & Receivers | beam patterns, 1.22 λ/D resolution, A_eff, SEFD |
 | 5 | Hands-on SDR *(optional)* | RTL-SDR, sampling, IQ data, power spectra |
@@ -64,13 +71,16 @@ chapters were written; the nav groups them by theme.
 | 28 | GNU Radio Flowgraphs | a radiometer & spectrometer as DSP blocks; export to SigMF/GUPPI |
 | 29 | No-Hardware HI: VIRGO & PICTOR | reduce an online hydrogen-line observation |
 | 30 | RASDR & Radio-Sky Spectrograph | stream over the RSS TCP protocol |
+| 40 | Lightning as a Radio Source | sferics, tweeks, whistlers; time-of-arrival geolocation |
 | **Part III — Interferometry & Imaging** ||
 | 7 | Why Interferometry? | two-element fringes; resolution from baselines |
 | 8 | Aperture Synthesis & the uv-plane | van Cittert–Zernike; Earth-rotation synthesis; the dirty beam |
 | 9 | Deconvolution & CLEAN | Högbom 1974, implemented by hand |
+| 41 | Practical Calibration | gain/bandpass/phase solutions; closure; self-calibration |
 | 17 | Coherent Interferometry *(KrakenSDR)* | phase coherence, calibration, recovering a direction |
 | 19 | The EHT & VLBI | µas resolution; closure phase/amplitude; imaging a black-hole ring |
 | 25 | Intensity Interferometry *(HBT)* | correlate intensity, not phase; recover an angular size |
+| 37 | Polarisation & Faraday Rotation | Stokes parameters; the λ² law; RM synthesis |
 | **Part IV — Real Data & Research** ||
 | 10 | Accessing Open Archives | astroquery / pyvo against NRAO, HEASARC, VizieR, the VO |
 | 11 | HI 21 cm & Galactic Rotation | derive a rotation curve → the dark-matter problem |
@@ -85,6 +95,11 @@ chapters were written; the nav groups them by theme.
 | 22 | The Cosmic Microwave Background | the 2.725 K blackbody; the dipole; anisotropy |
 | 23 | Solar & Jupiter Radio Astronomy | a type-II burst → CME shock speed; Jovian decametric emission |
 | 24 | Molecular Lines & Masers | the CO ladder; weighing the NGC 4258 black hole |
+| 38 | Machine Learning in Radio Astronomy | FRB/RFI classification; a learned classifier vs the matched filter |
+| 39 | RFI Mitigation in Practice | robust statistics; spectral kurtosis; the SumThreshold algorithm |
+| 42 | Cosmic Dawn & the Epoch of Reionization | the redshifted 21 cm signal; the global trough; foreground removal |
+| 45 | Radio Galaxies, AGN & Source Counts | FR I/II morphology; the radio luminosity function; log N–log S |
+| 46 | The Art of Radio Images | colormaps, the asinh stretch, dynamic range, all-sky projections — and the hero above |
 | **Appendices — Maths Lab** ||
 | A–F (31–36) | Fourier & convolution · matched filtering · noise & RFI · coordinates & time · calibration linear algebra · special functions | worked, executable maths behind the chapters |
 
@@ -96,17 +111,18 @@ nothing but a laptop and no network.
 
 ```
 jansky/
-├── notebooks/        # the course — 36 numbered, executable chapters + Maths Labs
+├── notebooks/        # the course — 40 executable chapters + a six-part Maths Lab (46 in all)
 ├── docs/             # MkDocs site: notebooks rendered, plus a deep reference library
 │   ├── glossary · notation · math-preliminaries · data-formats   # learn-the-craft pages
 │   ├── projects · field-notes · videos · visual-tour             # build & watch
 │   ├── telescopes (+ assets/telescopes.kml) · resources · mastodon
 │   └── references · papers-timeline                              # the literature
 ├── src/jansky/       # the helper package the notebooks lean on
-│   ├── units · signals · interferometry · data · plotting        # core
+│   ├── units · signals · interferometry · data · plotting        # core (plotting = the viz toolkit)
 │   ├── formats        # GUPPI, SigMF, the Radio-Sky Spectrograph protocol
-│   ├── transients · timing · seti · solar · molecular            # the science modules
-│   ├── meteor · vlf   # amateur-observing simulations
+│   ├── synchrotron · freefree · sourcecounts                     # continuum emission & the radio sky
+│   ├── transients · timing · seti · solar · molecular · eor      # the science modules
+│   ├── polarization · lightning · meteor · vlf                   # polarimetry & amateur-observing sims
 │   ├── rfi            # robust statistics & spectral-kurtosis flagging
 │   └── mastodon_reader  # read the community's posts (+ optional TUI, --extra tui)
 ├── scripts/          # generate_figures.py · dataset_watch.py (watch the archives)

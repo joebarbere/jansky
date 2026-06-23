@@ -118,6 +118,7 @@ nav:
       - "39. RFI Mitigation in Practice": notebooks/39_rfi_mitigation.ipynb
       - "42. Cosmic Dawn & the Epoch of Reionization": notebooks/42_cosmic_dawn_eor.ipynb
       - "45. Radio Galaxies, AGN & Source Counts": notebooks/45_radio_galaxies_and_source_counts.ipynb
+      - "46. The Art of Radio Images": notebooks/46_visualizing_radio_data.ipynb
   - "Appendices — Maths Lab":
       - "A. Fourier & Convolution": notebooks/31_mathslab_fourier_convolution.ipynb
       - "B. Detection Theory & Matched Filtering": notebooks/32_mathslab_matched_filtering.ipynb
