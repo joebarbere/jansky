@@ -52,7 +52,10 @@ Heavy, chapter-specific tools live in their own images behind compose profiles
 ## The course map
 
 **40 chapters** in four parts, plus a six-part Maths Lab appendix (46 executable notebooks in
-all). The numbering reflects the order chapters were written; the nav groups them by theme.
+all). **Chapter numbers are stable IDs**, assigned in the order chapters were written — like
+catalogue numbers they never change, so links stay valid. Read **by theme, in the order below**
+(not by number); the [learning paths](https://joebarbere.github.io/jansky/learning-paths/) page
+maps the prerequisites and themed routes.
 
 | # | Chapter | Highlights |
 |---|---------|-----------|
