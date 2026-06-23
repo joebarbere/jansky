@@ -100,8 +100,11 @@ def test_radio_norm_maps_clip_limits_to_unit_interval():
 
 def test_recommend_cmap_avoids_jet():
     assert plotting.recommend_cmap("sequential") == "inferno"
+    assert plotting.recommend_cmap("gentle") == "viridis"
     assert plotting.recommend_cmap("diverging") == "RdBu_r"
     assert "jet" not in plotting._CMAP_BY_KIND.values()
+    # "spectral" is deliberately not a key (matplotlib's "Spectral" is a different map).
+    assert "spectral" not in plotting._CMAP_BY_KIND
     with pytest.raises(ValueError):
         plotting.recommend_cmap("rainbow")
 

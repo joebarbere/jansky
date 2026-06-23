@@ -126,7 +126,8 @@ def show_image(image: np.ndarray, ax: plt.Axes | None = None, title: str | None 
 #: deliberately absent: their non-monotonic luminance invents structure that isn't there.
 _CMAP_BY_KIND = {
     "sequential": "inferno",  # single-sided intensity (most radio images)
-    "spectral": "viridis",  # alt. sequential, gentle on the eye
+    "gentle": "viridis",  # alt. sequential, softer than inferno (avoid the name "spectral":
+    #                       matplotlib's "Spectral" is a *diverging* rainbow-adjacent map)
     "diverging": "RdBu_r",  # signed data around zero (Stokes Q/U/V, CMB Delta T)
     "colorblind": "cividis",  # sequential and robust to all colour-vision deficiencies
 }
@@ -211,9 +212,9 @@ def radio_norm(
 def recommend_cmap(kind: str = "sequential") -> str:
     """Return a perceptually-uniform colormap name for a kind of data.
 
-    ``"sequential"`` (intensity), ``"spectral"``, ``"diverging"`` (signed data), or
-    ``"colorblind"``. The non-perceptual ``jet``/``rainbow`` maps are intentionally not
-    offered -- their luminance is not monotonic, so they fabricate features.
+    ``"sequential"`` (intensity), ``"gentle"`` (a softer sequential), ``"diverging"``
+    (signed data), or ``"colorblind"``. The non-perceptual ``jet``/``rainbow`` maps are
+    intentionally not offered -- their luminance is not monotonic, so they fabricate features.
     """
     if kind not in _CMAP_BY_KIND:
         raise ValueError(f"unknown kind {kind!r}; choose from {sorted(_CMAP_BY_KIND)}")
@@ -231,9 +232,11 @@ def add_beam(
 ):
     """Draw the synthesised-beam (resolution) ellipse on an image, in data coordinates.
 
-    ``bmaj``/``bmin`` are the FWHM axes and ``bpa_deg`` the position angle (degrees, from
-    +y toward +x). Placing the beam on a radio map is not optional -- it is the PSF, and
-    no structure smaller than it is real.
+    ``bmaj``/``bmin`` are the FWHM axes and ``bpa_deg`` the angle in matplotlib's
+    **anti-clockwise** convention (0 deg = major axis along +y; positive rotates toward
+    -x). To use a radio position angle measured *east of north* (with East = -x in an
+    RA/Dec image), pass ``bpa_deg = -BPA``. Placing the beam on a radio map is not
+    optional -- it is the PSF, and no structure smaller than it is real.
     """
     from matplotlib.patches import Ellipse
 
