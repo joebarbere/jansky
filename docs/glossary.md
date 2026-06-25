@@ -11,7 +11,7 @@ short on purpose; follow the chapter or [References](references.md) for depth. T
 cross-link to one another — click a highlighted term to jump straight to its entry.
 
 **Jump to:** [A](#a) · [B](#b) · [C](#c) · [D](#d) · [E](#e) · [F](#f) · [G](#g) ·
-[H](#h) · [I](#i) · [J](#j) · [K](#k) · [L](#l) · [M](#m) · [N](#n) · O · [P](#p) ·
+[H](#h) · [I](#i) · [J](#j) · [K](#k) · [L](#l) · [M](#m) · [N](#n) · [O](#o) · [P](#p) ·
 [Q](#q) · [R](#r) · [S](#s) · [T](#t) · [U](#u) · [V](#v) · [W](#w) · X · Y · [Z](#z)
 
 ## A
@@ -24,7 +24,7 @@ cross-link to one another — click a highlighted term to jump straight to its e
 
 **Active galactic nucleus (AGN)**{#active-galactic-nucleus}
 : A compact, luminous core at the centre of a galaxy, powered by accretion onto a
-  supermassive black hole. Many are bright radio sources, often with jets and lobes;
+  supermassive [black hole](#black-hole). Many are bright radio sources, often with jets and lobes;
   *quasars* are the most luminous AGN.
 
 **AOFlagger / SumThreshold**{#aoflagger-sumthreshold}
@@ -49,6 +49,22 @@ cross-link to one another — click a highlighted term to jump straight to its e
   using Earth's rotation to sample many baseline orientations. The core technique of
   Chapter 8.
 
+**Accretion**{#accretion}
+: The infall of gas onto a compact object ([white dwarf](#white-dwarf), [neutron star](#neutron-star), [black hole](#black-hole)),
+  usually through an **accretion disk**, where released gravitational energy heats the gas
+  and makes it radiate. It powers AGN and X-ray binaries — and the white-dwarf binary now
+  thought to drive some long-period transients (Chapters 45, 47).
+
+**Angular resolution**{#angular-resolution}
+: The smallest angular separation a telescope can distinguish, set by diffraction at
+  $\theta \approx 1.22\,\lambda/D$ for a dish of diameter $D$ — or by the longest **baseline**
+  for an interferometer. It sharpens at shorter wavelength and larger aperture (Chapters 4, 7).
+
+**Arcminute / arcsecond**{#arcminute-arcsecond}
+: Subdivisions of angle on the sky: $1° = 60'$ (arcminutes) $= 3600''$ (arcseconds), with the
+  milliarcsecond (mas) and microarcsecond (µas) finer still — the scale VLBI reaches. The natural
+  units for source sizes and resolution (Chapter 19).
+
 ## B
 
 **Bandpass**{#bandpass}
@@ -63,7 +79,7 @@ cross-link to one another — click a highlighted term to jump straight to its e
 **Baseline**{#baseline}
 : The vector between a pair of antennas in an interferometer, usually measured in
   wavelengths. Each baseline samples one spatial frequency of the sky; longer baselines
-  give finer angular resolution (Chapters 7–8).
+  give finer [angular resolution](#angular-resolution) (Chapters 7–8).
 
 **Beam**{#beam}
 : The angular response pattern of an antenna or array — how sensitive it is as a function
@@ -74,9 +90,25 @@ cross-link to one another — click a highlighted term to jump straight to its e
   8–9.
 
 **Brightness temperature ($T_B$)**{#brightness-temperature}
-: The temperature a blackbody would need to emit the observed surface brightness at a given
+: The temperature a blackbody would need to emit the observed [surface brightness](#surface-brightness) at a given
   frequency. In the radio (Rayleigh–Jeans) regime, $T_B \propto I_\nu$, which makes it a
   convenient, frequency-independent way to quote intensity (Chapter 2).
+
+**Black hole**{#black-hole}
+: A region where gravity is so strong that nothing, not even light, escapes. *Supermassive*
+  black holes ($10^6$–$10^{10}\,M_\odot$) at galaxy centres power AGN and were imaged by the EHT;
+  stellar-mass ones are forged in supernovae (Chapters 19, 24, 45).
+
+**Blackbody radiation**{#blackbody-radiation}
+: The thermal radiation of an opaque body in equilibrium, set only by its temperature and
+  described by the Planck law $B_\nu(T)$. At radio (low) frequencies it reduces to the
+  **Rayleigh–Jeans** form $B_\nu \approx 2k_B T\nu^2/c^2$; the CMB is the sky's near-perfect
+  blackbody (Chapters 2, 22).
+
+**Blazar**{#blazar}
+: A [radio-loud AGN](#radio-loud-agn) whose relativistic jet points almost straight at us, so Doppler beaming makes
+  it exceptionally bright and rapidly variable — the most extreme viewing angle of the unified AGN
+  model (Chapter 45).
 
 ## C
 
@@ -141,6 +173,12 @@ cross-link to one another — click a highlighted term to jump straight to its e
 : Multiplying the (time-aligned) signals from two antennas and averaging. The result, as a
   function of baseline, is the visibility — the quantity an interferometer measures.
 
+**Coherent vs incoherent emission**{#coherent-emission}
+: *Incoherent* emission sums the power of many independent radiators (ordinary synchrotron,
+  thermal); *coherent* emission sums their fields **in phase**, reaching brightness temperatures far
+  above the $\sim10^{12}$ K incoherent limit. Pulsars, FRBs, and long-period transients must be
+  coherent (Chapters 13, 18, 47).
+
 ## D
 
 **Declination (Dec, $\delta$)**{#declination}
@@ -170,7 +208,7 @@ cross-link to one another — click a highlighted term to jump straight to its e
 **Dispersion measure (DM)**{#dispersion-measure}
 : The integrated free-electron column along the line of sight to a pulsar,
   $\mathrm{DM} = \int n_e\,dl$. Because lower frequencies are delayed more, DM tells you how
-  far the signal has travelled through the interstellar medium and must be removed
+  far the signal has travelled through the [interstellar medium](#interstellar-medium) and must be removed
   ("dedispersed") to recover the pulse (Chapter 13).
 
 **Dynamic range (imaging)**{#dynamic-range}
@@ -181,6 +219,21 @@ cross-link to one another — click a highlighted term to jump straight to its e
 **Dynamic spectrum**{#dynamic-spectrum}
 : A two-dimensional plot of intensity against time and frequency. Pulses, RFI, and FRBs
   show up as characteristic shapes (a dispersed pulse sweeps from high to low frequency).
+
+**Dark matter**{#dark-matter}
+: Non-luminous mass inferred from gravity — most directly from the flat **rotation curves** of
+  galaxies, where HI 21 cm velocities stay high far beyond the visible disk. It outweighs ordinary
+  matter roughly five to one (Chapter 11).
+
+**Doppler effect**{#doppler-effect}
+: The shift of an observed frequency when source and observer move relative to one another,
+  $\Delta\nu/\nu \approx -v/c$. It converts spectral-line frequencies into velocities — the basis of
+  HI rotation curves, maser dynamics, and the SETI drift search (Chapters 11, 21, 24).
+
+**Drift scan**{#drift-scan}
+: Observing with the telescope held fixed while the sky drifts through the beam as the Earth
+  rotates. Jansky's rotating antenna worked this way, and it is still the simplest way to survey or
+  to catch a source at transit (Chapter 1).
 
 ## E
 
@@ -203,8 +256,8 @@ cross-link to one another — click a highlighted term to jump straight to its e
 
 **Emission measure (EM)**{#emission-measure}
 : The line-of-sight integral of the squared electron density, $\mathrm{EM} = \int n_e^2\,
-  \mathrm{d}l$ (in pc cm⁻⁶). It sets the free-free optical depth and hence the whole thermal
-  spectrum of an HII region — fitting it (with $T_e$) to a radio spectrum measures the density
+  \mathrm{d}l$ (in pc cm⁻⁶). It sets the free-free [optical depth](#optical-depth) and hence the whole thermal
+  spectrum of an [HII region](#hii-region) — fitting it (with $T_e$) to a radio spectrum measures the density
   and depth of the ionized gas (Chapter 44).
 
 **Equipartition (minimum-energy) field**{#equipartition}
@@ -311,6 +364,16 @@ cross-link to one another — click a highlighted term to jump straight to its e
   $\mathrm{HA} = \text{LST} - \alpha$. It encodes where a source is in its daily arc across
   the sky.
 
+**HII region**{#hii-region}
+: A cloud of ionized hydrogen (H⁺, "H-two") surrounding hot young stars, glowing in free-free
+  continuum and radio recombination lines. Its sharp-edged extent is the **[Strömgren sphere](#str-mgren-sphere)**
+  (Chapter 44).
+
+**Hubble's law**{#hubbles-law}
+: The proportionality between a galaxy's recession velocity (redshift) and its distance,
+  $v = H_0 d$ — the signature of cosmic expansion. The Hubble constant $H_0$ sets the distance scale
+  underlying the [Macquart relation](#macquart-relation) (Chapters 18, 42).
+
 ## I
 
 **Interferometer**{#interferometer}
@@ -328,6 +391,16 @@ cross-link to one another — click a highlighted term to jump straight to its e
   both amplitude and phase of a signal. The native output of an SDR and of digital
   receivers generally (Chapter 5).
 
+**Interstellar medium (ISM)**{#interstellar-medium}
+: The gas, dust, plasma, and magnetic field between the stars. Its free electrons disperse pulsar
+  signals (the [dispersion measure](#dispersion-measure)), its neutral hydrogen emits the [21 cm line](#hi-21-cm-line), and its magnetic
+  field rotates polarisation (Chapters 6, 13, 37).
+
+**Intergalactic medium (IGM)**{#intergalactic-medium}
+: The diffuse, highly ionized plasma between galaxies, holding much of the universe's ordinary
+  (baryonic) matter. Fast radio bursts weigh it through the dispersion it adds — the Macquart
+  relation (Chapter 18).
+
 ## J
 
 **Jansky (Jy)**{#jansky}
@@ -340,6 +413,11 @@ cross-link to one another — click a highlighted term to jump straight to its e
 **KrakenSDR**{#krakensdr}
 : A five-channel, phase-coherent RTL-SDR (all sharing one clock) that makes amateur
   interferometry and radio direction-finding practical (Chapter 17).
+
+**Keplerian orbit**{#keplerian-orbit}
+: Motion under inverse-square gravity, in which orbital speed falls as $v \propto r^{-1/2}$. Water
+  masers tracing a Keplerian disk weighed the NGC 4258 [black hole](#black-hole), and a Keplerian binary sets the
+  clock of some long-period transients (Chapters 24, 47).
 
 ## L
 
@@ -361,10 +439,15 @@ cross-link to one another — click a highlighted term to jump straight to its e
   the Galaxy. Radial velocities of HI are usually quoted relative to the LSR to remove the
   Sun's peculiar motion (Chapter 11).
 
+**Luminosity**{#luminosity}
+: The total power a source radiates (in watts) — an *intrinsic* property, unlike [flux density](#flux-density),
+  which also falls off with distance. The [radio luminosity function](#radio-luminosity-function) tallies sources by it
+  (Chapters 43, 45).
+
 ## M
 
 **Magnetar**{#magnetar}
-: A neutron star with an extreme magnetic field ($B \sim 10^{14}$–$10^{15}$ G) whose decaying
+: A [neutron star](#neutron-star) with an extreme magnetic field ($B \sim 10^{14}$–$10^{15}$ G) whose decaying
   field powers X-ray/gamma-ray bursts and, in a few cases, radio emission. Magnetars sit at the
   top-right of the $P$–$\dot P$ diagram; an *ultra-long-period* magnetar is one candidate
   explanation for long-period radio transients, and a Galactic magnetar (SGR 1935+2154) produced
@@ -382,7 +465,7 @@ cross-link to one another — click a highlighted term to jump straight to its e
 
 **Maser**{#maser}
 : A microwave laser — naturally occurring, compact, very bright spectral-line emission (e.g.
-  H₂O at 22 GHz). Masers orbiting in a Keplerian disk weighed the NGC 4258 black hole (Chapter 24).
+  H₂O at 22 GHz). Masers orbiting in a Keplerian disk weighed the NGC 4258 [black hole](#black-hole) (Chapter 24).
 
 **Matched filter**{#matched-filter}
 : The optimal linear detector for a *known* signal shape in white noise: correlate the data with
@@ -403,6 +486,11 @@ cross-link to one another — click a highlighted term to jump straight to its e
 : Radio reflection off the ionised trail of a meteor; forward-scattering a distant transmitter
   lets amateurs count meteors as brief "pings" (Chapter 26).
 
+**Magnetosphere**{#magnetosphere}
+: The region around a planet or star where its magnetic field controls the motion of charged
+  particles. Jupiter's drives decametric radio bursts; a pulsar's is where the coherent radio beam
+  is generated (Chapters 23, 13).
+
 ## N
 
 **Nanohertz gravitational waves**{#nanohertz-gravitational-waves}
@@ -418,6 +506,19 @@ cross-link to one another — click a highlighted term to jump straight to its e
 : Sampling a band-limited signal at twice its bandwidth, the minimum rate that preserves all
   its information without aliasing. The reason an SDR's sample rate sets its usable bandwidth
   (Chapter 5).
+
+**Neutron star**{#neutron-star}
+: The collapsed, city-sized remnant of a massive star — about $1.4\,M_\odot$ crushed to nuclear
+  density and threaded by an enormous magnetic field. We see them as pulsars and magnetars
+  (Chapters 13, 47).
+
+## O
+
+**Optical depth ($\tau$)**{#optical-depth}
+: A dimensionless measure of how opaque a medium is along the line of sight; emergent intensity is
+  attenuated by $e^{-\tau}$. A source is *optically thick* ($\tau \gg 1$) or *thin* ($\tau \ll 1$),
+  and the crossover shapes free-free, synchrotron-self-absorption, and 21 cm spectra
+  (Chapters 43, 44).
 
 ## P
 
@@ -462,13 +563,28 @@ cross-link to one another — click a highlighted term to jump straight to its e
   correction") restores true flux across the image (Chapter 12).
 
 **Pulsar**{#pulsar}
-: A rapidly rotating, highly magnetised neutron star whose beamed radio emission sweeps past
+: A rapidly rotating, highly magnetised [neutron star](#neutron-star) whose beamed radio emission sweeps past
   us as regular pulses — a cosmic clock. Discovered by Bell and Hewish in 1967; the subject
   of Chapter 13.
 
 **Pulsar timing array (PTA)**{#pulsar-timing-array}
 : A set of millisecond pulsars timed for years as a galaxy-scale gravitational-wave detector.
   NANOGrav/EPTA/PPTA reported evidence for a nanohertz GW background in 2023 (Chapter 20).
+
+**Parsec (pc)**{#parsec}
+: The standard astronomical distance unit — the distance at which 1 AU subtends one arcsecond:
+  $1\,\mathrm{pc} \approx 3.26$ light-years $\approx 3.086\times10^{16}$ m. Galactic distances run
+  to kiloparsecs, extragalactic ones to megaparsecs (Chapter 11).
+
+**Plasma**{#plasma}
+: An ionized gas of free electrons and ions — the state of most radio-relevant matter, from the
+  ionosphere to the ISM to a stellar corona. Its **[plasma frequency](#plasma-frequency)** fixes the lowest frequency
+  that can propagate through it (Chapters 27, 23).
+
+**Point source**{#point-source}
+: A source smaller than the telescope's resolution, so it appears simply as a copy of the beam (the
+  PSF). The opposite of a resolved or *extended* source; CLEAN models the sky as a sum of point
+  sources (Chapters 9, 12).
 
 ## Q
 
@@ -490,7 +606,7 @@ cross-link to one another — click a highlighted term to jump straight to its e
   source counts (Chapter 45).
 
 **Radio-loud AGN**{#radio-loud-agn}
-: An [active galactic nucleus](#active-galactic-nucleus) whose accreting supermassive black hole launches powerful
+: An [active galactic nucleus](#active-galactic-nucleus) whose accreting supermassive [black hole](#black-hole) launches powerful
   synchrotron-emitting jets, producing the radio galaxies and radio quasars that dominate the
   bright extragalactic radio sky. Orientation of the jet axis underlies the unified model
   (Chapters 45, 19).
@@ -541,6 +657,25 @@ cross-link to one another — click a highlighted term to jump straight to its e
 **Right ascension (RA, $\alpha$)**{#right-ascension}
 : The celestial analogue of longitude, measured eastward along the celestial equator,
   usually in hours (0–24h). With declination it fixes a source's position on the sky.
+
+**Rayleigh–Jeans law**{#rayleigh-jeans-law}
+: The low-frequency ($h\nu \ll k_B T$) limit of the Planck blackbody law,
+  $B_\nu \approx 2k_B T\nu^2/c^2$ — linear in temperature, which is exactly why radio astronomers
+  quote intensities as a **[brightness temperature](#brightness-temperature)** (Chapter 2).
+
+**Recombination (cosmology)**{#recombination}
+: The epoch about 380,000 years after the Big Bang ($z \approx 1100$) when the cooling universe
+  let electrons and protons combine into neutral hydrogen, releasing the CMB. (The same atomic
+  process in an [HII region](#hii-region) produces radio recombination lines.) (Chapter 22).
+
+**Redshift ($z$)**{#redshift}
+: The fractional stretching of wavelength, $1+z = \lambda_\mathrm{obs}/\lambda_\mathrm{emit}$, from
+  cosmic expansion (or motion). It slides the [21 cm line](#hi-21-cm-line) of [cosmic dawn](#cosmic-dawn) down to metre wavelengths
+  and calibrates the [Macquart relation](#macquart-relation) (Chapters 18, 42).
+
+**Rotation curve**{#rotation-curve}
+: A galaxy's orbital speed plotted against radius. Measured from the Doppler shift of HI 21 cm, the
+  curves stay flat rather than falling off — the classic evidence for **[dark matter](#dark-matter)** (Chapter 11).
 
 ## S
 
@@ -605,7 +740,7 @@ cross-link to one another — click a highlighted term to jump straight to its e
 **Strömgren sphere**{#str-mgren-sphere}
 : The roughly spherical zone of fully ionized hydrogen around a hot star, with a sharp edge at
   the **Strömgren radius** where the stellar ionizing-photon rate is balanced by recombinations,
-  $Q = \tfrac{4}{3}\pi R_s^3 n_e^2 \alpha_B$. It sets the size of an ionization-bounded HII region
+  $Q = \tfrac{4}{3}\pi R_s^3 n_e^2 \alpha_B$. It sets the size of an ionization-bounded [HII region](#hii-region)
   (Chapter 44).
 
 **Sudden ionospheric disturbance (SID)**{#sudden-ionospheric-disturbance}
@@ -638,6 +773,26 @@ cross-link to one another — click a highlighted term to jump straight to its e
   atmosphere, ground spillover, and sky combined. It is the $T_{\text{sys}}$ in the
   [radiometer equation](#radiometer-equation) and the single most important sensitivity number (Chapters 3–4).
 
+**SED (spectral energy distribution)**{#spectral-energy-distribution}
+: A source's [flux density](#flux-density) (or luminosity) across many frequencies, from radio to X-ray, which
+  reveals the emission mechanisms at work. Built by cross-matching catalogues (Chapter 14). *(Not to
+  be confused with Saturn Electrostatic Discharge, above.)*
+
+**Sidelobe**{#sidelobe}
+: A secondary maximum of a beam pattern, away from the main lobe, through which a telescope picks up
+  unwanted off-axis signal. The [dirty beam](#dirty-beam-dirty-image)'s sidelobes are exactly what CLEAN removes
+  (Chapters 4, 9).
+
+**Supernova remnant (SNR)**{#supernova-remnant}
+: The expanding, synchrotron-bright shell of ejecta and shocked gas left by a stellar explosion
+  (Cassiopeia A, the Crab). A prime non-thermal radio source — and not to be confused with
+  signal-to-noise ratio (Chapter 43).
+
+**Surface brightness**{#surface-brightness}
+: [Flux density](#flux-density) per unit solid angle (e.g. Jy/beam or Jy/sr) — intensity that, unlike total flux,
+  does *not* change with distance. In the radio it is equivalent to a **[brightness temperature](#brightness-temperature)**
+  (Chapter 2).
+
 ## T
 
 **Training / validation / test split**{#training-validation-test-split}
@@ -669,6 +824,11 @@ cross-link to one another — click a highlighted term to jump straight to its e
 : A slow-drifting solar radio burst produced by a shock (often a CME) climbing outward through
   the corona; its frequency drift gives the shock speed (Chapter 23).
 
+**Transit**{#transit}
+: The instant a source crosses the local meridian (due south or north), when it rides highest and
+  its [hour angle](#hour-angle) is zero. Transit telescopes observe only there, letting the sky drift past
+  (Chapters 1, 34).
+
 ## U
 
 **u-v plane / visibility**{#u-v-plane-visibility}
@@ -685,7 +845,7 @@ cross-link to one another — click a highlighted term to jump straight to its e
 
 **VLBI (very long baseline interferometry)**{#vlbi}
 : Interferometry with antennas thousands of kilometres apart — even on different continents —
-  recording independently and correlating later. It yields the highest angular resolution in
+  recording independently and correlating later. It yields the highest [angular resolution](#angular-resolution) in
   astronomy (micro-arcseconds), as in the Event Horizon Telescope.
 
 ## W
@@ -700,6 +860,11 @@ cross-link to one another — click a highlighted term to jump straight to its e
 : The coupling of the 21 cm [spin temperature](#spin-temperature) to the gas kinetic temperature by Lyman-α photons
   scattering off neutral hydrogen. Once the first stars provide those photons, it drives the
   cosmic-dawn absorption trough (Chapter 42).
+
+**White dwarf**{#white-dwarf}
+: The Earth-sized, electron-degenerate remnant of a low-mass star. A magnetic white dwarf — alone or
+  in a binary — is a leading explanation for the minute-to-hour periods of long-period transients
+  (Chapter 47).
 
 ## Z
 
