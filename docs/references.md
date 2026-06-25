@@ -174,6 +174,38 @@ originals — many of these papers are short, readable, and historic.
   preferred over the older NE2001 (Cordes & Lazio 2002) for pulsars and FRBs (Chapters 13, 18).
   [DOI](https://doi.org/10.3847/1538-4357/835/1/29)
 
+### Long-period radio transients & compact binaries
+
+The minutes-to-hours periodic radio sources of Chapter 47, and the white-dwarf binaries now
+identified behind several of them.
+
+- **Hyman, S. D., et al. (2005).** *A Powerful Bursting Radio Source towards the Galactic Centre.*
+  Nature 434, 50. — GCRT J1745−3009 (77-min bursts): the historical precedent for the class.
+  [DOI](https://doi.org/10.1038/nature03400)
+- **Hurley-Walker, N., et al. (2022).** *A Radio Transient with Unusually Slow Periodic Emission.*
+  Nature 601, 526. — GLEAM-X J1627 (18 min); launched the long-period-transient class.
+  [DOI](https://doi.org/10.1038/s41586-021-04272-x)
+- **Hurley-Walker, N., et al. (2023).** *A Long-Period Radio Transient Active for Three Decades.*
+  Nature 619, 487. — GPM J1839−10 (22 min), active 35+ yr and deep past the death line.
+  [DOI](https://doi.org/10.1038/s41586-023-06202-5)
+- **Caleb, M., et al. (2024).** *An Emission-State-Switching Radio Transient with a 54-minute
+  Period.* Nature Astronomy 8, 1159. — ASKAP J1935+2148; three emission states.
+  [DOI](https://doi.org/10.1038/s41550-024-02277-w)
+- **Hurley-Walker, N., et al. (2024)** & **Rodriguez, A. C. (2025).** GLEAM-X J0704−37 (2.9 h) and
+  its spectroscopic WD+M-dwarf orbit. [arXiv:2408.15757](https://arxiv.org/abs/2408.15757) ·
+  [arXiv:2501.03315](https://arxiv.org/abs/2501.03315)
+- **de Ruiter, I., et al. (2025).** *Sporadic Radio Pulses from a White Dwarf Binary at the Orbital
+  Period.* Nature Astronomy 9, 672. — ILT J1101+5521 (2.1 h), a detached WD+M-dwarf binary.
+  [DOI](https://doi.org/10.1038/s41550-025-02491-0)
+- **Wang, Z., et al. (2025).** *Detection of X-ray Emission from a Bright Long-Period Radio
+  Transient.* Nature 642, 583. — ASKAP J1832−0911 (44 min); first X-ray detection of an LPT.
+  [DOI](https://doi.org/10.1038/s41586-025-09077-w)
+- **Rose, K., et al. (2026).** *Periodic Radio and X-ray Emission from an Accreting White Dwarf
+  Binary.* Nature Astronomy. — ASKAP J1745−5051; the first *accreting* LPT, radio + X-ray pulses
+  on the 1.3 h orbit. [DOI](https://doi.org/10.1038/s41550-026-02882-x)
+- **Rea, N., Hurley-Walker, N. & Caleb, M. (2026).** *Long Period Transients: a Comprehensive
+  Review.* J. High Energy Astrophys. [arXiv:2601.10393](https://arxiv.org/abs/2601.10393)
+
 ### Lightning, atmospherics & planetary radio
 
 - **Storey, L. R. O. (1953).** *An Investigation of Whistling Atmospherics.* Phil. Trans. R.

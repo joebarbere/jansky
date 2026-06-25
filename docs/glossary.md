@@ -179,6 +179,18 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 
 ## E
 
+**Death line (pulsars)**
+: A line on the period–period-derivative ($P$–$\dot P$) diagram below which a rotation-powered
+  pulsar can no longer sustain the pair cascades that power coherent radio emission. Long-period
+  transients sit far below it (as neutron stars they "shouldn't" emit), which is the central
+  puzzle of Chapter 47 (`jansky.transients.death_line_pdot`).
+
+**Epoch folding**
+: Finding an unknown period by folding a time series at many trial periods and scoring each folded
+  profile (the Leahy $\chi^2$ statistic); the score peaks sharply at the true period. How the
+  minutes-to-hours periods of long-period transients are recovered
+  (`jansky.transients.epoch_folding_search`, Chapter 47).
+
 **Effective area ($A_e$)**
 : The equivalent collecting area of an antenna for a matched source, $A_e = \eta_A
   A_{\text{geom}}$. It sets the gain and, with $T_{\text{sys}}$, the sensitivity via the
@@ -326,6 +338,12 @@ short on purpose; follow the chapter or [References](references.md) for depth.
 
 ## L
 
+**Long-period radio transient (LPT)**
+: A radio source that pulses every few **minutes to hours** — orders of magnitude slower than any
+  ordinary pulsar. Since 2022 (GLEAM-X J1627) about a dozen are known; several have now been
+  identified as **white-dwarf + M-dwarf binaries** where the period is *orbital*, not a spin, with
+  the rest debated between ultra-long-period magnetars and white-dwarf pulsars (Chapter 47).
+
 **log N–log S (source counts)**
 : The number of radio sources brighter than flux density $S$ as a function of $S$. In a static,
   uniformly-filled Euclidean universe the integral counts follow $N(>S) \propto S^{-3/2}$
@@ -339,6 +357,13 @@ short on purpose; follow the chapter or [References](references.md) for depth.
   Sun's peculiar motion (Chapter 11).
 
 ## M
+
+**Magnetar**
+: A neutron star with an extreme magnetic field ($B \sim 10^{14}$–$10^{15}$ G) whose decaying
+  field powers X-ray/gamma-ray bursts and, in a few cases, radio emission. Magnetars sit at the
+  top-right of the $P$–$\dot P$ diagram; an *ultra-long-period* magnetar is one candidate
+  explanation for long-period radio transients, and a Galactic magnetar (SGR 1935+2154) produced
+  an FRB-like burst (Chapters 18, 47).
 
 **Machine learning (ML)**
 : Algorithms that learn a task from labelled (or unlabelled) examples rather than from

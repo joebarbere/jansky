@@ -1,6 +1,6 @@
 # Learning paths
 
-The course is **40 chapters** plus a six-part **Maths Lab**. You don't have to read them in
+The course is **41 chapters** plus a six-part **Maths Lab**. You don't have to read them in
 order — most chapters need only a couple of earlier ones. This page shows the whole map, the
 prerequisites, and a few **themed routes** so you can chart a path that fits your goal and your
 hardware.
@@ -66,6 +66,7 @@ flowchart TD
   C14[14 · Multi-wavelength]
   C16[16 · Data formats]
   C18[18 · Fast radio bursts]
+  C47[47 · Long-period radio transients]
   C20[20 · Pulsar timing arrays]
   C21[21 · SETI]
   C22[22 · CMB]
@@ -83,6 +84,8 @@ flowchart TD
   C10 --> C14
   C13 --> C18
   C13 --> C20
+  C13 --> C47
+  C18 --> C47
   C18 --> C38
   C3 --> C38
   C3 --> C39
