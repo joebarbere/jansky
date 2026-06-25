@@ -246,8 +246,10 @@ def epoch_folding_search(
     the Leahy (1983) chi-square statistic
     :math:`S = \\sum_i n_i (m_i - \\bar m)^2 / \\sigma^2`, where :math:`m_i` is the
     mean in phase bin *i*, :math:`n_i` its count, and :math:`\\sigma^2` the data
-    variance. ``S`` peaks sharply at the true period (and its harmonics). This is how
-    the minutes-to-hours periods of long-period transients are recovered.
+    variance. ``S`` peaks sharply at the true period (with sub-peaks at its
+    sub-harmonics :math:`P/2, P/3, \\dots`). This is how the minutes-to-hours periods of
+    long-period transients are recovered. (For continuous, non-photon-counting data this
+    folded chi-square is also known as the Schwarzenberg-Czerny statistic.)
     """
     times = np.asarray(times, dtype=float)
     values = np.asarray(values, dtype=float)
