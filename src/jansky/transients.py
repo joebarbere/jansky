@@ -29,6 +29,12 @@ __all__ = [
     "DMSearchResult",
     "boxcar_snr",
     "macquart_redshift",
+    "fold_profile",
+    "epoch_folding_search",
+    "PeriodSearchResult",
+    "surface_bfield",
+    "characteristic_age",
+    "death_line_pdot",
 ]
 
 # DM_CONST (k_DM, MHz^2 cm^3 pc^-1 s) now lives in jansky.constants and is
@@ -186,3 +192,115 @@ def macquart_redshift(dm_excess: float, slope: float = MACQUART_SLOPE) -> float:
     is not a universal constant (see :data:`jansky.constants.MACQUART_SLOPE`).
     """
     return float(dm_excess / slope)
+
+
+# --- Period finding & the P-Pdot diagram (Chapter 47: long-period transients) ----------
+
+
+def fold_profile(
+    times: np.ndarray,
+    values: np.ndarray,
+    period: float,
+    n_bins: int = 20,
+    t0: float = 0.0,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Fold a time series at a trial ``period`` into a pulse profile.
+
+    Each sample's **phase** is ``((t - t0) / period) mod 1``; samples are binned by
+    phase and averaged. At the true period a pulse stacks up in one bin; at a wrong
+    period it smears out. The engine behind :func:`epoch_folding_search`.
+
+    Returns ``(phase_centres, profile, counts)`` -- the profile is NaN in empty bins.
+    """
+    times = np.asarray(times, dtype=float)
+    values = np.asarray(values, dtype=float)
+    phase = ((times - t0) / period) % 1.0
+    idx = np.minimum((phase * n_bins).astype(int), n_bins - 1)
+    counts = np.bincount(idx, minlength=n_bins).astype(float)
+    sums = np.bincount(idx, weights=values, minlength=n_bins)
+    with np.errstate(invalid="ignore", divide="ignore"):
+        profile = np.where(counts > 0, sums / counts, np.nan)
+    centres = (np.arange(n_bins) + 0.5) / n_bins
+    return centres, profile, counts
+
+
+@dataclass
+class PeriodSearchResult:
+    """Outcome of :func:`epoch_folding_search`."""
+
+    periods: np.ndarray  #: trial periods (s)
+    stat: np.ndarray  #: epoch-folding statistic at each trial period
+    best_period: float  #: period with the highest statistic
+    best_stat: float  #: that highest statistic
+
+
+def epoch_folding_search(
+    times: np.ndarray,
+    values: np.ndarray,
+    periods: np.ndarray,
+    n_bins: int = 20,
+) -> PeriodSearchResult:
+    """Blind period search by epoch folding -- find a period without knowing it.
+
+    For each trial period the series is folded (:func:`fold_profile`) and scored with
+    the Leahy (1983) chi-square statistic
+    :math:`S = \\sum_i n_i (m_i - \\bar m)^2 / \\sigma^2`, where :math:`m_i` is the
+    mean in phase bin *i*, :math:`n_i` its count, and :math:`\\sigma^2` the data
+    variance. ``S`` peaks sharply at the true period (with sub-peaks at its
+    sub-harmonics :math:`P/2, P/3, \\dots`). This is how the minutes-to-hours periods of
+    long-period transients are recovered. (For continuous, non-photon-counting data this
+    folded chi-square is also known as the Schwarzenberg-Czerny statistic.)
+    """
+    times = np.asarray(times, dtype=float)
+    values = np.asarray(values, dtype=float)
+    var = values.var()
+    periods = np.asarray(periods, dtype=float)
+    stats = np.empty(periods.size)
+    for k, period in enumerate(periods):
+        _, profile, counts = fold_profile(times, values, period, n_bins)
+        good = counts > 0
+        if not good.any() or var == 0:
+            stats[k] = 0.0
+            continue
+        mean = np.average(profile[good], weights=counts[good])
+        stats[k] = float(np.sum(counts[good] * (profile[good] - mean) ** 2) / var)
+    best = int(np.argmax(stats))
+    return PeriodSearchResult(
+        periods=periods, stat=stats, best_period=float(periods[best]), best_stat=float(stats[best])
+    )
+
+
+def surface_bfield(period: np.ndarray | float, pdot: np.ndarray | float) -> np.ndarray:
+    """Canonical dipole surface magnetic field (Gauss) from ``period`` and ``pdot``.
+
+    :math:`B_\\mathrm{surf} \\approx 3.2\\times10^{19}\\sqrt{P\\,\\dot P}` G, with ``P``
+    in seconds and ``pdot`` dimensionless -- the standard magnetic-dipole spin-down
+    estimate. A 1 s pulsar with :math:`\\dot P = 10^{-15}` has :math:`B \\sim 10^{12}` G;
+    magnetars reach :math:`10^{14}`-:math:`10^{15}` G.
+    """
+    return 3.2e19 * np.sqrt(np.asarray(period, dtype=float) * np.asarray(pdot, dtype=float))
+
+
+def characteristic_age(period: np.ndarray | float, pdot: np.ndarray | float) -> np.ndarray:
+    """Characteristic (spin-down) age :math:`\\tau_c = P / (2\\dot P)`, in seconds.
+
+    An upper-limit age assuming magnetic-dipole braking from a much faster birth spin.
+    """
+    return np.asarray(period, dtype=float) / (2.0 * np.asarray(pdot, dtype=float))
+
+
+def death_line_pdot(period: np.ndarray | float, b_over_p2_threshold: float = 3.2e11) -> np.ndarray:
+    """The pulsar **death line**, as the minimum ``pdot`` for radio emission at ``P``.
+
+    Below the death line a rotation-powered pulsar can no longer sustain the pair
+    cascades that power coherent radio emission. Using the common constant-:math:`B/P^2`
+    criterion (:math:`B/P^2 >` threshold) with :math:`B = 3.2\\times10^{19}\\sqrt{P\\dot P}`
+    gives :math:`\\dot P_\\mathrm{death} = (\\text{thr}/3.2\\times10^{19})^2\\,P^3` -- a slope-3
+    line in the :math:`P`-:math:`\\dot P` plane. The default threshold places it near
+    :math:`(P,\\dot P) = (1\\,\\mathrm{s}, 10^{-16})`. This is one representative model;
+    published death lines differ by their assumed gap physics. It is what makes the
+    minutes-to-hours periods of long-period transients so startling: as rotation-powered
+    neutron stars they would sit *far* below any death line, yet they emit.
+    """
+    p = np.asarray(period, dtype=float)
+    return (b_over_p2_threshold / 3.2e19) ** 2 * p**3

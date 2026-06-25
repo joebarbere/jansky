@@ -51,7 +51,7 @@ Heavy, chapter-specific tools live in their own images behind compose profiles
 
 ## The course map
 
-**40 chapters** in four parts, plus a six-part Maths Lab appendix (46 executable notebooks in
+**41 chapters** in four parts, plus a six-part Maths Lab appendix (47 executable notebooks in
 all). **Chapter numbers are stable IDs**, assigned in the order chapters were written — like
 catalogue numbers they never change, so links stay valid. Read **by theme, in the order below**
 (not by number); the [learning paths](https://joebarbere.github.io/jansky/learning-paths/) page
@@ -103,6 +103,7 @@ maps the prerequisites and themed routes.
 | 42 | Cosmic Dawn & the Epoch of Reionization | the redshifted 21 cm signal; the global trough; foreground removal |
 | 45 | Radio Galaxies, AGN & Source Counts | FR I/II morphology; the radio luminosity function; log N–log S |
 | 46 | The Art of Radio Images | colormaps, the asinh stretch, dynamic range, all-sky projections — and the hero above |
+| 47 | Long-Period Radio Transients | the P–Ṗ diagram & death line; epoch-folding period search; white-dwarf-binary LPTs |
 | **Appendices — Maths Lab** ||
 | A–F (31–36) | Fourier & convolution · matched filtering · noise & RFI · coordinates & time · calibration linear algebra · special functions | worked, executable maths behind the chapters |
 
@@ -114,7 +115,7 @@ nothing but a laptop and no network.
 
 ```
 jansky/
-├── notebooks/        # the course — 40 executable chapters + a six-part Maths Lab (46 in all)
+├── notebooks/        # the course — 41 executable chapters + a six-part Maths Lab (47 in all)
 ├── docs/             # MkDocs site: notebooks rendered, plus a deep reference library
 │   ├── glossary · notation · math-preliminaries · data-formats   # learn-the-craft pages
 │   ├── projects · field-notes · videos · visual-tour             # build & watch
