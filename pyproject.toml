@@ -97,7 +97,7 @@ packages = ["src/jansky"]
 [dependency-groups]
 # Authoring & QA toolchain (installed by `uv sync`, not shipped to consumers).
 dev = [
-    "ruff>=0.6",
+    "ruff>=0.15.20",
     "pytest>=8.2",
     "pytest-cov>=5.0",
     "mypy>=1.11",
