@@ -76,6 +76,17 @@ originals — many of these papers are short, readable, and historic.
 - **Condon, J. J., et al. (1998).** *The NRAO VLA Sky Survey.* AJ 115, 1693. — The NVSS catalogue
   used for the log N–log S analysis in Chapter 45.
   [DOI](https://doi.org/10.1086/300337)
+- **O'Dea, C. P. & Saikia, D. J. (2021).** *Compact steep-spectrum and peaked-spectrum radio
+  sources.* A&ARv 29, 3. — Review of GPS/CSS sources (young, compact radio AGN whose spectra peak in
+  the ~0.1–3 GHz band); the basis of the `jansky-research` peaked-spectrum slice.
+  [DOI](https://doi.org/10.1007/s00159-021-00131-w)
+- **McConnell, D., et al. (2020).** *The Rapid ASKAP Continuum Survey I: Design and first results.*
+  PASA 37, e048. — RACS, the ASKAP all-southern-sky 888 MHz survey (Stokes I and, later bands, V).
+  [DOI](https://doi.org/10.1017/pasa.2020.41)
+- **Ross, K., et al. (2024).** *GLEAM-X DR2.* PASA 41, e054. — The deep MWA 72–231 MHz survey with
+  20 in-band sub-bands; its real in-band spectral curvature is what makes a southern peaked-spectrum
+  catalogue tractable (a queued `jansky-research` slice).
+  [arXiv:2406.06921](https://arxiv.org/abs/2406.06921)
 
 ### The hydrogen line
 
@@ -289,3 +300,14 @@ The craft of displaying radio data — colormaps, stretches, dynamic range — i
 - **Virtual Observatory / pyvo** — [pyvo.readthedocs.io](https://pyvo.readthedocs.io/)
 - **NRAO Science Data Archive** — [data.nrao.edu](https://data.nrao.edu/) ·
   **HEASARC** — [heasarc.gsfc.nasa.gov](https://heasarc.gsfc.nasa.gov/)
+
+## Original research using this toolkit
+
+- **`jansky-research`** — [github.com/joebarbere/jansky-research](https://github.com/joebarbere/jansky-research),
+  a sibling repo that *depends on this course as a library* and does original, reproducible amateur
+  research as tested "slices" with honest write-ups. Merged so far: FRB burst statistics, an
+  ultra-steep-spectrum hunt (honest negative), FRB 20180916B periodicity, a SETI drift benchmark
+  (Voyager null), the flat inner-Galaxy HI rotation curve, a VLASS multi-epoch variability census
+  (recovers FK Comae Berenices), and a three-frequency peaked-spectrum (GPS/CSS) selector. In
+  progress: a RACS Stokes-V coherent-emitter search (radio stars via circular polarization, after
+  **Pritchard, J. R., et al. 2021,** MNRAS 502, 5438, [arXiv:2102.01801](https://arxiv.org/abs/2102.01801)).
