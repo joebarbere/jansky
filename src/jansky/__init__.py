@@ -26,6 +26,9 @@ meteor
     Meteor-scatter echoes (underdense/overdense) and ping detection.
 molecular
     The CO rotational ladder and the Keplerian maser-disk black-hole weigh-in.
+observing
+    Sidereal/local sidereal time, transit geometry, beam-transit duration, noise
+    figure to temperature, and drift-scan simulation (Chapter 48).
 eor
     Cosmic dawn & reionization: the redshifted 21 cm signal, spin temperature,
     the global-signal trough, and smooth-foreground removal.
@@ -63,6 +66,7 @@ from __future__ import annotations
 __version__ = "0.1.0"
 
 from jansky import (
+    catalog,
     data,
     eor,
     formats,
@@ -71,6 +75,8 @@ from jansky import (
     lightning,
     meteor,
     molecular,
+    observing,
+    optics,
     plotting,
     polarization,
     rfi,
@@ -87,6 +93,7 @@ from jansky import (
 
 __all__ = [
     "__version__",
+    "catalog",
     "data",
     "eor",
     "formats",
@@ -95,6 +102,8 @@ __all__ = [
     "lightning",
     "meteor",
     "molecular",
+    "observing",
+    "optics",
     "plotting",
     "polarization",
     "rfi",

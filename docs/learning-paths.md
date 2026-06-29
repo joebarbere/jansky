@@ -35,11 +35,15 @@ flowchart TD
   C29[29 · No-hardware HI: VIRGO/PICTOR]
   C30[30 · RASDR & Radio-Sky]
   C40[40 · Lightning & sferics]
+  C48[48 · Observing planning: sidereal time, transit, beam]
   C3 --> C4 --> C5 --> C6
+  C4 --> C48
+  C3 --> C48
   C5 --> C28 --> C30
   C5 --> C26
   C5 --> C27 --> C40
   C6 --> C29
+  LD -.-> C48
 
   %% ---- Part III: Interferometry & imaging ----
   C7[7 · Why interferometry]
@@ -163,7 +167,7 @@ technique you'd like to see derived from scratch.
 | **[A · Fourier & convolution](notebooks/31_mathslab_fourier_convolution.ipynb)** | FT pairs, convolution theorem, sampling | Ch 8 (uv-plane), Ch 9 (CLEAN), Ch 37 (RM synthesis), Ch 42 (21 cm power spectrum), Ch 3 |
 | **[B · Matched filtering](notebooks/32_mathslab_matched_filtering.ipynb)** | Detection theory, the matched filter | Ch 18 (FRBs), Ch 13 (pulsars), Ch 38 (ML baseline), Ch 3 |
 | **[C · Noise & RFI](notebooks/33_mathslab_noise_rfi.ipynb)** | Noise statistics, robust RFI excision | Ch 3 (radiometer), Ch 39 (RFI flagging), Ch 5 (SDR) |
-| **[D · Coordinates & time](notebooks/34_mathslab_coordinates_time.ipynb)** | Sky coordinates, time systems | Ch 10 (archives), Ch 11, Ch 13 |
+| **[D · Coordinates & time](notebooks/34_mathslab_coordinates_time.ipynb)** | Sky coordinates, time systems | Ch 10 (archives), Ch 11, Ch 13, **Ch 48 (observing planning)** |
 | **[E · Calibration](notebooks/35_mathslab_calibration.ipynb)** | Linear algebra for gain/closure | Ch 41 (practical calibration), Ch 9 (CLEAN), Ch 12 (VLA imaging) |
 | **[F · Special functions & beams](notebooks/36_mathslab_special_functions.ipynb)** | Bessel/sinc, beam patterns | Ch 4 (antennas), Ch 8 |
 
