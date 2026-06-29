@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import numpy as np
+import pytest
 
 from jansky import interferometry
 
@@ -256,3 +257,47 @@ def test_solve_leakage_robust_to_noise_and_corrects():
     corrected = (v + noise) - interferometry.apply_leakage(1.0, recovered)
     off = ~np.eye(9, dtype=bool)
     assert np.std(corrected[off]) < 0.01
+
+
+def test_two_element_drift_point_source_fringes():
+    """A point source drifting past an E-W baseline gives fringes under the primary beam."""
+    d = interferometry.two_element_drift(
+        baseline_m=100.0, dec_deg=0.0, wavelength_m=0.21, element_diameter_m=25.0
+    )
+    assert d.visibility == 1.0  # unresolved
+    # the response never exceeds the beam envelope
+    assert np.all(np.abs(d.response) <= d.envelope + 1e-9)
+    # a 100 m baseline at 0.21 m gives many fringes -> many sign changes
+    sign_changes = np.sum(np.diff(np.sign(d.response)) != 0)
+    assert sign_changes > 10
+
+
+def test_two_element_drift_longer_baseline_finer_fringes():
+    short = interferometry.two_element_drift(
+        baseline_m=50.0, dec_deg=0.0, wavelength_m=0.21, element_diameter_m=25.0
+    )
+    long = interferometry.two_element_drift(
+        baseline_m=200.0, dec_deg=0.0, wavelength_m=0.21, element_diameter_m=25.0
+    )
+    assert long.fringe_period_h < short.fringe_period_h  # longer baseline -> finer fringes
+
+
+def test_two_element_drift_resolved_source_loses_visibility():
+    point = interferometry.two_element_drift(
+        baseline_m=1000.0, dec_deg=0.0, wavelength_m=0.21, element_diameter_m=25.0
+    )
+    extended = interferometry.two_element_drift(
+        baseline_m=1000.0,
+        dec_deg=0.0,
+        wavelength_m=0.21,
+        element_diameter_m=25.0,
+        source_size_deg=0.05,
+    )
+    assert extended.visibility < point.visibility  # the baseline resolves it out
+
+
+def test_two_element_drift_validates_inputs():
+    with pytest.raises(ValueError):
+        interferometry.two_element_drift(
+            baseline_m=0.0, dec_deg=0.0, wavelength_m=0.21, element_diameter_m=25.0
+        )

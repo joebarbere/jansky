@@ -255,6 +255,10 @@ venue is the **Society of Amateur Radio Astronomers (SARA)**:
   pointers to the Radio JOVE, SuperSID, INSPIRE, IBT, and meteor projects.
   [getting-started](https://radio-astronomy.org/getting-started) ·
   [resources for beginners](https://radio-astronomy.org/node/296)
+- **NRAO/GBO — Radio Astronomy Teachers' Notebook.** A classic collection of computational
+  observing projects (sidereal time, transit, beam-transit duration, a drift-scan radiometer
+  simulation, a two-element interferometer, a source database and sky map, and parabola
+  ray-tracing) — the source of the Chapter 48 and 49 projects, reimplemented here in Python.
 
 For the kits, build write-ups, citizen-science networks, grants, and community channels behind
 these, see [Projects](projects.md) and [Resources](resources.md).
@@ -286,6 +290,10 @@ The craft of displaying radio data — colormaps, stretches, dynamic range — i
 - **Thompson, A. R., Moran, J. M. & Swenson, G. W.** *Interferometry and Synthesis in Radio
   Astronomy* (3rd ed., open access via Springer). — The interferometry "bible".
 - **Wilson, T. L., Rohlfs, K. & Hüttemeister, S.** *Tools of Radio Astronomy.*
+- **Meeus, J. (1998).** *Astronomical Algorithms* (2nd ed.), Willmann-Bell. — The standard recipes
+  for sidereal time (eq. 12.4), transit, and rise/set used in Chapter 48.
+- **Balanis, C. A.** *Antenna Theory: Analysis and Design.* Wiley. — Reflector antennas and the
+  paraboloid geometry behind Chapter 49's ray-tracing project.
 
 ## Software & data
 

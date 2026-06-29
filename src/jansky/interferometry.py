@@ -34,6 +34,8 @@ __all__ = [
     "closure_amplitude",
     "disk_visibility",
     "hbt_g2",
+    "TwoElementDrift",
+    "two_element_drift",
     "solve_point_source_gains",
     "apply_gains",
     "solve_gains_stefcal",
@@ -415,6 +417,98 @@ def hbt_g2(baseline: np.ndarray, angular_diameter: float, wavelength: float) -> 
     intensity interferometer.
     """
     return 1.0 + disk_visibility(baseline, angular_diameter, wavelength) ** 2
+
+
+@dataclass
+class TwoElementDrift:
+    """Time-domain output of a drift observation with a two-element interferometer."""
+
+    #: Hour angle of the source at each sample (hours).
+    hour_angle_h: np.ndarray
+    #: Correlator (cosine) output at each sample, arbitrary units.
+    response: np.ndarray
+    #: Single-element primary-beam envelope at each sample (peak 1).
+    envelope: np.ndarray
+    #: Source visibility amplitude on the projected baseline (1 for a point source).
+    visibility: float
+    #: Fringe period at transit, in hour angle (hours).
+    fringe_period_h: float
+
+
+def two_element_drift(
+    *,
+    baseline_m: float,
+    dec_deg: float,
+    wavelength_m: float,
+    element_diameter_m: float,
+    source_size_deg: float = 0.0,
+    ha_span_h: float = 0.5,
+    n_samples: int = 2001,
+) -> TwoElementDrift:
+    """Simulate the fringes a two-element east--west interferometer records during a drift.
+
+    A source at declination :math:`\\delta` drifts in hour angle :math:`H` past a fixed
+    east--west baseline of length ``baseline_m``. The geometric delay gives a path
+    difference :math:`b\\cos\\delta\\sin H`, so the correlator output is a cosine fringe
+    :math:`\\cos(2\\pi (b/\\lambda)\\cos\\delta\\sin H)` modulated by the single-element
+    primary beam (FWHM :math:`\\approx 1.02\\lambda/D`, here a Gaussian envelope) and scaled
+    by the source visibility on the projected baseline (:func:`disk_visibility`, which is 1
+    for a point source and falls as the source is resolved). Returns the fringe train and
+    the fringe period at transit, :math:`\\Delta H \\approx \\lambda/(2\\pi b\\cos\\delta)`
+    radians of hour angle.
+
+    Parameters
+    ----------
+    baseline_m
+        East--west baseline length (m).
+    dec_deg
+        Source declination (deg).
+    wavelength_m
+        Observing wavelength (m).
+    element_diameter_m
+        Single-element dish diameter (m); sets the primary-beam envelope.
+    source_size_deg
+        Source angular diameter (deg); 0 for a point source. Resolves out the fringes.
+    ha_span_h
+        Total hour-angle span simulated, centred on transit (hours).
+    n_samples
+        Number of time samples.
+    """
+    from .signals import gaussian_beam
+
+    if baseline_m <= 0 or wavelength_m <= 0 or element_diameter_m <= 0:
+        raise ValueError("baseline_m, wavelength_m, element_diameter_m must be positive")
+
+    cos_dec = np.cos(np.radians(dec_deg))
+    ha_h = np.linspace(-ha_span_h / 2.0, ha_span_h / 2.0, n_samples)
+    ha_rad = np.radians(ha_h * 15.0)
+    b_lambda = baseline_m / wavelength_m
+
+    # geometric fringe: path difference b*cos(dec)*sin(H) in wavelengths
+    fringe = np.cos(2.0 * np.pi * b_lambda * cos_dec * np.sin(ha_rad))
+
+    # single-element primary beam envelope (Gaussian FWHM ~ 1.02 lambda/D) vs sky offset
+    beam_fwhm_deg = np.degrees(1.02 * wavelength_m / element_diameter_m)
+    sky_offset_deg = ha_h * 15.0 * cos_dec
+    envelope = gaussian_beam(sky_offset_deg, beam_fwhm_deg)
+
+    # source visibility on the projected baseline at transit (resolves out extended sources)
+    vis = (
+        float(disk_visibility(baseline_m * cos_dec, np.radians(source_size_deg), wavelength_m))
+        if source_size_deg > 0
+        else 1.0
+    )
+
+    response = vis * envelope * fringe
+    # fringe period at transit: d/dH [2 pi b_lambda cos(dec) sin H] = 2 pi b_lambda cos(dec) at H=0
+    fringe_period_h = float(np.degrees(1.0 / (b_lambda * cos_dec)) / 15.0)
+    return TwoElementDrift(
+        hour_angle_h=ha_h,
+        response=response,
+        envelope=vis * envelope,
+        visibility=vis,
+        fringe_period_h=fringe_period_h,
+    )
 
 
 # --------------------------------------------------------------------------- #

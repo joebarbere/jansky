@@ -84,6 +84,7 @@ nav:
       - "44. Free-Free Radiation & HII Regions": notebooks/44_free_free_and_hii.ipynb
   - "Part II — Instrumentation & Hardware":
       - "4. Antennas & Receivers": notebooks/04_antennas_and_receivers.ipynb
+      - "48. Planning a Radio Observation": notebooks/48_observing_planning.ipynb
       - "5. Hands-on SDR (optional)": notebooks/05_sdr_basics.ipynb
       - "6. Detecting the Hydrogen Line": notebooks/06_hydrogen_line.ipynb
       - "26. Meteor Scatter & Passive Radar": notebooks/26_meteor_scatter.ipynb
@@ -121,6 +122,7 @@ nav:
       - "45. Radio Galaxies, AGN & Source Counts": notebooks/45_radio_galaxies_and_source_counts.ipynb
       - "46. The Art of Radio Images": notebooks/46_visualizing_radio_data.ipynb
       - "47. Long-Period Radio Transients": notebooks/47_long_period_transients.ipynb
+      - "49. Build-It Sky Projects": notebooks/49_sky_projects.ipynb
   - "Appendices — Maths Lab":
       - "A. Fourier & Convolution": notebooks/31_mathslab_fourier_convolution.ipynb
       - "B. Detection Theory & Matched Filtering": notebooks/32_mathslab_matched_filtering.ipynb
