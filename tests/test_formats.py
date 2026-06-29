@@ -240,7 +240,13 @@ def test_read_sps_real_radiojove_sample(tmp_path, monkeypatch):
     from jansky import data
 
     monkeypatch.setenv("JANSKY_DATA_DIR", str(tmp_path))
-    sg = formats.read_sps(data.fetch("radiojove-sps"))
+    # The host may answer the reachability probe yet still time out on the data file
+    # itself; a network-gated test should skip on that, not fail CI.
+    try:
+        sps_path = data.fetch("radiojove-sps")
+    except RuntimeError as exc:
+        pytest.skip(f"radiojove-sps download unavailable: {exc}")
+    sg = formats.read_sps(sps_path)
     assert sg.meta["author"] == "Dave Typinski"
     assert sg.meta["nchannels"] == 300 and sg.meta["dual"]
     assert np.isclose(sg.meta["fmax_hz"], 32e6) and np.isclose(sg.meta["fmin_hz"], 16e6)
