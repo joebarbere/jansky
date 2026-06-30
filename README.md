@@ -182,7 +182,8 @@ Once you've worked through the chapters, see **[`jansky-research`](https://githu
 a sibling repo that *depends on this course as a library* and crosses from learning into **original,
 reproducible amateur research** — one gap → one tested tool (reusing jansky's helpers) → real public
 data → an honest AASTeX paper. It's the worked example of the Part IV "Real Data & Research" track at
-full scale (validations and honest negatives alike), with an Airflow-on-Podman reproducibility layer.
+full scale (validations and honest negatives alike), with a right-sized reproducibility layer —
+Snakemake for the static-data slices, Airflow on Podman for streaming archive ingest.
 
 ## License
 
