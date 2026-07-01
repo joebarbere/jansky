@@ -21,9 +21,14 @@ flowchart TD
   C3[3 · Noise & radiometer]
   C43[43 · Synchrotron radiation]
   C44[44 · Free-free & HII regions]
+  C50[50 · ERA worked problem sets]
   C1 --> C2 --> C3
   C2 --> C43
   C2 --> C44
+  C43 --> C50
+  C44 --> C50
+  C2 --> C50
+  LA -.-> C50
 
   %% ---- Part II: Instrumentation & hardware ----
   C4[4 · Antennas & receivers]
@@ -164,7 +169,7 @@ technique you'd like to see derived from scratch.
 
 | Maths Lab | Worked technique | Most useful for |
 |---|---|---|
-| **[A · Fourier & convolution](notebooks/31_mathslab_fourier_convolution.ipynb)** | FT pairs, convolution theorem, sampling | Ch 8 (uv-plane), Ch 9 (CLEAN), Ch 37 (RM synthesis), Ch 42 (21 cm power spectrum), Ch 3 |
+| **[A · Fourier & convolution](notebooks/31_mathslab_fourier_convolution.ipynb)** | FT pairs, convolution theorem, sampling | Ch 8 (uv-plane), Ch 9 (CLEAN), Ch 37 (RM synthesis), Ch 42 (21 cm power spectrum), Ch 3, **Ch 50 (ERA problem sets)** |
 | **[B · Matched filtering](notebooks/32_mathslab_matched_filtering.ipynb)** | Detection theory, the matched filter | Ch 18 (FRBs), Ch 13 (pulsars), Ch 38 (ML baseline), Ch 3 |
 | **[C · Noise & RFI](notebooks/33_mathslab_noise_rfi.ipynb)** | Noise statistics, robust RFI excision | Ch 3 (radiometer), Ch 39 (RFI flagging), Ch 5 (SDR) |
 | **[D · Coordinates & time](notebooks/34_mathslab_coordinates_time.ipynb)** | Sky coordinates, time systems | Ch 10 (archives), Ch 11, Ch 13, **Ch 48 (observing planning)** |
