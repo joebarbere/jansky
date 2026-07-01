@@ -82,6 +82,7 @@ nav:
       - "3. Signals, Noise & the Radiometer Equation": notebooks/03_signals_noise_radiometer.ipynb
       - "43. Synchrotron Radiation": notebooks/43_synchrotron_radiation.ipynb
       - "44. Free-Free Radiation & HII Regions": notebooks/44_free_free_and_hii.ipynb
+      - "50. ERA Worked Problem Sets": notebooks/50_era_problem_sets.ipynb
   - "Part II — Instrumentation & Hardware":
       - "4. Antennas & Receivers": notebooks/04_antennas_and_receivers.ipynb
       - "48. Planning a Radio Observation": notebooks/48_observing_planning.ipynb
