@@ -302,6 +302,19 @@ Where to buy the components for the projects above.
 Full write-ups — schematics, antenna dimensions, photos, and results — from SARA members, useful
 as reproducible blueprints rather than just kit listings:
 
+- **A rooftop station built on this course** — the sibling
+  [`jansky-research`](https://github.com/joebarbere/jansky-research) repo documents an amateur
+  station being built and operated from a Philadelphia rooftop, with end-to-end build guides that
+  put the hardware chapters into practice: a
+  [hydrogen-line receiver](https://github.com/joebarbere/jansky-research/blob/main/station/hydrogen-line-receiver.md)
+  (mesh dish → LNA → 1420 MHz filter → Airspy Mini, with the power-architecture and filter-order
+  trade-offs worked through), a 24/7
+  [meteor-scatter station](https://github.com/joebarbere/jansky-research/blob/main/station/meteor-scatter-station.md),
+  a [two-dish interferometry roadmap](https://github.com/joebarbere/jansky-research/blob/main/station/interferometry.md),
+  and notes on [test equipment](https://github.com/joebarbere/jansky-research/blob/main/station/test-equipment.md)
+  and [long-duration operations](https://github.com/joebarbere/jansky-research/blob/main/station/operations.md).
+  A concrete realisation of [Chapter 5 (Hands-on SDR)](notebooks/05_sdr_basics.ipynb) and
+  [Chapter 6 (Detecting the Hydrogen Line)](notebooks/06_hydrogen_line.ipynb).
 - **1420 MHz two-dish hydrogen-line interferometer** — two 8 ft TVRO dishes on a ~4 m east–west
   baseline feeding a SpectraCyber receiver; drift-scan fringes matched theory to ~95%, with
   polarisation experiments documented. A concrete amateur realisation of the two-element
