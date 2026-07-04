@@ -75,7 +75,7 @@ ml = [
 # Terminal UI for the Mastodon reader (python -m jansky.mastodon_reader), with
 # inline image viewing via terminal graphics protocols.
 tui = [
-    "textual>=0.60",
+    "textual>=8.2.8",
     "textual-image>=0.7",
     "pillow>=10.0",
 ]
