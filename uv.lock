@@ -963,7 +963,7 @@ wheels = [
 
 [[package]]
 name = "galpy"
-version = "1.11.2"
+version = "1.12.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "matplotlib" },
@@ -974,20 +974,20 @@ dependencies = [
     { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*'" },
     { name = "scipy", version = "1.18.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/1e/e3/b73ffda824e5a4ef14daec2503ad1342072169652bee654d55cba965d2cf/galpy-1.11.2.tar.gz", hash = "sha256:5180a25743e6c8e5fbaffc1ff89f22940276b6341b2d3a9c4ca5e348eb071e5e", size = 981979, upload-time = "2026-02-27T18:44:10.016Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/1e/dc/424e5ee8999af057d804471f6f598df8cd757370ce087a07ad3215a14c34/galpy-1.12.0.tar.gz", hash = "sha256:368c3b6a8ca7d93e44df40887ac6b9d9a00fa3a0f2ce532d9b6dac1a43ac7612", size = 1249059, upload-time = "2026-07-01T18:09:57.486Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ec/08/296ab3ec2445d25452aeb93a0cd7abb4382b2fc1f6b57663c6aaaf50b9f7/galpy-1.11.2-cp310-cp310-macosx_10_13_x86_64.whl", hash = "sha256:871c84c7ad4f567c3a100a7931c11c822d4ad1053abf8958fb20d1d50307ce07", size = 16747879, upload-time = "2026-02-27T18:43:23.9Z" },
-    { url = "https://files.pythonhosted.org/packages/3c/40/800a4be27e071ff0065ead7338a1d74d949cc3fba985d5e5133b514db143/galpy-1.11.2-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:bf27d0e512e4ea4bf51814c10a665059f57787658655f0db8ea221c08c94e6ca", size = 9771845, upload-time = "2026-02-27T18:43:27.051Z" },
-    { url = "https://files.pythonhosted.org/packages/f8/9e/b6768fbfbbedfe12754580502882656347459ec254df0092d3466535ff9b/galpy-1.11.2-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:121f2e33d3703376ad952853c79060bb4980226d981bfc07d72be9501fef1555", size = 2773730, upload-time = "2026-02-27T18:43:31.049Z" },
-    { url = "https://files.pythonhosted.org/packages/bc/b5/e74e33f3cc2b59cf8335c967fd37e89e9e397f1dcfccdbcf917d3b2e0673/galpy-1.11.2-cp310-cp310-win_amd64.whl", hash = "sha256:fdbbce2324eccafbb5525d612da3de5d2adeb78760c551ae3453d4b9f9499167", size = 887001, upload-time = "2026-02-27T18:43:32.55Z" },
-    { url = "https://files.pythonhosted.org/packages/47/dd/9a29e78a1605e39dea143f2d28dff6000b56cfb5beed99aa2c371f730cb4/galpy-1.11.2-cp311-cp311-macosx_10_13_x86_64.whl", hash = "sha256:2a251c398e9d2c6312458d6ff0f50c57ebfb00773d01133725f463d87fb3f81f", size = 16747878, upload-time = "2026-02-27T18:43:34.356Z" },
-    { url = "https://files.pythonhosted.org/packages/a0/b9/28b0e0558be1242ac74e3d3ddb20b610184f648f37710116f4735eab7f57/galpy-1.11.2-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:f3f8c427f29529d4e792329e445d5cb7707a7ee3c290c8cc3f78b8e8ef58b531", size = 9771841, upload-time = "2026-02-27T18:43:36.738Z" },
-    { url = "https://files.pythonhosted.org/packages/b5/93/c4b928e98e643423c98d67f1da7fb4c144a219f86a3ad36e0cfc92f04118/galpy-1.11.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:c90ef6fe0af8b3f6a4b2bec5ca2f6a297b069ce7d382f20eb8a0ea7a755f2d5e", size = 2773729, upload-time = "2026-02-27T18:43:39.012Z" },
-    { url = "https://files.pythonhosted.org/packages/f8/e9/016c9b20d72e2b2685fd57d6905e309bffd55b81b00fc56aa17074068d09/galpy-1.11.2-cp311-cp311-win_amd64.whl", hash = "sha256:47816d4ed0cc716d05f7c62898584b37b4ab15dc81143eaa84ee6dbb7a87323b", size = 887002, upload-time = "2026-02-27T18:43:40.606Z" },
-    { url = "https://files.pythonhosted.org/packages/08/ba/9929c5203fde8f28185ef3450407a3669b5255392bbe12ff9310d66beb01/galpy-1.11.2-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:2e1b49c46d482d08e0640a8e8a98d3bf76420cb84e2dc046cf495771d664a5b2", size = 16747877, upload-time = "2026-02-27T18:43:42.454Z" },
-    { url = "https://files.pythonhosted.org/packages/db/ea/be8b236f575a6c9236ef95d2d66e85c8cbee7aa445f0fd706a83d7271268/galpy-1.11.2-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:49aa688b697dddeb833f50fca95e54aa0cf3fddf17971709a9c4e374dbeaf99f", size = 9771845, upload-time = "2026-02-27T18:43:46.571Z" },
-    { url = "https://files.pythonhosted.org/packages/e4/df/a6e0d2d993e219aca1adb319d4dd37f2091ceba5cd6eff18e3a41b5606bd/galpy-1.11.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:5a40f8aac22bdf2265833cc4185f82b134fa2f11db63a3029ebb54c4e31c695a", size = 2773856, upload-time = "2026-02-27T18:43:48.655Z" },
-    { url = "https://files.pythonhosted.org/packages/60/03/a30de6af75d1d3d97328d4d178c61cf457def5013347aa45b710ca262a56/galpy-1.11.2-cp312-cp312-win_amd64.whl", hash = "sha256:76a5794293239221e9f3a5c4e64f97479b309ecb93fef17b1b69efcc9f79f575", size = 887000, upload-time = "2026-02-27T18:43:50.511Z" },
+    { url = "https://files.pythonhosted.org/packages/38/dc/ea7cdd5a9a497d1486b8598b27e82dce3fe1c7f3d930294801ca4229b42b/galpy-1.12.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:f927b756ee089af533d3a9e9c30e76918ff94e14b4eac7b5cb5d3202f863e807", size = 10003754, upload-time = "2026-07-01T18:09:18.096Z" },
+    { url = "https://files.pythonhosted.org/packages/c0/1e/b81f479cde1c802eb0eff9608dd2ff445d0ae832dde8865d00de51cce833/galpy-1.12.0-cp310-cp310-macosx_11_0_x86_64.whl", hash = "sha256:fd7393bb1f0d79991e6525e7418fcfdc72ae7b4ce05608e7edd0488a04a5bea6", size = 16972091, upload-time = "2026-07-01T18:09:20.404Z" },
+    { url = "https://files.pythonhosted.org/packages/3c/3c/8c3d28ce5be1d1787675c1e17682399f0eaa79fca2b05d3f2d7c4d7a62c6/galpy-1.12.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:ff0f8bbe67462f48d38656ae992553f851587bfcc9233227379f2882bf91ce76", size = 3168937, upload-time = "2026-07-01T18:09:22.948Z" },
+    { url = "https://files.pythonhosted.org/packages/65/77/0965657cbf3a653dd11ec0568a089b366062811da0987a5574cc2046968a/galpy-1.12.0-cp310-cp310-win_amd64.whl", hash = "sha256:669e34e25952c4ea995dbecdb3664de69a12847921d34c3844efba44598228ff", size = 2548180, upload-time = "2026-07-01T18:09:24.573Z" },
+    { url = "https://files.pythonhosted.org/packages/93/8d/9a4ffb3014177a1b36f5cfd6deb5c33fe9e8aa497eba7408c9c8d93dfa96/galpy-1.12.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:c6a808d34e595081739a6885c4b114fc1935a3766fa16509858876e0d27ad01f", size = 10003749, upload-time = "2026-07-01T18:09:26.24Z" },
+    { url = "https://files.pythonhosted.org/packages/a5/ee/8d54db72eb38aa4123732d791524ad07067b3f558fe4d8936b1f263e3315/galpy-1.12.0-cp311-cp311-macosx_11_0_x86_64.whl", hash = "sha256:61587fa4145745fb0b5ad13d0d0fbc2c998a0f00eb5d3d3ed3c8c8c3cf452720", size = 16972092, upload-time = "2026-07-01T18:09:28.35Z" },
+    { url = "https://files.pythonhosted.org/packages/db/b3/25794f6d9b7c2094a776f64d07947c147f27a8e0f9490c914e7539a64f02/galpy-1.12.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:f0d225d7aae1f784af1ca6059dfc948e6869f75b6e39265793a3cb7a397f30eb", size = 3168936, upload-time = "2026-07-01T18:09:30.792Z" },
+    { url = "https://files.pythonhosted.org/packages/ec/88/3fd49f896d55a9c39b8b628068f7cc6f0af88a5df08517dcbc759b1ff16c/galpy-1.12.0-cp311-cp311-win_amd64.whl", hash = "sha256:457cbbec8a428207b34ad647e177f6caf54e43f41c8f25fe70da6410da26658f", size = 2548179, upload-time = "2026-07-01T18:09:32.39Z" },
+    { url = "https://files.pythonhosted.org/packages/dd/28/4f5c5cdafb270d89e8d8e0e1a2b0303054672d0667551a39e1d963d73573/galpy-1.12.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:a5bf72d0dfb62c40ca0770cc01fdbcfb0ead9b5df0dc507acc6f7062e5ed891a", size = 10003751, upload-time = "2026-07-01T18:09:34.203Z" },
+    { url = "https://files.pythonhosted.org/packages/90/90/f962a078e43cd80d4382a6eab61db3e0e9646153dcb835a4d52dcafda48d/galpy-1.12.0-cp312-cp312-macosx_11_0_x86_64.whl", hash = "sha256:9be4fef7d9395655dc037c43ff4427995dd458912631e73e8e35eaeea3650f45", size = 16972092, upload-time = "2026-07-01T18:09:36.35Z" },
+    { url = "https://files.pythonhosted.org/packages/9e/14/cbd04fd251b84a290033f0bd32d66b1dcad4a44079c9c5b1a6d3307d0b4e/galpy-1.12.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:55c5c5ea0a53fa954dab1ccc3ba2cc3fdcb5d68c80474ba4b8630c480ecc86a0", size = 3168866, upload-time = "2026-07-01T18:09:38.522Z" },
+    { url = "https://files.pythonhosted.org/packages/9d/a4/680af83bbfe563207a78f8c3579393055b350c0d0c19803b8eaa73bdf9da/galpy-1.12.0-cp312-cp312-win_amd64.whl", hash = "sha256:968fbfde1479ea0be4fee9dfa70ceefea0a50d3a8d5c7b046850210fffc6e149", size = 2548177, upload-time = "2026-07-01T18:09:40.1Z" },
 ]
 
 [[package]]
@@ -1395,7 +1395,7 @@ requires-dist = [
     { name = "astropy", specifier = ">=6.0" },
     { name = "astroquery", specifier = ">=0.4.7" },
     { name = "blimpy", marker = "extra == 'seti'", specifier = ">=2.1" },
-    { name = "galpy", marker = "extra == 'dynamics'", specifier = ">=1.9" },
+    { name = "galpy", marker = "extra == 'dynamics'", specifier = ">=1.12.0" },
     { name = "healpy", marker = "extra == 'cmb'", specifier = ">=1.16" },
     { name = "ipykernel", specifier = ">=6.29" },
     { name = "matplotlib", specifier = ">=3.8" },

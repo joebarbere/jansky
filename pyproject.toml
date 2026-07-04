@@ -43,7 +43,7 @@ pulsar = [
 ]
 # Galactic dynamics for the HI rotation-curve chapter (Chapter 11 diversion).
 dynamics = [
-    "galpy>=1.9",
+    "galpy>=1.12.0",
 ]
 # Software-defined radio (Chapters 5-6). Requires the system librtlsdr library;
 # prefer the gnuradio container if you don't have an SDR toolchain installed.
