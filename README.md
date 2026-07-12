@@ -185,6 +185,13 @@ data → an honest AASTeX paper. It's the worked example of the Part IV "Real Da
 full scale (validations and honest negatives alike), with a right-sized reproducibility layer —
 Snakemake for the static-data slices, Airflow on Podman for streaming archive ingest.
 
+## Support
+
+If the course is useful to you, you can support the wider jansky effort — including the
+rooftop hydrogen-line station this course feeds — via
+[GitHub Sponsors](https://github.com/sponsors/joebarbere) or
+[Ko-fi](https://ko-fi.com/joebarbere).
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
