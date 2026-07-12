@@ -278,6 +278,7 @@ of the Square Kilometre Array.
 | 2026 | SKA Observatory | SKA-Mid Achieves "First Fringes" | (SKAO milestone) | SKA-Mid works as an interferometer for the first time (two 15 m dishes observe a radio galaxy ~2.6 Gly away) | [SKAO](https://www.skao.int/en/news/693/ska-mid-milestone) |
 | 2026 | Rose, K. et al. | Periodic Radio and X-ray Emission from an Accreting White Dwarf Binary | Nat. Astron. | ASKAP J1745−5051 — the first *accreting* long-period transient; radio + X-ray pulses locked to the 1.3 h orbit (Chapter 47) | [DOI](https://doi.org/10.1038/s41550-026-02882-x) |
 | 2026 | Rea, N., Hurley-Walker, N. & Caleb, M. | Long Period Transients (LPTs): a Comprehensive Review | J. High Energy Astrophys. | Reviews ~12 known LPTs and the competing models (Chapter 47) | [arXiv](https://arxiv.org/abs/2601.10393) |
+| 2026 | Dinsmore, J. T. et al. | IXPE Polarizations of the Lighthouse Pulsar, Trail, and Filament | ApJ (accepted) | First X-ray polarization map of a pulsar's escape filament (PSR J1101−6101) — field-aligned B, weaker-than-modelled turbulence, and radio polarization nearly orthogonal to the X-ray (Chapters 13, 37, 43) | [arXiv](https://arxiv.org/abs/2604.22914) |
 
 ---
 
