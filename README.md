@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/joebarbere/jansky/actions/workflows/ci.yml/badge.svg)](https://github.com/joebarbere/jansky/actions/workflows/ci.yml)
 [![Docs](https://github.com/joebarbere/jansky/actions/workflows/gh-pages.yml/badge.svg)](https://joebarbere.github.io/jansky/)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/joebarbere?logo=githubsponsors)](https://github.com/sponsors/joebarbere)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-donate-ff5f5f?logo=kofi&logoColor=white)](https://ko-fi.com/joebarbere)
 
 ![Real VLASS radio images of the galaxies M87 (FR I) and 3C 98 (FR II), rendered with an asinh stretch](docs/assets/hero.png)
 

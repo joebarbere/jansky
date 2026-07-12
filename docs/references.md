@@ -184,6 +184,13 @@ originals — many of these papers are short, readable, and historic.
   Galactic free-electron model for turning a dispersion measure into a distance, now generally
   preferred over the older NE2001 (Cordes & Lazio 2002) for pulsars and FRBs (Chapters 13, 18).
   [DOI](https://doi.org/10.3847/1538-4357/835/1/29)
+- **Dinsmore, J. T., et al. (2026).** *IXPE Polarizations of the Lighthouse Pulsar, Trail, and
+  Filament.* ApJ, accepted. — X-ray polarimetry maps the magnetic field of the pulsar-wind
+  nebula around PSR J1101−6101: the escape filament's field lies parallel to its axis with
+  PD 55 ± 18% (turbulence weaker than models expected), while the trail's X-ray polarization
+  is nearly orthogonal to the *radio* polarization — the X-ray- and radio-emitting particles
+  occupy different regions (Chapters 13, 37, 43).
+  [arXiv](https://arxiv.org/abs/2604.22914)
 
 ### Long-period radio transients & compact binaries
 
