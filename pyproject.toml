@@ -1,6 +1,6 @@
 [project]
 name = "jansky"
-version = "0.1.0"
+version = "0.2.0"
 description = "A hands-on, documentation-rich radio astronomy course in Python"
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
@@ -43,7 +43,7 @@ pulsar = [
 ]
 # Galactic dynamics for the HI rotation-curve chapter (Chapter 11 diversion).
 dynamics = [
-    "galpy>=1.9",
+    "galpy>=1.12.0",
 ]
 # Software-defined radio (Chapters 5-6). Requires the system librtlsdr library;
 # prefer the gnuradio container if you don't have an SDR toolchain installed.
@@ -75,9 +75,9 @@ ml = [
 # Terminal UI for the Mastodon reader (python -m jansky.mastodon_reader), with
 # inline image viewing via terminal graphics protocols.
 tui = [
-    "textual>=0.60",
+    "textual>=8.2.8",
     "textual-image>=0.7",
-    "pillow>=10.0",
+    "pillow>=12.3.0",
 ]
 cmb = [
     "healpy>=1.16",
@@ -97,12 +97,12 @@ packages = ["src/jansky"]
 [dependency-groups]
 # Authoring & QA toolchain (installed by `uv sync`, not shipped to consumers).
 dev = [
-    "ruff>=0.6",
+    "ruff>=0.15.21",
     "pytest>=8.2",
     "pytest-cov>=5.0",
-    "mypy>=1.11",
+    "mypy>=2.2.0",
     "nbmake>=1.5",
-    "jupyterlab>=4.2",
+    "jupyterlab>=4.6.1",
     "nbformat>=5.10",
     "seaborn>=0.13",
     "mkdocs-material>=9.5",
