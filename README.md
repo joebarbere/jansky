@@ -190,7 +190,10 @@ Snakemake for the static-data slices, Airflow on Podman for streaming archive in
 ## Support
 
 If the course is useful to you, you can support the wider jansky effort — including the
-rooftop hydrogen-line station this course feeds — via
+rooftop hydrogen-line station this course feeds, whose software
+([`jansky-observe`](https://github.com/joebarbere/jansky-observe)) is now feature-complete
+across every planned milestone (capture, an HI-line classifier, calibration, an unattended
+scheduler, drift-scan campaigns, and rotator control) and awaiting first light — via
 [GitHub Sponsors](https://github.com/sponsors/joebarbere) or
 [Ko-fi](https://ko-fi.com/joebarbere).
 
