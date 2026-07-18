@@ -1403,7 +1403,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=1.26" },
     { name = "pillow", marker = "extra == 'tui'", specifier = ">=12.3.0" },
     { name = "pint-pulsar", marker = "extra == 'pulsar'", specifier = ">=1.0" },
-    { name = "pyrtlsdr", marker = "extra == 'sdr'", specifier = ">=0.3" },
+    { name = "pyrtlsdr", marker = "extra == 'sdr'", specifier = ">=0.5.0" },
     { name = "pyuvdata", marker = "extra == 'formats'", specifier = ">=3.0" },
     { name = "pyvo", specifier = ">=1.5" },
     { name = "radio-beam", specifier = ">=0.3.7" },
@@ -2995,11 +2995,11 @@ wheels = [
 
 [[package]]
 name = "pyrtlsdr"
-version = "0.4.0"
+version = "0.5.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/07/e0/4011cab0c7d1f886c2851e1d683fc807130eb7a90d48a4e2dabfde50b0e0/pyrtlsdr-0.4.0.tar.gz", hash = "sha256:67f10775b8b56be9d64fb932881795c2a896425f1efbc78cca6ea8b734c46cde", size = 37623, upload-time = "2026-03-01T21:47:43.685Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d9/bf/60c6c077f52c91ab7df051b456096cb158c190dc5ea452cb6a2c9824b06f/pyrtlsdr-0.5.0.tar.gz", hash = "sha256:23d11ebd1b680b3e6a2a926b73de4ffe872cb1ffed8701f257cd1c46d1a840ac", size = 37969, upload-time = "2026-07-05T19:23:50.648Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9e/e2/ee05a0e985e1175be2ed451dcdd525fc4901bbe891399056d56fd9ab47c4/pyrtlsdr-0.4.0-py3-none-any.whl", hash = "sha256:964dc69e261f608f617db0e48c5d92e8d8c975f1c1c3c1d8add8d8012b72bd14", size = 31484, upload-time = "2026-03-01T21:47:41.541Z" },
+    { url = "https://files.pythonhosted.org/packages/06/de/c1b4b02fa26a2b1fd0559f817be9833de0c77ed213139670b425e827066f/pyrtlsdr-0.5.0-py3-none-any.whl", hash = "sha256:0122da6e930d3f0593914864cf580923e3132d90aeba1f73a651a571c227f5d8", size = 31649, upload-time = "2026-07-05T19:23:49.653Z" },
 ]
 
 [[package]]
