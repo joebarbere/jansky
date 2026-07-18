@@ -31,7 +31,7 @@ dependencies = [
     "reproject>=0.13",
     "regions>=0.9",
     "requests>=2.31",
-    "tqdm>=4.66",
+    "tqdm>=4.69.0",
     "ipykernel>=6.29",
 ]
 
