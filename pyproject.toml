@@ -80,7 +80,7 @@ tui = [
     "pillow>=12.3.0",
 ]
 cmb = [
-    "healpy>=1.16",
+    "healpy>=1.20.0",
 ]
 
 [project.urls]
