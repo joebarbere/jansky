@@ -27,6 +27,27 @@ every notebook, the bibliography, glossary, and telescope/papers references rend
 New to it? The **[Start Here](https://joebarbere.github.io/jansky/start-here/)** page helps you
 pick a track (laptop-only, RTL-SDR, interferometry, transients, or just the physics).
 
+## ⚠️ AI-generated content disclosure
+
+**The educational content of this course was written by AI** (Anthropic's Claude),
+directed by me. I chose the topics, collected the sources and references I wanted
+covered, and pointed Claude at them — but the chapter prose, explanations, and
+derivations are AI-written, and **no professional radio astronomer or educator has
+reviewed this material**. I'm an amateur. Treat the course accordingly: as a guided,
+runnable tour of the field, not an authoritative reference.
+
+What *is* verified, mechanically: every chapter is an executable notebook that runs in
+CI, the code uses the real working-astronomer libraries (astropy, astroquery,
+spectral-cube, CASA, PINT), figures regenerate from the code you're reading, and each
+chapter cites the seminal papers — so factual claims can be traced to their sources.
+What is *not* verified: that the prose explains those sources correctly. Errors of
+fact, emphasis, or convention may exist despite my review.
+
+If you're qualified to judge any chapter, I genuinely want the review — [open an
+issue](https://github.com/joebarbere/jansky/issues) citing the chapter and what's
+wrong. As material gets vetted I'll narrow this disclaimer to the unreviewed parts;
+if review shows the content is unsalvageable, I'll archive the project.
+
 ## Quickstart
 
 ### Local (recommended)
