@@ -1,0 +1,31 @@
+# Config for the scheduled link check (.github/workflows/links.yml).
+#
+# Goal: only report links that are dead for a *human reader*. The docs cite many
+# publishers and vendors whose bot walls answer CI requests with 403/429 (or let
+# them time out) while the pages load fine in a browser — those are false
+# positives, not link rot.
+
+# The server answered but blocked the bot: 403 (Cloudflare/publisher bot walls —
+# doi.org redirect targets like OUP and AAAS, DigiKey, the EHT site, ...) and
+# 429 (rate limits — news.ycombinator.com, upload.wikimedia.org). A link that
+# has genuinely rotted returns 404/410 or a network error, which still fails.
+accept = ["200..=204", "403", "429"]
+
+# Some hosts are merely slow for datacenter IPs; give them a fair chance before
+# reporting a timeout.
+timeout = 45
+max_retries = 3
+
+cache = true
+max_cache_age = "1d"
+
+exclude = [
+    # Rejects non-browser clients outright (400 / connection reset); both
+    # verified live for humans 2026-07-29.
+    "^https?://www\\.sciencedirect\\.com/",
+    "^https?://www\\.compadre\\.org/",
+    # Consistently exceed even the raised timeout from GitHub runners
+    # (throttle datacenter IPs); verified live for humans 2026-07-29.
+    "^https?://(www|archive)\\.sarao\\.ac\\.za/",
+    "^https?://doi\\.org/10\\.5334/",
+]

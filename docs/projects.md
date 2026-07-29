@@ -46,7 +46,7 @@ Buy a box of parts and a guide, assemble, observe.
 - **MIT Haystack Very Small Radio Telescope (VSRT)** — A classroom *interferometer* from
   off-the-shelf parts; a compact-fluorescent-lamp "radio source" lets students explore
   propagation, polarisation, and interference. Under $500, build-from-plans, grades 8–12.
-  [Haystack VSRT](https://www.haystack.mit.edu/edu/pcr/vsrt-ret/index.html)
+  [Haystack VSRT lesson plans](https://www.haystack.mit.edu/haystack-public-outreach/k-12-lesson-plans/)
 
 ## Full & turnkey systems
 
