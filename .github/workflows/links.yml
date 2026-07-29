@@ -6,7 +6,11 @@ name: Link check
 # runs the project's own checker over the things lychee can't see from markdown:
 # the jansky.data dataset registry and the structured github catalogue YAML (which
 # also classifies publisher/SourceForge bot-blocks as warnings, not failures).
-# Both open an issue on failure.
+# False-positive policy lives in lychee.toml (bot walls, slow-for-bots hosts).
+#
+# Each job keeps ONE tracking issue: a failure updates the existing open issue
+# (or opens it if absent) instead of stacking a new duplicate every week, and a
+# green run closes it.
 
 on:
   schedule:
@@ -21,6 +25,8 @@ permissions:
 jobs:
   links:
     runs-on: ubuntu-latest
+    env:
+      ISSUE_TITLE: "Broken documentation links (lychee)"
     steps:
       - uses: actions/checkout@v7
 
@@ -29,22 +35,44 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
-            --no-progress --max-concurrency 8 --cache --max-cache-age 1d
+            --no-progress --max-concurrency 8 --config lychee.toml
             './docs/**/*.md' './*.md' './plans/**/*.md'
           fail: false
 
-      - name: Open an issue on broken links
+      - name: Find the existing tracking issue
+        id: existing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --label automated \
+            --json number,title \
+            --jq "[.[] | select(.title == \"$ISSUE_TITLE\")][0].number // empty")
+          echo "number=$n" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update the tracking issue on broken links
         if: steps.lychee.outputs.exit_code != 0
         uses: peter-evans/create-issue-from-file@v6
         with:
-          title: "Broken documentation links (lychee)"
+          title: ${{ env.ISSUE_TITLE }}
           content-filepath: ./lychee/out.md
           labels: docs, automated
+          issue-number: ${{ steps.existing.outputs.number }}
+
+      - name: Close the tracking issue on a green run
+        if: steps.lychee.outputs.exit_code == 0 && steps.existing.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue close "${{ steps.existing.outputs.number }}" \
+            --repo "$GITHUB_REPOSITORY" \
+            --comment "The scheduled link check passed — closing."
 
   data-urls:
     # Datasets (jansky.data) + the github catalogue YAML — links lychee can't reach
     # from markdown. Uses scripts/check_dataset_urls.py (ok/warn/fail classifier).
     runs-on: ubuntu-latest
+    env:
+      ISSUE_TITLE: "Broken dataset / catalogue URLs (check_dataset_urls)"
     steps:
       - uses: actions/checkout@v7
 
@@ -63,10 +91,30 @@ jobs:
           uv run python scripts/check_dataset_urls.py --github | tee urls-report.txt
           echo "exit_code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
 
-      - name: Open an issue on broken URLs
+      - name: Find the existing tracking issue
+        id: existing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --label automated \
+            --json number,title \
+            --jq "[.[] | select(.title == \"$ISSUE_TITLE\")][0].number // empty")
+          echo "number=$n" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update the tracking issue on broken URLs
         if: steps.checkurls.outputs.exit_code != '0'
         uses: peter-evans/create-issue-from-file@v6
         with:
-          title: "Broken dataset / catalogue URLs (check_dataset_urls)"
+          title: ${{ env.ISSUE_TITLE }}
           content-filepath: ./urls-report.txt
           labels: docs, automated
+          issue-number: ${{ steps.existing.outputs.number }}
+
+      - name: Close the tracking issue on a green run
+        if: steps.checkurls.outputs.exit_code == '0' && steps.existing.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue close "${{ steps.existing.outputs.number }}" \
+            --repo "$GITHUB_REPOSITORY" \
+            --comment "The scheduled URL check passed — closing."

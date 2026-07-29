@@ -28,6 +28,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -79,26 +80,51 @@ def extract_yaml_urls(path: str | Path) -> list[str]:
 _SOFT_CODES = {401, 403, 429}
 
 
-def check(url: str, timeout: float = 30.0) -> tuple[str, str]:
-    """Return (status, detail) where status is 'ok', 'warn', or 'fail'."""
-    try:
-        resp = requests.head(url, allow_redirects=True, timeout=timeout, headers=_HEADERS)
-        if resp.status_code >= 400 or resp.status_code == 405:
-            # Some hosts reject HEAD; retry with a 0-byte ranged GET.
-            resp = requests.get(
-                url,
-                headers={**_HEADERS, "Range": "bytes=0-0"},
-                stream=True,
-                timeout=timeout,
-            )
-        code = resp.status_code
+def _request(url: str, timeout: float) -> int:
+    """Return the status code for one HEAD (falling back to ranged-GET) attempt."""
+    resp = requests.head(url, allow_redirects=True, timeout=timeout, headers=_HEADERS)
+    if resp.status_code >= 400 or resp.status_code == 405:
+        # Some hosts reject HEAD; retry with a 0-byte ranged GET.
+        resp = requests.get(
+            url,
+            headers={**_HEADERS, "Range": "bytes=0-0"},
+            stream=True,
+            timeout=timeout,
+        )
+    return resp.status_code
+
+
+def check(url: str, timeout: float = 30.0, attempts: int = 3) -> tuple[str, str]:
+    """Return (status, detail) where status is 'ok', 'warn', or 'fail'.
+
+    Transient answers (5xx, timeouts, connection errors) are retried with
+    backoff so a momentary publisher outage doesn't report a live link as
+    rotted. A host that *still* times out after the retries gets a warning,
+    not a failure: the recurring evidence is publishers throttling datacenter
+    IPs while the page loads fine for a human, whereas genuinely dead hosts
+    show up as connection/DNS errors or 404/410 — which still fail.
+    """
+    last_exc: Exception | None = None
+    for attempt in range(attempts):
+        if attempt:
+            time.sleep(2**attempt)
+        try:
+            code = _request(url, timeout)
+        except Exception as exc:  # noqa: BLE001 - classified below, after retries
+            last_exc = exc
+            continue
         if code < 400:
             return "ok", f"HTTP {code}"
         if code in _SOFT_CODES:
             return "warn", f"HTTP {code} (bot-blocked; live for humans)"
+        if code >= 500 and attempt < attempts - 1:
+            continue
         return "fail", f"HTTP {code}"
-    except Exception as exc:  # noqa: BLE001 - report any failure
-        return "fail", f"ERROR: {type(exc).__name__}"
+    if isinstance(last_exc, requests.exceptions.Timeout):
+        return "warn", f"timed out x{attempts} (bot-throttled?; verify by hand)"
+    if last_exc is not None:
+        return "fail", f"ERROR: {type(last_exc).__name__}"
+    return "fail", f"HTTP 5xx after {attempts} attempts"
 
 
 def _check_targets(targets: list[tuple[str, str]]) -> int:
