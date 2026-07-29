@@ -48,7 +48,7 @@ dynamics = [
 # Software-defined radio (Chapters 5-6). Requires the system librtlsdr library;
 # prefer the gnuradio container if you don't have an SDR toolchain installed.
 sdr = [
-    "pyrtlsdr>=0.3",
+    "pyrtlsdr>=0.5.0",
 ]
 # SETI / Breakthrough Listen stack (Chapter 16): GUPPI/filterbank I/O and the
 # Doppler-drift search. Heavy (some pieces want a GPU) — keep optional.
