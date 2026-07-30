@@ -21,8 +21,9 @@ __all__ = ["check"]
 
 def check(
     guess: float | None,
-    expected: float,
+    expected: float | None = None,
     *,
+    expected_log10: float | None = None,
     dex: float = 0.5,
     name: str = "estimate",
     units: str = "",
@@ -37,6 +38,13 @@ def check(
         The worked envelope answer, in the same units as ``guess``.
         Must be positive and finite (this is the author's input, so a bad
         value raises rather than prints).
+    expected_log10
+        The answer's base-10 logarithm, as an alternative to ``expected``.
+        The course notebooks use this form so the answer is not spoiled by
+        a stray glance at the check cell's source — the reader sees the
+        actual value only in the printed comparison, after committing to a
+        guess. Exactly one of ``expected`` / ``expected_log10`` must be
+        given.
     dex
         Half-width of the "envelope-grade" band, in decades (default 0.5).
     name
@@ -49,6 +57,13 @@ def check(
     bool
         ``True`` when the guess lands within ``dex`` decades of ``expected``.
     """
+    if (expected is None) == (expected_log10 is None):
+        raise ValueError("give exactly one of expected or expected_log10")
+    if expected is None:
+        assert expected_log10 is not None  # for the type-checker
+        if not math.isfinite(expected_log10):
+            raise ValueError("expected_log10 must be a finite number")
+        expected = 10.0**expected_log10
     if not math.isfinite(expected) or expected <= 0:
         raise ValueError("expected must be a positive, finite number")
     unit = f" {units}" if units else ""

@@ -37,8 +37,10 @@ JSON reliably by hand.
 4. **"Back of the envelope"** (markdown + code, before any imports): one concrete
    estimation question with real numbers, four beats — the setup (decades matter, factors
    of two don't); a learner cell with the givens as plain floats and one line left as
-   `guess = None`; a check cell calling `jansky.envelope.check(guess, expected=..., 
-   name=..., units=...)` (never raises, runs green with `None`); a `<details>` reveal with
+   `guess = None`; a check cell calling `jansky.envelope.check(guess, expected_log10=..., 
+   name=..., units=...)` (never raises, runs green with `None`; pass the answer as its
+   base-10 log to 4 decimals — never a readable plain value — so a stray glance at the
+   check cell can't spoil the estimate); a `<details>` reveal with
    the worked arithmetic and a **"where the envelope leaks"** list pointing at the chapter
    sections that patch each leak. Optionally a "turn the knob" scaling follow-up.
    Chapter 3 is the reference implementation.
