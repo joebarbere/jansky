@@ -55,6 +55,51 @@ helper/library drift. Optional local hooks live in `.pre-commit-config.yaml`
 (`pip install pre-commit && pre-commit install`); the `nbstripout` hook there runs with
 `--keep-output`, so it tidies metadata **without** removing the committed figures.
 
+## Notebook code style — inline first
+
+Community feedback on the course converged on one principle: **teaching code should read
+as a stream of consciousness** — top to bottom, with the physics in the open — not routed
+through layers of helper calls. The razor:
+
+> **Inline the physics, wrap the plumbing.** If a wrapper's internals are *this chapter's*
+> content, unroll it. If the reader would skim its internals (figure styling, seeding,
+> data fetching, repetitive checking), wrap it. When in doubt, ask what the learner loses
+> by not reading it.
+
+Concretely:
+
+- **New physics is written inline**, in flat NumPy: named intermediate variables, one
+  concept per cell, a print or plot after every step. No `def` unless the chapter is about
+  building that function; no nested call chains; no clever one-liners.
+- **Helpers may be called for *earlier* chapters' physics** (abstraction already earned)
+  and for plumbing (`plotting.use_jansky_style()`, `signals.rng`, `jansky.data` fetchers,
+  `jansky.envelope.check`).
+- **Every chapter ends by "promoting" its inline code**: a short cell asserting the inline
+  result equals the packaged helper (`assert np.allclose(inline, packaged)`), then telling
+  the reader the one-liner now has a name. New physics still lands in `src/jansky/` with a
+  unit test — the package exists for later chapters and downstream research; the notebook
+  just must not front it while teaching.
+
+### The "Back of the envelope" section
+
+Every chapter carries an estimation section right after **The physics**, before any
+imports — four beats:
+
+1. **The setup** (markdown): one concrete question with real numbers, answerable by
+   dimensional reasoning alone. Decades matter, factors of two don't.
+2. **Your estimate** (code): the given quantities as plain floats with units in comments,
+   and one line left as `guess = None` for the reader to write.
+3. **The check** (code): `jansky.envelope.check(guess, expected=..., name=..., units=...)`
+   — order-of-magnitude feedback that never raises and runs green with `None`, so CI and
+   the reader coexist in the same cells.
+4. **The reveal** (markdown `<details>`): the worked arithmetic, then **"where the
+   envelope leaks"** — the effects the estimate ignored, each pointing at the part of the
+   chapter that treats it properly. Optionally a **"turn the knob"** follow-up that reuses
+   the reader's expression at a different scale.
+
+Chapter 3 (Signals, Noise & the Radiometer Equation) is the reference implementation of
+both patterns.
+
 ## Authoring a new chapter
 
 Chapters follow a consistent standard captured in

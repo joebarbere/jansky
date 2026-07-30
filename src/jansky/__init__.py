@@ -34,6 +34,8 @@ eor
     the global-signal trough, and smooth-foreground removal.
 data
     Cached downloaders for the sample datasets used in the research chapters.
+envelope
+    Order-of-magnitude feedback for the "Back of the envelope" sections.
 formats
     Data formats & the ecosystem: GUPPI raw, SigMF, the Radio-Sky Spectrograph
     network protocol, and optional wrappers for the heavier I/O libraries.
@@ -68,6 +70,7 @@ __version__ = "0.2.0"
 from jansky import (
     catalog,
     data,
+    envelope,
     eor,
     formats,
     freefree,
@@ -95,6 +98,7 @@ __all__ = [
     "__version__",
     "catalog",
     "data",
+    "envelope",
     "eor",
     "formats",
     "freefree",
