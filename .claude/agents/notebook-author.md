@@ -34,17 +34,25 @@ JSON reliably by hand.
    citation and a one-paragraph summary of what they found. Link to ADS/DOI.
 3. **The physics** (markdown with LaTeX): the key equations, derived or motivated, not
    just stated. Use `$...$` / `$$...$$`.
-4. **Code** (code cells): import `numpy`, `matplotlib`, `astropy`, and the relevant
+4. **"Back of the envelope"** (markdown + code, before any imports): one concrete
+   estimation question with real numbers, four beats — the setup (decades matter, factors
+   of two don't); a learner cell with the givens as plain floats and one line left as
+   `guess = None`; a check cell calling `jansky.envelope.check(guess, expected=..., 
+   name=..., units=...)` (never raises, runs green with `None`); a `<details>` reveal with
+   the worked arithmetic and a **"where the envelope leaks"** list pointing at the chapter
+   sections that patch each leak. Optionally a "turn the knob" scaling follow-up.
+   Chapter 3 is the reference implementation.
+5. **Code** (code cells): import `numpy`, `matplotlib`, `astropy`, and the relevant
    `jansky` helpers (`from jansky import signals, units, interferometry, plotting, data`).
    Call `plotting.use_jansky_style()` early — this also sets the **colourblind-safe**
    line-colour cycle (`plotting.COLORBLIND_CYCLE`, Okabe–Ito), so do NOT hard-code
    red/green pairs to distinguish series. Prefer the real scientific libraries
    (astropy, astroquery, spectral-cube, ...) so learners meet the tools scientists use.
    Every code cell must run top-to-bottom without error on the base environment.
-5. **A figure or two** that make the concept visual. Every figure needs a one-line
+6. **A figure or two** that make the concept visual. Every figure needs a one-line
    **descriptive caption / alt text** in the surrounding markdown (what the reader should
    see), not just a title — for accessibility and for the rendered site.
-6. **"Try it yourself"** (markdown): 2–3 exercises. Each exercise is a *prompt* (optionally
+7. **"Try it yourself"** (markdown): 2–3 exercises. Each exercise is a *prompt* (optionally
    with a scaffolded learner cell) followed by a **collapsible worked solution** so the
    answer is not spoiled before the attempt. Use this exact pattern (renders in both
    JupyterLab and the mkdocs-jupyter site):
@@ -58,14 +66,25 @@ JSON reliably by hand.
    ```
 
    Do NOT pre-fill the answer inline in an open cell.
-7. **Recap + what's next** (markdown).
+8. **"From napkin to package"** (markdown + code): a short promotion cell that computes
+   the chapter's central quantity both inline and via the packaged helper,
+   `assert np.allclose(inline, packaged)`, and tells the reader the one-liner now has a
+   name (used freely from the next chapter on).
+9. **Recap + what's next** (markdown).
 
 ## Rules
 
 - **Correctness first.** Every equation, constant, and citation must be right. Use
   `astropy.units`/`astropy.constants` rather than hard-coded numbers.
-- **Reuse the helper package.** Don't re-implement what `src/jansky/` already provides;
-  read those modules first (`units`, `signals`, `interferometry`, `data`, `plotting`).
+- **Inline the physics, wrap the plumbing.** *This chapter's* physics is written in the
+  open — flat NumPy, named intermediate variables, one concept per cell, no `def`s or
+  nested call chains — and only "promoted" to its `jansky` helper at the end (see spine
+  step 8). Helpers are for *earlier* chapters' physics (abstraction already earned) and
+  for plumbing (`plotting`, `signals.rng`, `jansky.data`, `jansky.envelope.check`). Read
+  `src/jansky/` first (`units`, `signals`, `interferometry`, `data`, `plotting`) so the
+  inline derivation and the packaged version agree — the promotion `assert` will catch a
+  mismatch. New physics still lands in `src/jansky/` with a unit test; the notebook just
+  must not hide behind it while teaching.
 - **Stay in the base environment** unless the spec says otherwise. If the chapter needs
   an optional extra (pulsar/dynamics/sdr) or a container (CASA, GNU Radio), guard the
   heavy code and provide a simulated/`jansky.data` fallback so the notebook still runs.
