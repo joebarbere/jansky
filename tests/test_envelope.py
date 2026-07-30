@@ -51,3 +51,29 @@ def test_nonpositive_or_nonfinite_guess_is_gentle(bad, capsys):
 def test_bad_expected_raises(bad):
     with pytest.raises(ValueError, match="expected must be"):
         check(1.0, bad)
+
+
+def test_expected_log10_equivalent_to_expected(capsys):
+    assert check(9.0, expected_log10=0.9542, name="tau", units="s") is True
+    out = capsys.readouterr().out
+    assert "Envelope-grade" in out
+    assert "~9" in out  # the printed comparison recovers the real value
+
+
+def test_expected_log10_none_guess_does_not_leak(capsys):
+    assert check(None, expected_log10=0.9542) is False
+    out = capsys.readouterr().out
+    assert "no guess yet" in out
+    assert "9" not in out  # nothing about the answer before a guess
+
+
+def test_exactly_one_expected_form_required():
+    with pytest.raises(ValueError, match="exactly one"):
+        check(1.0, 9.0, expected_log10=0.9542)
+    with pytest.raises(ValueError, match="exactly one"):
+        check(1.0)
+
+
+def test_nonfinite_expected_log10_raises():
+    with pytest.raises(ValueError, match="expected_log10 must be"):
+        check(1.0, expected_log10=float("nan"))

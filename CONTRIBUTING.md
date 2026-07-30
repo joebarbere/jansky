@@ -89,9 +89,12 @@ imports — four beats:
    dimensional reasoning alone. Decades matter, factors of two don't.
 2. **Your estimate** (code): the given quantities as plain floats with units in comments,
    and one line left as `guess = None` for the reader to write.
-3. **The check** (code): `jansky.envelope.check(guess, expected=..., name=..., units=...)`
-   — order-of-magnitude feedback that never raises and runs green with `None`, so CI and
-   the reader coexist in the same cells.
+3. **The check** (code): `jansky.envelope.check(guess, expected_log10=..., name=...,
+   units=...)` — order-of-magnitude feedback that never raises and runs green with
+   `None`, so CI and the reader coexist in the same cells. Pass the answer as its
+   **base-10 logarithm** (4 decimal places), never as a plain `expected=` value: the
+   check cell sits right under the learner cell, and a readable answer there spoils the
+   estimate for anyone whose eye lands on it before committing.
 4. **The reveal** (markdown `<details>`): the worked arithmetic, then **"where the
    envelope leaks"** — the effects the estimate ignored, each pointing at the part of the
    chapter that treats it properly. Optionally a **"turn the knob"** follow-up that reuses
