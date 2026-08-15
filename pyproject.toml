@@ -38,7 +38,7 @@ dependencies = [
 [project.optional-dependencies]
 # Pulsar timing / search tooling (Chapter 13). Pip-installable but heavier.
 pulsar = [
-    "pint-pulsar>=1.0",
+    "pint-pulsar>=1.1.6",
     "your>=0.6.7",
 ]
 # Galactic dynamics for the HI rotation-curve chapter (Chapter 11 diversion).
